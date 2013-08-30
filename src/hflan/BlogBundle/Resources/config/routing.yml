@@ -1,0 +1,3 @@
+hflan_blog_homepage:
+    pattern:  /
+    defaults: { _controller: hflanBlogBundle:Default:index }

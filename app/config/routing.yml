@@ -1,0 +1,4 @@
+hflan_blog:
+    resource: "@hflanBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+
