@@ -2,8 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block page_title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets
+                'less/main.less'
+            %}
+                <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+            {% endstylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
