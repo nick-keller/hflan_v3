@@ -1,3 +1,7 @@
-hflan_blog_homepage:
+hflan_blog:
     pattern:  /
     defaults: { _controller: hflanBlogBundle:Default:index }
+
+hflan_blog_new:
+    pattern:  /new
+    defaults: { _controller: hflanBlogBundle:Admin:new }
