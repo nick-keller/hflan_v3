@@ -72,3 +72,16 @@ fos_user:
     db_driver:      orm
     firewall_name:  main
     user_class:     hflan\UserBundle\Entity\User
+
+# Stof\DoctrineExtensionBundle configuration
+stof_doctrine_extensions:
+    uploadable:
+        default_file_path:       %kernel.root_dir%/../web/uploads
+        mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
+        default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+    orm:
+        default:
+            sluggable: true
+            timestampable : true
+            blameable: true
+            uploadable: true
