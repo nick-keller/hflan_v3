@@ -16,7 +16,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', 'ckeditor')
             ->add('published')
             ->add('lang')
         ;
