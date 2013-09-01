@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "leafo/lessphp": "0.3.*@dev",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "stof/doctrine-extensions-bundle": "dev-master"
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "egeloen/ckeditor-bundle": "2.*"
     },
     "scripts": {
         "post-install-cmd": [
