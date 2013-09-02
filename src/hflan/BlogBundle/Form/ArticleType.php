@@ -31,6 +31,7 @@ class ArticleType extends AbstractType
                     'inactive' => 'Chaché',
                     'active' => 'Public',
                 ),
+                'required' => false,
             ))
             ->add('lang', 'radiobar', array(
                 'label' => 'Langue',
