@@ -22,7 +22,8 @@
         "leafo/lessphp": "0.3.*@dev",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "stof/doctrine-extensions-bundle": "dev-master",
-        "egeloen/ckeditor-bundle": "2.*"
+        "egeloen/ckeditor-bundle": "2.*",
+        "bmatzner/fontawesome-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [
