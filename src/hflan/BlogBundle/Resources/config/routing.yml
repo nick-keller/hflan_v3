@@ -7,8 +7,10 @@ hflan_blog:
 # Admin
 
 hflan_blog_admin:
-    pattern:  /admin
-    defaults: { _controller: hflanBlogBundle:Admin:index }
+    pattern:  /admin/{page}
+    defaults: { _controller: hflanBlogBundle:Admin:index, page:1 }
+    requirements:
+        page: \d+
 
 hflan_blog_new:
     pattern:  /admin/new

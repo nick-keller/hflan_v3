@@ -2,4 +2,30 @@
 
 {% block body %}
     <h1>Liste des articles</h1>
+    <table class="table">
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Création</th>
+            <th>Visibilité</th>
+            <th>Langue</th>
+        </tr>
+        {% for article in pagination %}
+            <tr>
+                <td>{{ article.title }}</td>
+                <td>{{ article.author.username }}</td>
+                <td></td>
+                <td>
+                    {% if article.published %}
+                        <i class="icon-eye-open"></i> Public
+                    {% else %}
+                        <i class="icon-eye-close"></i> Caché
+                    {% endif %}
+                </td>
+                <td>{{ article.lang }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
 {% endblock %}

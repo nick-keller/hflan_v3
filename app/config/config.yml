@@ -117,3 +117,11 @@ jms_di_extra:
         properties:
             request: "@request"
             em: "@doctrine.orm.entity_manager"
+            paginator: "@knp_paginator"
+
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+    template:
+        pagination: ::pagination.html.twig

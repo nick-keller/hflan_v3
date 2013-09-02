@@ -24,7 +24,8 @@
         "stof/doctrine-extensions-bundle": "dev-master",
         "egeloen/ckeditor-bundle": "2.*",
         "bmatzner/fontawesome-bundle": "*",
-        "jms/security-extra-bundle": "dev-master"
+        "jms/security-extra-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "2.3.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

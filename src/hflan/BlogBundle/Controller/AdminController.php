@@ -3,6 +3,7 @@
 namespace hflan\BlogBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
+use Knp\Component\Pager\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use hflan\BlogBundle\Entity\Article;
@@ -19,12 +20,22 @@ class AdminController extends Controller
     private $em;
 
     /**
+     * @var Paginator
+     */
+    private $paginator;
+
+    /**
      * @Secure(roles="ROLE_NEWSER")
      * @Template
      */
-    public function indexAction()
+    public function indexAction($page)
     {
-        return array();
+        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
+        $pagination = $this->paginator->paginate($articles, $page, 10);
+
+        return array(
+            'pagination' => $pagination,
+        );
     }
 
     /**
