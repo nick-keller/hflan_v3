@@ -15,10 +15,30 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content', 'ckeditor')
-            ->add('published')
-            ->add('lang')
+            ->add('title', 'text', array(
+                'label' => 'Titre',
+            ))
+            ->add('content', 'ckeditor', array(
+                'label' => 'Article',
+            ))
+            ->add('published', 'toggle', array(
+                'label' => 'Visibilité',
+                'icons' => array(
+                    'active' => 'eye-open',
+                    'inactive' => 'eye-close',
+                ),
+                'labels' => array(
+                    'inactive' => 'Chaché',
+                    'active' => 'Public',
+                ),
+            ))
+            ->add('lang', 'radiobar', array(
+                'label' => 'Langue',
+                'choices' => array(
+                    'fr' => "francçais",
+                    'en' => "english",
+                )
+            ))
         ;
     }
     

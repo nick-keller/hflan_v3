@@ -61,3 +61,32 @@
         {% endif %}
     {% endspaceless %}
 {% endblock form_errors %}
+
+{% block radiobar_widget %}
+    {% spaceless %}
+        <div class="radio-bar" {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block toggle_widget %}
+    {% spaceless %}
+        <div class="toggle">
+            <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+            <label for="{{ form.vars.id }}">
+                <div class="active">
+                    <i class="icon-{{ form.vars.icon_active }}"></i>
+                    {{ label_active }}
+                </div>
+                <div class="inactive">
+                    <i class="icon-{{ form.vars.icon_inactive }}"></i>
+                    {{ label_inactive }}
+                </div>
+            </label>
+        </div>
+    {% endspaceless %}
+{% endblock %}

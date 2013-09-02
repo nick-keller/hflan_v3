@@ -3,8 +3,55 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7bd09352f2444bf0f0cc4a5de57d3895",
+    "hash": "75e9ac9df69a76c6133ab7dd2c0a8948",
     "packages": [
+        {
+            "name": "bmatzner/fontawesome-bundle",
+            "version": "3.2.1",
+            "target-dir": "Bmatzner/FontAwesomeBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bmatzner/BmatznerFontAwesomeBundle.git",
+                "reference": "d8779a09ce1988c841f6c8ed2a44d2613b7f7dc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bmatzner/BmatznerFontAwesomeBundle/zipball/d8779a09ce1988c841f6c8ed2a44d2613b7f7dc1",
+                "reference": "d8779a09ce1988c841f6c8ed2a44d2613b7f7dc1",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": ">=2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Bmatzner\\FontAwesomeBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT",
+                "CC BY 3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bernd Matzner",
+                    "email": "bernd@matznermatzner.de",
+                    "homepage": "http://berndmatzner.de"
+                }
+            ],
+            "description": "FontAwesome Bundle for Symfony2",
+            "homepage": "http://fortawesome.github.com/Font-Awesome/",
+            "keywords": [
+                "css",
+                "graphics",
+                "symfony",
+                "typography",
+                "webfonts"
+            ],
+            "time": "2013-06-19 14:25:44"
+        },
         {
             "name": "doctrine/common",
             "version": "2.3.0",
