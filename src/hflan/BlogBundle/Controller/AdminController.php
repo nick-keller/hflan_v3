@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function indexAction($page)
     {
         $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
-        $pagination = $this->paginator->paginate($articles, $page, 2);
+        $pagination = $this->paginator->paginate($articles, $page, 10);
 
         return array(
             'pagination' => $pagination,

@@ -12,3 +12,7 @@ services:
         arguments:
         tags:
             - { name: form.type, alias: toggle }
+    twig.txtFormat:
+        class: hflan\BlogBundle\Twig\TxtFormat
+        tags:
+            - { name: twig.extension }
