@@ -11,6 +11,8 @@
                 'less/layout.less'
                 'less/grid.less'
                 'less/form.less'
+                'less/pagination.less'
+                'less/table.less'
                 filter='cssrewrite'
             %}
                 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
@@ -20,7 +22,7 @@
     </head>
     <body>
         <div class="main-container">
-            <div class="table">
+            <div class="table-container">
                 <div class="content">
                     <section>
                         {% block body %}{% endblock %}
