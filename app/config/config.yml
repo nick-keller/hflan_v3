@@ -111,3 +111,9 @@ ivory_ck_editor:
             styles : [ 'Format','FontSize' ]
             colors : [ 'TextColor','BGColor' ]
             tools : [ 'Source', 'Maximize' ]
+
+jms_di_extra:
+    automatic_controller_injections:
+        properties:
+            request: "@request"
+            em: "@doctrine.orm.entity_manager"
