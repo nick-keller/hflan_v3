@@ -87,7 +87,7 @@
   }
 
   .form-actions{
-    padding: 5px 5px 5px (@label-width + 5);
+    padding: 25px 5px 5px (@label-width + 5);
   }
 }
 
@@ -104,6 +104,11 @@
   text-shadow: 0 1px @dark-green;
   box-shadow: 0 0 1px white inset;
   background: @light-green;
+  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  vertical-align: top;
+  font-weight: normal;
 
   &:hover{
     background: @green;
@@ -159,21 +164,11 @@ input[type="url"]{
     }
 
     &:nth-child(2){
-      -webkit-border-top-left-radius: 3px;
-      -webkit-border-bottom-left-radius: 3px;
-      -moz-border-radius-topleft: 3px;
-      -moz-border-radius-bottomleft: 3px;
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
+      .border-radius-left(3px);
     }
 
     &:last-child{
-      -webkit-border-top-right-radius: 3px;
-      -webkit-border-bottom-right-radius: 3px;
-      -moz-border-radius-topright: 3px;
-      -moz-border-radius-bottomright: 3px;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
+      .border-radius-right(3px);
     }
   }
 

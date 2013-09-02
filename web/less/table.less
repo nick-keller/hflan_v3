@@ -1,18 +1,59 @@
+@import "mixins.less";
+@import "variables.less";
+
 .table{
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
+  margin-top: 20px;
 
   th{
     border-bottom: solid 1px #eaeaea;
     box-shadow: 0 1px rgba(255,255,255,.7);
     text-align: left;
+    text-shadow: 0 1px 0 white;
   }
 
   th, td{
     padding: 4px 8px;
   }
 
-  tr:nth-child(even) td{
-    background: #f9f9f9;
+  tr{
+    td{
+      border: solid 1px transparent;
+      border-right: none;
+
+      & + td{
+        border-left: none;
+      }
+
+      &:last-child{
+        border-right: solid 1px transparent;
+      }
+    }
+
+    &:nth-child(even) td{
+      background: #f9f9f9;
+    }
+
+    &:hover td{
+      background: #ebebeb;
+    }
+
+    &[data-href]:hover td{
+      background: #cddd8e;
+      cursor: pointer;
+      border-color: @dark-green;
+      box-shadow: 0 1px 0 rgba(255,255,255,.5) inset;
+      .not-selectable;
+
+      &:first-child{
+        .border-radius-left(3px);
+      }
+
+      &:last-child{
+        .border-radius-right(3px);
+      }
+    }
   }
 }

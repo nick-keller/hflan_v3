@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function indexAction($page)
     {
         $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
-        $pagination = $this->paginator->paginate($articles, $page, 10);
+        $pagination = $this->paginator->paginate($articles, $page, 2);
 
         return array(
             'pagination' => $pagination,
@@ -53,6 +53,32 @@ class AdminController extends Controller
             if($form->isValid()){
                 $this->em->persist($article);
                 $this->em->flush();
+
+                return $this->redirect($this->generateUrl('hflan_blog_admin'));
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+        );
+    }
+
+    /**
+     * @Secure(roles="ROLE_NEWSER")
+     * @Template
+     */
+    public function editAction(Request $request, Article $article)
+    {
+        $form = $this->createForm(new ArticleType, $article);
+
+        if('POST' == $request->getMethod()){
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                $this->em->persist($article);
+                $this->em->flush();
+
+                return $this->redirect($this->generateUrl('hflan_blog_admin'));
             }
         }
 
