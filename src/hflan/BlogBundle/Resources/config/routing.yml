@@ -15,3 +15,7 @@ hflan_blog_admin:
 hflan_blog_new:
     pattern:  /admin/new
     defaults: { _controller: hflanBlogBundle:Admin:new }
+
+hflan_blog_edit:
+    pattern:  /admin/edit/{slug}
+    defaults: { _controller: hflanBlogBundle:Admin:edit }
