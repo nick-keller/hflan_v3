@@ -4,14 +4,31 @@ namespace hflan\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Doctrine\ORM\EntityManager;
+use Knp\Component\Pager\Paginator;
 
 class PublicController extends Controller
 {
     /**
+     * @var EntityManager
+     */
+    private $em;
+
+    /**
+     * @var Paginator
+     */
+    private $paginator;
+
+    /**
      * @Template
      */
-    public function indexAction()
+    public function indexAction($page)
     {
-        return array();
+        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
+        $pagination = $this->paginator->paginate($articles, $page, 2);
+
+        return array(
+            'pagination' => $pagination,
+        );
     }
 }

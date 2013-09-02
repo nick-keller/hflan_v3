@@ -1,31 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <div class="row row-gaped">
-        <div class="col1">
-            <div style="background: red">
-                hello
-            </div>
-        </div>
-        <div class="col2">
-            <div style="background: red">
-                hello
-            </div>
-        </div>
-        <div class="col3">
-            <div style="background: green">
-                hello
-            </div>
-        </div>
-        <div class="col4">
-            <div style="background: red">
-                hello
-            </div>
-        </div>
-        <div class="col2">
-            <div style="background: green">
-                hello
-            </div>
-        </div>
-    </div>
+    <h1>Blog</h1>
+
+    {% for article in pagination %}
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.content|stripHTML(200) }}</p>
+    {% endfor %}
+
+    {{ knp_pagination_render(pagination) }}
 {% endblock %}

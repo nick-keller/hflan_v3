@@ -1,8 +1,10 @@
 # Public
 
 hflan_blog:
-    pattern:  /
-    defaults: { _controller: hflanBlogBundle:Public:index }
+    pattern:  /{page}
+    defaults: { _controller: hflanBlogBundle:Public:index, page:1 }
+    requirements:
+        page: \d+
 
 # Admin
 
