@@ -3,8 +3,10 @@
 {% block body %}
     <h1>Nouvel article</h1>
 
-    <form>
+    <form method="post" class="form-hz">
         {{ form_widget(form) }}
-        <button type="submit">Enregistrer</button>
+        <div class="form-actions">
+            <button type="submit" class="btn">Enregistrer</button>
+        </div>
     </form>
 {% endblock %}
