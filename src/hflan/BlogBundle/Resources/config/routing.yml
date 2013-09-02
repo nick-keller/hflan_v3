@@ -1,7 +1,15 @@
+# Public
+
 hflan_blog:
     pattern:  /
-    defaults: { _controller: hflanBlogBundle:Default:index }
+    defaults: { _controller: hflanBlogBundle:Public:index }
+
+# Admin
+
+hflan_blog_admin:
+    pattern:  /admin
+    defaults: { _controller: hflanBlogBundle:Admin:index }
 
 hflan_blog_new:
-    pattern:  /new
+    pattern:  /admin/new
     defaults: { _controller: hflanBlogBundle:Admin:new }

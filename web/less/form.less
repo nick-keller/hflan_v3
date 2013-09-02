@@ -28,10 +28,61 @@
 
     .controls{
       margin-left: @label-width;
+      position: relative;
     }
 
     &:hover .control-label{
       color: #595959;
+    }
+
+    &.error{
+      .control-label{
+        color: #ca5b5b;
+      }
+
+      textarea,
+      input[type="text"],
+      input[type="password"],
+      input[type="number"],
+      input[type="email"],
+      input[type="url"]{
+        border-color: #ca5b5b;
+      }
+
+      .form-errors{
+        display: none;
+        border: solid 1px #a4a4a4;
+        list-style: none;
+        position: absolute;
+        bottom: 100%;
+        background: white;
+        padding: 10px;
+        max-width: 250px;
+        .border-radius(3px);
+        box-shadow: 0 1px 3px rgba(0,0,0,.3);
+
+        &:after{
+          content: "";
+          position: absolute;
+          border: solid 7px transparent;
+          border-top: solid 7px white;
+          border-bottom: none;
+          margin-top: 10px;
+        }
+
+        &:before{
+          content: "";
+          position: absolute;
+          border: solid 7px transparent;
+          border-top: solid 7px #a4a4a4;
+          border-bottom: none;
+          bottom: -8px;
+        }
+      }
+
+      &:hover .form-errors{
+        display: block;
+      }
     }
   }
 

@@ -22,6 +22,15 @@ class AdminController extends Controller
      * @Secure(roles="ROLE_NEWSER")
      * @Template
      */
+    public function indexAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Secure(roles="ROLE_NEWSER")
+     * @Template
+     */
     public function newAction(Request $request)
     {
         $article = new Article;
