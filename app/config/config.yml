@@ -79,7 +79,7 @@ fos_user:
 # Stof\DoctrineExtensionBundle configuration
 stof_doctrine_extensions:
     uploadable:
-        default_file_path:       %kernel.root_dir%/../web/uploads
+        default_file_path:       %kernel.root_dir%/../www/uploads
         mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
         default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
     orm:
