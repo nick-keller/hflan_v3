@@ -24,6 +24,8 @@ class AdminController extends Controller
      */
     private $paginator;
 
+    private $uploadableManager;
+
     /**
      * @Secure(roles="ROLE_NEWSER")
      * @Template
@@ -52,6 +54,7 @@ class AdminController extends Controller
 
             if($form->isValid()){
                 $this->em->persist($article);
+                if($article->getFile()) $this->uploadableManager->markEntityToUpload($article, $article->getFile());
                 $this->em->flush();
 
                 return $this->redirect($this->generateUrl('hflan_blog_admin'));
@@ -76,6 +79,7 @@ class AdminController extends Controller
 
             if($form->isValid()){
                 $this->em->persist($article);
+                if($article->getFile()) $this->uploadableManager->markEntityToUpload($article, $article->getFile());
                 $this->em->flush();
 
                 return $this->redirect($this->generateUrl('hflan_blog_admin'));

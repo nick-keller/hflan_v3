@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Nouvel article</h1>
 
-    <form method="post" class="form-hz" novalidate>
+    <form method="post" class="form-hz" {{ form_enctype(form) }} novalidate>
         {{ form_widget(form) }}
         <div class="form-actions">
             <button type="submit" class="btn">

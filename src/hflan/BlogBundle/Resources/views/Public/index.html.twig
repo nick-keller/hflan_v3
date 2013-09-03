@@ -6,7 +6,7 @@
     {% for article in pagination %}
         <div class="row row-gaped">
             <div class="col3">
-
+                <a class="article-image" style="background-image: url({{ asset(article.webPath) }})"></a>
             </div>
             <div class="col9">
                 <h2>{{ article.title }}</h2>
