@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">{{ article.title }}</h1>
+    {% if article.hasImage %}
+            <img src="{{ asset(article.webPath) }}" alt="[article image]" class="img-article">
+    {% endif %}
+    {{ article.content|raw }}
+{% endblock %}

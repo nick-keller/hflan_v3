@@ -2,6 +2,7 @@
 
 namespace hflan\BlogBundle\Controller;
 
+use hflan\BlogBundle\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Doctrine\ORM\EntityManager;
@@ -29,6 +30,16 @@ class PublicController extends Controller
 
         return array(
             'pagination' => $pagination,
+        );
+    }
+
+    /**
+     * @Template
+     */
+    public function showAction(Article $article)
+    {
+        return array(
+            'article' => $article,
         );
     }
 }

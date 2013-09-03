@@ -38,7 +38,10 @@
         {% endfor %}
     </table>
 
-    <p><i class="icon-lightbulb"></i> Double-cliquez pour éditer.</p>
+    <p>
+        <i class="icon-lightbulb"></i> Double-cliquez pour éditer.<br>
+        <i class="icon-crop"></i> <a href="{{ asset('bundles/hflanblog/img/template.png') }}">Template</a> pour les images d'articles. JPG <200ko recommendé.
+    </p>
 
     {{ knp_pagination_render(pagination) }}
 {% endblock %}
