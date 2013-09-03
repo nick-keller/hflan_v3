@@ -1,5 +1,9 @@
 # Admin
 
-hflan_lan_new_event:
-    pattern:  /admin/new-event
+hflan_event_new:
+    pattern:  /event/admin/new
     defaults: { _controller: hflanLanBundle:Event:new }
+
+hflan_event_admin:
+    pattern:  /event/admin
+    defaults: { _controller: hflanLanBundle:Event:index }

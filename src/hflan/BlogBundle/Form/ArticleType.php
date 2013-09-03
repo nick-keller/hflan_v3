@@ -28,7 +28,7 @@ class ArticleType extends AbstractType
                     'inactive' => 'eye-close',
                 ),
                 'labels' => array(
-                    'inactive' => 'Chaché',
+                    'inactive' => 'Caché',
                     'active' => 'Public',
                 ),
                 'required' => false,

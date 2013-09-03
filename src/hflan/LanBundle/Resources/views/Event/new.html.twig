@@ -3,14 +3,5 @@
 {% block body %}
     <h1>Nouvel évènement</h1>
 
-    <form method="post" class="form-hz" novalidate>
-        <div class="form-actions">
-            <button type="submit" class="btn">
-                <i class="icon-ok"></i> Enregistrer
-            </button>
-            <a href="" class="btn">
-                <i class="icon-reply"></i> Annuler
-            </a>
-        </div>
-    </form>
+    {% include 'hflanLanBundle:Event:form.html.twig' %}
 {% endblock %}
