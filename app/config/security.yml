@@ -4,7 +4,8 @@ security:
 
     role_hierarchy:
         ROLE_NEWSER:      ROLE_STAFF
-        ROLE_ADMIN:       ROLE_NEWSER
+        ROLE_RESPO:       ROLE_STAFF
+        ROLE_ADMIN:       [ROLE_NEWSER, ROLE_RESPO]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
