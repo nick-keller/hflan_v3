@@ -40,6 +40,10 @@ class ArticleType extends AbstractType
                     'en' => "english",
                 )
             ))
+            ->add('file', 'file', array(
+                'label' => 'Image',
+                'required' => false,
+            ))
         ;
     }
     

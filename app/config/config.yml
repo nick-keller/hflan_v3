@@ -35,6 +35,7 @@ assetic:
     use_controller: false
     bundles:        [ ]
     #java: /usr/bin/java
+    read_from:      "%kernel.root_dir%/../www"
     filters:
         cssrewrite: ~
         lessphp:
@@ -118,6 +119,7 @@ jms_di_extra:
             request: "@request"
             em: "@doctrine.orm.entity_manager"
             paginator: "@knp_paginator"
+            uploadableManager: "@stof_doctrine_extensions.uploadable.manager"
 
 knp_paginator:
     page_range: 5

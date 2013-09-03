@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="hf_article")
  * @ORM\Entity(repositoryClass="hflan\BlogBundle\Entity\ArticleRepository")
+ * @Gedmo\Uploadable(allowOverwrite = true, filenameGenerator = "SHA1")
  */
 class Article
 {
@@ -78,6 +79,24 @@ class Article
      * @Assert\NotBlank()
      */
     private $lang;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     * @Gedmo\UploadableFilePath
+     */
+    private $path;
+
+    /**
+     * @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Ce fichier n'est pas une image",
+     *     maxSizeMessage = "Fichier trop gros (1Mo max)"
+     * )
+     */
+    private $file;
 
 
     /**
@@ -249,5 +268,54 @@ class Article
     public function getLang()
     {
         return $this->lang;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Company
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Get web path
+     *
+     * @return string
+     */
+    public function getWebPath()
+    {
+        return preg_replace('#^.+\.\./www/(.+)$#', '$1', $this->getPath());
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }
