@@ -1,17 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>Blog</h1>
+    <h1 class="header">Blog</h1>
 
     {% for article in pagination %}
         <div class="row row-gaped">
             <div class="col3">
-                <a class="article-image" style="background-image: url({{ asset(article.webPath) }})">
+                <a class="article-image" style="background-image: url({{ asset(article.webPath) }})" href="{{ path('hflan_blog_show', {slug:article.slug}) }}">
                     <i class="icon-eye-open"></i>
                 </a>
             </div>
             <div class="col9">
-                <h2><a href="#">{{ article.title }}</a></h2>
+                <h2><a href="{{ path('hflan_blog_show', {slug:article.slug}) }}">{{ article.title }}</a></h2>
                 <span class="note">Par {{ article.author.username }} le {{ article.createdAt|date('d/m/Y') }}</span>
                 <p>{{ article.content|stripHTML(250) }}</p>
             </div>

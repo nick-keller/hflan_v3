@@ -6,6 +6,10 @@ hflan_blog:
     requirements:
         page: \d+
 
+hflan_blog_show:
+    pattern:  /view/{slug}
+    defaults: { _controller: hflanBlogBundle:Public:show }
+
 # Admin
 
 hflan_blog_admin:

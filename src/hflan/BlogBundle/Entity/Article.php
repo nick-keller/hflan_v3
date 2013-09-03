@@ -303,6 +303,11 @@ class Article
         return preg_replace('#^.+\.\./www/(.+)$#', '$1', $this->getPath());
     }
 
+    public function hasImage()
+    {
+        return $this->path !== null;
+    }
+
     /**
      * @param mixed $file
      */
