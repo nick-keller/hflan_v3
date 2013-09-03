@@ -29,6 +29,14 @@
     .controls{
       margin-left: @label-width;
       position: relative;
+
+      .time-container{
+        display: inline-block;
+
+        .select-container{
+          display: inline-block;
+        }
+      }
     }
 
     &:hover .control-label{
@@ -45,7 +53,8 @@
       input[type="password"],
       input[type="number"],
       input[type="email"],
-      input[type="url"]{
+      input[type="url"],
+      input[type="date"]{
         border-color: #ca5b5b;
       }
 
@@ -77,6 +86,10 @@
           border-top: solid 7px #a4a4a4;
           border-bottom: none;
           bottom: -8px;
+        }
+
+        li + li{
+          margin-top: 5px;
         }
       }
 
@@ -122,7 +135,8 @@ input[type="text"],
 input[type="password"],
 input[type="number"],
 input[type="email"],
-input[type="url"]{
+input[type="url"],
+input[type="date"]{
   border: solid 1px #b6b6b6;
   .border-radius(3px);
   background: #ffffff;

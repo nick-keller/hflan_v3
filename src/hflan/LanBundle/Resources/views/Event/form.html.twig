@@ -1,0 +1,23 @@
+
+<form method="post" class="form-hz" novalidate>
+    <h2>Général</h2>
+    {{ form_row(form.name) }}
+    {{ form_row(form.price) }}
+
+    <h2>Dates</h2>
+    {{ form_row(form.beginAt) }}
+    {{ form_row(form.endAt) }}
+    {{ form_row(form.datesVisible) }}
+
+    <h2>Inscriptions</h2>
+    {{ form_rest(form) }}
+
+    <div class="form-actions">
+        <button type="submit" class="btn">
+            <i class="icon-ok"></i> Enregistrer
+        </button>
+        <a href="" class="btn">
+            <i class="icon-reply"></i> Annuler
+        </a>
+    </div>
+</form>

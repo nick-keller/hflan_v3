@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des évènements</h1>
+
+    <a href="{{ path('hflan_event_new') }}" class="btn">
+        <i class="icon-plus"></i> Nouveau
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Début</th>
+            <th>Inscriptions</th>
+        </tr>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.name }}</td>
+                <td>{{ event.price }} €</td>
+                <td>{{ event.beginAt|date('d/m/Y') }}</td>
+                <td>{{ event.registrationOpenAt|date('d/m/Y') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
