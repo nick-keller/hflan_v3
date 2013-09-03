@@ -1,22 +1,28 @@
 
 <form method="post" class="form-hz" novalidate>
-    <h2>Général</h2>
-    {{ form_row(form.name) }}
-    {{ form_row(form.price) }}
+    <div class="panel">
+        <h2>Général</h2>
+        {{ form_row(form.name) }}
+        {{ form_row(form.price) }}
+    </div>
 
-    <h2>Dates</h2>
-    {{ form_row(form.beginAt) }}
-    {{ form_row(form.endAt) }}
-    {{ form_row(form.datesVisible) }}
+    <div class="panel">
+        <h2>Dates</h2>
+        {{ form_row(form.beginAt) }}
+        {{ form_row(form.endAt) }}
+        {{ form_row(form.datesVisible) }}
+    </div>
 
-    <h2>Inscriptions</h2>
-    {{ form_rest(form) }}
+    <div class="panel">
+        <h2>Inscriptions</h2>
+        {{ form_rest(form) }}
+    </div>
 
     <div class="form-actions">
         <button type="submit" class="btn">
             <i class="icon-ok"></i> Enregistrer
         </button>
-        <a href="" class="btn">
+        <a href="{{ path('hflan_event_admin') }}" class="btn">
             <i class="icon-reply"></i> Annuler
         </a>
     </div>
