@@ -1,12 +1,41 @@
 @import "../../../../../../www/less/variables.less";
+@import "../../../../../../www/less/mixins.less";
 
 .article-image{
   padding-bottom: 60%;
   background: #e0e0e0;
   background-size: cover;
   display: block;
+  position: relative;
+  cursor: pointer;
+
+  .icon-eye-open{
+    background: rgba(161,191,41,.5);
+    display: block;
+    position: absolute;
+    color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 60px;
+    text-align: center;
+    opacity: 0;
+    .transition(opacity .5s);
+
+    &:before{
+      position: absolute;
+      top: 50%;
+      margin: -33px 0 0 -31px;
+      text-shadow: 0 1px @dark-green;
+    }
+  }
 
   &:hover{
-    box-shadow: 0 0 0 1px @green;
+    box-shadow: 0 0 0 1px @dark-green;
+
+    .icon-eye-open{
+      opacity: 1;
+    }
   }
 }
