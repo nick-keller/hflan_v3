@@ -45,7 +45,31 @@ class EventController extends Controller
                 $this->em->persist($event);
                 $this->em->flush();
 
-                //return $this->redirect($this->generateUrl('hflan_blog_admin'));
+                return $this->redirect($this->generateUrl('hflan_event_admin'));
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+        );
+    }
+
+    /**
+     * @Secure(roles="ROLE_RESPO")
+     * @Template
+     */
+    public function editAction(Request $request, Event $event)
+    {
+        $form = $this->createForm(new EventType, $event);
+
+        if('POST' == $request->getMethod()){
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                $this->em->persist($event);
+                $this->em->flush();
+
+                return $this->redirect($this->generateUrl('hflan_event_admin'));
             }
         }
 
