@@ -341,7 +341,7 @@ class Event
         if($this->registrationOpenAt->diff($this->registrationCloseAt)->invert === 1)
             $context->addViolationAt('registrationCloseAt', "La date de fermeture des inscriptions ne peut pas être avant la date d'ouverture");
 
-        if($this->registrationCloseAt->diff($this->endAt)->invert === 1)
+        if($this->registrationCloseAt->diff($this->beginAt)->invert === 1)
             $context->addViolationAt('registrationCloseAt', "La date de fermeture des inscriptions ne peut pas être après le début de l'évènement");
     }
 }
