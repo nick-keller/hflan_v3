@@ -15,16 +15,20 @@
                 <small>
                     {{ event.price }} €
                     <hr>
-                    {{ event.beginAt|date('d-m-Y') }}
-                    <i class="icon-caret-right" style="margin: 0 5px"></i>
-                    {{ event.endAt|date('d-m-Y') }}
-                    <hr>
+                    <i class="icon-edit"></i>
                     {{ event.registrationOpenAt|date('d-m-Y') }}
                     <i class="icon-caret-right" style="margin: 0 5px"></i>
                     {{ event.registrationCloseAt|date('d-m-Y') }}
-                    <a href="{{ path('hflan_event_edit', {slug: event.slug}) }}">
-                        <i class="icon-pencil"></i>
-                    </a>
+                    <hr>
+                    <i class="icon-trophy"></i>
+                    {{ event.beginAt|date('d-m-Y') }}
+                    <i class="icon-caret-right" style="margin: 0 5px"></i>
+                    {{ event.endAt|date('d-m-Y') }}
+                    <div class="pull-right">
+                        <a href="{{ path('hflan_event_edit', {slug: event.slug}) }}">
+                            <i class="icon-pencil"></i>
+                        </a>
+                    </div>
                 </small>
             </h2>
         </div>
