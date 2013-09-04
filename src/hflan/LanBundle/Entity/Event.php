@@ -2,10 +2,13 @@
 
 namespace hflan\LanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\ExecutionContextInterface;
+use hflan\LanBundle\Entity\Tournament;
 
 /**
  * Event
@@ -51,7 +54,7 @@ class Event
      *      min = 0,
      *      max = 20,
      *      minMessage = "Le prix ne peut pas être négatif",
-     *      maxMessage = "Plus de 20€ c'est ébusé..."
+     *      maxMessage = "Plus de 20€ c'est abusé..."
      * )
      */
     private $price;
@@ -102,6 +105,11 @@ class Event
      */
     private $registrationVisible;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Tournament", mappedBy="event", cascade={"remove"})
+     */
+    protected $tournaments;
+
     public function __construct()
     {
         $this->beginAt = new \Datetime();
@@ -113,6 +121,12 @@ class Event
         $this->registrationCloseAt = new \Datetime();
         $this->registrationCloseAt->setTime(23, 59);
         $this->name = "hf.lan";
+        $this->tournaments = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
 
@@ -343,5 +357,38 @@ class Event
 
         if($this->registrationCloseAt->diff($this->beginAt)->invert === 1)
             $context->addViolationAt('registrationCloseAt', "La date de fermeture des inscriptions ne peut pas être après le début de l'évènement");
+    }
+
+    /**
+     * Add tournaments
+     *
+     * @param Tournament $tournaments
+     * @return Event
+     */
+    public function addTournament(Tournament $tournaments)
+    {
+        $this->tournaments[] = $tournaments;
+
+        return $this;
+    }
+
+    /**
+     * Remove tournaments
+     *
+     * @param Tournament $tournaments
+     */
+    public function removeTournament(Tournament $tournaments)
+    {
+        $this->tournaments->removeElement($tournaments);
+    }
+
+    /**
+     * Get tournaments
+     *
+     * @return Collection
+     */
+    public function getTournaments()
+    {
+        return $this->tournaments;
     }
 }
