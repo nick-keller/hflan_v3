@@ -7,3 +7,8 @@ services:
         arguments:
         tags:
             - { name: form.type, alias: datepicker }
+    form.type.extrafield:
+        class: hflan\LanBundle\Form\ExtraFieldType
+        arguments:
+        tags:
+            - { name: form.type, alias: extrafield }
