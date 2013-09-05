@@ -31,6 +31,43 @@
                     </div>
                 </small>
             </h2>
+
+            {% if event.tournaments|length > 0 %}
+                <table class="table" style="margin-bottom: 15px">
+                    <tr>
+                        <th>Jeu</th>
+                        <th>Type de jeu</th>
+                        <th>Prix</th>
+                        <th>Prize-Pool</th>
+                        <th>Pré-inscriptions</th>
+                        <th>En attente</th>
+                        <th colspan="2">Equipes</th>
+                        <th></th>
+                    </tr>
+                    {% for tournament in event.tournaments %}
+                        <tr data-href="">
+                            <td>{{ tournament.game }}</td>
+                            <td>{{ tournament.gameType }}</td>
+                            <td>{{ tournament.price }} €</td>
+                            <td>{{ tournament.prizePool }} €</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>/ {{ tournament.numberOfTeams }}</td>
+                            <td>
+                                <a href="{{ path('hflan_tournament_edit', {slug:tournament.slug}) }}">
+                                    <i class="icon-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+
+            <a class="btn" href="{{ path('hflan_tournament_new', {slug:event.slug}) }}">
+                <i class="icon-plus"></i>
+                Ajouter un tournoi
+            </a>
         </div>
     {% endfor %}
 {% endblock %}

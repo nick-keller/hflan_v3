@@ -49,6 +49,14 @@ class Tournament
     private $game;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="gameType", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $gameType;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="numberOfTeams", type="integer")
@@ -72,7 +80,7 @@ class Tournament
      * @Assert\Range(
      *      min = 1,
      *      max = 64,
-     *      minMessage = "Les jeux solo sont en réalité des jeux d'équipes... Avec 1 joueur par team",
+     *      minMessage = "Les jeux solo sont en réalité des jeux d'équipes... Avec 1 joueur par équipe",
      *      maxMessage = "Plus de 64 joueurs par team c'est abusé..."
      * )
      */
@@ -212,6 +220,22 @@ class Tournament
     }
 
     /**
+     * @param string $gameType
+     */
+    public function setGameType($gameType)
+    {
+        $this->gameType = $gameType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGameType()
+    {
+        return $this->gameType;
+    }
+
+    /**
      * Set numberOfTeams
      *
      * @param integer $numberOfTeams
@@ -219,7 +243,7 @@ class Tournament
      */
     public function setNumberOfTeams($numberOfTeams)
     {
-        $this->numberOfTeams = $numberOfTeams;
+        $this->numberOfTeams = (int) $numberOfTeams;
     
         return $this;
     }
@@ -242,7 +266,7 @@ class Tournament
      */
     public function setNumberOfPlayerPerTeam($numberOfPlayerPerTeam)
     {
-        $this->numberOfPlayerPerTeam = $numberOfPlayerPerTeam;
+        $this->numberOfPlayerPerTeam = (int) $numberOfPlayerPerTeam;
     
         return $this;
     }
@@ -265,7 +289,7 @@ class Tournament
      */
     public function setPrice($price)
     {
-        $this->price = $price;
+        $this->price = (int) $price;
     
         return $this;
     }
@@ -281,6 +305,16 @@ class Tournament
     }
 
     /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrizePool()
+    {
+        return $this->price * $this->numberOfPlayerPerTeam * $this->numberOfTeams + $this->prizePoolInjection;
+    }
+
+    /**
      * Set prizePoolInjection
      *
      * @param integer $prizePoolInjection
@@ -288,7 +322,7 @@ class Tournament
      */
     public function setPrizePoolInjection($prizePoolInjection)
     {
-        $this->prizePoolInjection = $prizePoolInjection;
+        $this->prizePoolInjection = (int) $prizePoolInjection;
     
         return $this;
     }

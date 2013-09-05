@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Editer le tournoi</h1>
+
+    <form method="post" class="form-hz" novalidate>
+
+        {{ form_widget(form) }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn">
+                <i class="icon-ok"></i> Enregistrer
+            </button>
+            <a href="{{ path('hflan_event_admin') }}" class="btn">
+                <i class="icon-reply"></i> Annuler
+            </a>
+        </div>
+    </form>
+{% endblock %}
