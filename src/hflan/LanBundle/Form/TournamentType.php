@@ -27,17 +27,23 @@ class TournamentType extends AbstractType
                     'placeholder' => 'Time-Attack, Team-Deathmatch, 2v2...'
                 )
             ))
-            ->add('numberOfTeams', 'text', array(
+            ->add('numberOfTeams', 'number', array(
                 'label' => "Nombre d'équipes"
             ))
-            ->add('numberOfPlayerPerTeam', 'text', array(
+            ->add('numberOfPlayerPerTeam', 'number', array(
                 'label' => 'Joueur(s) / équipe'
             ))
-            ->add('price', 'text', array(
+            ->add('price', 'number', array(
                 'label' => 'Prix'
             ))
-            ->add('prizePoolInjection', 'text', array(
+            ->add('prizePoolInjection', 'number', array(
                 'label' => 'Injection Prize-Pool'
+            ))
+            ->add('extraFields', 'collection', array(
+                'label' => 'Champs spécifiques',
+                'type' => 'extrafield',
+                'allow_add' => true,
+                'allow_delete' => true,
             ))
         ;
     }

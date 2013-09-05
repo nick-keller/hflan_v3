@@ -112,15 +112,15 @@ class Event
 
     public function __construct()
     {
-        $this->beginAt = new \Datetime();
+        $this->setBeginAt(new \Datetime());
         $this->beginAt->setTime(10, 0);
-        $this->endAt = new \Datetime();
+        $this->setEndAt(new \Datetime());
         $this->endAt->setTime(17, 0);
-        $this->registrationOpenAt = new \Datetime();
+        $this->setRegistrationOpenAt(new \Datetime());
         $this->registrationOpenAt->setTime(10, 0);
-        $this->registrationCloseAt = new \Datetime();
+        $this->setRegistrationCloseAt(new \Datetime());
         $this->registrationCloseAt->setTime(23, 59);
-        $this->name = "hf.lan";
+        $this->setName("hf.lan");
         $this->tournaments = new ArrayCollection();
     }
 
