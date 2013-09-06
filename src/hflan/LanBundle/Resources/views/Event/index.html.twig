@@ -52,8 +52,12 @@
                             <td>{{ tournament.prizePool }} €</td>
                             <td>0</td>
                             <td>0</td>
-                            <td>0</td>
-                            <td>/ {{ tournament.numberOfTeams }}</td>
+                            <td style="padding-right: 0">
+                                0
+                            </td>
+                            <td style="padding-left: 0">
+                                / {{ tournament.numberOfTeams }}
+                            </td>
                             <td>
                                 <a href="{{ path('hflan_tournament_edit', {slug:tournament.slug}) }}">
                                     <i class="icon-pencil"></i>

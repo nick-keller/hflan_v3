@@ -39,7 +39,7 @@
       }
     }
 
-    &:hover .control-label{
+    &:hover > .control-label{
       color: #595959;
     }
 
@@ -232,6 +232,52 @@ input[type="date"]{
 
       .inactive{
         display: none;
+      }
+    }
+  }
+}
+
+div[data-prototype]{
+  > .control-group{
+    border: none;
+    box-shadow: none;
+    background: #f9f9f9;
+    .border-radius(4px);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: solid 2px #e2e2e2;
+    position: relative;
+    overflow: hidden;
+
+    &:hover{
+      border-color: #c9c9c9;
+    }
+
+    > .controls{
+      margin-left: 0;
+
+      .control-group{
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    > .control-label{
+      display: none;
+    }
+
+    .remove-form{
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 25px;
+      cursor: pointer;
+      color: #e2e2e2;
+      padding: 5px 10px;
+      z-index: 1000;
+
+      &:hover{
+        color: #c9c9c9;
       }
     }
   }

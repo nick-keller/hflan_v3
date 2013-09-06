@@ -19,10 +19,12 @@ class ExtraFieldType extends AbstractType
                 'label' => 'Nom du champ'
             ))
             ->add('placeholder', 'text', array(
-                'label' => 'Exemple de valeur'
+                'label' => 'Exemple de valeur',
+                'required' => false,
             ))
             ->add('validator', 'text', array(
                 'label' => 'Regex',
+                'required' => false,
                 'attr' => array(
                     'placeholder' => '#^[0-9]+$#'
                 )

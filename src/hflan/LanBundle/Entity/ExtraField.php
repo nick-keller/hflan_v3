@@ -3,6 +3,7 @@
 namespace hflan\LanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ExtraField
@@ -25,20 +26,21 @@ class ExtraField
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="placeholder", type="string", length=255)
+     * @ORM\Column(name="placeholder", type="string", length=255, nullable=true)
      */
     private $placeholder;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="validator", type="string", length=255)
+     * @ORM\Column(name="validator", type="string", length=255, nullable=true)
      */
     private $validator;
 
@@ -48,6 +50,11 @@ class ExtraField
      * @ORM\JoinColumn(nullable=false)
      */
     private $tournament;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
     /**
