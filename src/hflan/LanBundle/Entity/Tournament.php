@@ -125,7 +125,7 @@ class Tournament
     private $event;
 
     /**
-     * @ORM\OneToMany(targetEntity="ExtraField", mappedBy="tournament", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="ExtraField", mappedBy="tournament", cascade={"persist", "remove"})
      */
     protected $extraFields;
 
@@ -368,6 +368,7 @@ class Tournament
      */
     public function addExtraField(ExtraField $extraField)
     {
+        $extraField->setTournament($this);
         $this->extraFields[] = $extraField;
     
         return $this;

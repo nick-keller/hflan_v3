@@ -44,6 +44,7 @@ class TournamentType extends AbstractType
                 'type' => 'extrafield',
                 'allow_add' => true,
                 'allow_delete' => true,
+                'by_reference' => false,
             ))
         ;
     }
