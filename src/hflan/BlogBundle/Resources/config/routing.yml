@@ -1,15 +1,3 @@
-# Public
-
-hflan_blog:
-    pattern:  /{page}
-    defaults: { _controller: hflanBlogBundle:Public:index, page:1 }
-    requirements:
-        page: \d+
-
-hflan_blog_show:
-    pattern:  /view/{slug}
-    defaults: { _controller: hflanBlogBundle:Public:show }
-
 # Admin
 
 hflan_blog_admin:
@@ -25,3 +13,16 @@ hflan_blog_new:
 hflan_blog_edit:
     pattern:  /admin/edit/{slug}
     defaults: { _controller: hflanBlogBundle:Admin:edit }
+
+# Public
+
+hflan_blog:
+    pattern:  /{page}
+    defaults: { _controller: hflanBlogBundle:Public:index, page:1 }
+    requirements:
+        page: \d+
+
+hflan_blog_show:
+    pattern:  /{slug}
+    defaults: { _controller: hflanBlogBundle:Public:show }
+
