@@ -1,23 +1,23 @@
 # Admin Event
 
 hflan_event_new:
-    pattern:  /admin/event/new
+    pattern:  /events/new
     defaults: { _controller: hflanLanBundle:Event:new }
 
 hflan_event_edit:
-    pattern:  /admin/event/edit/{slug}
+    pattern:  /{slug}/edit
     defaults: { _controller: hflanLanBundle:Event:edit }
 
 hflan_event_admin:
-    pattern:  /admin/event
+    pattern:  /events
     defaults: { _controller: hflanLanBundle:Event:index }
 
 # Admin Tournament
 
 hflan_tournament_new:
-    pattern:  /admin/event/add-tournament/{slug}
+    pattern:  /{slug}/tournaments/new
     defaults: { _controller: hflanLanBundle:Tournament:new }
 
 hflan_tournament_edit:
-    pattern:  /admin/tournament/edit/{slug}
+    pattern:  /tournaments/{slug}/edit
     defaults: { _controller: hflanLanBundle:Tournament:edit }
