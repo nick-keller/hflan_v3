@@ -4,13 +4,19 @@ namespace hflan\LanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use hflan\UserBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Team
  *
  * @ORM\Table(name="hf_team")
  * @ORM\Entity(repositoryClass="hflan\LanBundle\Entity\TeamRepository")
+ * @UniqueEntity(
+ *      fields="email",
+ *      message="Un compte avec cette adresse existe déjà, vérifiez vos emails pour plus d'informations"
+ * )
  */
 class Team
 {
@@ -35,8 +41,18 @@ class Team
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
      */
     private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    private $email;
 
     /**
      * @var boolean
@@ -68,6 +84,12 @@ class Team
     private $tournament;
 
     /**
+     * @var User
+     * @ORM\OneToOne(targetEntity="hflan\UserBundle\Entity\User", mappedBy="team", cascade={"remove"})
+     */
+    private $user;
+
+    /**
      * @var string
      *
      * @Assert\NotBlank()
@@ -75,13 +97,11 @@ class Team
      */
     private $plainPassword;
 
-    /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     */
-    private $email;
+    public function __construct()
+    {
+        $this->setInfoLocked(false);
+        $this->setPaid(false);
+    }
 
 
     /**
@@ -262,5 +282,21 @@ class Team
     public function getPlainPassword()
     {
         return $this->plainPassword;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

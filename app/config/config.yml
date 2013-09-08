@@ -119,8 +119,10 @@ jms_di_extra:
         properties:
             request: "@request"
             em: "@doctrine.orm.entity_manager"
+            um: @fos_user.user_manager
             paginator: "@knp_paginator"
             uploadableManager: "@stof_doctrine_extensions.uploadable.manager"
+            mailer: @mailer
 
 knp_paginator:
     page_range: 5
