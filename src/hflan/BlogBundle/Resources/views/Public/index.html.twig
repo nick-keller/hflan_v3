@@ -12,7 +12,7 @@
             </div>
             <div class="col9">
                 <h2><a href="{{ path('hflan_blog_show', {slug:article.slug}) }}">{{ article.title }}</a></h2>
-                <span class="note">Par {{ article.author.username }} le {{ article.createdAt|date('d/m/Y') }}</span>
+                <span class="note">Par {{ article.author.username }} le {{ article.createdAt|simpleDate }}</span>
                 <p>{{ article.content|stripHTML(250) }}</p>
             </div>
         </div>
