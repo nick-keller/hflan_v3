@@ -357,6 +357,9 @@ class Event
 
         if($this->registrationCloseAt->diff($this->beginAt)->invert === 1)
             $context->addViolationAt('registrationCloseAt', "La date de fermeture des inscriptions ne peut pas être après le début de l'évènement");
+
+        if($this->registrationVisible && !$this->datesVisible)
+            $context->addViolationAt('registrationVisible', "Pour que les dates d'inscription sois public, les dates de l'évènement doivent l'être aussi");
     }
 
     /**
