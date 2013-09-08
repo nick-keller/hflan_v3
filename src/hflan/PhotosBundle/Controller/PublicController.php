@@ -14,4 +14,14 @@ class PublicController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Template
+     */
+    public function albumAction($id)
+    {
+        return array(
+            'id' => $id,
+        );
+    }
 }

@@ -1,3 +1,9 @@
 hflan_photos:
     pattern:  /
     defaults: { _controller: hflanPhotosBundle:Public:index }
+
+hflan_album:
+    pattern:  /{id}
+    defaults: { _controller: hflanPhotosBundle:Public:album }
+    requirements:
+        id: \d+
