@@ -1,0 +1,3 @@
+hflan_photos:
+    pattern:  /
+    defaults: { _controller: hflanPhotosBundle:Public:index }
