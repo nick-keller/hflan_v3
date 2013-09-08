@@ -2,6 +2,7 @@
 
 namespace hflan\LanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -129,6 +130,11 @@ class Tournament
      */
     protected $extraFields;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Team", mappedBy="tournament", cascade={"remove"})
+     */
+    protected $teams;
+
     public function __construct(Event $event = null)
     {
         $this->setName('Tournoi ');
@@ -136,6 +142,7 @@ class Tournament
         $this->setNumberOfTeams(16);
         $this->setPrizePoolInjection(0);
         $this->extraFields = new ArrayCollection();
+        $this->teams = new ArrayCollection();
 
         if($event !== null)
             $this->setEvent($event);
@@ -392,5 +399,38 @@ class Tournament
     public function getExtraFields()
     {
         return $this->extraFields;
+    }
+
+    /**
+     * Add teams
+     *
+     * @param Team $team
+     * @return Tournament
+     */
+    public function addTeam(Team $team)
+    {
+        $this->teams[] = $team;
+    
+        return $this;
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param Team $team
+     */
+    public function removeTeam(Team $team)
+    {
+        $this->teams->removeElement($team);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
     }
 }

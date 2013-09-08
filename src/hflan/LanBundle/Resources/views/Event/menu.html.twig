@@ -9,6 +9,10 @@
         </div>
     {% endblock %}
 
-    {% block register %}Inscrivez vous !{% endblock %}
+    {% block register %}
+        <p>
+            Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
+        </p>
+    {% endblock %}
 
 {% endembed %}
