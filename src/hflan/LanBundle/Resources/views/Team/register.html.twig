@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Inscriptions</h1>
+
+    <form method="post" class="form-hz" novalidate>
+        {{ form_widget(form) }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn">
+                <i class="icon-ok"></i> Valider
+            </button>
+        </div>
+    </form>
+{% endblock %}

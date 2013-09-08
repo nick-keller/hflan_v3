@@ -1,3 +1,9 @@
+# Team
+
+hflan_register:
+    pattern:  /register
+    defaults: { _controller: hflanLanBundle:Team:register }
+
 # Admin Event
 
 hflan_event_new:
@@ -14,10 +20,10 @@ hflan_event_admin:
 
 # Admin Tournament
 
-hflan_tournament_new:
-    pattern:  /{slug}/tournaments/new
-    defaults: { _controller: hflanLanBundle:Tournament:new }
-
 hflan_tournament_edit:
     pattern:  /tournaments/{slug}/edit
     defaults: { _controller: hflanLanBundle:Tournament:edit }
+
+hflan_tournament_new:
+    pattern:  /{slug}/tournaments/new
+    defaults: { _controller: hflanLanBundle:Tournament:new }
