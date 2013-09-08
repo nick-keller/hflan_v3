@@ -1,6 +1,6 @@
 <?php
 
-namespace hflan\LanBundle\Form;
+namespace hflan\LanBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -67,6 +67,22 @@ class Team
      */
     private $tournament;
 
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min = "3")
+     */
+    private $plainPassword;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    private $email;
+
 
     /**
      * Get id
@@ -214,5 +230,37 @@ class Team
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
     }
 }
