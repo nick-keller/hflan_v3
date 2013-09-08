@@ -7,14 +7,24 @@ services:
         arguments:
         tags:
             - { name: form.type, alias: datepicker }
+
     form.type.extrafield:
         class: hflan\LanBundle\Form\Type\ExtraFieldType
         arguments:
         tags:
             - { name: form.type, alias: extrafield }
+
     hflan.twig.date_extension:
         class: hflan\LanBundle\Twig\DateExtension
         arguments:
             - @translator
         tags:
             - { name: twig.extension }
+
+    hflan.team_manager:
+        class: hflan\LanBundle\Services\TeamManager
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @fos_user.user_manager
+            - @mailer
+            - @templating

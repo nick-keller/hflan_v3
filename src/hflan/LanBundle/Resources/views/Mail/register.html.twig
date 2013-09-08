@@ -1,0 +1,19 @@
+<p>
+    Bonjour
+    {% if tournament.numberOfPlayerPerTeam > 1 %}
+        à toute l'équipe
+    {% endif %}
+    {{ team.name }},<br>
+    merci pour votre participation à la {{ event.name }}, pour finaliser votre inscription au <b>{{ tournament.name }}</b> vous devez vous connecter à votre <a href="{{ url('fos_user_security_login') }}">interface joueur</a> avec vos identifiants :
+</p>
+<ul>
+    <li>
+        Email : <b>{{ email }}</b>
+    </li>
+    <li>
+        Mot de passe : <b>{{ password }}</b>
+    </li>
+</ul>
+<p>
+    Nous vous rappelons que temps que vous n'avez pas acheté vos places, d'autres joueurs peuvent le faire avant vous et prendre les dernières places.
+</p>

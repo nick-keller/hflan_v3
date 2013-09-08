@@ -127,6 +127,7 @@ class Tournament
 
     /**
      * @ORM\OneToMany(targetEntity="ExtraField", mappedBy="tournament", cascade={"persist", "remove"})
+     * @Assert\Valid
      */
     protected $extraFields;
 
