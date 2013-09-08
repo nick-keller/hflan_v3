@@ -1,0 +1,30 @@
+@import "variables.less";
+@import "mixins.less";
+
+header{
+  background: #59554a;
+  margin-bottom: -15px;
+  padding-bottom: 20px;
+
+  .nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li{
+      display: inline-block;
+
+      a{
+        color: #C0BBAA;
+        text-decoration: none;
+        margin-left: 15px;
+        display: block;
+        padding: 5px 7px;
+
+        &:hover{
+          color: @green;
+        }
+      }
+    }
+  }
+}
