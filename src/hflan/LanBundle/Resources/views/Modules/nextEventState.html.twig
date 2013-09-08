@@ -1,0 +1,41 @@
+{#
+    available blocks:
+    - eventVisible
+    - eventHidden
+    - registrationDateVisible
+    - registrationDateHidden
+    - registrationNotOpenYet
+    - registrationClosed
+    - register
+#}
+
+{% if event is not null and event.datesVisible %}
+    {% block eventVisible %}{% endblock %}
+
+    {% if event.registrationVisible %}
+        {% block registrationDateVisible %}{% endblock %}
+
+        {% if event.registrationOpenAt > date('now') %}
+            {% block registrationNotOpenYet %}
+                <p>Les inscriptions débuterons {{ event.registrationOpenAt|countdown }}.</p>
+            {% endblock %}
+
+        {% else %}
+            {% if event.registrationCloseAt < date('now') %}
+                {% block registrationClosed %}
+                    <p>Les inscriptions sont fermés.</p>
+                {% endblock %}
+
+            {% else %}
+                {% block register %}{% endblock %}
+            {% endif %}
+        {% endif %}
+
+    {% else %}
+        {% block registrationDateHidden %}
+            <p>La date des inscriptions n'est pas encore fixée. Les inscriptions débutent généralement un mois avant le début d'une lan.</p>
+        {% endblock %}
+    {% endif %}
+{% else %}
+    {% block eventHidden %}{% endblock %}
+{% endif %}

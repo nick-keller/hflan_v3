@@ -12,3 +12,9 @@ services:
         arguments:
         tags:
             - { name: form.type, alias: extrafield }
+    hflan.twig.date_extension:
+        class: hflan\LanBundle\Twig\DateExtension
+        arguments:
+            - @translator
+        tags:
+            - { name: twig.extension }
