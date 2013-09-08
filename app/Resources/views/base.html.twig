@@ -7,6 +7,7 @@
             <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
             {% stylesheets
                 'css/smoothness/jquery-ui-1.10.3.custom.min.css'
+                'css/lightbox.css'
                 'bundles/bmatznerfontawesome/css/font-awesome.min.css'
                 'less/global.less'
                 'less/layout.less'
@@ -17,6 +18,7 @@
                 'less/table.less'
                 '@hflanBlogBundle/Resources/public/less/blog.less'
                 '@hflanLanBundle/Resources/public/less/countdown.less'
+                '@hflanPhotosBundle/Resources/public/less/albums.less'
                 filter='cssrewrite'
             %}
                 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
@@ -85,6 +87,7 @@
             {% javascripts
                 'js/jquery-ui-1.10.3.custom.min.js'
                 'js/jquery.countdown.min.js'
+                'js/lightbox-2.6.min.js'
                 'js/form.js'
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>

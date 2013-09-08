@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header" id="album-title">Chargement des photos...</h1>
+    <div id="photo-gallery" data-id="{{ id }}">
+        <i class="icon-spinner icon-spin icon-4x"></i>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@hflanPhotosBundle/Resources/public/js/photos.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

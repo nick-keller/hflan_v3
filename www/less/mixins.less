@@ -44,3 +44,11 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.transform(@scale:1, @rotate:0, @trX:0, @trY:0, @skewX:0, @skewY:0){
+  -moz-transform: scale(@scale) rotate(@rotate) translateX(@trX) translateY(@trY) skewX(@skewX) skewY(@skewY);
+  -webkit-transform: scale(@scale) rotate(@rotate) translateX(@trX) translateY(@trY) skewX(@skewX) skewY(@skewY);
+  -o-transform: scale(@scale) rotate(@rotate) translateX(@trX) translateY(@trY) skewX(@skewX) skewY(@skewY);
+  -ms-transform: scale(@scale) rotate(@rotate) translateX(@trX) translateY(@trY) skewX(@skewX) skewY(@skewY);
+  transform: scale(@scale) rotate(@rotate) translateX(@trX) translateY(@trY) skewX(@skewX) skewY(@skewY);
+}

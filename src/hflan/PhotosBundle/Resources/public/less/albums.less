@@ -1,0 +1,71 @@
+@import "../../../../../../www/less/variables.less";
+@import "../../../../../../www/less/mixins.less";
+
+#photo-albums, #photo-gallery{
+  text-align: center;
+}
+
+.photo-album{
+  text-align: center;
+  display: inline-block;
+  width: 210px;
+  height: 130px;
+  margin-bottom: 70px;
+
+  img{
+    height: 100px;
+    border: solid 7px white;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.2), 1px 1px 4px rgba(0,0,0,.5);
+    .transition(all .3s);
+    vertical-align: middle;
+  }
+
+  img:nth-child(1){
+    .transform(1.15,  4deg);
+  }
+
+  &:hover img:nth-child(1){
+    .transform(1.2,  -4deg, -15px, -4px);
+  }
+
+  img:nth-child(2){
+    .transform(1.1,  -4deg);
+    margin-top: -135px;
+  }
+
+  &:hover img:nth-child(2){
+    .transform(1.1,  4deg, 0, -20px);
+  }
+
+  img:nth-child(3){
+    .transform(1,  0deg);
+    margin-top: -171px;
+  }
+
+  &:hover img:nth-child(3){
+    .transform(1,  -7deg, 10px, 20px);
+  }
+}
+
+#photo-gallery{
+  font-size: 0;
+
+  i{
+    font-size: 40px;
+  }
+
+  a{
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+
+    &:hover{
+      box-shadow: 0 0 0 1px @green, 0 0 10px black, 0 0 20px black;
+      z-index: 500;
+      .transform(1.1);
+    }
+  }
+}
