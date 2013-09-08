@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">Photos de la hf.lan</h1>
+    <div id="photo-albums">
+        <i class="icon-spinner icon-spin icon-4x"></i>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    '@hflanPhotosBundle/Resources/public/js/albums.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

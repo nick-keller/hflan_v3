@@ -1,0 +1,7 @@
+parameters:
+#    hflan_photos.example.class: hflan\PhotosBundle\Example
+
+services:
+#    hflan_photos.example:
+#        class: %hflan_photos.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

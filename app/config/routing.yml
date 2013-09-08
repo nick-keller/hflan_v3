@@ -9,6 +9,10 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
+hflan_photos:
+    resource: "@hflanPhotosBundle/Resources/config/routing.yml"
+    prefix:   /photos
+
 hflan_lan:
     resource: "@hflanLanBundle/Resources/config/routing.yml"
     prefix:   /lan

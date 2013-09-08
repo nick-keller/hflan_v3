@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new hflan\LanBundle\hflanLanBundle(),
+            new hflan\PhotosBundle\hflanPhotosBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
