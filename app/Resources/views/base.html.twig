@@ -16,6 +16,7 @@
                 'less/pagination.less'
                 'less/table.less'
                 '@hflanBlogBundle/Resources/public/less/blog.less'
+                '@hflanLanBundle/Resources/public/less/countdown.less'
                 filter='cssrewrite'
             %}
                 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
@@ -73,7 +74,7 @@
                     </section>
                 </div>
                 <div class="side-bar">
-                    world
+                    {{ render(controller("hflanLanBundle:Event:menu")) }}
                 </div>
             </div>
         </div>
@@ -81,6 +82,7 @@
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             {% javascripts
                 'js/jquery-ui-1.10.3.custom.min.js'
+                'js/jquery.countdown.min.js'
                 'js/form.js'
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>

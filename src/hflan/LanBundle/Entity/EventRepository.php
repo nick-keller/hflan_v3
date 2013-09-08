@@ -3,6 +3,7 @@
 namespace hflan\LanBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NoResultException;
 
 /**
  * EventRepository
@@ -12,4 +13,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
+    public function findNextEvent()
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->where('e.beginAt > CURRENT_TIMESTAMP()')
+            ->setMaxResults(1);
+
+        try{
+            return $qb->getQuery()->getSingleResult();
+        }
+        catch(NoResultException $e){
+            return null;
+        }
+    }
 }

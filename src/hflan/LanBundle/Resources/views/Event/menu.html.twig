@@ -1,0 +1,14 @@
+{% if event is not null and event.datesVisible %}
+    <h3>Prochaine LAN</h3>
+    <div id="countdown">
+        <script type="text/javascript">
+            var target = new Date({{ event.beginAt|date('Y,m-1,j,G,i,s,u') }});
+        </script>
+    </div>
+
+    {% if event.registrationVisible %}
+        visible
+    {% else %}
+        <p>La date des inscriptions n'est pas encore fixée. Les inscriptions débutent généralement un mois avant le début d'une lan.</p>
+    {% endif %}
+{% endif %}

@@ -77,4 +77,15 @@ class EventController extends Controller
             'form' => $form->createView(),
         );
     }
+
+    /**
+     * @Template
+     */
+    public function menuAction()
+    {
+        $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
+        return array(
+            'event' => $nextEvent,
+        );
+    }
 }
