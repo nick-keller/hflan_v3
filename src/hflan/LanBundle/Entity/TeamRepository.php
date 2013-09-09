@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class TeamRepository extends EntityRepository
 {
+    public function findTeamRegistrationData(Tournament $tournament)
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->select('COUNT(t), t.paid, t.infoLocked')
+            ->where('t.tournament = :tournament')
+            ->setParameter('tournament', $tournament)
+            ->groupBy('t.paid, t.infoLocked');
+
+        return $qb->getQuery()->getResult();
+    }
 }
