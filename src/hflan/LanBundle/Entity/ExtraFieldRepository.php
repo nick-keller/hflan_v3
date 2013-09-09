@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExtraFieldRepository extends EntityRepository
 {
+    public function getExtraFieldsArray(Tournament $tournament)
+    {
+        $qb = $this->createQueryBuilder('e')
+            ->where('e.tournament = :tournament')
+            ->setParameter('tournament', $tournament);
+
+        $array = array();
+
+        foreach($qb->getQuery()->getResult() as $extraField){
+            $array[$extraField->getName()] = '';
+        }
+
+        return $array;
+    }
 }
