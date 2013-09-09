@@ -1,15 +1,36 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>Inscriptions</h1>
+    {% embed 'hflanLanBundle:Modules:nextEventState.html.twig' %}
 
-    <form method="post" class="form-hz" novalidate>
-        {{ form_widget(form) }}
+        {% block eventHidden %}
+            <h1 class="header">Inscriptions</h1>
+            <p>Aucune LAN n'est prévu pour le moment.</p>
+        {% endblock %}
 
-        <div class="form-actions">
-            <button type="submit" class="btn">
-                <i class="icon-ok"></i> Valider
-            </button>
-        </div>
-    </form>
+        {% block registrationDateHidden %}
+            <h1 class="header">Inscriptions</h1>
+            {{ parent() }}
+        {% endblock %}
+
+        {% block registrationNotOpenYet %}
+            <h1 class="header">Inscriptions</h1>
+            {{ parent() }}
+        {% endblock %}
+
+        {% block register %}
+            <h1>Inscriptions</h1>
+
+            <form method="post" class="form-hz" novalidate>
+                {{ form_widget(form) }}
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">
+                        <i class="icon-ok"></i> Valider
+                    </button>
+                </div>
+            </form>
+        {% endblock %}
+
+    {% endembed %}
 {% endblock %}

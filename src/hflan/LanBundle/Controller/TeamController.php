@@ -43,6 +43,7 @@ class TeamController extends Controller
 
         return array(
             'form' => $form->createView(),
+            'event' => $nextEvent,
         );
     }
 }

@@ -7,6 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use hflan\UserBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Team
@@ -97,10 +98,16 @@ class Team
      */
     private $plainPassword;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="team", cascade={"remove"})
+     */
+    protected $players;
+
     public function __construct()
     {
         $this->setInfoLocked(false);
         $this->setPaid(false);
+        $this->players = new ArrayCollection();
     }
 
 
@@ -298,5 +305,38 @@ class Team
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add player
+     *
+     * @param Player $player
+     * @return Team
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+    
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }
