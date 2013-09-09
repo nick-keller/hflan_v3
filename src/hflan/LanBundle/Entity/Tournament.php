@@ -131,6 +131,13 @@ class Tournament
      */
     protected $extraFields;
 
+    /** @var  int */
+    protected $preRegistered = 0;
+    /** @var  int */
+    protected $pending = 0;
+    /** @var  int */
+    protected $paid = 0;
+
     /**
      * @ORM\OneToMany(targetEntity="Team", mappedBy="tournament", cascade={"remove"})
      */
@@ -433,5 +440,53 @@ class Tournament
     public function getTeams()
     {
         return $this->teams;
+    }
+
+    /**
+     * @param int $paid
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+
+    /**
+     * @param int $pending
+     */
+    public function setPending($pending)
+    {
+        $this->pending = $pending;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPending()
+    {
+        return $this->pending;
+    }
+
+    /**
+     * @param int $preRegistered
+     */
+    public function setPreRegistered($preRegistered)
+    {
+        $this->preRegistered = $preRegistered;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPreRegistered()
+    {
+        return $this->preRegistered;
     }
 }

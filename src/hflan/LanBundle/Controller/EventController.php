@@ -23,6 +23,7 @@ class EventController extends Controller
     public function indexAction()
     {
         $events = $this->em->getRepository('hflanLanBundle:Event')->findAll();
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
 
         return array(
             'events' => $events,

@@ -7,6 +7,7 @@ use FOS\UserBundle\Doctrine\UserManager;
 use hflan\LanBundle\Entity\Event;
 use hflan\LanBundle\Entity\Player;
 use hflan\LanBundle\Entity\Team;
+use hflan\LanBundle\Entity\Tournament;
 use hflan\UserBundle\Entity\User;
 use Symfony\Component\Templating\EngineInterface;
 
@@ -46,6 +47,33 @@ class TeamManager
         $this->createPlayers($team);
         $this->sendEmail($team, $nextEvent);
 
+    }
+
+    public function fetchTeamRegistrationData(Tournament $tournament = null)
+    {
+        if($tournament != null)
+            $this->fetchSingleTeamRegistrationData($tournament);
+        else {
+            $tournaments = $this->em->getRepository('hflanLanBundle:Tournament')->findAll();
+
+            foreach($tournaments as $tournament)
+                $this->fetchSingleTeamRegistrationData($tournament);
+        }
+    }
+
+    private function fetchSingleTeamRegistrationData(Tournament $tournament)
+    {
+        $data = $this->em->getRepository('hflanLanBundle:Team')->findTeamRegistrationData($tournament);
+
+        foreach($data as $d)
+        {
+            if($d['infoLocked'] == false)
+                $tournament->setPreRegistered((int) $d[1]);
+            else if($d['paid'] == true)
+                $tournament->setPaid((int) $d[1]);
+            else
+                $tournament->setPending((int) $d[1]);
+        }
     }
 
     private function saveTeam(Team $team)
