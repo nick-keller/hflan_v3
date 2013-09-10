@@ -22,7 +22,7 @@ class TeamController extends Controller
     private $em;
 
     /**
-     * Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
+     * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
      * @Template
      */
     public function registerAction(Request $request)
