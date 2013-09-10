@@ -90,6 +90,7 @@ class TeamManager
         $user->setEmail($team->getEmail());
         $user->setPlainPassword($team->getPlainPassword());
         $user->setTeam($team);
+        $user->setEnabled(true);
 
         $this->um->updateUser($user);
     }
