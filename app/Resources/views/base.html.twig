@@ -16,6 +16,7 @@
                 'less/form.less'
                 'less/pagination.less'
                 'less/table.less'
+                'less/dropdown.less'
                 '@hflanBlogBundle/Resources/public/less/blog.less'
                 '@hflanLanBundle/Resources/public/less/countdown.less'
                 '@hflanPhotosBundle/Resources/public/less/albums.less'
@@ -28,7 +29,51 @@
     </head>
     <body>
         <header>
+            <div class="green-bar"></div>
             <div class="main-container">
+                <div class="user-bar">
+                    <div class="user-info">
+                        {% if app.user %}
+                            <div class="dropdown">
+                                <i class="icon-cogs"></i>
+                                {% if app.user.team is not null %}
+                                    {{ app.user.team.name }}
+                                {% else %}
+                                    {{ app.user.username }}
+                                {% endif %}
+                                <i class="icon-caret-down"></i>
+                                <ul class="dropdown-menu">
+                                    {% if is_granted('ROLE_STAFF') %}
+                                        <li>
+                                            <a>
+                                                <i class="icon-dashboard"></i>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a>
+                                                <i class="icon-flag-checkered"></i>
+                                                Valider l'inscription
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            <i class="icon-off"></i>
+                                            Déconnexion
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">
+                                <i class="icon-off"></i>
+                                Connexion
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
                 <ul class="nav">
                     <li>
                         <a href="#">

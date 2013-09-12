@@ -6,6 +6,38 @@ header{
   margin-bottom: -15px;
   padding-bottom: 20px;
 
+  .green-bar{
+    @bar-height: 20px;
+    background: @green;
+    height: @bar-height;
+    margin-bottom: -@bar-height;
+    box-shadow: 0 -1px 0 rgba(255,255,255,.3) inset, 0 8px 0 rgba(0,0,0,.2);
+  }
+
+  .user-bar{
+    background: #272727;
+    height: 70px;
+    margin-bottom: 15px;
+    .border-radius-bottom(4px);
+    border-bottom: solid 3px #111;
+    color: white;
+
+    .user-info{
+      float: right;
+      padding: 15px 15px 15px 0;
+
+      .dropdown-menu{
+        left: auto;
+        right: 0;
+      }
+
+      a{
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
   .nav{
     list-style: none;
     padding: 0;

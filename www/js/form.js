@@ -10,7 +10,7 @@ $(function(){
     $( "input[name*=birthday]" ).datepicker({dateFormat:"dd/mm/yy", changeMonth: true, changeYear: true, maxDate: "-10y", yearRange: "-40:-10", dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ], firstDay: 1});
 
     // countdown
-    if(typeof arget != 'undefined')
+    if(typeof target != 'undefined')
         $('#countdown').countdown({until: target});
 
     // extra fields
