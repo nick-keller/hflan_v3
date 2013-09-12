@@ -1,6 +1,6 @@
 security:
     encoders:
-        FOS\UserBundle\Model\UserInterface: sha512
+        hflan\UserBundle\Entity\User: sha512
 
     role_hierarchy:
         ROLE_NEWSER:      ROLE_STAFF
@@ -22,13 +22,13 @@ security:
             anonymous:      true
             provider:       fos_userbundle
             form_login:
-                provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
             logout:
                 path:       fos_user_security_logout
                 target:     /blog
+                invalidate_session: false
             remember_me:
                 key:        %secret%
 
