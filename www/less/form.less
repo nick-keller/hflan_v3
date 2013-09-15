@@ -6,128 +6,128 @@
 @label-width: 150px;
 
 .form-hz{
-  .control-group{
-    border-top: solid 1px #eaeaea;
-    border-bottom: solid 1px #eaeaea;
-    box-shadow: 0 1px rgba(255,255,255,.7) inset, 0 1px rgba(255,255,255,.7);
-    padding: 5px;
-    min-height: @input-height;
+    .control-group{
+        border-top: solid 1px #eaeaea;
+        border-bottom: solid 1px #eaeaea;
+        box-shadow: 0 1px rgba(255,255,255,.7) inset, 0 1px rgba(255,255,255,.7);
+        padding: 5px;
+        min-height: @input-height;
 
-    + .control-group{
-      margin-top: -1px;
-      box-shadow: 0 1px rgba(255,255,255,.7);
-    }
-
-    .control-label{
-      float: left;
-      width: @label-width;
-      color: #919191;
-      text-shadow: 0 1px white;
-      line-height: @input-height;
-    }
-
-    .controls{
-      margin-left: @label-width;
-      position: relative;
-
-      .time-container{
-        display: inline-block;
-
-        .select-container{
-          display: inline-block;
-        }
-      }
-    }
-
-    &:hover > .control-label{
-      color: #595959;
-    }
-
-    &.error{
-      .control-label{
-        color: #ca5b5b;
-      }
-
-      textarea,
-      input[type="text"],
-      input[type="password"],
-      input[type="number"],
-      input[type="email"],
-      input[type="url"],
-      input[type="date"]{
-        border-color: #ca5b5b;
-      }
-
-      .form-errors{
-        display: none;
-        border: solid 1px #a4a4a4;
-        list-style: none;
-        position: absolute;
-        bottom: 100%;
-        background: white;
-        padding: 10px;
-        max-width: 250px;
-        .border-radius(3px);
-        box-shadow: 0 1px 3px rgba(0,0,0,.3);
-
-        &:after{
-          content: "";
-          position: absolute;
-          border: solid 7px transparent;
-          border-top: solid 7px white;
-          border-bottom: none;
-          margin-top: 10px;
+        + .control-group{
+            margin-top: -1px;
+            box-shadow: 0 1px rgba(255,255,255,.7);
         }
 
-        &:before{
-          content: "";
-          position: absolute;
-          border: solid 7px transparent;
-          border-top: solid 7px #a4a4a4;
-          border-bottom: none;
-          bottom: -8px;
+        .control-label{
+            float: left;
+            width: @label-width;
+            color: #919191;
+            text-shadow: 0 1px white;
+            line-height: @input-height;
         }
 
-        li + li{
-          margin-top: 5px;
-        }
-      }
+        .controls{
+            margin-left: @label-width;
+            position: relative;
 
-      &:hover .form-errors{
-        display: block;
-      }
+            .time-container{
+                display: inline-block;
+
+                .select-container{
+                    display: inline-block;
+                }
+            }
+        }
+
+        &:hover > .control-label{
+            color: #595959;
+        }
+
+        &.error{
+            .control-label{
+                color: #ca5b5b;
+            }
+
+            textarea,
+            input[type="text"],
+            input[type="password"],
+            input[type="number"],
+            input[type="email"],
+            input[type="url"],
+            input[type="date"]{
+                border-color: #ca5b5b;
+            }
+
+            .form-errors{
+                display: none;
+                border: solid 1px #a4a4a4;
+                list-style: none;
+                position: absolute;
+                bottom: 100%;
+                background: white;
+                padding: 10px;
+                max-width: 250px;
+                .border-radius(3px);
+                box-shadow: 0 1px 3px rgba(0,0,0,.3);
+
+                &:after{
+                    content: "";
+                    position: absolute;
+                    border: solid 7px transparent;
+                    border-top: solid 7px white;
+                    border-bottom: none;
+                    margin-top: 10px;
+                }
+
+                &:before{
+                    content: "";
+                    position: absolute;
+                    border: solid 7px transparent;
+                    border-top: solid 7px #a4a4a4;
+                    border-bottom: none;
+                    bottom: -8px;
+                }
+
+                li + li{
+                    margin-top: 5px;
+                }
+            }
+
+            &:hover .form-errors{
+                display: block;
+            }
+        }
     }
-  }
 
-  .form-actions{
-    padding: 25px 5px 5px (@label-width + 5);
-  }
+    .form-actions{
+        padding: 25px 5px 5px (@label-width + 5);
+    }
 }
 
 .btn{
-  border: solid 1px @dark-green;
-  display: inline-block;
-  .box-sizing();
-  height: @input-height;
-  line-height: (@input-height - 2);
-  .border-radius(3px);
-  padding: 0 5px;
-  cursor: pointer;
-  color: white;
-  text-shadow: 0 1px @dark-green;
-  box-shadow: 0 0 1px white inset;
-  background: @light-green;
-  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
-  text-decoration: none;
-  font-size: 16px;
-  vertical-align: top;
-  font-weight: normal;
-
-  &:hover{
-    background: @green;
-    box-shadow: 0 0 1px white inset, 0 1px 1px rgba(0,0,0,.3);
+    border: solid 1px @dark-green;
+    display: inline-block;
+    .box-sizing();
+    height: @input-height;
+    line-height: (@input-height - 2);
+    .border-radius(3px);
+    padding: 0 5px;
+    cursor: pointer;
+    color: white;
+    text-shadow: 0 1px @dark-green;
+    box-shadow: 0 0 1px white inset;
+    background: @light-green;
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
     text-decoration: none;
-  }
+    font-size: 16px;
+    vertical-align: top;
+    font-weight: normal;
+
+    &:hover{
+        background: @green;
+        box-shadow: 0 0 1px white inset, 0 1px 1px rgba(0,0,0,.3);
+        text-decoration: none;
+    }
 }
 
 textarea,
@@ -137,148 +137,156 @@ input[type="number"],
 input[type="email"],
 input[type="url"],
 input[type="date"]{
-  border: solid 1px #b6b6b6;
-  .border-radius(3px);
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0,0,0,.2) inset;
-  height: @input-height;
-  padding: 0 10px;
-  display: inline-block;
-  line-height: @input-height;
-  .box-sizing();
-  color: #595959;
-  width: @input-width;
+    border: solid 1px #b6b6b6;
+    .border-radius(3px);
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2) inset;
+    height: @input-height;
+    padding: 0 10px;
+    display: inline-block;
+    line-height: @input-height;
+    .box-sizing();
+    color: #595959;
+    width: @input-width;
 
-  &:hover{
-    border-color: #9f9f9f;
-  }
+    &:hover{
+        border-color: #9f9f9f;
+    }
 
-  &:focus{
-    border-color: @green;
-  }
+    &:focus{
+        border-color: @green;
+    }
 }
 
 .radio-bar{
-  label{
-    display: inline-block;
-    border: solid 1px #b6b6b6;
-    height: @input-height;
-    line-height: @input-height;
-    .box-sizing();
-    background: white;
-    padding: 0 10px;
-    color: #595959;
-    cursor: pointer;
-    .not-selectable();
+    label{
+        display: inline-block;
+        border: solid 1px #b6b6b6;
+        height: @input-height;
+        line-height: @input-height;
+        .box-sizing();
+        background: white;
+        padding: 0 10px;
+        color: #595959;
+        cursor: pointer;
+        .not-selectable();
 
-    & + input + label{
-      border-left: none;
+        & + input + label{
+            border-left: none;
+        }
+
+        &:hover{
+            border-color: #9f9f9f;
+        }
+
+        &:nth-child(2){
+            .border-radius-left(3px);
+        }
+
+        &:last-child{
+            .border-radius-right(3px);
+        }
     }
 
-    &:hover{
-      border-color: #9f9f9f;
-    }
+    input{
+        display: none;
 
-    &:nth-child(2){
-      .border-radius-left(3px);
+        &:checked + label{
+            background: @light-green;
+            box-shadow: 0 0 1px white inset;
+            color: white;
+            text-shadow: 0 1px @dark-green;
+            border-color: @dark-green;
+        }
     }
-
-    &:last-child{
-      .border-radius-right(3px);
-    }
-  }
-
-  input{
-    display: none;
-
-    &:checked + label{
-      background: @light-green;
-      box-shadow: 0 0 1px white inset;
-      color: white;
-      text-shadow: 0 1px @dark-green;
-      border-color: @dark-green;
-    }
-  }
 }
 
 .toggle{
-  label{
-    cursor: pointer;
-    color: #919191;
-    text-shadow: 0 1px white;
-    .not-selectable();
+    label{
+        cursor: pointer;
+        color: #919191;
+        text-shadow: 0 1px white;
+        .not-selectable();
 
-    i{
-      font-size: 20px;
-      color: #595959;
+        i{
+            font-size: 20px;
+            color: #595959;
+        }
+
+        .active{
+            display: none;
+        }
+
+        .inactive{
+            display: inline-block;
+        }
     }
 
-    .active{
-      display: none;
-    }
-
-    .inactive{
-      display: inline-block;
-    }
-  }
-
-  input{
-    display: none;
-
-    &:checked + label{
-      .active{
-        display: inline-block;
-      }
-
-      .inactive{
+    .toggle-content{
         display: none;
-      }
     }
-  }
+
+    input{
+        display: none;
+
+        &:checked + label{
+            .active{
+                display: inline-block;
+            }
+
+            .inactive{
+                display: none;
+            }
+
+            + .toggle-content{
+                display: block;
+            }
+        }
+    }
 }
 
 div[data-prototype]{
-  > .control-group{
-    border: none;
-    box-shadow: none;
-    background: #f9f9f9;
-    .border-radius(4px);
-    padding: 15px;
-    margin-bottom: 15px;
-    border-left: solid 2px #e2e2e2;
-    position: relative;
-    overflow: hidden;
-
-    &:hover{
-      border-color: #c9c9c9;
-    }
-
-    > .controls{
-      margin-left: 0;
-
-      .control-group{
+    > .control-group{
         border: none;
         box-shadow: none;
-      }
-    }
+        background: #f9f9f9;
+        .border-radius(4px);
+        padding: 15px;
+        margin-bottom: 15px;
+        border-left: solid 2px #e2e2e2;
+        position: relative;
+        overflow: hidden;
 
-    > .control-label{
-      display: none;
-    }
+        &:hover{
+            border-color: #c9c9c9;
+        }
 
-    .remove-form{
-      position: absolute;
-      top: 0;
-      right: 0;
-      font-size: 25px;
-      cursor: pointer;
-      color: #e2e2e2;
-      padding: 5px 10px;
-      z-index: 1000;
+        > .controls{
+            margin-left: 0;
 
-      &:hover{
-        color: #c9c9c9;
-      }
+            .control-group{
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        > .control-label{
+            display: none;
+        }
+
+        .remove-form{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 25px;
+            cursor: pointer;
+            color: #e2e2e2;
+            padding: 5px 10px;
+            z-index: 1000;
+
+            &:hover{
+                color: #c9c9c9;
+            }
+        }
     }
-  }
 }

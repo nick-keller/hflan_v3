@@ -1,0 +1,102 @@
+{% extends '::base.html.twig' %}
+{% import "hflanLanBundle:Modules:registrationProcess.html.twig" as process %}
+
+{% block body %}
+    <h1 class="header">
+        Inscription au {{ tournament.name }}
+        <small>
+            {{ tournament.prizePool }} € de Prize-Pool
+        </small>
+    </h1>
+    <table class="table table-total">
+        <tr>
+            <th>Article</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+        </tr>
+        <tr>
+            <td class="toggle">
+                Billet d'entré pour la {{ tournament.event.name }}
+                <input type="checkbox" id="admission" />
+                <label for="admission">
+                    <div class="active">
+                        <i class="icon-minus-sign"></i>
+                    </div>
+                    <div class="inactive">
+                        <i class="icon-plus-sign"></i>
+                    </div>
+                </label>
+                <div class="toggle-content" style="margin-top: 10px;color: #7c7c7c">
+                    L'entré comprend la consomation illimité de boissons, deux repas gratuits, le pret de table, la connexion internet et l'instalation électrique pour les deux jours.
+                </div>
+            </td>
+            <td>
+                {{ tournament.event.price }}.00
+                €
+            </td>
+            <td>
+                {{ tournament.numberOfPlayerPerTeam }}
+            </td>
+        </tr>
+        <tr>
+            <td class="toggle">
+                Participation au {{ tournament.name }} ({{ tournament.gameType }})
+                <input type="checkbox" id="tournament" />
+                <label for="tournament">
+                    <div class="active">
+                        <i class="icon-minus-sign"></i>
+                    </div>
+                    <div class="inactive">
+                        <i class="icon-plus-sign"></i>
+                    </div>
+                </label>
+                <div class="toggle-content" style="margin-top: 10px;color: #7c7c7c">
+                    La participation au tournois est intégrallement placé dans le prize-pool de {{ tournament.prizePool }} € à partager entre les vainceurs.
+                </div>
+            </td>
+            <td>
+                {{ tournament.price }}.00
+                €
+            </td>
+            <td>
+                {{ tournament.numberOfPlayerPerTeam }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total
+            </td>
+            <td>
+                {{ tournament.totalPrice }}.00&nbsp;€
+            </td>
+            <td></td>
+        </tr>
+    </table>
+    </section><section>
+
+    {{ process.show(team, "hz") }}
+
+    {% if team.paid %}
+    {% elseif team.infoLocked %}
+    {% else %}
+        <div class="row row-gaped" style="margin-top: 30px">
+            <div class="col6">
+                {% for player in team.players %}
+                    <div class="panel">
+                        {{ player.nickname|default("Joueur " ~ loop.index) }}
+                        <a href="{{ path('hflan_edit_player', {id:player.id}) }}" class="edit-player">
+                            <i class="icon-pencil"></i>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col6">
+                <p>
+                    Avant de pouvoir acheter vos places vous devez finir de remplir toutes les informations :
+                </p>
+            </div>
+        </div>
+
+
+    {% endif %}
+{% endblock %}

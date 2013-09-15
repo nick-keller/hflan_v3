@@ -21,7 +21,7 @@ class ExtraFieldRepository extends EntityRepository
         $array = array();
 
         foreach($qb->getQuery()->getResult() as $extraField){
-            $array[$extraField->getName()] = '';
+            $array[$extraField->getId()] = '';
         }
 
         return $array;

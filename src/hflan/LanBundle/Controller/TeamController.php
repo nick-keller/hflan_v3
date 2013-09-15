@@ -46,4 +46,16 @@ class TeamController extends Controller
             'event' => $nextEvent,
         );
     }
+
+    /**
+     * @Secure(roles="ROLE_USER")
+     * @Template
+     */
+    public function editAction(Request $request)
+    {
+        return array(
+            'team' => $this->getUser()->getTeam(),
+            'tournament' => $this->getUser()->getTeam()->getTournament(),
+        );
+    }
 }

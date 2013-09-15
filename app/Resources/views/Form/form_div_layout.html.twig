@@ -99,8 +99,10 @@
             <div {{ block('widget_container_attributes') }}>
                 {{ form_errors(form.date) }}
                 {{ form_errors(form.time) }}
-                {{ form_widget(form.date) }} à
-                {{ form_widget(form.time) }}
+                {{ form_widget(form.date) }}
+                {% if show_time %}
+                    à {{ form_widget(form.time) }}
+                {% endif %}
             </div>
         {% endif %}
     {% endspaceless %}

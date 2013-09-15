@@ -17,6 +17,8 @@
                 'less/pagination.less'
                 'less/table.less'
                 'less/dropdown.less'
+                'less/process.less'
+                'less/flash.less'
                 '@hflanBlogBundle/Resources/public/less/blog.less'
                 '@hflanLanBundle/Resources/public/less/countdown.less'
                 '@hflanPhotosBundle/Resources/public/less/albums.less'
@@ -34,6 +36,12 @@
                 <div class="user-bar">
                     <div class="user-info">
                         {% if app.user %}
+                            {% if app.user.team is not null %}
+                                <a class="process-container" href="{{ path('hflan_edit_team') }}">
+                                    {% import "hflanLanBundle:Modules:registrationProcess.html.twig" as process %}
+                                    {{ process.show(app.user.team, "hz") }}
+                                </a>
+                            {% endif %}
                             <div class="dropdown">
                                 <i class="icon-cogs"></i>
                                 {% if app.user.team is not null %}
@@ -52,7 +60,7 @@
                                         </li>
                                     {% else %}
                                         <li>
-                                            <a>
+                                            <a href="{{ path('hflan_edit_team') }}">
                                                 <i class="icon-flag-checkered"></i>
                                                 Valider l'inscription
                                             </a>
