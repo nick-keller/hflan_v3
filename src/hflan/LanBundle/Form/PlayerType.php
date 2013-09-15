@@ -36,9 +36,10 @@ class PlayerType extends AbstractType
                     Player::PC_TYPE_LAPTOP  => "PC Portable",
                 )
             ))
-            ->add('birthday', 'datepicker', array(
+            ->add('birthday', 'birthday', array(
                 'label' => 'Date de naissance',
-                'show_time' => false,
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy'
             ))
         ;
     }

@@ -123,6 +123,7 @@ jms_di_extra:
             paginator: "@knp_paginator"
             uploadableManager: "@stof_doctrine_extensions.uploadable.manager"
             mailer: @mailer
+            session: @session
 
 knp_paginator:
     page_range: 5
