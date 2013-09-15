@@ -28,3 +28,9 @@ services:
             - @fos_user.user_manager
             - @mailer
             - @templating
+
+    hflan.factory.extra_fields_form:
+        class: hflan\LanBundle\Services\ExtraFieldsFormFactory
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @form.factory

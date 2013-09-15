@@ -2,61 +2,69 @@
 @import "mixins.less";
 
 header{
-  background: #59554a;
-  margin-bottom: -15px;
-  padding-bottom: 20px;
+    background: #59554a;
+    margin-bottom: -15px;
+    padding-bottom: 20px;
 
-  .green-bar{
-    @bar-height: 20px;
-    background: @green;
-    height: @bar-height;
-    margin-bottom: -@bar-height;
-    box-shadow: 0 -1px 0 rgba(255,255,255,.3) inset, 0 8px 0 rgba(0,0,0,.2);
-  }
+    .green-bar{
+        @bar-height: 20px;
+        background: @green;
+        height: @bar-height;
+        margin-bottom: -@bar-height;
+        box-shadow: 0 -1px 0 rgba(255,255,255,.3) inset, 0 8px 0 rgba(0,0,0,.2);
+    }
 
-  .user-bar{
-    background: #272727;
-    height: 70px;
-    margin-bottom: 15px;
-    .border-radius-bottom(4px);
-    border-bottom: solid 3px #111;
-    color: white;
-
-    .user-info{
-      float: right;
-      padding: 15px 15px 15px 0;
-
-      .dropdown-menu{
-        left: auto;
-        right: 0;
-      }
-
-      a{
+    .user-bar{
+        background: #272727;
+        height: 70px;
+        margin-bottom: 15px;
+        .border-radius-bottom(4px);
+        border-bottom: solid 3px #111;
         color: white;
-        text-decoration: none;
-      }
-    }
-  }
 
-  .nav{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+        .user-info{
+            float: right;
+            padding: 0 15px 0 0;
+            line-height: 70px;
 
-    li{
-      display: inline-block;
+            .dropdown-menu{
+                left: auto;
+                right: 0;
+            }
 
-      a{
-        color: #C0BBAA;
-        text-decoration: none;
-        margin-left: 15px;
-        display: block;
-        padding: 5px 7px;
-
-        &:hover{
-          color: @green;
+            a{
+                color: white;
+                text-decoration: none;
+            }
+            .process-container{
+                display: inline-block;
+                margin: 21px 40px 0 0;
+                vertical-align: top;
+                padding: 0 11px 7px 15px;
+                width: 200px;
+            }
         }
-      }
     }
-  }
+
+    .nav{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li{
+            display: inline-block;
+
+            a{
+                color: #C0BBAA;
+                text-decoration: none;
+                margin-left: 15px;
+                display: block;
+                padding: 5px 7px;
+
+                &:hover{
+                    color: @green;
+                }
+            }
+        }
+    }
 }

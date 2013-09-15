@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class TournamentRepository extends EntityRepository
 {
-    public function queryTournamentsOfEvent(Event $event)
+    public function queryTournamentsOfEvent(Event $event = null)
     {
         $qb = $this->createQueryBuilder('t')
             ->where('t.event = :event')

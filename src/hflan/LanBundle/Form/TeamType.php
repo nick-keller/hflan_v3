@@ -13,7 +13,7 @@ class TeamType extends AbstractType
     /** @var  Event */
     private $event;
 
-    public function __construct(Event $event)
+    public function __construct(Event $event = null)
     {
         $this->event = $event;
     }

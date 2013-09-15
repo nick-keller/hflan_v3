@@ -66,6 +66,7 @@
 
   th, td{
     padding: 4px 8px;
+      vertical-align: top;
   }
 
   tr{
@@ -110,4 +111,18 @@
       }
     }
   }
+}
+
+.table-total{
+    tr{
+        td:nth-child(2), th:nth-child(2){
+            text-align: right;
+        }
+    }
+
+    tr:last-child{
+        td{
+            border-top: solid 2px #eaeaea;
+        }
+    }
 }

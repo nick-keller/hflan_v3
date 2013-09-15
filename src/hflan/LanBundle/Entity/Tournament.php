@@ -489,4 +489,14 @@ class Tournament
     {
         return $this->preRegistered;
     }
+
+    public function getPricePerPlayer()
+    {
+        return $this->event->getPrice() + $this->getPrice();
+    }
+
+    public function getTotalPrice()
+    {
+        return $this->getPricePerPlayer() * $this->getNumberOfPlayerPerTeam();
+    }
 }
