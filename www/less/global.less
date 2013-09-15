@@ -2,85 +2,86 @@
 @import "mixins.less";
 
 body{
-  font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
-  padding: 0;
-  margin: 0;
-  background: url(../img/body-bg.png);
-  font-size: 16px;
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    background: url(../img/body-bg.png);
+    font-size: 16px;
 }
 
 a{
-  color: @dark-green;
-  text-decoration: none;
-
-  &:hover{
-    text-decoration: underline;
-  }
-}
-
-hr{
-  border: none;
-  border-bottom: solid 1px #eaeaea;
-  box-shadow: 0 1px rgba(255,255,255,.7);
-}
-
-h1, h2, h3, h4, h5, h6{
-  margin-top: 0;
-  color: #4e4e4e;
-
-  a{
-    color: #4e4e4e;
+    color: @dark-green;
     text-decoration: none;
 
     &:hover{
-      color: @dark-green;
-      text-decoration: none;
+        text-decoration: underline;
     }
-  }
+}
 
-  small{
-    font-size: 16px;
-    text-shadow: 0 1px 0 white;
-    color: #919191;
-    font-weight: normal;
-    margin-left: 15px;
+hr{
+    border: none;
+    border-bottom: solid 1px #eaeaea;
+    box-shadow: 0 1px rgba(255,255,255,.7);
+}
 
-    hr{
-      display: inline-block;
-      height: 25px;
-      border: none;
-      border-left: solid 1px #999999;
-      vertical-align: bottom;
-      box-shadow: 1px 0 rgba(255,255,255,.7);
-      margin: 0 15px;
+h1, h2, h3, h4, h5, h6{
+    margin-top: 0;
+    color: #4e4e4e;
+
+    a{
+        color: #4e4e4e;
+        text-decoration: none;
+
+        &:hover{
+            color: @dark-green;
+            text-decoration: none;
+        }
     }
-  }
+
+    small{
+        font-size: 16px;
+        text-shadow: 0 1px 0 white;
+        color: #919191;
+        font-weight: normal;
+        margin-left: 15px;
+
+        hr{
+            display: inline-block;
+            height: 25px;
+            border: none;
+            border-left: solid 1px #999999;
+            vertical-align: bottom;
+            box-shadow: 1px 0 rgba(255,255,255,.7);
+            margin: 0 15px;
+        }
+    }
 }
 
 h1{
-  font-size: 2em;
-  text-shadow: 0 1px 0 white;
-  line-height: 2em;
+    font-size: 2em;
+    text-shadow: 0 1px 0 white;
+    line-height: 2em;
 
-  &.header{
-    border-bottom: solid 1px #eaeaea;
-    box-shadow: 0 1px rgba(255,255,255,.7);
-  }
+    &.header{
+        border-bottom: solid 1px #eaeaea;
+        box-shadow: 0 1px rgba(255,255,255,.7);
+    }
 }
 
 .note{
-  color: #919191;
-  text-shadow: 0 1px white;
+    color: #919191;
+    text-shadow: 0 1px white;
 }
 
 .panel{
-  background: #f9f9f9;
-  .border-radius(4px);
-  padding: 15px;
+    background: #f9f9f9;
+    .border-radius(4px);
+    padding: 15px;
+    position: relative;
 
-  & + .panel{
-    margin-top: 15px;
-  }
+    & + .panel{
+        margin-top: 15px;
+    }
 }
 
 .pull-left{float: left;}

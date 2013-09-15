@@ -8,6 +8,10 @@ hflan_edit_team:
     pattern:  /register/step-2
     defaults: { _controller: hflanLanBundle:Team:edit }
 
+hflan_pay_team:
+    pattern:  /register/step-3
+    defaults: { _controller: hflanLanBundle:Team:pay }
+
 # Player
 
 hflan_edit_player:

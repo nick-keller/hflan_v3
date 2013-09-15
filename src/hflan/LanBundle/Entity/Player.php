@@ -34,6 +34,7 @@ class Player
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Assert\Length(min = "2")
      */
     private $firstName;
@@ -42,6 +43,7 @@ class Player
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Assert\Length(min = "2")
      */
     private $lastName;
@@ -50,6 +52,7 @@ class Player
      * @var string
      *
      * @ORM\Column(name="nickname", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Assert\Length(min = "2")
      */
     private $nickname;
@@ -58,6 +61,7 @@ class Player
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
@@ -66,6 +70,7 @@ class Player
      * @var string
      *
      * @ORM\Column(name="pcType", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Assert\Choice(choices = {Player::PC_TYPE_DESKTOP, Player::PC_TYPE_LAPTOP})
      */
     private $pcType;
@@ -74,6 +79,7 @@ class Player
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="datetime", nullable=true)
+     * @Assert\NotBlank()
      * @Assert\DateTime()
      */
     private $birthday;
@@ -315,5 +321,17 @@ class Player
     public function getTournament()
     {
         return $this->tournament;
+    }
+
+    public function isValid()
+    {
+        return $this->getFirstName() != null;
+    }
+
+    public function isMinor()
+    {
+        if($this->birthday)
+            return $this->birthday->diff(new \DateTime)->y < 18;
+        return false;
     }
 }

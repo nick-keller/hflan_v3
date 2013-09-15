@@ -5,7 +5,9 @@ namespace hflan\LanBundle\Services;
 use Doctrine\ORM\EntityManager;
 use hflan\LanBundle\Entity\ExtraFieldRepository;
 use hflan\LanBundle\Entity\Player;
+use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Collection;
 
@@ -42,9 +44,12 @@ class ExtraFieldsFormFactory
 
         foreach($playerData as $id => $value)
         {
-            $fields[$id] = $this->extraFieldRep->findOneById($id);
+            $fields[$id]      = $this->extraFieldRep->findOneById($id);
             $defaultData[$id] = $value;
-            $constraints[$id] = new Regex(array( 'pattern' => $fields[$id]->getValidator() ));
+            $constraints[$id] = array( new NotBlank() );
+
+            if($fields[$id]->getValidator())
+                $constraints[$id][] = new Regex(array( 'pattern' => $fields[$id]->getValidator() ));
         }
 
         $form = $this->formFactory->createBuilder(

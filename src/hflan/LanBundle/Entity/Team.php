@@ -344,4 +344,12 @@ class Team
     {
         return $this->players;
     }
+
+    public function isValid()
+    {
+        foreach($this->getPlayers() as $player)
+            if(!$player->isValid()) return false;
+
+        return true;
+    }
 }

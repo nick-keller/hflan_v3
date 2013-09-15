@@ -29,9 +29,32 @@ class PlayerController extends Controller
      */
     public function editAction(Request $request, Player $player)
     {
+        /** @var Team $team */
+        $team = $this->getUser()->getTeam();
+
+        if($team->getInfoLocked())
+            return $this->redirect($this->generateUrl('hflan_pay_team'));
+
+        if($player->getTeam() != $team)
+            return $this->redirect($this->generateUrl('hflan_edit_team'));
+
         $form = $this->createForm(new PlayerType, $player);
         $this->createFormBuilder();
         $fieldsForm = $this->get('hflan.factory.extra_fields_form')->createFromPlayer($player);
+
+        if('POST' == $request->getMethod()) {
+            $form->handleRequest($request);
+            $fieldsForm->handleRequest($request);
+
+            if($form->isValid() && $fieldsForm->isValid()){
+                $player->setExtraFields($fieldsForm->getData());
+
+                $this->em->persist($player);
+                $this->em->flush();
+
+                return $this->redirect($this->generateUrl('hflan_edit_team'));
+            }
+        }
 
         return array(
             'form' => $form->createView(),
