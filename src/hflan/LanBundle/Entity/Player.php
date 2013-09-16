@@ -100,10 +100,17 @@ class Player
 
     /**
      * @var Tournament
-     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\ManyToOne(targetEntity="Tournament", inversedBy="players")
      * @ORM\JoinColumn(nullable=false)
      */
     private $tournament;
+
+    /**
+     * @var Event
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="players")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $event;
 
 
     /**

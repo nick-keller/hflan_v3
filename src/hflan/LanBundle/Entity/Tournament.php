@@ -131,17 +131,22 @@ class Tournament
      */
     protected $extraFields;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Team", mappedBy="tournament", cascade={"remove"})
+     */
+    protected $teams;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="tournament")
+     */
+    protected $players;
+
     /** @var  int */
     protected $preRegistered = 0;
     /** @var  int */
     protected $pending = 0;
     /** @var  int */
     protected $paid = 0;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Team", mappedBy="tournament", cascade={"remove"})
-     */
-    protected $teams;
 
     public function __construct(Event $event = null)
     {
@@ -498,5 +503,38 @@ class Tournament
     public function getTotalPrice()
     {
         return $this->getPricePerPlayer() * $this->getNumberOfPlayerPerTeam();
+    }
+
+    /**
+     * Add player
+     *
+     * @param Player $player
+     * @return Team
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }

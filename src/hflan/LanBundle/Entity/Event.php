@@ -110,6 +110,11 @@ class Event
      */
     protected $tournaments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="event")
+     */
+    protected $players;
+
     public function __construct()
     {
         $this->setBeginAt(new \Datetime());
@@ -393,5 +398,38 @@ class Event
     public function getTournaments()
     {
         return $this->tournaments;
+    }
+
+    /**
+     * Add player
+     *
+     * @param Player $player
+     * @return Team
+     */
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param Player $player
+     */
+    public function removePlayer(Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }
