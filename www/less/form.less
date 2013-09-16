@@ -37,6 +37,17 @@
                     display: inline-block;
                 }
             }
+
+            .staked-checkboxes{
+                input[type=checkbox]{
+                    position: absolute;
+
+                    + label{
+                        display: block;
+                        margin-left: 30px;
+                    }
+                }
+            }
         }
 
         &:hover > .control-label{

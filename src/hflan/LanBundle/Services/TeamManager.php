@@ -102,8 +102,9 @@ class TeamManager
         for($i=0; $i<$team->getTournament()->getNumberOfPlayerPerTeam(); ++$i)
         {
             $player = new Player;
-            $player->setTournament($team->getTournament());
             $player->setTeam($team);
+            $player->setTournament($team->getTournament());
+            $player->setEvent($team->getTournament()->getEvent());
             $player->setExtraFields($extraFields);
 
             $this->em->persist($player);
