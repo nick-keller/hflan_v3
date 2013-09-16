@@ -6,6 +6,7 @@
     <a href="{{ path('hflan_event_new') }}" class="btn">
         <i class="icon-plus"></i> Nouveau
     </a>
+
     <hr>
 
     {% for event in events %}
@@ -87,6 +88,10 @@
             <a class="btn" href="{{ path('hflan_tournament_new', {slug:event.slug}) }}">
                 <i class="icon-plus"></i>
                 Ajouter un tournoi
+            </a>
+
+            <a href="{{ path('hflan_event_export', {slug:event.slug}) }}" class="btn">
+                <i class="icon-cloud-upload"></i> Exporter
             </a>
         </div>
     {% endfor %}

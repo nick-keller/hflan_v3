@@ -89,4 +89,14 @@ class EventController extends Controller
             'event' => $nextEvent,
         );
     }
+
+    /**
+     * @Template
+     */
+    public function exportAction(Event $event)
+    {
+        return array(
+            'event' => $event,
+        );
+    }
 }
