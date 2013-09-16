@@ -2,7 +2,9 @@
 
 namespace hflan\LanBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
 
 /**
  * PlayerRepository
@@ -12,4 +14,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerRepository extends EntityRepository
 {
+    public function emails($teams)
+    {
+        if(!count($teams))
+            return array();
+
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.email')
+            ->where('p.team IN (:teams)')
+            ->setParameter('teams', $teams)
+            ->andWhere('p.email is not NULL');
+
+        return array_map(function($result){ return $result['email']; }, $qb->getQuery()->getResult(Query::HYDRATE_ARRAY));
+    }
 }

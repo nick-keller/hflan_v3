@@ -341,4 +341,20 @@ class Player
             return $this->birthday->diff(new \DateTime)->y < 18;
         return false;
     }
+
+    /**
+     * @param Event $event
+     */
+    public function setEvent(Event $event)
+    {
+        $this->event = $event;
+    }
+
+    /**
+     * @return Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
 }

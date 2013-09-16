@@ -2,8 +2,11 @@
 
 namespace hflan\LanBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use hflan\LanBundle\Entity\Event;
+use hflan\LanBundle\Entity\Export\EventExport;
 use hflan\LanBundle\Form\EventType;
+use hflan\LanBundle\Form\Export\EventExportType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
@@ -93,10 +96,25 @@ class EventController extends Controller
     /**
      * @Template
      */
-    public function exportAction(Event $event)
+    public function exportAction(Request $request, Event $event)
     {
+        $export = new EventExport($event);
+        $form = $this->createForm(new EventExportType($event), $export);
+        $emails = null;
+
+        if('POST' == $request->getMethod()){
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                $teams = $this->em->getRepository('hflanLanBundle:Team')->filter($export);
+                $emails = $this->em->getRepository('hflanLanBundle:Player')->emails($teams);
+            }
+        }
+
         return array(
             'event' => $event,
+            'form' => $form->createView(),
+            'emails' => $emails,
         );
     }
 }
