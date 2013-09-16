@@ -34,3 +34,8 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - @form.factory
+
+    hflan.csv_generator:
+        class: hflan\LanBundle\Services\CsvGenerator
+        arguments:
+            - @doctrine.orm.entity_manager

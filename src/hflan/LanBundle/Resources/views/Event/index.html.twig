@@ -79,6 +79,9 @@
                                 <a href="{{ path('hflan_tournament_edit', {slug:tournament.slug}) }}">
                                     <i class="icon-pencil"></i>
                                 </a>
+                                <a href="{{ path('hflan_tournament_export', {slug:tournament.slug}) }}" title="Exporter en csv">
+                                    <i class="icon-cloud-upload"></i>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -91,7 +94,7 @@
             </a>
 
             <a href="{{ path('hflan_event_export', {slug:event.slug}) }}" class="btn">
-                <i class="icon-cloud-upload"></i> Exporter
+                <i class="icon-envelope"></i> Mailing list
             </a>
         </div>
     {% endfor %}

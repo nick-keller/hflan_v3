@@ -26,6 +26,9 @@ class TeamRepository extends EntityRepository
     
     public function filter(EventExport $export)
     {
+        if(!$export->getTournaments()->count())
+            return array();
+
         $qb = $this->createQueryBuilder('t')
             ->where('t.tournament IN (:tournaments)')
             ->setParameter('tournaments', $export->getTournaments()->toArray());
