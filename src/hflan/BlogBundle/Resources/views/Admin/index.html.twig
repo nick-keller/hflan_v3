@@ -20,7 +20,7 @@
             <tr data-href="{{ path('hflan_blog_edit', {slug: article.slug}) }}">
                 <td>{{ article.title }}</td>
                 <td>{{ article.author.username }}</td>
-                <td></td>
+                <td>{{ article.createdAt|simpleDate }}</td>
                 <td>
                     {% if article.published %}
                         <i class="icon-eye-open"></i> Public

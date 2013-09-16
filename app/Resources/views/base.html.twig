@@ -59,6 +59,22 @@
                                                 Dashboard
                                             </a>
                                         </li>
+                                        {% if is_granted('ROLE_NEWSER') %}
+                                            <li>
+                                                <a href="{{ path('hflan_blog_admin') }}">
+                                                    <i class="icon-file-text"></i>
+                                                    Articles
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_RESPO') %}
+                                            <li>
+                                                <a href="{{ path('hflan_event_admin') }}">
+                                                    <i class="icon-trophy"></i>
+                                                    Tournois
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     {% else %}
                                         <li>
                                             <a href="{{ path('hflan_edit_team') }}">
