@@ -94,6 +94,7 @@ class EventController extends Controller
     }
 
     /**
+     * @Secure(roles="ROLE_RESPO")
      * @Template
      */
     public function exportAction(Request $request, Event $event)
@@ -101,6 +102,7 @@ class EventController extends Controller
         $export = new EventExport($event);
         $form = $this->createForm(new EventExportType($event), $export);
         $emails = null;
+        $count = 0;
 
         if('POST' == $request->getMethod()){
             $form->handleRequest($request);
@@ -108,6 +110,8 @@ class EventController extends Controller
             if($form->isValid()){
                 $teams = $this->em->getRepository('hflanLanBundle:Team')->filter($export);
                 $emails = $this->em->getRepository('hflanLanBundle:Player')->emails($teams);
+                $count = count($emails);
+                $emails = implode(';', $emails);
             }
         }
 
@@ -115,6 +119,7 @@ class EventController extends Controller
             'event' => $event,
             'form' => $form->createView(),
             'emails' => $emails,
+            'count' => $count,
         );
     }
 }

@@ -42,6 +42,10 @@ hflan_tournament_edit:
     pattern:  /tournaments/{slug}/edit
     defaults: { _controller: hflanLanBundle:Tournament:edit }
 
+hflan_tournament_export:
+    pattern:  /tournaments/{slug}/export
+    defaults: { _controller: hflanLanBundle:Tournament:export }
+
 hflan_tournament_new:
     pattern:  /{slug}/tournaments/new
     defaults: { _controller: hflanLanBundle:Tournament:new }

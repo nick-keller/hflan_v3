@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class TournamentController extends Controller
 {
@@ -64,5 +65,17 @@ class TournamentController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    public function exportAction(Tournament $tournament)
+    {
+        $response = new Response();
+        $response->setContent($this->get('hflan.csv_generator')->generate($tournament));
+        $response->headers->set('Content-Type', 'text/csv');
+
+        $filename = $tournament->getEvent()->getSlug().'_'.$tournament->getSlug();
+        $response->headers->set('Content-Disposition', 'attachment; filename="'.$filename.'.csv"');
+
+        return $response;
     }
 }

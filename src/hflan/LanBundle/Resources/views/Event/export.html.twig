@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>
-        Exporter
+        Mailing list
         <small>{{ event.name }}</small>
     </h1>
 
@@ -12,12 +12,24 @@
 
         <div class="form-actions">
             <button type="submit" class="btn">
-                <i class="icon-cloud-upload"></i> Exporter !
+                <i class="icon-cogs"></i> Générer !
             </button>
             <a href="{{ path('hflan_event_admin') }}" class="btn">
                 <i class="icon-reply"></i> Annuler
             </a>
         </div>
     </form>
-    {{ dump(emails) }}
+
+    {% if emails is not null %}
+        {% if emails is empty %}
+            <p class="flash flash-error">Aucun résultat</p>
+        {% else %}
+            </section><section>
+            <h1 class="header">
+                Résultat de la recherche
+            </h1>
+            {{ count }} résultats
+            <textarea class="auto-select input-block">{{ emails }}</textarea>
+        {% endif %}
+    {% endif %}
 {% endblock %}

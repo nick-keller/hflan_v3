@@ -13,6 +13,18 @@ $(function(){
     if(typeof target != 'undefined')
         $('#countdown').countdown({until: target});
 
+    // auto select
+    $(".auto-select").focus(function() {
+        var $this = $(this);
+        $this.select();
+
+        // Work around Chrome's little problem
+        $this.mouseup(function() {
+            $this.unbind("mouseup");
+            return false;
+        });
+    });
+
     // extra fields
     var main_container = $('#hflan_lanbundle_tournament_extraFields');
     var add_btn = $('<button type="button" class="btn"><i class="icon-plus"></i> Ajouter un champ</button>');
