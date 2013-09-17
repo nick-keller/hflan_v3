@@ -23,6 +23,22 @@ class TeamRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findTeams(Tournament $tournament, $type)
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->where('t.tournament = :tournament')
+            ->setParameter('tournament', $tournament);
+
+        if($type == EventExport::LIST_BLANK)
+            $qb->andWhere('t.infoLocked = false');
+        if($type == EventExport::LIST_LOCKED)
+            $qb->andWhere('t.infoLocked = true AND t.paid = false');
+        if($type == EventExport::LIST_PAID)
+            $qb->andWhere('t.paid = true');
+
+        return $qb->getQuery()->getResult();
+    }
     
     public function filter(EventExport $export)
     {

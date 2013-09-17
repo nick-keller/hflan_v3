@@ -28,6 +28,17 @@ class TeamController extends Controller
     private $session;
 
     /**
+     * @Secure(roles="ROLE_USER")
+     * @Template
+     */
+    public function showAction(Team $team)
+    {
+        return array(
+            'team' => $team,
+        );
+    }
+
+    /**
      * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
      * @Template
      */
@@ -96,5 +107,54 @@ class TeamController extends Controller
             'team' => $team,
             'tournament' => $team->getTournament(),
         );
+    }
+
+    /**
+     * @Secure(roles="ROLE_USER")
+     */
+    public function upgradeAction(Request $request, Team $team)
+    {
+        $referer = $request->headers->get('referer') ?
+            $request->headers->get('referer') :
+            $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+
+        if($team->getInfoLocked() == false){
+            if($team->isValid()){
+                $team->setInfoLocked(true);
+                $this->em->persist($team);
+                $this->session->getFlashBag()->add('success', "Equipe passé en liste d'attente");
+            } else {
+                $this->session->getFlashBag()->add('error', "Impossible de passer cette équipe en liste d'attente, les informations ne sont pas complètes !");
+            }
+        }
+        else if($team->getPaid() == false){
+            $team->setPaid(true);
+            $this->em->persist($team);
+            $this->session->getFlashBag()->add('success', "Equipe passé en liste définitive");
+        }
+
+        $this->em->flush();
+
+        return $this->redirect($referer);
+    }
+
+    /**
+     * @Secure(roles="ROLE_USER")
+     */
+    public function downgradeAction(Request $request, Team $team)
+    {
+        $referer = $request->headers->get('referer') ?
+            $request->headers->get('referer') :
+            $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+
+        if($team->getInfoLocked() && !$team->getPaid()){
+            $team->setInfoLocked(false);
+            $this->em->persist($team);
+            $this->session->getFlashBag()->add('success', 'Equipe passé en liste pré-inscrite');
+        }
+
+        $this->em->flush();
+
+        return $this->redirect($referer);
     }
 }

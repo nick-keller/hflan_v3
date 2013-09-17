@@ -62,7 +62,7 @@
                         <th></th>
                     </tr>
                     {% for tournament in event.tournaments %}
-                        <tr data-href="">
+                        <tr data-href="{{ path('hflan_tournament_show', {slug:tournament.slug}) }}">
                             <td>{{ tournament.game }}</td>
                             <td>{{ tournament.gameType }}</td>
                             <td>{{ tournament.price }} €</td>

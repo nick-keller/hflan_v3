@@ -99,7 +99,7 @@ class EventController extends Controller
      */
     public function exportAction(Request $request, Event $event)
     {
-        $export = new EventExport($event);
+        $export = new EventExport;
         $form = $this->createForm(new EventExportType($event), $export);
         $emails = null;
         $count = 0;

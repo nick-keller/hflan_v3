@@ -147,6 +147,13 @@
             <div class="table-container">
                 <div class="content">
                     <section>
+                        {% for type, messages in app.session.flashbag.all() %}
+                            {% for message in messages %}
+                                <div class="flash flash-{{ type }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
                         {% block body %}{% endblock %}
                     </section>
                 </div>
