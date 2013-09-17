@@ -1,0 +1,93 @@
+{% macro show(teams) %}
+    {% if not teams|length %}
+        <p>
+            Pas d'équipe dans cette liste.
+        </p>
+    {% else %}
+        {% set tournament = teams[0].tournament %}
+        {% if tournament.numberOfPlayerPerTeam > 1 %}
+            <table class="table">
+                <tr>
+                    <th>Equipe</th>
+                    <th>Email</th>
+                    <th>Inscription</th>
+                    <th>Actions</th>
+                </tr>
+                {% for team in teams %}
+                    <tr data-href="{{ path('hflan_team_show', {id:team.id}) }}">
+                        <td>
+                            {{ team.name }}
+                        </td>
+                        <td>
+                            {{ team.email }}
+                        </td>
+                        <td>
+                            {{ team.createdAt|countdown }}
+                        </td>
+                        <td>
+                            {% if not team.paid %}
+                                <a title="Passer en liste supperieur" href="{{ path('hflan_team_upgrade', {id:team.id}) }}">
+                                    <i class="icon-arrow-up"></i>
+                                </a>
+                                {% if team.infoLocked %}
+                                    <a title="Dévérouiller les informations" href="{{ path('hflan_team_downgrade', {id:team.id}) }}">
+                                        <i class="icon-arrow-down"></i>
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <table class="table">
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Inscription</th>
+                    {% for field in tournament.extraFields %}
+                        <th>{{ field.name }}</th>
+                    {% endfor %}
+                    <th>Actions</th>
+                </tr>
+                {% for team in teams %}
+                    {% set player = team.players[0] %}
+                    <tr data-href="{{ path('hflan_team_show', {id:team.id}) }}">
+                        <td>
+                            {{ player.nickname }}
+                            {% if player.minor %}
+                                <span class="minor-sign">-18</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ team.email }}
+                            {% if player.email != team.email and player.email is not empty %}
+                                {{ player.email }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ team.createdAt|countdown }}
+                        </td>
+                        {% for field in player.extraFields %}
+                            <td>
+                                {{ field }}
+                            </td>
+                        {% endfor %}
+                        <td>
+                            {% if not team.paid %}
+                                <a title="Passer en liste supperieur" href="{{ path('hflan_team_upgrade', {id:team.id}) }}">
+                                    <i class="icon-arrow-up"></i>
+                                </a>
+                                {% if team.infoLocked %}
+                                    <a title="Dévérouiller les informations" href="{{ path('hflan_team_downgrade', {id:team.id}) }}">
+                                        <i class="icon-arrow-down"></i>
+                                    </a>
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    {% endif %}
+{% endmacro %}

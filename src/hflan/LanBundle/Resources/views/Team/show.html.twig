@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">
+        {{ team.name }}
+        <small>
+            {% if team.paid %}
+                Liste définitive
+            {% elseif not team.infoLocked %}
+                Pré-inscrite
+            {% else %}
+                En attente de paiment
+            {% endif %}
+            <hr>
+            <i class="icon-envelope"></i>
+            {{ team.email }}
+            <hr>
+            <i class="icon-edit"></i>
+            {{ team.createdAt|countdown }}
+        </small>
+    </h1>
+
+    {% if not team.paid %}
+        <a class="btn" href="{{ path('hflan_team_upgrade', {id:team.id}) }}">
+            <i class="icon-arrow-up"></i>
+            Passer en liste supperieur
+        </a>
+        {% if team.infoLocked %}
+            <a class="btn" href="{{ path('hflan_team_downgrade', {id:team.id}) }}">
+                <i class="icon-arrow-down"></i>
+                Dévérouiller les informations
+            </a>
+        {% endif %}
+    {% endif %}
+
+    </section><section>
+
+    <h2>Liste des joueurs</h2>
+
+    <table class="table">
+        <tr>
+            <th>Pseudo</th>
+            <th>Nom</th>
+            <th>Email</th>
+            {% for field in team.tournament.extraFields %}
+                <th>{{ field.name }}</th>
+            {% endfor %}
+        </tr>
+        {% for player in team.players %}
+            <tr>
+                <td>
+                    {{ player.nickname }}
+                    {% if player.minor %}
+                        <span class="minor-sign">-18</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {{ player.firstName }}
+                    {{ player.lastName }}
+                </td>
+                <td>
+                    {{ player.email }}
+                </td>
+                {% for field in player.extraFields %}
+                    <td>
+                        {{ field }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

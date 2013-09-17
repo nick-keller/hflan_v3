@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+{% import "hflanLanBundle:Modules:teamsRenderer.html.twig" as teamsRenderer %}
+
+{% block body %}
+    <h1>
+        {{ tournament }}
+        <small>
+            {{ tournament.price }} €
+            <hr>
+            <i class="icon-user"></i>
+            {{ tournament.pricePerPlayer }} €
+            {% if tournament.numberOfPlayerPerTeam > 1 %}
+                <hr>
+                <i class="icon-group"></i>
+                {{ tournament.totalPrice }} €
+            {% endif %}
+        </small>
+    </h1>
+    <div class="panel">
+        <h2>
+            Définitives
+            <small>
+                {{ teams.paid|length }} {% if tournament.numberOfPlayerPerTeam > 1 %}équipes{% else %}joueurs{% endif %}
+                <div class="pull-right">
+                    <a href="{{ path('hflan_tournament_export', {slug:tournament.slug}) }}">
+                        <i class="icon-cloud-upload"></i> Exporter en CSV
+                    </a>
+                </div>
+            </small>
+        </h2>
+        {{ teamsRenderer.show(teams.paid) }}
+    </div>
+    <div class="panel">
+        <h2>
+            En attente de paiment
+            <small>{{ teams.locked|length }} {% if tournament.numberOfPlayerPerTeam > 1 %}équipes{% else %}joueurs{% endif %}</small>
+        </h2>
+        {{ teamsRenderer.show(teams.locked) }}
+    </div>
+    <div class="panel">
+        <h2>
+            Pré-inscrites
+            <small>{{ teams.blank|length }} {% if tournament.numberOfPlayerPerTeam > 1 %}équipes{% else %}joueurs{% endif %}</small>
+        </h2>
+        {{ teamsRenderer.show(teams.blank) }}
+    </div>
+{% endblock %}

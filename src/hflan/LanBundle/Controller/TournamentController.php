@@ -2,7 +2,9 @@
 
 namespace hflan\LanBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
 use hflan\LanBundle\Entity\Event;
+use hflan\LanBundle\Entity\Export\EventExport;
 use hflan\LanBundle\Entity\Tournament;
 use hflan\LanBundle\Form\TournamentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,6 +19,25 @@ class TournamentController extends Controller
      * @var EntityManager
      */
     private $em;
+
+    /**
+     * @Secure(roles="ROLE_RESPO")
+     * @Template
+     */
+    public function showAction(Tournament $tournament)
+    {
+        $teamRepo = $this->em->getRepository('hflanLanBundle:Team');
+        $teams = array(
+            'blank' => $teamRepo->findTeams($tournament, EventExport::LIST_BLANK),
+            'locked' => $teamRepo->findTeams($tournament, EventExport::LIST_LOCKED),
+            'paid' => $teamRepo->findTeams($tournament, EventExport::LIST_PAID),
+        );
+
+        return array(
+            'tournament' => $tournament,
+            'teams' => $teams,
+        );
+    }
 
     /**
      * @Secure(roles="ROLE_RESPO")

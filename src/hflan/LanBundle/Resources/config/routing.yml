@@ -12,6 +12,18 @@ hflan_pay_team:
     pattern:  /register/step-3
     defaults: { _controller: hflanLanBundle:Team:pay }
 
+hflan_team_show:
+    pattern:  /teams/{id}
+    defaults: { _controller: hflanLanBundle:Team:show }
+
+hflan_team_upgrade:
+    pattern:  /teams/{id}/upgrade
+    defaults: { _controller: hflanLanBundle:Team:upgrade }
+
+hflan_team_downgrade:
+    pattern:  /teams/{id}/downgrade
+    defaults: { _controller: hflanLanBundle:Team:downgrade }
+
 # Player
 
 hflan_edit_player:
@@ -37,6 +49,10 @@ hflan_event_admin:
     defaults: { _controller: hflanLanBundle:Event:index }
 
 # Admin Tournament
+
+hflan_tournament_show:
+    pattern:  /tournaments/{slug}
+    defaults: { _controller: hflanLanBundle:Tournament:show }
 
 hflan_tournament_edit:
     pattern:  /tournaments/{slug}/edit

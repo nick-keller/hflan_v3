@@ -26,11 +26,13 @@ class CsvGenerator
             'paid' => true,
         ));
 
-        $players = $this->em->getRepository('hflanLanBundle:Player')->findBy(array(
-            'team' => $teams,
-        ));
+        if(count($teams)){
+            $players = $this->em->getRepository('hflanLanBundle:Player')->findBy(array(
+                'team' => $teams,
+            ));
 
-        $csv .= $this->generatePlayers($players);
+            $csv .= $this->generatePlayers($players);
+        }
 
         return $csv;
     }
