@@ -13,6 +13,14 @@ $(function(){
     if(typeof target != 'undefined')
         $('#countdown').countdown({until: target});
 
+    // checkall
+    var check_btn = $('<div class="check-all"><i class="icon-check"></i> Tout cocher</div>');
+    check_btn.click(function(){
+        $(this).parent().find('input[type=checkbox]').attr('checked', true);
+    });
+
+    $('.staked-checkboxes').prepend(check_btn);
+
     // auto select
     $(".auto-select").focus(function() {
         var $this = $(this);
