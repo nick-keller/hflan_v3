@@ -2,6 +2,7 @@
 {% import "hflanLanBundle:Modules:teamsRenderer.html.twig" as teamsRenderer %}
 
 {% block body %}
+    <a href="{{ path('hflan_event_admin') }}">{{ tournament.event }}</a> / {{ tournament }}
     <h1>
         {{ tournament }}
         <small>
