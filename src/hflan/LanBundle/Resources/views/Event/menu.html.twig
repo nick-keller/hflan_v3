@@ -10,9 +10,15 @@
     {% endblock %}
 
     {% block register %}
-        <p>
-            Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
-        </p>
+        {% if not app.user %}
+            <p>
+                Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
+            </p>
+            <a href="{{ path('hflan_register') }}" class="btn btn-large">
+                <i class="icon-edit"></i>
+                S'inscrir !
+            </a>
+        {% endif %}
     {% endblock %}
 
 {% endembed %}
