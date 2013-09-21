@@ -23,7 +23,13 @@
         {% else %}
             {% if event.registrationCloseAt < date('now') %}
                 {% block registrationClosed %}
+<<<<<<< HEAD
                     <p>Les inscriptions sont fermés.</p>
+=======
+                    {% if not app.user %}
+                        <p>Les inscriptions sont fermés.</p>
+                    {% endif %}
+>>>>>>> origin/bundle/lan
                 {% endblock %}
 
             {% else %}
