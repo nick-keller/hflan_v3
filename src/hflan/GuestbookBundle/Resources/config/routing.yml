@@ -1,0 +1,5 @@
+hflan_guestbook:
+    pattern:  /{page}
+    defaults: { _controller: hflanGuestbookBundle:Public:index, page: 1 }
+    requirements:
+        page: \d+

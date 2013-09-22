@@ -145,8 +145,6 @@
         box-shadow: 0 0 1px white inset, 0 1px 1px rgba(0,0,0,.3);
         text-decoration: none;
     }
-<<<<<<< HEAD
-=======
 
     &.btn-large{
         display: block;
@@ -155,7 +153,6 @@
         line-height: 30px;
         height: 32px;
     }
->>>>>>> origin/bundle/lan
 }
 
 textarea,
@@ -196,6 +193,7 @@ textarea{
     min-height: 62px;
     line-height: 20px;
     padding: 10px;
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
 }
 
 .radio-bar{
@@ -281,6 +279,36 @@ textarea{
             + .toggle-content{
                 display: block;
             }
+        }
+    }
+}
+
+.rating-widget{
+    display: inline-block;
+
+    label{
+        color: @green;
+        line-height: @input-height;
+        font-size: @input-height;
+        cursor: pointer;
+        padding: 0 2px;
+    }
+
+    input{
+        display: none;
+
+        &:checked ~ label{
+            color: #ccc;
+        }
+    }
+
+    &:hover{
+        label{
+            color: lighten(@green, 5%) !important;
+        }
+
+        label:hover ~ label{
+            color: #ccc !important;
         }
     }
 }

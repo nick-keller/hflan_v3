@@ -7,6 +7,7 @@ class TxtFormat extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('stripHTML', array($this, 'stripHtml')),
+            new \Twig_SimpleFilter('nl2br', array($this, 'nl2br')),
         );
     }
 
@@ -18,6 +19,16 @@ class TxtFormat extends \Twig_Extension
             $txt = substr($txt, 0, strpos($txt, ' ', $length)).'...';
 
         return $txt;
+    }
+
+    public function nl2br($txt)
+    {
+        $txt = str_replace("<", '&lt;', trim($txt));
+        $txt = str_replace("\r", '', $txt);
+        $txt = preg_replace('#\n{2,}#', '</p><p>', $txt);
+        $txt = str_replace("\n", '<br>', $txt);
+
+        return "<p>$txt</p>";
     }
 
     public function getName()

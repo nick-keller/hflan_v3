@@ -21,3 +21,7 @@ hflan_blog:
     resource: "@hflanBlogBundle/Resources/config/routing.yml"
     prefix:   /blog
 
+hflan_guestbook:
+    resource: "@hflanGuestbookBundle/Resources/config/routing.yml"
+    prefix:   /guestbook
+

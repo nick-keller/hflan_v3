@@ -100,7 +100,7 @@
                 {{ form_errors(form.date) }}
                 {{ form_errors(form.time) }}
                 {{ form_widget(form.date) }}
-                {% if show_time %}
+                {% if show_time|default(true) %}
                     à {{ form_widget(form.time) }}
                 {% endif %}
             </div>
@@ -120,3 +120,16 @@
         {% endif %}
     {% endspaceless %}
 {% endblock time_widget %}
+
+{% block rating_widget %}
+    {% spaceless %}
+        <div {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                <label for="{{ child.vars.id }}">
+                    <i class="icon-star"></i>
+                </label>
+                {{ form_widget(child) }}
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{% endblock rating_widget %}

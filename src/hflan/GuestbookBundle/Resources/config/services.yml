@@ -1,0 +1,8 @@
+parameters:
+#    hflan_guestbook.example.class: hflan\GuestbookBundle\Example
+
+services:
+    form.type.rating:
+        class: hflan\GuestbookBundle\Form\Type\RatingType
+        tags:
+            - { name: form.type, alias: rating }

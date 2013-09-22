@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <h1 class="header">Guestbook</h1>
+
+    {% for feedback in pagination %}
+        {{ feedback.message|nl2br|raw }}
+        {{ feedback.nickname }}
+        <hr>
+    {% endfor %}
+
+    {{ knp_pagination_render(pagination) }}
+    </section><section>
+    <h1>Donnez votre avis</h1>
+    <form method="post" class="form-hz" novalidate>
+        {{ form_widget(form) }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn">
+                <i class="icon-ok"></i> Ajouter !
+            </button>
+        </div>
+    </form>
+{% endblock %}
