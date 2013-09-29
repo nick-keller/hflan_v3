@@ -1,0 +1,25 @@
+hflan_partner_admin:
+    pattern:  /admin
+    defaults: { _controller: hflanPartnerBundle:Admin:index }
+
+hflan_partner_new:
+    pattern:  /admin/new
+    defaults: { _controller: hflanPartnerBundle:Admin:new }
+
+hflan_partner_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: hflanPartnerBundle:Admin:edit }
+    requirements:
+        id: \d+
+
+hflan_partner_up:
+    pattern:  /admin/{id}/up
+    defaults: { _controller: hflanPartnerBundle:Admin:move, dir: -1 }
+    requirements:
+        id: \d+
+
+hflan_partner_down:
+    pattern:  /admin/{id}/down
+    defaults: { _controller: hflanPartnerBundle:Admin:move, dir: 1 }
+    requirements:
+        id: \d+

@@ -1,3 +1,13 @@
+hflan_guestbook_admin:
+    pattern:  /admin/{page}
+    defaults: { _controller: hflanGuestbookBundle:Admin:index, page: 1 }
+    requirements:
+        page: \d+
+
+hflan_guestbook_remove:
+    pattern:  /admin/{id}/remove
+    defaults: { _controller: hflanGuestbookBundle:Admin:remove }
+
 hflan_guestbook:
     pattern:  /{page}
     defaults: { _controller: hflanGuestbookBundle:Public:index, page: 1 }

@@ -5,7 +5,10 @@
 
     {% for feedback in pagination %}
         {{ feedback.message|nl2br|raw }}
-        {{ feedback.nickname }}
+        <div class="note">
+            Par <b>{{ feedback.nickname }}</b>
+            le {{ feedback.createdAt|simpleDate }}
+        </div>
         <hr>
     {% endfor %}
 

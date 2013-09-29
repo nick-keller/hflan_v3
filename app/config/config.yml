@@ -87,9 +87,10 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
-            timestampable : true
+            timestampable: true
             blameable: true
             uploadable: true
+            sortable: true
 
 ivory_ck_editor:
     default_config: main
@@ -117,11 +118,11 @@ ivory_ck_editor:
 jms_di_extra:
     automatic_controller_injections:
         properties:
-            request: "@request"
-            em: "@doctrine.orm.entity_manager"
+            request: @request
+            em: @doctrine.orm.entity_manager
             um: @fos_user.user_manager
-            paginator: "@knp_paginator"
-            uploadableManager: "@stof_doctrine_extensions.uploadable.manager"
+            paginator: @knp_paginator
+            uploadableManager: @stof_doctrine_extensions.uploadable.manager
             mailer: @mailer
             session: @session
 

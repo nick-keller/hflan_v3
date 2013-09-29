@@ -25,3 +25,15 @@ hflan_guestbook:
     resource: "@hflanGuestbookBundle/Resources/config/routing.yml"
     prefix:   /guestbook
 
+hflan_partner:
+    resource: "@hflanPartnerBundle/Resources/config/routing.yml"
+    prefix:   /partner
+
+hflan_users:
+    resource: "@hflanUserBundle/Resources/config/routing.yml"
+    prefix:   /users
+
+hflan_home:
+    pattern:  /
+    defaults: { _controller: hflanBlogBundle:Public:home }
+

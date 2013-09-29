@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="carousel">
+        <div class="nav-prev"></div>
+        <div class="nav-next"></div>
+
+        {% for article in articles %}
+            <article
+                    {% if loop.first %}class="current"{% elseif loop.last %}class="prev"{% elseif loop.index == 2 %}class="next"{% endif %}
+                    style="background-image: url({{ asset(article.webPath) }})">
+                <div class="preview">
+                    {{ article.content|stripHTML(200) }}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

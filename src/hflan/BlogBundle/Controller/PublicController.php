@@ -23,6 +23,19 @@ class PublicController extends Controller
     /**
      * @Template
      */
+    public function homeAction()
+    {
+        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
+        $pagination = $this->paginator->paginate($articles, 1, 5);
+
+        return array(
+            'articles' => $pagination,
+        );
+    }
+
+    /**
+     * @Template
+     */
     public function indexAction($page)
     {
         $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();

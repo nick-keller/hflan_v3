@@ -10,11 +10,9 @@
     {% endblock %}
 
     {% block register %}
-<<<<<<< HEAD
         <p>
             Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
         </p>
-=======
         {% if not app.user %}
             <p>
                 Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
@@ -24,7 +22,10 @@
                 S'inscrir !
             </a>
         {% endif %}
->>>>>>> origin/bundle/lan
     {% endblock %}
 
 {% endembed %}
+
+{% if event %}
+    <hr>
+{% endif %}

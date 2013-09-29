@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">
+        Guestbook
+        <small>Admin</small>
+    </h1>
+
+    <table class="table">
+        <tr>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Note</th>
+            <th>Action</th>
+        </tr>
+
+        {% for feedback in pagination %}
+            <tr>
+                <td>{{ feedback.message|stripHTML(70) }}</td>
+                <td>{{ feedback.createdAt|simpleDate }}</td>
+                <td>{{ feedback.rating }}</td>
+                <td>
+                    <a href="{{ path('hflan_guestbook_remove', {id: feedback.id}) }}">
+                        <i class="icon-remove"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

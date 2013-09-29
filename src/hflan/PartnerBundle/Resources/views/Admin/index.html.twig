@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <h1 class="header">Partenaires</h1>
+
+    <a class="btn" href="{{ path('hflan_partner_new') }}">
+        <i class="icon-plus"></i>
+        Nouveau
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Message</th>
+            <th>Site</th>
+            <th>Ordre</th>
+        </tr>
+        {% for partner in partners %}
+            <tr data-href="{{ path('hflan_partner_edit', {id:partner.id}) }}">
+                <td>{{ partner.name }}</td>
+                <td>{{ partner.text|stripHTML(40) }}</td>
+                <td>{{ partner.url|maxLength(20) }}</td>
+                <td>
+                    <a href="{{ path('hflan_partner_up', {id:partner.id}) }}" data-sortable="up">
+                        <i class="icon-arrow-up"></i>
+                    </a>
+                    <a href="{{ path('hflan_partner_down', {id:partner.id}) }}" data-sortable="down">
+                        <i class="icon-arrow-down"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+        <i class="icon-lightbulb"></i> Double-cliquez pour éditer.<br>
+    </p>
+{% endblock %}

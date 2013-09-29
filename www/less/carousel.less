@@ -1,0 +1,82 @@
+@import "mixins.less";
+
+.carousel{
+    @nav-size: 10%;
+
+    position: relative;
+    padding-bottom: 100% / 16 * 9;
+    background: rgba(0,0,0,.2);
+    overflow: hidden;
+
+    .nav-prev, .nav-next{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: @nav-size;
+        z-index: 100;
+    }
+
+    .nav-prev{
+        left: 0;
+
+        &:hover{
+            ~ .prev{
+                left: @nav-size - 100%;
+            }
+            ~ .current{
+                left: @nav-size;
+            }
+        }
+    }
+
+    .nav-next{
+        right: 0;
+
+        &:hover{
+            ~ .next{
+                left: 100% - @nav-size;
+            }
+            ~ .current{
+                left: -@nav-size;
+            }
+        }
+    }
+
+    article{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        display: none;
+        z-index: 70;
+        background-size: cover;
+        background-position: center;
+        .transition(all .5s);
+
+        &.current{
+            display: block;
+            left: 0;
+            z-index: 80;
+        }
+
+        &.next{
+            display: block;
+            left: 100%;
+        }
+
+        &.prev{
+            display: block;
+            left: -100%;
+        }
+
+        .preview{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.6);
+            color: white;
+            padding: 20px;
+        }
+    }
+}

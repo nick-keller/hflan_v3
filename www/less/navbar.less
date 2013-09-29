@@ -53,16 +53,36 @@ header{
 
         li{
             display: inline-block;
+            position: relative;
 
             a{
                 color: #C0BBAA;
                 text-shadow: 0 -1px #272727;
                 text-decoration: none;
-                margin-left: 15px;
+                margin: 0 7px;
                 display: block;
                 padding: 5px 7px;
 
                 &:hover{
+                    color: @green;
+                }
+            }
+
+            &.active{
+                &:before{
+                    @arrow-size: 5px;
+
+                    content: "";
+                    position: absolute;
+                    border: solid @arrow-size transparent;
+                    border-top: none;
+                    border-bottom-color: #f5f5f5;
+                    left: 50%;
+                    bottom: -5px;
+                    margin-left: -@arrow-size / 2;
+                }
+
+                a{
                     color: @green;
                 }
             }

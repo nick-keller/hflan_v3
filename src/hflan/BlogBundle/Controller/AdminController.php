@@ -4,6 +4,7 @@ namespace hflan\BlogBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Paginator;
+use Stof\DoctrineExtensionsBundle\Uploadable\UploadableManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use hflan\BlogBundle\Entity\Article;
@@ -24,6 +25,9 @@ class AdminController extends Controller
      */
     private $paginator;
 
+    /**
+     * @var UploadableManager
+     */
     private $uploadableManager;
 
     /**

@@ -9,8 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Doctrine\ORM\EntityManager;
 use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\HttpFoundation\Session\Session;
 
-class PublicController extends Controller
+class AdminController extends Controller
 {
     /**
      * @var EntityManager
@@ -23,32 +25,34 @@ class PublicController extends Controller
     private $paginator;
 
     /**
+     * @var  Session
+     */
+    private $session;
+
+    /**
+     * @Secure(roles="ROLE_GUESTBOOK")
      * @Template
      */
     public function indexAction(Request $request, $page)
     {
-        $feedback = new Feedback;
-        $form = $this->createForm(new FeedbackType, $feedback);
-
-        if('POST' == $request->getMethod()){
-            $form->handleRequest($request);
-
-            if($form->isValid()){
-                $this->em->persist($feedback);
-                $this->em->flush();
-
-                return $this->redirect($this->generateUrl('hflan_guestbook'));
-            }
-        }
-
-        // --------------
-
         $feedbacks = $this->em->getRepository('hflanGuestbookBundle:Feedback')->queryAll();
-        $pagination = $this->paginator->paginate($feedbacks, $page, 10);
+        $pagination = $this->paginator->paginate($feedbacks, $page, 15);
 
         return array(
-            'form' => $form->createView(),
             'pagination' => $pagination,
         );
+    }
+
+    /**
+     * @Secure(roles="ROLE_GUESTBOOK")
+     */
+    public function removeAction(Request $request, Feedback $feedback)
+    {
+        $this->em->remove($feedback);
+        $this->em->flush();
+        $this->session->getFlashBag()->add('success',
+        'Commentaire supprimé.');
+
+        return $this->redirect($this->generateUrl('hflan_guestbook_admin'));
     }
 }

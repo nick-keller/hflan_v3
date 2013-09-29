@@ -11,10 +11,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="hf_player")
  * @ORM\Entity(repositoryClass="hflan\LanBundle\Entity\PlayerRepository")
- * @UniqueEntity(
- *      fields="email",
- *      message="Un joueur possède déjà cette adresse."
- * )
  */
 class Player
 {

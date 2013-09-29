@@ -19,6 +19,8 @@
                 'less/dropdown.less'
                 'less/process.less'
                 'less/flash.less'
+                'less/partners.less'
+                'less/carousel.less'
                 '@hflanBlogBundle/Resources/public/less/blog.less'
                 '@hflanLanBundle/Resources/public/less/countdown.less'
                 '@hflanLanBundle/Resources/public/less/register.less'
@@ -59,11 +61,20 @@
                                                 Dashboard
                                             </a>
                                         </li>
+                                        <li class="divider"></li>
                                         {% if is_granted('ROLE_NEWSER') %}
                                             <li>
                                                 <a href="{{ path('hflan_blog_admin') }}">
                                                     <i class="icon-file-text"></i>
                                                     Articles
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_GUESTBOOK') %}
+                                            <li>
+                                                <a href="{{ path('hflan_guestbook_admin') }}">
+                                                    <i class="icon-star-half-full"></i>
+                                                    Guestbook
                                                 </a>
                                             </li>
                                         {% endif %}
@@ -75,6 +86,14 @@
                                                 </a>
                                             </li>
                                         {% endif %}
+                                        {% if is_granted('ROLE_PARTNER') %}
+                                            <li>
+                                                <a href="{{ path('hflan_partner_admin') }}">
+                                                    <i class="icon-briefcase "></i>
+                                                    Partenaires
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     {% else %}
                                         <li>
                                             <a href="{{ path('hflan_edit_team') }}">
@@ -83,6 +102,7 @@
                                             </a>
                                         </li>
                                     {% endif %}
+                                    <li class="divider"></li>
                                     <li>
                                         <a href="{{ path('fos_user_security_logout') }}">
                                             <i class="icon-off"></i>
@@ -99,13 +119,21 @@
                         {% endif %}
                     </div>
                 </div>
+
+                {% macro current(route) %}
+                    {% if route in app.request.get('_route') %}
+                        class="active"
+                    {% endif %}
+                {% endmacro %}
+                {% import _self as helper %}
+
                 <ul class="nav">
-                    <li>
-                        <a href="#">
+                    <li {{ helper.current('hflan_home') }}>
+                        <a href="{{ path('hflan_home') }}">
                             <i class="icon-home"></i>
                         </a>
                     </li>
-                    <li>
+                    <li {{ helper.current('hflan_blog') }}>
                         <a href="{{ path('hflan_blog') }}">
                             Blog
                         </a>
@@ -115,7 +143,7 @@
                             Informations
                         </a>
                     </li>
-                    <li>
+                    <li {{ helper.current('hflan_photos') }}>
                         <a href="{{ path('hflan_photos') }}">
                             Photos
                         </a>
@@ -125,13 +153,8 @@
                             Live
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            Partenaires
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
+                    <li {{ helper.current('hflan_guestbook') }}>
+                        <a href="{{ path('hflan_guestbook') }}">
                             Guestbook
                         </a>
                     </li>
@@ -160,7 +183,6 @@
                 <div class="side-bar">
                     <aside>
                         {{ render(controller("hflanLanBundle:Event:menu")) }}
-                        <hr>
                         <h3 class="facebook-title">Suivez nous !</h3>
                         <div class="facebook-container">
                             <div class="fb-like-box"
@@ -172,6 +194,7 @@
                                  data-show-border="false">
                              </div>
                         </div>
+                        {{ render(controller("hflanPartnerBundle:Public:menu")) }}
                     </aside>
                 </div>
             </div>
@@ -192,6 +215,8 @@
                 'js/jquery.countdown.min.js'
                 'js/lightbox-2.6.min.js'
                 'js/form.js'
+                'js/carousel.js'
+                'js/sortable.js'
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

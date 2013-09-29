@@ -1,0 +1,7 @@
+parameters:
+#    hflan_partner.example.class: hflan\PartnerBundle\Example
+
+services:
+#    hflan_partner.example:
+#        class: %hflan_partner.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
