@@ -50,8 +50,7 @@ class AdminController extends Controller
     {
         $this->em->remove($feedback);
         $this->em->flush();
-        $this->session->getFlashBag()->add('success',
-        'Commentaire supprimé.');
+        $this->session->getFlashBag()->add('success', 'Commentaire supprimé.');
 
         return $this->redirect($this->generateUrl('hflan_guestbook_admin'));
     }

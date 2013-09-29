@@ -66,7 +66,7 @@
                                             <li>
                                                 <a href="{{ path('hflan_blog_admin') }}">
                                                     <i class="icon-file-text"></i>
-                                                    Articles
+                                                    Blog
                                                 </a>
                                             </li>
                                         {% endif %}
@@ -78,6 +78,14 @@
                                                 </a>
                                             </li>
                                         {% endif %}
+                                        {% if is_granted('ROLE_PARTNER') %}
+                                            <li>
+                                                <a href="{{ path('hflan_partner_admin') }}">
+                                                    <i class="icon-briefcase "></i>
+                                                    Partenaires
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                         {% if is_granted('ROLE_RESPO') %}
                                             <li>
                                                 <a href="{{ path('hflan_event_admin') }}">
@@ -86,11 +94,11 @@
                                                 </a>
                                             </li>
                                         {% endif %}
-                                        {% if is_granted('ROLE_PARTNER') %}
+                                        {% if is_granted('ROLE_USER_MANAGER') %}
                                             <li>
-                                                <a href="{{ path('hflan_partner_admin') }}">
-                                                    <i class="icon-briefcase "></i>
-                                                    Partenaires
+                                                <a href="{{ path('hflan_users_admin') }}">
+                                                    <i class="icon-group"></i>
+                                                    Utilisateurs
                                                 </a>
                                             </li>
                                         {% endif %}

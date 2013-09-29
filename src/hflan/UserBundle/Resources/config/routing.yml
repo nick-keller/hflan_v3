@@ -1,3 +1,11 @@
 hflan_users_admin:
     pattern:  /admin
     defaults: { _controller: hflanUserBundle:Admin:index }
+
+hflan_users_new:
+    pattern:  /admin/new
+    defaults: { _controller: hflanUserBundle:Admin:new }
+
+hflan_users_edit:
+    pattern:  /admin/{id}/edit
+    defaults: { _controller: hflanUserBundle:Admin:edit }

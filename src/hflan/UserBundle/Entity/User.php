@@ -5,6 +5,7 @@ namespace hflan\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use hflan\LanBundle\Entity\Team;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -22,6 +23,26 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     */
+    protected $username;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    protected $email;
+
+    /**
+     * Plain password. Used for model validation. Must not be persisted.
+     *
+     * @var string
+     */
+    protected $plainPassword;
 
     /**
      * @var  Team

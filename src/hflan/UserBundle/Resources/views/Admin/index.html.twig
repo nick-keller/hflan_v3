@@ -1,5 +1,76 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>Gestion des utilisateurs</h1>
+    <h1 class="header">Gestion des utilisateurs</h1>
+
+    <a href="{{ path('hflan_users_new') }}" class="btn">
+        <i class="icon-plus"></i>
+        Nouveau
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Dernière connextion</th>
+            <th>Droits</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+            <tr data-href="{{ path('hflan_users_edit', {id:user.id}) }}">
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.lastLogin|countdown }}</td>
+                <td>
+                    <ul class="icons-ul">
+                        {% if 'ROLE_ADMIN' in user.roles %}
+                            <li>
+                                <i class="icon-li icon-ok"></i>Admin
+                            </li>
+                        {% else %}
+                            {% if 'ROLE_GUESTBOOK' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Guestbook
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_NEWSER' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Blog
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_PARTNER' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Partenaires
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_USER_MANAGER' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Utilisateurs
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_RESPO' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Tournois
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_REMOVE' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Suppression
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </td>
+                <td>
+                    <a>
+                        <i class="icon-remove"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+        <i class="icon-lightbulb"></i> Double-cliquez pour éditer.<br>
+    </p>
 {% endblock %}

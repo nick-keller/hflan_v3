@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Editer l'utilisateur</h1>
+
+    <form method="post" class="form-hz" {{ form_enctype(form) }} novalidate>
+        {{ form_widget(form) }}
+        <div class="form-actions">
+            <button type="submit" class="btn">
+                <i class="icon-ok"></i> Enregistrer
+            </button>
+            <a href="{{ path('hflan_users_admin') }}" class="btn">
+                <i class="icon-reply"></i> Annuler
+            </a>
+        </div>
+    </form>
+
+    <p>
+        <i class="icon-lightbulb"></i> Vous devez être Admin pour attribuer un droit marqué d'un *
+    </p>
+{% endblock %}

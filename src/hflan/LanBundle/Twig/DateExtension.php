@@ -24,8 +24,10 @@ class DateExtension extends \Twig_Extension
         );
     }
 
-    public function countdown(\DateTime $date)
+    public function countdown(\DateTime $date = null)
     {
+        if($date == null) return '';
+
         $now = new \DateTime();
         $nowMidnight = new \DateTime();
         $dateMidnight = new \DateTime($date->format("Y-m-d\TH:i:sP"));
