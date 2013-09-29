@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 use FOS\UserBundle\Doctrine\UserManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -105,5 +106,19 @@ class AdminController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_USER_MANAGER')")
+     * @Template
+     */
+    public function removeAction(User $user)
+    {
+        if($user->hasRole('ROLE_ADMIN'))
+            $this->session->getFlashBag()->add('error', 'Vous ne pouvez pas supprimer un admin.');
+        else
+            $this->um->deleteUser($user);
+
+        return $this->redirect($this->generateUrl('hflan_users_admin'));
     }
 }

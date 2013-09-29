@@ -126,6 +126,9 @@ jms_di_extra:
             mailer: @mailer
             session: @session
 
+jms_security_extra:
+    expressions: true
+
 knp_paginator:
     page_range: 5
     default_options:

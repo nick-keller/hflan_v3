@@ -10,8 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use hflan\BlogBundle\Entity\Article;
 use hflan\BlogBundle\Form\ArticleType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 use Symfony\Component\HttpFoundation\Request;
-use JMS\DiExtraBundle\Annotation as DI;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends Controller
 {
@@ -29,6 +30,11 @@ class AdminController extends Controller
      * @var UploadableManager
      */
     private $uploadableManager;
+
+    /**
+     * @var  Session
+     */
+    private $session;
 
     /**
      * @Secure(roles="ROLE_NEWSER")
@@ -93,5 +99,18 @@ class AdminController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_NEWSER')")
+     * @Template
+     */
+    public function removeAction(Article $article)
+    {
+        $this->em->remove($article);
+        $this->em->flush();
+        $this->session->getFlashBag()->add('success', 'Article supprimé.');
+
+        return $this->redirect($this->generateUrl('hflan_blog_admin'));
     }
 }

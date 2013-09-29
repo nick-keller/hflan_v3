@@ -12,6 +12,7 @@ use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Session\Session;
+use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 
 class AdminController extends Controller
 {
@@ -97,6 +98,18 @@ class AdminController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_PARTNER')")
+     * @Template
+     */
+    public function removeAction(Partner $partner)
+    {
+        $this->em->remove($partner);
+        $this->em->flush();
+
+        return $this->redirect($this->generateUrl('hflan_partner_admin'));
     }
 
     /**

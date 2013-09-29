@@ -12,6 +12,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class TournamentController extends Controller
 {
@@ -19,6 +21,11 @@ class TournamentController extends Controller
      * @var EntityManager
      */
     private $em;
+
+    /**
+     * @var  Session
+     */
+    private $session;
 
     /**
      * @Secure(roles="ROLE_RESPO")
@@ -70,6 +77,11 @@ class TournamentController extends Controller
      */
     public function editAction(Request $request, Tournament $tournament)
     {
+        if(count($tournament->getPlayers())){
+            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer ce tournoi, des joueurs sont déjà inscrits.');
+            return $this->redirect($this->generateUrl('hflan_event_admin'));
+        }
+
         $form = $this->createForm(new TournamentType, $tournament);
 
         if('POST' == $request->getMethod()){
@@ -86,6 +98,22 @@ class TournamentController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_RESPO')")
+     * @Template
+     */
+    public function removeAction(Tournament $tournament)
+    {
+        if(count($tournament->getPlayers()))
+            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus supprimer ce tournoi, des joueurs sont déjà inscrits.');
+        else{
+            $this->em->remove($tournament);
+            $this->em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('hflan_event_admin'));
     }
 
     public function exportAction(Tournament $tournament)

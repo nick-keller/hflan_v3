@@ -44,6 +44,10 @@ hflan_event_edit:
     pattern:  /{slug}/edit
     defaults: { _controller: hflanLanBundle:Event:edit }
 
+hflan_event_remove:
+    pattern:  /{slug}/remove
+    defaults: { _controller: hflanLanBundle:Event:remove }
+
 hflan_event_admin:
     pattern:  /events
     defaults: { _controller: hflanLanBundle:Event:index }
@@ -57,6 +61,10 @@ hflan_tournament_show:
 hflan_tournament_edit:
     pattern:  /tournaments/{slug}/edit
     defaults: { _controller: hflanLanBundle:Tournament:edit }
+
+hflan_tournament_remove:
+    pattern:  /tournaments/{slug}/remove
+    defaults: { _controller: hflanLanBundle:Tournament:remove }
 
 hflan_tournament_export:
     pattern:  /tournaments/{slug}/export

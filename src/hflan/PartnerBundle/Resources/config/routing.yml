@@ -12,6 +12,12 @@ hflan_partner_edit:
     requirements:
         id: \d+
 
+hflan_partner_remove:
+    pattern:  /admin/{id}/remove
+    defaults: { _controller: hflanPartnerBundle:Admin:remove }
+    requirements:
+        id: \d+
+
 hflan_partner_up:
     pattern:  /admin/{id}/up
     defaults: { _controller: hflanPartnerBundle:Admin:move, dir: -1 }

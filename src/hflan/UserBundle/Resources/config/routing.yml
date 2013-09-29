@@ -9,3 +9,7 @@ hflan_users_new:
 hflan_users_edit:
     pattern:  /admin/{id}/edit
     defaults: { _controller: hflanUserBundle:Admin:edit }
+
+hflan_users_remove:
+    pattern:  /admin/{id}/remove
+    defaults: { _controller: hflanUserBundle:Admin:remove }

@@ -29,6 +29,9 @@
                         <a href="{{ path('hflan_event_edit', {slug: event.slug}) }}">
                             <i class="icon-pencil"></i>
                         </a>
+                        <a href="{{ path('hflan_event_remove', {slug: event.slug}) }}">
+                            <i class="icon-remove"></i>
+                        </a>
                     </div>
                 </small>
             </h2>
@@ -81,6 +84,9 @@
                                 </a>
                                 <a href="{{ path('hflan_tournament_export', {slug:tournament.slug}) }}" title="Exporter en csv">
                                     <i class="icon-cloud-upload"></i>
+                                </a>
+                                <a href="{{ path('hflan_tournament_remove', {slug:tournament.slug}) }}">
+                                    <i class="icon-remove"></i>
                                 </a>
                             </td>
                         </tr>

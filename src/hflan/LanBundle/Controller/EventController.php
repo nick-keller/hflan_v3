@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class EventController extends Controller
 {
@@ -18,6 +20,11 @@ class EventController extends Controller
      * @var EntityManager
      */
     private $em;
+
+    /**
+     * @var  Session
+     */
+    private $session;
 
     /**
      * @Secure(roles="ROLE_RESPO")
@@ -64,6 +71,11 @@ class EventController extends Controller
      */
     public function editAction(Request $request, Event $event)
     {
+        if(count($event->getPlayers())){
+            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer cet évènement, des joueurs sont déjà inscrits.');
+            return $this->redirect($this->generateUrl('hflan_event_admin'));
+        }
+
         $form = $this->createForm(new EventType, $event);
 
         if('POST' == $request->getMethod()){
@@ -80,6 +92,22 @@ class EventController extends Controller
         return array(
             'form' => $form->createView(),
         );
+    }
+
+    /**
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_RESPO')")
+     * @Template
+     */
+    public function removeAction(Event $event)
+    {
+        if(count($event->getPlayers()))
+            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus supprimer cet évènement, des joueurs sont déjà inscrits.');
+        else{
+            $this->em->remove($event);
+            $this->em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('hflan_event_admin'));
     }
 
     /**

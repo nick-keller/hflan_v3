@@ -14,6 +14,10 @@ hflan_blog_edit:
     pattern:  /admin/edit/{slug}
     defaults: { _controller: hflanBlogBundle:Admin:edit }
 
+hflan_blog_remove:
+    pattern:  /admin/remove/{slug}
+    defaults: { _controller: hflanBlogBundle:Admin:remove }
+
 # Public
 
 hflan_blog:
