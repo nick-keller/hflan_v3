@@ -33,6 +33,10 @@ hflan_users:
     resource: "@hflanUserBundle/Resources/config/routing.yml"
     prefix:   /users
 
+hflan_stream:
+    resource: "@hflanStreamBundle/Resources/config/routing.yml"
+    prefix:   /stream
+
 hflan_home:
     pattern:  /
     defaults: { _controller: hflanBlogBundle:Public:home }

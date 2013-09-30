@@ -1,0 +1,3 @@
+hflan_stream_admin:
+    pattern:  /admin
+    defaults: { _controller: hflanStreamBundle:Admin:index }

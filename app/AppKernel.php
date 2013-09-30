@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new hflan\PhotosBundle\hflanPhotosBundle(),
             new hflan\GuestbookBundle\hflanGuestbookBundle(),
             new hflan\PartnerBundle\hflanPartnerBundle(),
+            new hflan\StreamBundle\hflanStreamBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

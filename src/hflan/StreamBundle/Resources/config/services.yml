@@ -1,0 +1,7 @@
+parameters:
+#    hflan_stream.example.class: hflan\StreamBundle\Example
+
+services:
+#    hflan_stream.example:
+#        class: %hflan_stream.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

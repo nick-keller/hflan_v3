@@ -25,12 +25,17 @@
                     <ul class="icons-ul">
                         {% if 'ROLE_ADMIN' in user.roles %}
                             <li>
-                                <i class="icon-li icon-ok"></i>Admin
+                                <i class="icon-li icon-asterisk"></i>Admin
                             </li>
                         {% else %}
                             {% if 'ROLE_GUESTBOOK' in user.roles %}
                                 <li>
                                     <i class="icon-li icon-ok"></i>Guestbook
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_STREAM' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Stream
                                 </li>
                             {% endif %}
                             {% if 'ROLE_NEWSER' in user.roles %}
@@ -55,7 +60,7 @@
                             {% endif %}
                             {% if 'ROLE_REMOVE' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Suppression
+                                    <i class="icon-li icon-asterisk"></i>Suppression
                                 </li>
                             {% endif %}
                         {% endif %}

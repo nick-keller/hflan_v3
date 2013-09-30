@@ -5,7 +5,7 @@
 
     position: relative;
     padding-bottom: 100% / 16 * 9;
-    background: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.7);
     overflow: hidden;
 
     .nav-prev, .nav-next{
@@ -14,6 +14,7 @@
         bottom: 0;
         width: @nav-size;
         z-index: 100;
+        cursor: pointer;
     }
 
     .nav-prev{
@@ -22,6 +23,9 @@
         &:hover{
             ~ .prev{
                 left: @nav-size - 100%;
+            }
+            ~ .next{
+                left: 100% - @nav-size;
             }
             ~ .current{
                 left: @nav-size;
@@ -33,6 +37,9 @@
         right: 0;
 
         &:hover{
+            ~ .prev{
+                left: @nav-size - 100%;
+            }
             ~ .next{
                 left: 100% - @nav-size;
             }
@@ -51,12 +58,13 @@
         z-index: 70;
         background-size: cover;
         background-position: center;
-        .transition(all .5s);
+        .transition(left 1s);
 
         &.current{
             display: block;
             left: 0;
             z-index: 80;
+            box-shadow: 0 0 40px black, 0 0 20px black;
         }
 
         &.next{
@@ -77,6 +85,10 @@
             background: rgba(0,0,0,.6);
             color: white;
             padding: 20px;
+
+            h3{
+                color: white;
+            }
         }
     }
 }
