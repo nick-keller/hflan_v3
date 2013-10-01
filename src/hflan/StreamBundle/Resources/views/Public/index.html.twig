@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">
+        Liste des streams
+    </h1>
+
+    {% for stream in streams %}
+        <a class="next-step valid" href="{{ path('hflan_stream_show', {id:stream.id}) }}">
+            {{ stream.name }}
+        </a>
+    {% endfor %}
+{% endblock %}

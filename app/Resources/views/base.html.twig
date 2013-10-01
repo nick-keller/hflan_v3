@@ -37,6 +37,9 @@
             <div class="green-bar"></div>
             <div class="main-container">
                 <div class="user-bar">
+                    <a href="{{ path('hflan_home') }}" class="hflan-logo-link"></a>
+                    <div class="hflan-logo"></div>
+                    <div class="lens-flare"></div>
                     <div class="user-info">
                         {% if app.user %}
                             {% if app.user.team is not null %}
@@ -83,6 +86,14 @@
                                                 <a href="{{ path('hflan_partner_admin') }}">
                                                     <i class="icon-briefcase "></i>
                                                     Partenaires
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_STREAM') %}
+                                            <li>
+                                                <a href="{{ path('hflan_stream_admin') }}">
+                                                    <i class="icon-youtube-play"></i>
+                                                    Stream
                                                 </a>
                                             </li>
                                         {% endif %}
@@ -156,8 +167,8 @@
                             Photos
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li {{ helper.current('hflan_stream') }}>
+                        <a href="{{ path('hflan_stream') }}">
                             Live
                         </a>
                     </li>

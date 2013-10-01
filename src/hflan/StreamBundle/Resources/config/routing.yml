@@ -1,3 +1,23 @@
 hflan_stream_admin:
     pattern:  /admin
     defaults: { _controller: hflanStreamBundle:Admin:index }
+
+hflan_stream_new:
+    pattern:  /admin/new
+    defaults: { _controller: hflanStreamBundle:Admin:new }
+
+hflan_stream_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: hflanStreamBundle:Admin:edit }
+    requirements:
+        id: \d+
+
+hflan_stream_show:
+    pattern:  /{id}
+    defaults: { _controller: hflanStreamBundle:Public:show }
+    requirements:
+        id: \d+
+
+hflan_stream:
+    pattern:  /
+    defaults: { _controller: hflanStreamBundle:Public:index }

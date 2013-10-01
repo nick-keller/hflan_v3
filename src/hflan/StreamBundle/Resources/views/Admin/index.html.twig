@@ -1,5 +1,34 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    hello
+    <h1 class="header">
+        Gestion des streams
+    </h1>
+    <a class="btn" href="{{ path('hflan_stream_new') }}">
+        <i class="icon-plus"></i>
+        Nouveau
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Url</th>
+            <th>Action</th>
+        </tr>
+        {% for stream in streams %}
+            <tr data-href="{{ path('hflan_stream_edit', {id:stream.id}) }}">
+                <td>{{ stream.name }}</td>
+                <td>
+                    <a href="{{ path('hflan_stream_show', {id:stream.id}) }}">
+                        {{ url('hflan_stream_show', {id:stream.id}) }}
+                    </a>
+                </td>
+                <td>
+                    <a>
+                        <i class="icon-remove"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

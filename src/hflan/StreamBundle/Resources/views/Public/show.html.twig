@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <a href="{{ path('hflan_stream') }}" class="btn pull-right">
+        <i class="icon-reply"></i>
+        Retour
+    </a>
+
+    <h1 class="header">
+        {{ stream.name }}
+    </h1>
+    {{ stream.html|raw }}
+{% endblock %}
