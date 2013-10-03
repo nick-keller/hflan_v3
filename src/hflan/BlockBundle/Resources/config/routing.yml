@@ -1,0 +1,11 @@
+hflan_block_admin:
+    pattern:  /admin
+    defaults: { _controller: hflanBlockBundle:Admin:index }
+
+hflan_block_new:
+    pattern:  /admin/new
+    defaults: { _controller: hflanBlockBundle:Admin:new }
+
+hflan_block_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: hflanBlockBundle:Admin:edit }

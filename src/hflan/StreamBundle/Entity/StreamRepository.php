@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class StreamRepository extends EntityRepository
 {
+    public function count()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->select('COUNT(s)');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

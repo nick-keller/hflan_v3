@@ -12,6 +12,12 @@ hflan_stream_edit:
     requirements:
         id: \d+
 
+hflan_stream_remove:
+    pattern:  /{id}/remove
+    defaults: { _controller: hflanStreamBundle:Admin:remove }
+    requirements:
+        id: \d+
+
 hflan_stream_show:
     pattern:  /{id}
     defaults: { _controller: hflanStreamBundle:Public:show }

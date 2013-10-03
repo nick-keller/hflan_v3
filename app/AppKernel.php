@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new hflan\GuestbookBundle\hflanGuestbookBundle(),
             new hflan\PartnerBundle\hflanPartnerBundle(),
             new hflan\StreamBundle\hflanStreamBundle(),
+            new hflan\BlockBundle\hflanBlockBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

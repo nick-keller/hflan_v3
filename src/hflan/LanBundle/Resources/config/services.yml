@@ -21,6 +21,13 @@ services:
         tags:
             - { name: twig.extension }
 
+    hflan.twig.hflan_event:
+        class: hflan\LanBundle\Twig\EventExtension
+        arguments:
+            - @doctrine.orm.entity_manager
+        tags:
+            - { name: twig.extension }
+
     hflan.team_manager:
         class: hflan\LanBundle\Services\TeamManager
         arguments:

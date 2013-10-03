@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">
+        Gestion des blocks
+    </h1>
+
+    <a href="{{ path('hflan_block_new') }}" class="btn">
+        <i class="icon-plus"></i>
+        Nouveau
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Texte</th>
+        </tr>
+        {% for block in blocks %}
+            <tr data-href="{{ path('hflan_block_edit', {id:block.id}) }}">
+                <td>{{ block.slug }}</td>
+                <td>{{ block.text|stripHTML(100) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

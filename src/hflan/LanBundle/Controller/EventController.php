@@ -71,10 +71,10 @@ class EventController extends Controller
      */
     public function editAction(Request $request, Event $event)
     {
-        if(count($event->getPlayers())){
-            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer cet évènement, des joueurs sont déjà inscrits.');
-            return $this->redirect($this->generateUrl('hflan_event_admin'));
-        }
+//        if(count($event->getPlayers())){
+//            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer cet évènement, des joueurs sont déjà inscrits.');
+//            return $this->redirect($this->generateUrl('hflan_event_admin'));
+//        }
 
         $form = $this->createForm(new EventType, $event);
 
@@ -115,10 +115,7 @@ class EventController extends Controller
      */
     public function menuAction()
     {
-        $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
-        return array(
-            'event' => $nextEvent,
-        );
+        return array();
     }
 
     /**

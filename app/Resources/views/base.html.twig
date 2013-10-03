@@ -167,16 +167,25 @@
                             Photos
                         </a>
                     </li>
-                    <li {{ helper.current('hflan_stream') }}>
-                        <a href="{{ path('hflan_stream') }}">
-                            Live
-                        </a>
-                    </li>
+                    {% if countStreams() %}
+                        <li {{ helper.current('hflan_stream') }}>
+                            <a href="{{ path('hflan_stream') }}">
+                                Live
+                            </a>
+                        </li>
+                    {% endif %}
                     <li {{ helper.current('hflan_guestbook') }}>
                         <a href="{{ path('hflan_guestbook') }}">
                             Guestbook
                         </a>
                     </li>
+                    {% if not app.user and nextEvent() is not null %}
+                        <li {{ helper.current('hflan_register') }}>
+                            <a href="{{ path('hflan_register') }}">
+                                Inscriptions
+                            </a>
+                        </li>
+                    {% endif %}
                     <li>
                         <a href="#">
                             Contact

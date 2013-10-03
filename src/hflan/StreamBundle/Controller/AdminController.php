@@ -78,4 +78,16 @@ class AdminController extends Controller
             'form' => $form->createView(),
         );
     }
+
+    /**
+     * @Secure(roles="ROLE_STREAM")
+     * @Template
+     */
+    public function removeAction(Request $request, Stream $stream)
+    {
+        $this->em->remove($stream);
+        $this->em->flush();
+
+        return $this->redirect($this->generateUrl('hflan_stream_admin'));
+    }
 }

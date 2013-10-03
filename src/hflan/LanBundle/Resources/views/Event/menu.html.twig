@@ -1,3 +1,4 @@
+{% set event = nextEvent() %}
 {% embed 'hflanLanBundle:Modules:nextEventState.html.twig' %}
 
     {% block eventVisible %}
@@ -10,10 +11,11 @@
     {% endblock %}
 
     {% block register %}
+        {% if app.user %}
         <p>
             Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
         </p>
-        {% if not app.user %}
+        {% else %}
             <p>
                 Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
             </p>
