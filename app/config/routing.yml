@@ -41,6 +41,10 @@ hflan_block:
     resource: "@hflanBlockBundle/Resources/config/routing.yml"
     prefix:   /block
 
+hflan_page:
+    resource: "@hflanPageBundle/Resources/config/routing.yml"
+    prefix:   /
+
 hflan_home:
     pattern:  /
     defaults: { _controller: hflanBlogBundle:Public:home }

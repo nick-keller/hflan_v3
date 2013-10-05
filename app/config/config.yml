@@ -99,7 +99,7 @@ ivory_ck_editor:
             toolbar: "toolbar_basic"
     toolbars:
         configs:
-            toolbar_basic: [ "@clipboard", "@editing" , "/", "@basicstyles", "@paragraph" , "/", '@styles', '@tools' ]
+            toolbar_basic: [ "@clipboard", "@editing" , "/", "@basicstyles", "@links", "@paragraph" , "/", '@styles', '@tools' ]
         items:
             document : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ]
             clipboard : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ]

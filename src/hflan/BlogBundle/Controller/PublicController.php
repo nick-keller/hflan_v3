@@ -39,7 +39,7 @@ class PublicController extends Controller
     public function indexAction($page)
     {
         $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
-        $pagination = $this->paginator->paginate($articles, $page, 3);
+        $pagination = $this->paginator->paginate($articles, $page, 7);
 
         return array(
             'pagination' => $pagination,

@@ -81,6 +81,14 @@
                                                 </a>
                                             </li>
                                         {% endif %}
+                                        {% if is_granted('ROLE_BLOCK') %}
+                                            <li>
+                                                <a href="{{ path('hflan_block_admin') }}">
+                                                    <i class="icon-edit "></i>
+                                                    Pages
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                         {% if is_granted('ROLE_PARTNER') %}
                                             <li>
                                                 <a href="{{ path('hflan_partner_admin') }}">
@@ -186,8 +194,8 @@
                             </a>
                         </li>
                     {% endif %}
-                    <li>
-                        <a href="#">
+                    <li {{ helper.current('hflan_contact') }}>
+                        <a href="{{ path('hflan_contact') }}">
                             Contact
                         </a>
                     </li>

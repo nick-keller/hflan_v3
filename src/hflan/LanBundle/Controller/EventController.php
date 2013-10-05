@@ -71,10 +71,10 @@ class EventController extends Controller
      */
     public function editAction(Request $request, Event $event)
     {
-//        if(count($event->getPlayers())){
-//            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer cet évènement, des joueurs sont déjà inscrits.');
-//            return $this->redirect($this->generateUrl('hflan_event_admin'));
-//        }
+        if(count($event->getPlayers())){
+            $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer cet évènement, des joueurs sont déjà inscrits.');
+            return $this->redirect($this->generateUrl('hflan_event_admin'));
+        }
 
         $form = $this->createForm(new EventType, $event);
 
@@ -136,7 +136,7 @@ class EventController extends Controller
                 $teams = $this->em->getRepository('hflanLanBundle:Team')->filter($export);
                 $emails = $this->em->getRepository('hflanLanBundle:Player')->emails($teams);
                 $count = count($emails);
-                $emails = implode(';', $emails);
+                $emails = preg_replace('#;+#', ';', implode(';', $emails));
             }
         }
 

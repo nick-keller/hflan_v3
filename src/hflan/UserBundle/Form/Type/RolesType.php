@@ -12,6 +12,7 @@ class RolesType extends AbstractType
             'choices' => array(
                 'ROLE_GUESTBOOK' => 'Supprimer des messages du guestbook',
                 'ROLE_STREAM' => 'Ajouter, modifier et supprimer des stream',
+                'ROLE_BLOCK' => 'Modifier les pages du site',
                 'ROLE_NEWSER' => 'Ajouter et modifier des articles',
                 'ROLE_PARTNER' => 'Ajouter et modifier des partenaires',
                 'ROLE_USER_MANAGER' => 'Ajouter et modifier des utilisateurs',

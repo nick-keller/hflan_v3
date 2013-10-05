@@ -38,6 +38,11 @@
                                     <i class="icon-li icon-ok"></i>Stream
                                 </li>
                             {% endif %}
+                            {% if 'ROLE_BLOCK' in user.roles %}
+                                <li>
+                                    <i class="icon-li icon-ok"></i>Pages
+                                </li>
+                            {% endif %}
                             {% if 'ROLE_NEWSER' in user.roles %}
                                 <li>
                                     <i class="icon-li icon-ok"></i>Blog

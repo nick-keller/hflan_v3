@@ -1,0 +1,3 @@
+hflan_contact:
+    pattern:  /contact
+    defaults: { _controller: hflanPageBundle:Public:contact }
