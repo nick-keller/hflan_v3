@@ -24,6 +24,12 @@
             & > aside{
                 padding: 15px;
                 margin: 20px 0;
+
+                hr{
+                    box-shadow: none;
+                    border-bottom: solid 1px #999;
+                    margin: 30px 5px;
+                }
             }
         }
     }
@@ -65,4 +71,21 @@
     background: #f5f5f5;
     box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,0.9) inset;
     .border-radius-bottom(4px);
+}
+
+.guestbook-showroom{
+    .note{
+        clear: both;
+    }
+
+    i.icon-quote-left{
+        margin-top: -10px;
+        margin-bottom: -2px;
+        color: #888;
+        text-shadow: 0 1px white;
+
+        + p{
+            margin-top: 25px;
+        }
+    }
 }

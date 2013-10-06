@@ -1,0 +1,20 @@
+<h3>Guestbook</h3>
+
+<div class="guestbook-showroom">
+    <i class="icon-quote-left icon-3x pull-left"></i>
+    {{ feedback.message|nl2br|raw }}
+    <div class="note">
+        Par <b>{{ feedback.nickname }}</b>
+        le {{ feedback.createdAt|simpleDate }}
+        <div class="star-rating">
+            {% for i in range(0,4) %}
+                {% if i < feedback.rating %}
+                    <i class="icon-star"></i>
+                {% else %}
+                    <i class="icon-star-empty"></i>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<hr>

@@ -16,4 +16,18 @@ class FeedbackRepository extends EntityRepository
     {
         return $this->createQueryBuilder('f')->orderBy('f.createdAt', 'DESC');
     }
+
+    public function findRandomOne()
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->setMaxResults(1)
+            ->setFirstResult(mt_rand(0, $this->count()-1));
+
+        return $qb->getQuery()->getSingleResult();
+    }
+
+    public function count()
+    {
+        return $this->createQueryBuilder('f')->select('COUNT(f)')->getQuery()->getSingleScalarResult();
+    }
 }

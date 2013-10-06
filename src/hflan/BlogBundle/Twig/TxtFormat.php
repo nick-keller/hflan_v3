@@ -6,8 +6,8 @@ class TxtFormat extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('stripHTML', array($this, 'stripHtml')),
-            new \Twig_SimpleFilter('nl2br', array($this, 'nl2br')),
+            new \Twig_SimpleFilter('stripHTML', array($this, 'stripHtml'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFilter('nl2br', array($this, 'nl2br'), array('is_safe' => array('html'))),
             new \Twig_SimpleFilter('maxLength', array($this, 'maxLength')),
         );
     }

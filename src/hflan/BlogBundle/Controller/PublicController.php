@@ -28,8 +28,11 @@ class PublicController extends Controller
         $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
         $pagination = $this->paginator->paginate($articles, 1, 5);
 
+        $fbArticles = $this->get('hflan.facebook_api')->call('hf.lan.esiee?fields=feed.limit(10).fields(message,picture,type,link,from,actions,full_picture)');
+
         return array(
             'articles' => $pagination,
+            'fbArticles' => $fbArticles,
         );
     }
 

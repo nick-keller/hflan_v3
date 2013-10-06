@@ -3,6 +3,7 @@ namespace hflan\BlockBundle\Twig;
 
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Templating\EngineInterface;
 
 class BlockExtension extends \Twig_Extension
 {
@@ -11,21 +12,34 @@ class BlockExtension extends \Twig_Extension
      */
     private $em;
 
-    function __construct(EntityManager $em)
+    /**
+     * @var EngineInterface
+     */
+    protected $templating;
+
+    protected $container;
+
+    function __construct(EntityManager $em, $container)
     {
         $this->em = $em;
+        $this->container = $container;
     }
 
     public function getFunctions()
     {
         return array(
-            'renderBlock' => new \Twig_Function_Method($this, 'renderBlock'),
+            'renderBlock' => new \Twig_Function_Method($this, 'renderBlock', array('is_safe' => array('html'))),
         );
     }
 
-    public function renderBlock($block)
+    public function renderBlock($slug)
     {
-        return $this->em->getRepository('hflanBlockBundle:Block')->findOneBySlug($block)->getText();
+        $this->templating = $this->container->get('templating');
+        $block = $this->em->getRepository('hflanBlockBundle:Block')->findOneBySlug($slug);
+
+        return $this->templating->render('hflanBlockBundle:Public:block.html.twig', array(
+            'block' => $block,
+        ));
     }
 
     public function getName()

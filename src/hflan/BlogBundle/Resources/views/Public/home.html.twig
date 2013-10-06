@@ -11,11 +11,13 @@
                     style="background-image: url({{ asset(article.webPath) }})">
                 <div class="preview">
                     <h3>{{ article.title }}</h3>
-                    {{ article.content|stripHTML(200)|raw }}
+                    {{ article.content|stripHTML(200) }}
                 </div>
             </article>
         {% endfor %}
     </div>
+
+    {{ renderBlock('welcome') }}
 
     <hr>
 
@@ -36,18 +38,16 @@
                             <h3>
                                 <a href="{{ path('hflan_blog_show', {slug:article.slug}) }}">{{ article.title }}</a>
                             </h3>
-                            {{ article.content|stripHTML(150)|raw }}
+                            {{ article.content|stripHTML(150) }}
                         </div>
                     </div>
                 </article>
                 <hr>
             {% endfor %}
-        </div>
-
-        <div class="col6">
-            <h1 class="header">
-                Sur Facebook
-            </h1>
+            <a href="{{ path('hflan_blog') }}" class="btn">
+                <i class="icon-share-alt"></i>
+                Voir tous les articles
+            </a>
         </div>
     </div>
 {% endblock %}

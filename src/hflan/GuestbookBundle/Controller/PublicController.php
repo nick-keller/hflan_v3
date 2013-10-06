@@ -51,4 +51,16 @@ class PublicController extends Controller
             'pagination' => $pagination,
         );
     }
+
+    /**
+     * @Template
+     */
+    public function menuAction()
+    {
+        $feedback = $this->em->getRepository('hflanGuestbookBundle:Feedback')->findRandomOne();
+
+        return array(
+            'feedback' => $feedback,
+        );
+    }
 }

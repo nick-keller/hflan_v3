@@ -15,8 +15,12 @@ class BlockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slug')
-            ->add('text', 'ckeditor')
+            ->add('slug', 'text', array(
+                'label' => 'Identifiant'
+            ))
+            ->add('text', 'ckeditor', array(
+                'label' => 'Contenu'
+            ))
         ;
     }
     

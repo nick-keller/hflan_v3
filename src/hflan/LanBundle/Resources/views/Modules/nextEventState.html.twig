@@ -23,13 +23,9 @@
         {% else %}
             {% if event.registrationCloseAt < date('now') %}
                 {% block registrationClosed %}
-<<<<<<< HEAD
-                    <p>Les inscriptions sont fermés.</p>
-=======
                     {% if not app.user %}
                         <p>Les inscriptions sont fermés.</p>
                     {% endif %}
->>>>>>> origin/bundle/lan
                 {% endblock %}
 
             {% else %}
@@ -39,7 +35,7 @@
 
     {% else %}
         {% block registrationDateHidden %}
-            <p>La date des inscriptions n'est pas encore fixée. Les inscriptions débutent généralement un mois avant le début d'une lan.</p>
+            {{ renderBlock('registration_date_hidden') }}
         {% endblock %}
     {% endif %}
 {% else %}
