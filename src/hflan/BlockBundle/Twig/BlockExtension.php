@@ -4,6 +4,7 @@ namespace hflan\BlockBundle\Twig;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Templating\EngineInterface;
+use Symfony\Component\Translation\Translator;
 
 class BlockExtension extends \Twig_Extension
 {
@@ -17,11 +18,18 @@ class BlockExtension extends \Twig_Extension
      */
     protected $templating;
 
+    /** @var  Translator */
+    private $translator;
+
+    private $locale;
+
     protected $container;
 
-    function __construct(EntityManager $em, $container)
+    function __construct(EntityManager $em, Translator $translator, $container)
     {
         $this->em = $em;
+        $this->translator = $translator;
+        $this->locale = $this->translator->getLocale();
         $this->container = $container;
     }
 
@@ -39,6 +47,7 @@ class BlockExtension extends \Twig_Extension
 
         return $this->templating->render('hflanBlockBundle:Public:block.html.twig', array(
             'block' => $block,
+            'html' => $this->locale == 'en' ? $block->getTextEn() : $block->getTextFr(),
         ));
     }
 

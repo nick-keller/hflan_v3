@@ -18,8 +18,11 @@ class BlockType extends AbstractType
             ->add('slug', 'text', array(
                 'label' => 'Identifiant'
             ))
-            ->add('text', 'ckeditor', array(
-                'label' => 'Contenu'
+            ->add('textFr', 'ckeditor', array(
+                'label' => 'Français'
+            ))
+            ->add('textEn', 'ckeditor', array(
+                'label' => 'Anglais'
             ))
         ;
     }

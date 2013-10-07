@@ -12,8 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
-    public function queryAll()
+    public function queryAll($locale = null, $publicOnly = false)
     {
-        return $this->createQueryBuilder('a')->orderBy('a.createdAt', 'DESC');
+        $qb = $this->createQueryBuilder('a')->orderBy('a.createdAt', 'DESC');
+
+        if($locale !== null) $qb->where('a.lang = :lang')->setParameter('lang', $locale);
+
+        if($publicOnly) $qb->andWhere('a.published = true');
+
+        return $qb;
     }
 }

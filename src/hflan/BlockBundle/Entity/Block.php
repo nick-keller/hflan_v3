@@ -3,12 +3,14 @@
 namespace hflan\BlockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Block
  *
  * @ORM\Table(name="hf_block")
  * @ORM\Entity(repositoryClass="hflan\BlockBundle\Entity\BlockRepository")
+ * @UniqueEntity("slug")
  */
 class Block
 {
@@ -24,16 +26,23 @@ class Block
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text")
+     * @ORM\Column(name="text_fr", type="text")
      */
-    private $text;
+    private $textFr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text_en", type="text")
+     */
+    private $textEn;
 
 
     /**
@@ -70,25 +79,48 @@ class Block
     }
 
     /**
-     * Set text
+     * Set text fr
      *
      * @param string $text
      * @return Block
      */
-    public function setText($text)
+    public function setTextFr($text)
     {
-        $this->text = $text;
+        $this->textFr = $text;
     
         return $this;
     }
 
     /**
-     * Get text
+     * Get text fr
      *
      * @return string 
      */
-    public function getText()
+    public function getTextFr()
     {
-        return $this->text;
+        return $this->textFr;
+    }
+
+    /**
+     * Set text en
+     *
+     * @param string $text
+     * @return Block
+     */
+    public function setTextEn($text)
+    {
+        $this->textEn = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text fr
+     *
+     * @return string
+     */
+    public function getTextEn()
+    {
+        return $this->textEn;
     }
 }

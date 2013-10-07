@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $blocks = $this->em->getRepository('hflanBlockBundle:Block')->findAll();
+        $blocks = $this->em->getRepository('hflanBlockBundle:Block')->findBy(array(), array('slug' => 'ASC'));
 
         return array(
             'blocks' => $blocks,

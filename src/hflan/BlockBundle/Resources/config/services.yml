@@ -5,6 +5,7 @@ services:
         class: hflan\BlockBundle\Twig\BlockExtension
         arguments:
             - @doctrine.orm.entity_manager
+            - @translator
             - @service_container
         tags:
             - { name: twig.extension }

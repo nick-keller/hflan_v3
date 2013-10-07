@@ -25,7 +25,7 @@ class PublicController extends Controller
      */
     public function homeAction()
     {
-        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
+        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll($this->get('translator')->getLocale(), true);
         $pagination = $this->paginator->paginate($articles, 1, 5);
 
         $fbArticles = $this->get('hflan.facebook_api')->call('hf.lan.esiee?fields=feed.limit(10).fields(message,picture,type,link,from,actions,full_picture)');
@@ -41,7 +41,7 @@ class PublicController extends Controller
      */
     public function indexAction($page)
     {
-        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll();
+        $articles = $this->em->getRepository('hflanBlogBundle:Article')->queryAll($this->get('translator')->getLocale(), true);
         $pagination = $this->paginator->paginate($articles, $page, 7);
 
         return array(
