@@ -27,7 +27,7 @@
                     </div>
                 </label>
                 <div class="toggle-content" style="margin-top: 10px;color: #7c7c7c">
-                    L'entré comprend la consomation illimité de boissons, deux repas gratuits, le pret de table, la connexion internet et l'instalation électrique pour les deux jours.
+                    {{ renderBlock('order_entrance')|stripHTML }}
                 </div>
             </td>
             <td>
@@ -51,7 +51,7 @@
                     </div>
                 </label>
                 <div class="toggle-content" style="margin-top: 10px;color: #7c7c7c">
-                    La participation au tournois est intégrallement placé dans le prize-pool de {{ tournament.prizePool }} € à partager entre les vainceurs.
+                    {{ renderBlock('order_tournament')|stripHTML }}
                 </div>
             </td>
             <td>

@@ -24,6 +24,14 @@ class DateExtension extends \Twig_Extension
         );
     }
 
+    public function getFunctions()
+    {
+        return array(
+            'weekend' => new \Twig_Function_Method($this, 'weekend'),
+            'dateRange' => new \Twig_Function_Method($this, 'dateRange'),
+        );
+    }
+
     public function countdown(\DateTime $date = null)
     {
         if($date == null) return '';
@@ -83,6 +91,42 @@ class DateExtension extends \Twig_Extension
             return $date->format('m'.$separator.'d'.$separator.'Y');
 
         return $date->format('d'.$separator.'m'.$separator.'Y');
+    }
+
+    public function weekend(\DateTime $from, \DateTime $to)
+    {
+        if($from->format('m') == $to->format('m')){
+            return $this->trans("date.weekend.sameMonth", array(
+                '%from%'=>$from->format('d'),
+                '%to%'=>$to->format('d'),
+                '%month%'=>$this->trans('date.month.'.$from->format('m')),
+            ));
+        }
+
+        return $this->trans("date.weekend.differentMonth", array(
+            '%from%'=>$from->format('d'),
+            '%to%'=>$to->format('d'),
+            '%fromMonth%'=>$this->trans('date.month.'.$from->format('m')),
+            '%toMonth%'=>$this->trans('date.month.'.$to->format('m')),
+        ));
+    }
+
+    public function dateRange(\DateTime $from, \DateTime $to)
+    {
+        if($from->format('m') == $to->format('m')){
+            return $this->trans("date.range.sameMonth", array(
+                '%from%'=>$from->format('d'),
+                '%to%'=>$to->format('d'),
+                '%month%'=>$this->trans('date.month.'.$from->format('m')),
+            ));
+        }
+
+        return $this->trans("date.range.differentMonth", array(
+            '%from%'=>$from->format('d'),
+            '%to%'=>$to->format('d'),
+            '%fromMonth%'=>$this->trans('date.month.'.$from->format('m')),
+            '%toMonth%'=>$this->trans('date.month.'.$to->format('m')),
+        ));
     }
     
     protected function trans($key, array $params = array())

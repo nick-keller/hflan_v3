@@ -42,11 +42,12 @@ class TeamController extends Controller
      * @Secure(roles="IS_AUTHENTICATED_ANONYMOUSLY")
      * @Template
      */
-    public function registerAction(Request $request)
+    public function registerAction(Request $request, Tournament $tournament = null)
     {
         if($this->getUser()) return $this->redirect($this->generateUrl('hflan_edit_team'));
 
         $team = new Team;
+        if($tournament !== null) $team->setTournament($tournament);
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
         $form = $this->createForm(new TeamType($nextEvent), $team);
 

@@ -21,6 +21,7 @@
                 'less/flash.less'
                 'less/partners.less'
                 'less/carousel.less'
+                'less/tabs.less'
                 '@hflanBlogBundle/Resources/public/less/blog.less'
                 '@hflanLanBundle/Resources/public/less/countdown.less'
                 '@hflanLanBundle/Resources/public/less/register.less'
@@ -59,7 +60,7 @@
                                 <ul class="dropdown-menu">
                                     {% if is_granted('ROLE_STAFF') %}
                                         <li>
-                                            <a>
+                                            <a href="{{ path('hflan_dashboard') }}">
                                                 <i class="icon-dashboard"></i>
                                                 Dashboard
                                             </a>
@@ -165,8 +166,8 @@
                             Blog
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li {{ helper.current('hflan_info') }}>
+                        <a href="{{ path('hflan_info') }}">
                             Informations
                         </a>
                     </li>
@@ -254,6 +255,7 @@
                 'js/form.js'
                 'js/carousel.js'
                 'js/sortable.js'
+                'js/tabs.js'
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

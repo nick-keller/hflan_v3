@@ -22,9 +22,7 @@
             {% endfor %}
         </div>
         <div class="col6">
-            <p>
-                Avant de pouvoir acheter vos places vous devez finir de remplir toutes les informations relatives aux joueurs.
-            </p>
+            {{ renderBlock('register_instruction') }}
             <a {% if team.valid %}href="{{ path('hflan_pay_team') }}" {% endif %}class="next-step{% if team.valid %} valid{% endif %}">
                 <i class="icon-lock"></i>
                 <i class="icon-unlock-alt"></i>

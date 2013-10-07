@@ -5,7 +5,7 @@
 
         {% block eventHidden %}
             <h1 class="header">Inscriptions</h1>
-            <p>Aucune LAN n'est prévu pour le moment.</p>
+            {{ renderBlock('no_event') }}
         {% endblock %}
 
         {% block registrationDateHidden %}

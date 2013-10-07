@@ -1,0 +1,139 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="tabs">
+        <a href="#tournaments" class="tab">
+            Tournois
+        </a>
+        <a href="#extras" class="tab">
+            Extras
+        </a>
+        <a href="#prices" class="tab">
+            Tarifs
+        </a>
+        <a href="#access" class="tab">
+            Accès
+        </a>
+    </div>
+
+    <div class="tab-content">
+        <div id="tournaments" class="tab-container">
+            {% if nextEvent() %}
+                {% set event = nextEvent() %}
+                <h1 class="header">
+                    {{ event }}
+                </h1>
+
+                <p>
+                    La {{ event }} aura lieu à ESIEE Paris <b>{{ weekend(event.beginAt, event.endAt) }}</b>.
+                    Les inscriptions sont ouvertes <b>{{ dateRange(event.registrationOpenAt, event.registrationCloseAt) }}</b>.
+                </p>
+
+                <h1 class="header">
+                    Tournois
+                </h1>
+
+                <table class="table">
+                    <tr>
+                        <th>Jeu</th>
+                        <th>Type de matchs</th>
+                        <th>Equipes</th>
+                        <th>Prize-pool</th>
+                        <th>Inscription</th>
+                    </tr>
+                    {% for tournament in event.tournaments %}
+                        <tr>
+                            <td>{{ tournament.game }}</td>
+                            <td>{{ tournament.gameType }}</td>
+                            <td>
+                                {% if tournament.numberOfPlayerPerTeam > 1 %}
+                                    {{ tournament.numberOfTeams }} équipes de {{ tournament.numberOfPlayerPerTeam }}
+                                {% else %}
+                                    {{ tournament.numberOfTeams }} joueurs
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ tournament.prizePool }} €
+                            </td>
+                            <td>
+                                <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
+                                    <i class="icon-ok"></i>
+                                    S'inscrir !
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            {% else %}
+                <h1 class="header">
+                    Tournois
+                </h1>
+                {{ renderBlock('no_event') }}
+            {% endif %}
+        </div>
+
+        <div id="extras" class="tab-container">
+            <h1 class="header">
+                Extras
+            </h1>
+
+            {{ renderBlock('info_extras') }}
+        </div>
+
+        <div id="prices" class="tab-container">
+            <h1 class="header">
+                Tarifs
+            </h1>
+
+            {% if nextEvent() %}
+                {% set event = nextEvent() %}
+
+                {{ renderBlock('price') }}
+
+                <table class="table">
+                    <tr>
+                        <th>Jeu</th>
+                        <th>Type de matchs</th>
+                        <th>Prix</th>
+                        <th>Prize-pool</th>
+                        <th>Inscription</th>
+                    </tr>
+                    {% for tournament in event.tournaments %}
+                        <tr>
+                            <td>{{ tournament.game }}</td>
+                            <td>{{ tournament.gameType }}</td>
+                            <td>
+                                {{ tournament.pricePerPlayer }} €
+                                {% if tournament.numberOfPlayerPerTeam > 1 %}
+                                    / joueur
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ tournament.prizePool }} €
+                            </td>
+                            <td>
+                                <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
+                                    <i class="icon-ok"></i>
+                                    S'inscrir !
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            {% else %}
+                {{ renderBlock('no_event') }}
+            {% endif %}
+        </div>
+
+        <div id="access" class="tab-container">
+            <h1 class="header">
+                Accès
+            </h1>
+
+            {{ renderBlock('info_access') }}
+            <img src="{{ asset('img/map.png') }}" class="img-article">
+        </div>
+    </div>
+{% endblock %}

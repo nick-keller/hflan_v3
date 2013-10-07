@@ -46,7 +46,12 @@ $(function(){
     })
 
     $('.carousel').mouseleave(function(){
-        $(this).attr('data-paused', 'false');
-        setTimeout(autoPlay, 4000);
+        var $this = $(this);
+        setTimeout(function(){
+            if($this.attr('data-paused') == 'true'){
+                $this.attr('data-paused', 'false');
+                autoPlay();
+            }
+        }, 4000);
     })
 })

@@ -32,7 +32,7 @@ class EventController extends Controller
      */
     public function indexAction()
     {
-        $events = $this->em->getRepository('hflanLanBundle:Event')->findAll();
+        $events = $this->em->getRepository('hflanLanBundle:Event')->findBy(array(), array('id' => 'DESC'));
         $this->get('hflan.team_manager')->fetchTeamRegistrationData();
 
         return array(
@@ -111,14 +111,6 @@ class EventController extends Controller
     }
 
     /**
-     * @Template
-     */
-    public function menuAction()
-    {
-        return array();
-    }
-
-    /**
      * @Secure(roles="ROLE_RESPO")
      * @Template
      */
@@ -146,5 +138,23 @@ class EventController extends Controller
             'emails' => $emails,
             'count' => $count,
         );
+    }
+
+    /**
+     * @Template
+     */
+    public function menuAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Template
+     */
+    public function infoAction()
+    {
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+
+        return array();
     }
 }

@@ -1,0 +1,68 @@
+@import "mixins.less";
+@import "global.less";
+
+.tabs{
+    padding: 0 20px;
+    font-size: 0;
+
+    .tab{
+        font-size: 18px;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        background: #aaa;
+        color: white;
+        position: relative;
+        margin-right: 10px;
+        .border-radius-top(5px);
+
+        &:after, &:before{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            border-bottom: solid 26px #aaa;
+            z-index: 100;
+        }
+
+        &:after{
+            left: 100%;
+            border-right: solid 7px transparent;
+        }
+
+        &:before{
+            right: 100%;
+            border-left: solid 7px transparent;
+        }
+
+        &.active{
+            background: #f9f9f9;
+            text-shadow: 0 1px white;
+            color: #555;
+            z-index: 110;
+            border-top: solid 1px white;
+
+            &:after, &:before{
+                border-bottom-color: #f9f9f9;
+                z-index: 110;
+            }
+        }
+
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
+.tab-content{
+    .panel;
+
+    .tab-container{
+        display: none;
+
+        &:target, &.active{
+            display: block;
+        }
+    }
+}

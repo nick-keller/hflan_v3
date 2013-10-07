@@ -1,3 +1,7 @@
 hflan_contact:
     pattern:  /contact
     defaults: { _controller: hflanPageBundle:Public:contact }
+
+hflan_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: hflanPageBundle:Public:dashboard }

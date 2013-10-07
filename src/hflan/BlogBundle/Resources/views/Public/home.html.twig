@@ -22,23 +22,23 @@
     <hr>
 
     <div class="row row-gaped">
-        <div class="col6">
+        <div class="col12">
             <h1 class="header">
                 Derniers articles
             </h1>
             {% for article in articles %}
                 <article>
                     <div class="row row-gaped">
-                        <div class="col4">
+                        <div class="col3">
                             <a class="article-image" style="background-image: url({{ asset(article.webPath) }})" href="{{ path('hflan_blog_show', {slug:article.slug}) }}">
                                 <i class="icon-eye-open"></i>
                             </a>
                         </div>
-                        <div class="col8">
+                        <div class="col9">
                             <h3>
                                 <a href="{{ path('hflan_blog_show', {slug:article.slug}) }}">{{ article.title }}</a>
                             </h3>
-                            {{ article.content|stripHTML(150) }}
+                            {{ article.content|stripHTML(300) }}
                         </div>
                     </div>
                 </article>

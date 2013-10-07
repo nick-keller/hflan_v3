@@ -537,4 +537,9 @@ class Tournament
     {
         return $this->players;
     }
+
+    public function getFillingRatio()
+    {
+        return round(($this->paid + max(min($this->preRegistered + $this->pending, 0.85*$this->numberOfTeams-$this->paid), 0) )/$this->numberOfTeams*100);
+    }
 }
