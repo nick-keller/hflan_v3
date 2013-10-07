@@ -1,12 +1,12 @@
 <?php
 
-namespace hflan\BlogBundle\Form;
+namespace hflan\DocumentBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ArticleType extends AbstractType
+class DocumentType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,23 +15,11 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', array(
-                'label' => 'Titre',
+            ->add('name', 'text', array(
+                'label' => 'Nom',
             ))
-            ->add('content', 'ckeditor', array(
-                'label' => 'Article',
-            ))
-            ->add('published', 'toggle', array(
-                'label' => 'Visibilité',
-                'icons' => array(
-                    'active' => 'eye-open',
-                    'inactive' => 'eye-close',
-                ),
-                'labels' => array(
-                    'inactive' => 'Caché',
-                    'active' => 'Public',
-                ),
-                'required' => false,
+            ->add('text', 'ckeditor', array(
+                'label' => 'Description',
             ))
             ->add('lang', 'radiobar', array(
                 'label' => 'Langue',
@@ -41,10 +29,9 @@ class ArticleType extends AbstractType
                 )
             ))
             ->add('file', 'file', array(
-                'label' => 'Image',
+                'label' => 'Document pdf',
                 'required' => false,
-            ))
-        ;
+            ));
     }
     
     /**
@@ -53,7 +40,7 @@ class ArticleType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'hflan\BlogBundle\Entity\Article'
+            'data_class' => 'hflan\DocumentBundle\Entity\Document'
         ));
     }
 
@@ -62,6 +49,6 @@ class ArticleType extends AbstractType
      */
     public function getName()
     {
-        return 'hflan_blogbundle_article';
+        return 'hflan_documentbundle_document';
     }
 }

@@ -77,7 +77,7 @@ class TournamentController extends Controller
      */
     public function editAction(Request $request, Tournament $tournament)
     {
-        if(count($tournament->getPlayers())){
+        if(count($tournament->getPlayers()) && !$this->get('security.context')->isGranted('ROLE_ADMIN')){
             $this->session->getFlashBag()->add('error', 'Vous ne pouvez plus éditer ce tournoi, des joueurs sont déjà inscrits.');
             return $this->redirect($this->generateUrl('hflan_event_admin'));
         }

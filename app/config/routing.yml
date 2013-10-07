@@ -1,51 +1,84 @@
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /{_locale}
+    requirements:
+        _locale: en|fr
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix: /{_locale}/resetting
+    requirements:
+        _locale: en|fr
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+    prefix: /{_locale}/profile
+    requirements:
+        _locale: en|fr
 
 hflan_photos:
     resource: "@hflanPhotosBundle/Resources/config/routing.yml"
-    prefix:   /photos
+    prefix:   /{_locale}/photos
+    requirements:
+        _locale: en|fr
 
 hflan_lan:
     resource: "@hflanLanBundle/Resources/config/routing.yml"
-    prefix:   /lan
+    prefix:   /{_locale}/lan
+    requirements:
+        _locale: en|fr
 
 hflan_blog:
     resource: "@hflanBlogBundle/Resources/config/routing.yml"
-    prefix:   /blog
+    prefix:   /{_locale}/blog
+    requirements:
+        _locale: en|fr
 
 hflan_guestbook:
     resource: "@hflanGuestbookBundle/Resources/config/routing.yml"
-    prefix:   /guestbook
+    prefix:   /{_locale}/guestbook
+    requirements:
+        _locale: en|fr
 
 hflan_partner:
     resource: "@hflanPartnerBundle/Resources/config/routing.yml"
-    prefix:   /partner
+    prefix:   /{_locale}/partner
+    requirements:
+        _locale: en|fr
 
 hflan_users:
     resource: "@hflanUserBundle/Resources/config/routing.yml"
-    prefix:   /users
+    prefix:   /{_locale}/users
+    requirements:
+        _locale: en|fr
 
 hflan_stream:
     resource: "@hflanStreamBundle/Resources/config/routing.yml"
-    prefix:   /stream
+    prefix:   /{_locale}/stream
+    requirements:
+        _locale: en|fr
 
 hflan_block:
     resource: "@hflanBlockBundle/Resources/config/routing.yml"
-    prefix:   /block
+    prefix:   /{_locale}/block
+    requirements:
+        _locale: en|fr
+
+hflan_document:
+    resource: "@hflanDocumentBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/doc
+    requirements:
+        _locale: en|fr
 
 hflan_page:
     resource: "@hflanPageBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|fr
 
 hflan_home:
-    pattern:  /
-    defaults: { _controller: hflanBlogBundle:Public:home }
+    pattern:  /{_locale}
+    defaults: { _controller: hflanBlogBundle:Public:home, _locale: fr }
+    requirements:
+        _locale: en|fr
 

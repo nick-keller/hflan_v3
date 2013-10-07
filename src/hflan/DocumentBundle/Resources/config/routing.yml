@@ -1,0 +1,23 @@
+hflan_doc_admin:
+    pattern:  /admin
+    defaults: { _controller: hflanDocumentBundle:Admin:index }
+
+hflan_doc_new:
+    pattern:  /admin/new
+    defaults: { _controller: hflanDocumentBundle:Admin:new }
+
+hflan_doc_edit:
+    pattern:  /{slug}/edit
+    defaults: { _controller: hflanDocumentBundle:Admin:edit }
+
+hflan_doc_remove:
+    pattern:  /{slug}/remove
+    defaults: { _controller: hflanDocumentBundle:Admin:remove }
+
+hflan_doc_up:
+    pattern:  /admin/{slug}/up
+    defaults: { _controller: hflanDocumentBundle:Admin:move, dir: -1 }
+
+hflan_doc_down:
+    pattern:  /admin/{slug}/down
+    defaults: { _controller: hflanDocumentBundle:Admin:move, dir: 1 }

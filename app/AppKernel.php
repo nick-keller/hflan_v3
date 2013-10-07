@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new hflan\StreamBundle\hflanStreamBundle(),
             new hflan\BlockBundle\hflanBlockBundle(),
             new hflan\PageBundle\hflanPageBundle(),
+            new hflan\DocumentBundle\hflanDocumentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -38,7 +38,7 @@ class AdminController extends Controller
     public function newAction(Request $request)
     {
         $block = new Block;
-        $form = $this->createForm(new BlockType, $block);
+        $form = $this->createForm(new BlockType($this->get('security.context')), $block);
 
         if('POST' == $request->getMethod()){
             $form->handleRequest($request);
@@ -62,7 +62,7 @@ class AdminController extends Controller
      */
     public function editAction(Request $request, Block $block)
     {
-        $form = $this->createForm(new BlockType, $block);
+        $form = $this->createForm(new BlockType($this->get('security.context')), $block);
 
         if('POST' == $request->getMethod()){
             $form->handleRequest($request);

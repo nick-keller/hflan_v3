@@ -41,6 +41,10 @@
                     <a href="{{ path('hflan_home') }}" class="hflan-logo-link"></a>
                     <div class="hflan-logo"></div>
                     <div class="lens-flare"></div>
+                    <div class="switch-lang">
+                        <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}" class="flag-fr"></a>
+                        <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}" class="flag-en"></a>
+                    </div>
                     <div class="user-info">
                         {% if app.user %}
                             {% if app.user.team is not null %}
@@ -71,6 +75,14 @@
                                                 <a href="{{ path('hflan_blog_admin') }}">
                                                     <i class="icon-file-text"></i>
                                                     Blog
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_DOCUMENT') %}
+                                            <li>
+                                                <a href="{{ path('hflan_doc_admin') }}">
+                                                    <i class="icon-paper-clip"></i>
+                                                    Documents
                                                 </a>
                                             </li>
                                         {% endif %}
@@ -131,6 +143,12 @@
                                         </li>
                                     {% endif %}
                                     <li class="divider"></li>
+                                    <li>
+                                        <a href="{{ path('fos_user_change_password') }}">
+                                            <i class="icon-key"></i>
+                                            Mot de passe
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ path('fos_user_security_logout') }}">
                                             <i class="icon-off"></i>

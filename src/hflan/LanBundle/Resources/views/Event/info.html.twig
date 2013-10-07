@@ -11,6 +11,9 @@
         <a href="#prices" class="tab">
             Tarifs
         </a>
+        <a href="#rules" class="tab">
+            Règlements
+        </a>
         <a href="#access" class="tab">
             Accès
         </a>
@@ -125,6 +128,22 @@
             {% else %}
                 {{ renderBlock('no_event') }}
             {% endif %}
+        </div>
+
+        <div id="rules" class="tab-container">
+            <h1 class="header">
+                Règlements
+            </h1>
+
+            {% for document in documents %}
+                <h3>{{ document.name }}</h3>
+                {{ document.text|raw }}
+                <a class="btn">
+                    <i class="icon-download-alt"></i>
+                    Télécharger
+                </a>
+                <hr>
+            {% endfor %}
         </div>
 
         <div id="access" class="tab-container">
