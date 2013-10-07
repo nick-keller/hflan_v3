@@ -18,26 +18,26 @@ class PlayerType extends AbstractType
     {
         $builder
             ->add('firstName', 'text', array(
-                'label' => 'Prénom',
+                'label' => 'field.first_name',
             ))
             ->add('lastName', 'text', array(
-                'label' => 'Nom de famille',
+                'label' => 'field.last_name',
             ))
             ->add('nickname', 'text', array(
-                'label' => 'Pseudo',
+                'label' => 'field.nickname',
             ))
             ->add('email', 'email', array(
-                'label' => 'Email',
+                'label' => 'field.email',
             ))
             ->add('pcType', 'radiobar', array(
-                'label' => 'Ordinateur',
+                'label' => 'field.computer_type',
                 'choices' => array(
-                    Player::PC_TYPE_DESKTOP => "PC Fix",
-                    Player::PC_TYPE_LAPTOP  => "PC Portable",
+                    Player::PC_TYPE_DESKTOP => "field.computer.desktop",
+                    Player::PC_TYPE_LAPTOP  => "field.computer.laptop",
                 )
             ))
             ->add('birthday', 'birthday', array(
-                'label' => 'Date de naissance',
+                'label' => 'field.birthday',
                 'widget' => 'single_text',
                 'format' => 'dd/MM/yyyy'
             ))

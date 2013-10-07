@@ -5,7 +5,7 @@
         <div class="col6">
             {% for player in team.players %}
                 <div class="panel">
-                    {{ player.nickname|default("Joueur " ~ loop.index) }}
+                    {{ player.nickname|default("registration.default_player_name"|trans({'%n%':loop.index}, "registration")|desc("Numéro du joueur : %n%")) }}
                     {% if player.minor %}
                         <span class="minor-sign">-18</span>
                     {% endif %}
@@ -27,7 +27,7 @@
                 <i class="icon-lock"></i>
                 <i class="icon-unlock-alt"></i>
                 <p>
-                    Vérouillez mes informations et passer à l'étape 3
+                    {{ "registration.process.lock"|trans({}, "registration")|desc("Passer à l'étape 3") }}
                 </p>
             </a>
         </div>

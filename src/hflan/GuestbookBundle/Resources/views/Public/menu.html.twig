@@ -1,11 +1,12 @@
-<h3>Guestbook</h3>
+<h3>
+    {{ "guestbook.title"|trans({}, "guestbook")|desc("Titre principale de la page guestbook") }}
+</h3>
 
 <div class="guestbook-showroom">
     <i class="icon-quote-left icon-3x pull-left"></i>
     {{ feedback.message|nl2br|raw }}
     <div class="note">
-        Par <b>{{ feedback.nickname }}</b>
-        le {{ feedback.createdAt|simpleDate }}
+        {{ "guestbook.by"|trans({'%by%': feedback.nickname, '%date%': feedback.createdAt|simpleDate}, "guestbook")|desc("Pseudo : %by%, Date : %date%")|raw }}
         <div class="star-rating">
             {% for i in range(0,4) %}
                 {% if i < feedback.rating %}

@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1 class="header">Photos de la hf.lan</h1>
+    <h1 class="header">
+        {{ "photos.title"|trans({}, "photos")|desc("Titre principale de la page photos") }}
+    </h1>
     <div id="photo-albums">
         <i class="icon-spinner icon-spin icon-4x"></i>
     </div>

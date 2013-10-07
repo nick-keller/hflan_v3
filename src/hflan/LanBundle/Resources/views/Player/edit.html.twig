@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1>Editer un joueur</h1>
+    <h1>
+        {{ "registration.edit_player.title"|trans({}, "registration")|desc("Titre de la page : Editer un joueur") }}
+    </h1>
 
     <form method="post" class="form-hz" novalidate>
         {{ form_widget(form) }}
@@ -9,10 +11,12 @@
 
         <div class="form-actions">
             <button type="submit" class="btn">
-                <i class="icon-ok"></i> Enregistrer
+                <i class="icon-ok"></i>
+                {{ "action.save"|trans|desc("Bouton enregistrer") }}
             </button>
             <a href="{{ path('hflan_edit_team') }}" class="btn">
-                <i class="icon-reply"></i> Annuler
+                <i class="icon-reply"></i>
+                {{ "action.cancel"|trans|desc("Bouton annuler") }}
             </a>
         </div>
     </form>

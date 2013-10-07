@@ -7,7 +7,9 @@
     <div class="flash flash-error">{{ error|trans }}</div>
 {% endif %}
 
-<h1>Connexion</h1>
+<h1>
+    {{ "user_bar.dropdown.login"|trans({}, "menu")|desc("Lien pour se connecter") }}
+</h1>
 
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-hz">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -23,6 +25,9 @@
         <label for="password" class="control-label">{{ 'security.login.password'|trans }}</label>
         <div class="controls">
             <input type="password" id="password" name="_password" required="required" />
+            <a href="{{ path('fos_user_resetting_request') }}">
+                {{ "registration.forgot_password"|trans({}, "registration")|desc("Lien vers récupération du mot de passe") }}
+            </a>
         </div>
     </div>
 

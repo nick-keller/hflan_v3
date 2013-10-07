@@ -1,7 +1,9 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <h1 class="header">Blog</h1>
+    <h1 class="header">
+        {{ "blog.title"|trans({}, "blog")|desc("Titre principale de la page blog") }}
+    </h1>
 
     {% for article in pagination %}
         <div class="row row-gaped">

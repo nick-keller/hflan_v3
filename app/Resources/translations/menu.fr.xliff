@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2013-10-07T21:43:58Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="9b39444d8d4d52ee8371bd147a45392b465249a8" resname="menu.blog">
+        <source>menu.blog</source>
+        <target>Blog</target>
+        <jms:reference-file line="184">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d0e79d59aedcbc8682dbc71a4f59da42e8ec4559" resname="menu.contact">
+        <source>menu.contact</source>
+        <target>Contact</target>
+        <jms:reference-file line="218">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="0eec49f73b5b1a70a63d8c6078033f606a1bc4e8" resname="menu.guestbook">
+        <source>menu.guestbook</source>
+        <target>Livre d'or</target>
+        <jms:reference-file line="206">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="aa716711c5e83e5859653da5d68218fa0eb21733" resname="menu.info">
+        <source>menu.info</source>
+        <target>Informations</target>
+        <jms:reference-file line="189">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="65b3ad02714bd85d45ef37a3c16ad4904b12f43c" resname="menu.photos">
+        <source>menu.photos</source>
+        <target>Photos</target>
+        <jms:reference-file line="194">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="c54988667a0283622582847947df338754cc54e4" resname="menu.register">
+        <source>menu.register</source>
+        <target>Inscriptions</target>
+        <jms:reference-file line="212">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="817788e22f3e1e5579e1c8a24976f80c60afc1d4" resname="menu.stream">
+        <source>menu.stream</source>
+        <target>Direct</target>
+        <jms:reference-file line="200">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="33414ebaf4a72b0129e69428e2f69dc0502b44c7" resname="user_bar.dropdown.finish_registration">
+        <source>Lien pour valider l'inscription</source>
+        <target>Valider mon inscription</target>
+        <jms:reference-file line="141">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="692e3619b69e80f2d3942fadb304434d9aa3fa71" resname="user_bar.dropdown.login">
+        <source>Lien pour se connecter</source>
+        <target>Connexion</target>
+        <jms:reference-file line="163">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="98814ea292d2a2ddaab1beea6a920dcb23360a04" resname="user_bar.dropdown.logout">
+        <source>Lien pour se déconnecter</source>
+        <target>Déconnexion</target>
+        <jms:reference-file line="155">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a0bcd607ea174ed12dd88dceece254b8c1b7fe1a" resname="user_bar.dropdown.password">
+        <source>Lien pour changer de mot de passe</source>
+        <target>Mot de passe</target>
+        <jms:reference-file line="149">Resources/views/base.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

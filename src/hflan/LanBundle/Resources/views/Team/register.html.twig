@@ -4,29 +4,38 @@
     {% embed 'hflanLanBundle:Modules:nextEventState.html.twig' %}
 
         {% block eventHidden %}
-            <h1 class="header">Inscriptions</h1>
+            <h1 class="header">
+                {{ "registration.register.title"|trans({}, "registration")|desc("Titre de la page d'inscription") }}
+            </h1>
             {{ renderBlock('no_event') }}
         {% endblock %}
 
         {% block registrationDateHidden %}
-            <h1 class="header">Inscriptions</h1>
+            <h1 class="header">
+                {{ "registration.register.title"|trans({}, "registration")|desc("Titre de la page d'inscription") }}
+            </h1>
             {{ parent() }}
         {% endblock %}
 
         {% block registrationNotOpenYet %}
-            <h1 class="header">Inscriptions</h1>
+            <h1 class="header">
+                {{ "registration.register.title"|trans({}, "registration")|desc("Titre de la page d'inscription") }}
+            </h1>
             {{ parent() }}
         {% endblock %}
 
         {% block register %}
-            <h1>Inscriptions</h1>
+            <h1>
+                {{ "registration.register.title"|trans({}, "registration")|desc("Titre de la page d'inscription") }}
+            </h1>
 
             <form method="post" class="form-hz" novalidate>
                 {{ form_widget(form) }}
 
                 <div class="form-actions">
                     <button type="submit" class="btn">
-                        <i class="icon-ok"></i> Valider
+                        <i class="icon-ok"></i>
+                        {{ "action.save"|trans|desc("Bouton enregistrer") }}
                     </button>
                 </div>
             </form>

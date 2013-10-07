@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1 class="header">
-        Liste des streams
+        {{ "streams.title"|trans({}, "streams")|desc("Titre principale de la page des streams") }}
     </h1>
 
     {% for stream in streams %}

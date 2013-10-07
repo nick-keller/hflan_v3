@@ -2,7 +2,9 @@
 {% embed 'hflanLanBundle:Modules:nextEventState.html.twig' %}
 
     {% block eventVisible %}
-        <h3>Prochaine LAN</h3>
+        <h3>
+            {{ "sidebar.next_lan.title"|trans({}, "sidebar")|desc("Titre menu : Prochaine LAN") }}
+        </h3>
         <div id="countdown">
             <script type="text/javascript">
                 var target = new Date({{ event.beginAt|date('Y,m-1,j,G,i,s,u') }});
@@ -13,15 +15,15 @@
     {% block register %}
         {% if app.user %}
         <p>
-            Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
+            {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
         </p>
         {% else %}
             <p>
-                Dépéchez vous, les inscriptions ferment {{ event.registrationCloseAt|countdown }}
+                {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
             </p>
             <a href="{{ path('hflan_register') }}" class="btn btn-large">
                 <i class="icon-edit"></i>
-                S'inscrir !
+                {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
             </a>
         {% endif %}
     {% endblock %}

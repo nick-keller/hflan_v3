@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2013-10-07T21:43:58Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="c58b5ba55846f7671f7282f7178c6517d1002741" resname="guestbook.by">
+        <source>Pseudo : %by%, Date : %date%</source>
+        <target><![CDATA[Par <b>%by%</b> le %date%]]></target>
+        <jms:reference-file line="11">views/Public/index.html.twig</jms:reference-file>
+        <jms:reference-file line="9">views/Public/menu.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="620ffabf2d14929254a5e865a288dc52e81c95c3" resname="guestbook.give_your_feedback">
+        <source>Titre du formulaire</source>
+        <target>Donnez votre avis</target>
+        <jms:reference-file line="28">views/Public/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a2f97dd5e73bfebfdb0628fd2917f0da7b78be7a" resname="guestbook.send">
+        <source>Envoyer le formulaire formulaire</source>
+        <target>Ajouter !</target>
+        <jms:reference-file line="36">views/Public/index.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="3de449f2d339d4a49893be405e6ff8b5912ed725" resname="guestbook.title">
+        <source>Titre principale de la page guestbook</source>
+        <target>Livre d'or</target>
+        <jms:reference-file line="5">views/Public/index.html.twig</jms:reference-file>
+        <jms:reference-file line="2">views/Public/menu.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

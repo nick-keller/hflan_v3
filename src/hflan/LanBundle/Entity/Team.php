@@ -16,7 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="hflan\LanBundle\Entity\TeamRepository")
  * @UniqueEntity(
  *      fields={"email", "tournament"},
- *      message="Un compte avec cette adresse existe déjà, vérifiez vos emails pour plus d'informations"
+ *      message="error.same_email.account"
  * )
  */
 class Team

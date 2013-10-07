@@ -16,13 +16,13 @@ class FeedbackType extends AbstractType
     {
         $builder
             ->add('nickname', 'text', array(
-                'label' => 'Pseudo'
+                'label' => 'field.nickname'
             ))
             ->add('rating', 'rating', array(
-                'label' => 'Votre note'
+                'label' => 'field.rating'
             ))
             ->add('message', 'textarea', array(
-                'label' => 'Message'
+                'label' => 'field.message'
             ))
         ;
     }

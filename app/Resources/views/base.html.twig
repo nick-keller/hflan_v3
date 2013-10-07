@@ -138,7 +138,7 @@
                                         <li>
                                             <a href="{{ path('hflan_edit_team') }}">
                                                 <i class="icon-flag-checkered"></i>
-                                                Valider l'inscription
+                                                {{ "user_bar.dropdown.finish_registration"|trans({}, "menu")|desc("Lien pour valider l'inscription") }}
                                             </a>
                                         </li>
                                     {% endif %}
@@ -146,13 +146,13 @@
                                     <li>
                                         <a href="{{ path('fos_user_change_password') }}">
                                             <i class="icon-key"></i>
-                                            Mot de passe
+                                            {{ "user_bar.dropdown.password"|trans({}, "menu")|desc("Lien pour changer de mot de passe") }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ path('fos_user_security_logout') }}">
                                             <i class="icon-off"></i>
-                                            Déconnexion
+                                            {{ "user_bar.dropdown.logout"|trans({}, "menu")|desc("Lien pour se déconnecter") }}
                                         </a>
                                     </li>
                                 </ul>
@@ -160,7 +160,7 @@
                         {% else %}
                             <a href="{{ path('fos_user_security_login') }}">
                                 <i class="icon-off"></i>
-                                Connexion
+                                {{ "user_bar.dropdown.login"|trans({}, "menu")|desc("Lien pour se connecter") }}
                             </a>
                         {% endif %}
                     </div>
@@ -181,41 +181,41 @@
                     </li>
                     <li {{ helper.current('hflan_blog') }}>
                         <a href="{{ path('hflan_blog') }}">
-                            Blog
+                            {{ "menu.blog"|trans({}, "menu") }}
                         </a>
                     </li>
                     <li {{ helper.current('hflan_info') }}>
                         <a href="{{ path('hflan_info') }}">
-                            Informations
+                            {{ "menu.info"|trans({}, "menu") }}
                         </a>
                     </li>
                     <li {{ helper.current('hflan_photos') }}>
                         <a href="{{ path('hflan_photos') }}">
-                            Photos
+                            {{ "menu.photos"|trans({}, "menu") }}
                         </a>
                     </li>
                     {% if countStreams() %}
                         <li {{ helper.current('hflan_stream') }}>
                             <a href="{{ path('hflan_stream') }}">
-                                Live
+                                {{ "menu.stream"|trans({}, "menu") }}
                             </a>
                         </li>
                     {% endif %}
                     <li {{ helper.current('hflan_guestbook') }}>
                         <a href="{{ path('hflan_guestbook') }}">
-                            Guestbook
+                            {{ "menu.guestbook"|trans({}, "menu") }}
                         </a>
                     </li>
                     {% if not app.user and nextEvent() is not null %}
                         <li {{ helper.current('hflan_register') }}>
                             <a href="{{ path('hflan_register') }}">
-                                Inscriptions
+                                {{ "menu.register"|trans({}, "menu") }}
                             </a>
                         </li>
                     {% endif %}
                     <li {{ helper.current('hflan_contact') }}>
                         <a href="{{ path('hflan_contact') }}">
-                            Contact
+                            {{ "menu.contact"|trans({}, "menu") }}
                         </a>
                     </li>
                 </ul>
@@ -239,7 +239,9 @@
                     <aside>
                         {{ render(controller("hflanGuestbookBundle:Public:menu")) }}
                         {{ render(controller("hflanLanBundle:Event:menu")) }}
-                        <h3 class="facebook-title">Suivez nous !</h3>
+                        <h3 class="facebook-title">
+                            {{ "sidebar.facebook.title"|trans({}, "sidebar")|desc("Titre facebook box") }}
+                        </h3>
                         <div class="facebook-container">
                             <div class="fb-like-box"
                                  data-href="https://www.facebook.com/hf.lan.esiee"

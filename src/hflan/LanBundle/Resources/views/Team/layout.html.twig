@@ -3,20 +3,27 @@
 
 {% block body %}
     <h1 class="header">
-        Inscription au {{ tournament.name }}
+        {{ "registration.title"|trans({'%tournament%':tournament.name}, "registration")|desc("Titre de la page d'inscription au tournoi. Nom du tournoi : %tournament%") }}
         <small>
             {{ tournament.prizePool }} € de Prize-Pool
+            {{ "registration.prize_pool"|trans({'%prize_pool%':tournament.prizePool}, "registration")|desc("Prize_pool du tournoi. Prize-pool : %prize_pool%") }}
         </small>
     </h1>
     <table class="table table-total">
         <tr>
-            <th>Article</th>
-            <th>Prix</th>
-            <th>Quantité</th>
+            <th>
+                {{ "registration.table.item"|trans({}, "registration")|desc("Colonne tableau : Article") }}
+            </th>
+            <th>
+                {{ "info.table.price"|trans({}, "info")|desc("Colone tableau : Prix") }}
+            </th>
+            <th>
+                {{ "registration.table.qty"|trans({}, "registration")|desc("Colonne tableau : Quantité") }}
+            </th>
         </tr>
         <tr>
             <td class="toggle">
-                Billet d'entré pour la {{ tournament.event.name }}
+                {{ "registration.table.item.ticket"|trans({'%event%':tournament.event.name}, "registration")|desc("Billet d'entré pour la LAN. Nom de la LAN : %event%") }}
                 <input type="checkbox" id="admission" />
                 <label for="admission">
                     <div class="active">
@@ -40,7 +47,10 @@
         </tr>
         <tr>
             <td class="toggle">
-                Participation au {{ tournament.name }} ({{ tournament.gameType }})
+                {{ "registration.table.item.tournament"|trans({
+                    '%tournament%':tournament.name,
+                    '%game_type%':tournament.gameType
+                }, "registration")|desc("Participation au tournoi. Nom du tournoi : %tournament%, type de jeu : %game_type%") }}
                 <input type="checkbox" id="tournament" />
                 <label for="tournament">
                     <div class="active">
@@ -64,7 +74,7 @@
         </tr>
         <tr>
             <td>
-                Total
+                {{ "registration.table.totale"|trans({}, "registration")|desc("Colonne tableau : Total") }}
             </td>
             <td>
                 {{ tournament.totalPrice }}.00&nbsp;€

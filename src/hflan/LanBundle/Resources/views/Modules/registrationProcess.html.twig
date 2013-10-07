@@ -4,21 +4,21 @@
             <div class="step-number">1</div>
             <div class="hint">
                 <i class="icon-plus"></i>
-                Créez un compte
+                {{ "registration.process.1"|trans({}, "registration")|desc("Etape 1 : Créez un compte") }}
             </div>
         </div>
         <div class="step{% if team.infoLocked and not team.paid %} active{% endif %}">
             <div class="step-number">2</div>
             <div class="hint">
                 <i class="icon-edit"></i>
-                Remplissez vos informations
+                {{ "registration.process.2"|trans({}, "registration")|desc("Etape 2 : Remplissez vos informations") }}
             </div>
         </div>
         <div class="step{% if team.paid %} active{% endif %}">
             <div class="step-number">3</div>
             <div class="hint">
                 <i class="icon-ticket"></i>
-                Achetez votre place
+                {{ "registration.process.3"|trans({}, "registration")|desc("Etape 3 : Achetez votre place") }}
             </div>
         </div>
     </div>

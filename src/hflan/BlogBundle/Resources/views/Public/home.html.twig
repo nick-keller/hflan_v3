@@ -1,21 +1,23 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-    <div class="carousel" data-autoplay="true" data-paused="false">
-        <div class="nav-prev"></div>
-        <div class="nav-next"></div>
+    {% if articles|length > 3 %}
+        <div class="carousel" data-autoplay="true" data-paused="false">
+            <div class="nav-prev"></div>
+            <div class="nav-next"></div>
 
-        {% for article in articles %}
-            <article
-                    {% if loop.first %}class="current"{% elseif loop.last %}class="prev"{% elseif loop.index == 2 %}class="next"{% endif %}
-                    style="background-image: url({{ asset(article.webPath) }})">
-                <div class="preview">
-                    <h3>{{ article.title }}</h3>
-                    {{ article.content|stripHTML(200) }}
-                </div>
-            </article>
-        {% endfor %}
-    </div>
+            {% for article in articles %}
+                <article
+                        {% if loop.first %}class="current"{% elseif loop.last %}class="prev"{% elseif loop.index == 2 %}class="next"{% endif %}
+                        style="background-image: url({{ asset(article.webPath) }})">
+                    <div class="preview">
+                        <h3>{{ article.title }}</h3>
+                        {{ article.content|stripHTML(200) }}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {{ renderBlock('welcome') }}
 
@@ -24,7 +26,7 @@
     <div class="row row-gaped">
         <div class="col12">
             <h1 class="header">
-                Derniers articles
+                {{ "blog.last_articles"|trans({}, "blog")|desc("Titre sur la page d'accueil : Derniers articles") }}
             </h1>
             {% for article in articles %}
                 <article>
@@ -46,7 +48,7 @@
             {% endfor %}
             <a href="{{ path('hflan_blog') }}" class="btn">
                 <i class="icon-share-alt"></i>
-                Voir tous les articles
+                {{ "blog.view_all_articles"|trans({}, "blog")|desc("Lien vers tous les articles") }}
             </a>
         </div>
     </div>

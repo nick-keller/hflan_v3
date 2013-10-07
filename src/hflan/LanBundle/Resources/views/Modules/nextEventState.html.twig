@@ -17,14 +17,18 @@
 
         {% if event.registrationOpenAt > date('now') %}
             {% block registrationNotOpenYet %}
-                <p>Les inscriptions débuterons {{ event.registrationOpenAt|countdown }}.</p>
+                <p>
+                    {{ "registration.message.register_soon"|trans({'%date%':event.registrationOpenAt|countdown}, "registration")|desc("Début des inscriptions : %date%") }}
+                </p>
             {% endblock %}
 
         {% else %}
             {% if event.registrationCloseAt < date('now') %}
                 {% block registrationClosed %}
                     {% if not app.user %}
-                        <p>Les inscriptions sont fermés.</p>
+                        <p>
+                            {{ "registration.message.registration_closed"|trans({}, "registration")|desc("Message qui indique que les inscriptions sont fermés.") }}
+                        </p>
                     {% endif %}
                 {% endblock %}
 

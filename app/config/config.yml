@@ -29,6 +29,12 @@ twig:
         resources:
             - ':Form:form_div_layout.html.twig'
 
+services:
+    twig.text_extension:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - name: twig.extension
+
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
@@ -135,3 +141,35 @@ knp_paginator:
         page_name: page
     template:
         pagination: ::pagination.html.twig
+
+jms_translation:
+    configs:
+        app:
+            dirs:
+                - %kernel.root_dir%/../src
+                - %kernel.root_dir%/Resources/views
+            output_dir: %kernel.root_dir%/Resources/translations
+            excluded_names:
+                - ExtraFieldType.php
+                - RatingType.php
+                - RolesType.php
+                - BlockType.php
+                - ArticleType.php
+                - TournamentType.php
+                - StreamType.php
+                - DocumentType.php
+                - UserType.php
+                - EventType.php
+                - EventExportType.php
+                - PartnerType.php
+                - DateExtension.php
+                - Article.php
+                - Document.php
+                - Partner.php
+                - Event.php
+                - Tournament.php
+                - User.php
+                - UserType.php
+            ignored_domains: [routes, FOSUserBundle]
+            excluded_dirs: [cache, data, logs, Admin]
+            output-format: xliff

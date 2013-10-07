@@ -13,11 +13,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="hflan\LanBundle\Entity\PlayerRepository")
  * @UniqueEntity(
  *      fields={"email", "event"},
- *      message="Un joueur avec cette adresse existe déjà, vérifiez que vous n'avez pas inscrit le même joueur deux fois."
+ *      message="error.same_email.user"
  * )
  * @UniqueEntity(
  *      fields={"nickname", "event"},
- *      message="Un joueur avec ce pseudo existe déjà, vérifiez que vous n'avez pas inscrit le même joueur deux fois."
+ *      message="error.same_nickname.user"
  * )
  */
 class Player
