@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">
+        {{ "error.fallback.title"|trans({}, "error")|desc("Titre d'une page d'erreur générique") }}
+    </h1>
+
+    <p>
+        {{ "error.fallback.message"|trans({}, "error")|desc("Contenue d'une page d'erreur générique") }}
+    </p>
+{% endblock %}

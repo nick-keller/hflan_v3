@@ -16,12 +16,6 @@ fos_user_change_password:
     requirements:
         _locale: en|fr
 
-fos_user_profile_show:
-    pattern:  /{_locale}
-    defaults: { _controller: hflanBlogBundle:Public:home, _locale: fr }
-    requirements:
-        _locale: en|fr
-
 hflan_photos:
     resource: "@hflanPhotosBundle/Resources/config/routing.yml"
     prefix:   /{_locale}/photos
@@ -83,6 +77,12 @@ hflan_page:
         _locale: en|fr
 
 hflan_home:
+    pattern:  /{_locale}
+    defaults: { _controller: hflanBlogBundle:Public:home, _locale: fr }
+    requirements:
+        _locale: en|fr
+
+fos_user_profile_show:
     pattern:  /{_locale}
     defaults: { _controller: hflanBlogBundle:Public:home, _locale: fr }
     requirements:

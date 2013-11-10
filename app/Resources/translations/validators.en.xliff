@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-10-08T08:43:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2013-10-08T08:45:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,15 +8,15 @@
     <body>
       <trans-unit id="a1a9f3a668730c816a5b82a07e85fef73b7c9dbb" resname="error.same_email.account">
         <source>error.same_email.account</source>
-        <target>Un compte avec cette adresse existe déjà,  vous êtes peut être déjà inscrit. Vérifiez vos emails pour plus d'informations.</target>
+        <target state="new">error.same_email.account</target>
       </trans-unit>
       <trans-unit id="8e16f3454ac47888beda26de304ad8b3625bcd40" resname="error.same_email.user">
         <source>error.same_email.user</source>
-        <target>Un joueur avec cette adresse existe déjà, vérifiez que vous n'avez pas inscrit le même joueur deux fois.</target>
+        <target state="new">error.same_email.user</target>
       </trans-unit>
       <trans-unit id="e338800bf4ed4d2c3413df159327f060dab29be8" resname="error.same_nickname.user">
         <source>error.same_nickname.user</source>
-        <target>Un joueur avec ce pseudo existe déjà, vérifiez que vous n'avez pas inscrit le même joueur deux fois.</target>
+        <target state="new">error.same_nickname.user</target>
       </trans-unit>
     </body>
   </file>

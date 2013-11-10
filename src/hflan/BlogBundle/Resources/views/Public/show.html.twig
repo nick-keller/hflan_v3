@@ -5,6 +5,6 @@
     {% if article.hasImage %}
             <img src="{{ asset(article.webPath) }}" alt="[article image]" class="img-article">
     {% endif %}
-    <span class="note">Par {{ article.author.username }} le {{ article.createdAt|simpleDate }}</span>
+    <span class="note">Le {{ article.createdAt|simpleDate }}</span>
     {{ article.content|raw }}
 {% endblock %}

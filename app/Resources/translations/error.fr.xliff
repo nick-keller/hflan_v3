@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file date="2013-10-08T08:44:47Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="98d94d52b1dd7393c41c5b85b7717811a1c7cd33" resname="error.403.message">
+        <source>Contenue d'une erreur pour un accès refusé</source>
+        <target>Vous n'avez pas les droits nécessaire pour accéder à cette page.</target>
+        <jms:reference-file line="9">views/Exception/error403.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d558a3b890bc2b2b1a3407bab306fdbd5b4f8b17" resname="error.403.title">
+        <source>Titre d'une erreur pour un accès refusé</source>
+        <target>Accès refusé</target>
+        <jms:reference-file line="5">views/Exception/error403.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="a872449c827f60a2c2ab9d914803d1d910b6b57d" resname="error.404.message">
+        <source>Contenue d'une erreur pour une page introuvable</source>
+        <target>Cette page n’existe pas (ou plus).</target>
+        <jms:reference-file line="9">views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9732d2be04f92b6bb2ea6424c16aee2019b91eee" resname="error.404.title">
+        <source>Titre d'une erreur pour une page introuvable</source>
+        <target>Page introuvable (404)</target>
+        <jms:reference-file line="5">views/Exception/error404.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="f345dce3aa691799e16077c1fa4bfbbfffabd8a1" resname="error.500.message">
+        <source>Contenue d'une page d'erreur pour un problème interne de serveur</source>
+        <target>Une erreur interne au serveur est survenue, veuillez nous en excuser.</target>
+        <jms:reference-file line="9">views/Exception/error500.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="9c9a9a32797092e27afa280451c234506538f5d2" resname="error.500.title">
+        <source>Titre d'une page d'erreur pour un problème interne de serveur</source>
+        <target>Erreur interne au serveur</target>
+        <jms:reference-file line="5">views/Exception/error500.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="86c222bd98731e50e46c0c464286e782ce26a5fc" resname="error.fallback.message">
+        <source>Contenue d'une page d'erreur générique</source>
+        <target>Une erreur s'est produite, veuillez nous en excuser.</target>
+        <jms:reference-file line="9">views/Exception/error.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="65d2577fae7a29b3510434978f9ab3e417f6b0d6" resname="error.fallback.title">
+        <source>Titre d'une page d'erreur générique</source>
+        <target>Erreur</target>
+        <jms:reference-file line="5">views/Exception/error.html.twig</jms:reference-file>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

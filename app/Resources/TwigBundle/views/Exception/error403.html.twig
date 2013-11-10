@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">
+        {{ "error.403.title"|trans({}, "error")|desc("Titre d'une erreur pour un accès refusé") }}
+    </h1>
+
+    <p>
+        {{ "error.403.message"|trans({}, "error")|desc("Contenue d'une erreur pour un accès refusé") }}
+    </p>
+{% endblock %}

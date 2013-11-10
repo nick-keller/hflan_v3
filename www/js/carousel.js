@@ -1,4 +1,5 @@
 $(function(){
+    var interval = 7000;
     var carouselNext = function($carousel){
         var $prev = $carousel.find('.current');
         var $current = $carousel.find('.next');
@@ -17,11 +18,11 @@ $(function(){
         $('.carousel').each(function(){
             if($(this).attr('data-autoplay') == 'true' && $(this).attr('data-paused') == 'false'){
                 carouselNext($(this));
-                setTimeout(autoPlay, 4000);
+                setTimeout(autoPlay, interval);
             }
         });
     }
-    setTimeout(autoPlay, 4000);
+    setTimeout(autoPlay, interval);
 
     $('.carousel .nav-next').click(function(){
         carouselNext($(this).parent());
@@ -43,15 +44,17 @@ $(function(){
 
     $('.carousel').mouseenter(function(){
         $(this).attr('data-paused', 'true');
+        $(this).attr('data-hover', 'true');
     })
 
     $('.carousel').mouseleave(function(){
         var $this = $(this);
+        $this.attr('data-hover', 'false');
         setTimeout(function(){
-            if($this.attr('data-paused') == 'true'){
+            if($this.attr('data-paused') == 'true' && $this.attr('data-hover') == 'false'){
                 $this.attr('data-paused', 'false');
                 autoPlay();
             }
-        }, 4000);
+        }, interval);
     })
 })

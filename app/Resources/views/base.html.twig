@@ -42,8 +42,10 @@
                     <div class="hflan-logo"></div>
                     <div class="lens-flare"></div>
                     <div class="switch-lang">
-                        <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}" class="flag-fr"></a>
-                        <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}" class="flag-en"></a>
+                        {% if app.request.attributes.get('_route') %}
+                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}" class="flag-fr"></a>
+                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}" class="flag-en"></a>
+                        {% endif %}
                     </div>
                     <div class="user-info">
                         {% if app.user %}
@@ -276,6 +278,7 @@
                 'js/carousel.js'
                 'js/sortable.js'
                 'js/tabs.js'
+                output='/js/script.js'
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

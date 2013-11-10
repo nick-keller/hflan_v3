@@ -12,7 +12,8 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-    '@hflanPhotosBundle/Resources/public/js/photos.js'
+        '@hflanPhotosBundle/Resources/public/js/photos.js'
+        output='/js/photos.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

@@ -90,6 +90,7 @@ stof_doctrine_extensions:
         default_file_path:       %kernel.root_dir%/../www/uploads
         mime_type_guesser_class: Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
         default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+        validate_writable_directory: false
     orm:
         default:
             sluggable: true
@@ -148,6 +149,7 @@ jms_translation:
             dirs:
                 - %kernel.root_dir%/../src
                 - %kernel.root_dir%/Resources/views
+                - %kernel.root_dir%/Resources/TwigBundle
             output_dir: %kernel.root_dir%/Resources/translations
             excluded_names:
                 - ExtraFieldType.php

@@ -80,7 +80,13 @@ class AdminController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
-        if(($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_REMOVE')) && !$this->get('security.context')->isGranted('ROLE_ADMIN')|| $user->hasRole('ROLE_SUPER_ADMIN')){
+        if($user->hasRole('ROLE_SUPER_ADMIN')){
+            $this->session->getFlashBag()->add('error', 'Les voies du seigneur sont impénétrables...');
+
+            return $this->redirect($this->generateUrl('hflan_users_admin'));
+        }
+
+        if(($user->hasRole('ROLE_ADMIN') || $user->hasRole('ROLE_REMOVE')) && !$this->get('security.context')->isGranted('ROLE_ADMIN')){
             $this->session->getFlashBag()->add('error', 'Vous devez être admin pour éditer cet utilisateur.');
 
             return $this->redirect($this->generateUrl('hflan_users_admin'));

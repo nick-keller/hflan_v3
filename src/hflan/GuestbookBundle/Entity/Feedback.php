@@ -56,6 +56,8 @@ class Feedback
      *
      * @ORM\Column(name="message", type="text")
      * @Assert\NotBlank()
+     * @Assert\Regex(pattern="#</#", match=false, message="Le HTML n'est pas autorisé")
+     * @Assert\Regex(pattern="#http|\.com|\.fr|.net|.org#", match=false, message="Les liens ne sont pas autorisé")
      */
     private $message;
 

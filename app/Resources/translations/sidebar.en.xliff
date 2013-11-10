@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-10-08T08:43:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2013-10-08T08:45:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,17 +8,17 @@
     <body>
       <trans-unit id="c30637d27da6ec549e83fbf6eb0bc0c23997b152" resname="sidebar.facebook.title">
         <source>Titre facebook box</source>
-        <target>Suivez nous !</target>
+        <target state="new">Titre facebook box</target>
         <jms:reference-file line="243">Resources/views/base.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="82cfe829df7f9e43334daf8351f95f65941fd94e" resname="sidebar.next_lan.title">
         <source>Titre menu : Prochaine LAN</source>
-        <target>Prochaine LAN</target>
+        <target state="new">Titre menu : Prochaine LAN</target>
         <jms:reference-file line="6">views/Event/menu.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="71e7e3a250d0ba81ab2c7af1e0895c1911f8c253" resname="sidebar.partners.title">
         <source>Titre menu : Partenaires</source>
-        <target>Partenaires</target>
+        <target state="new">Titre menu : Partenaires</target>
         <jms:reference-file line="3">views/Public/menu.html.twig</jms:reference-file>
       </trans-unit>
     </body>
