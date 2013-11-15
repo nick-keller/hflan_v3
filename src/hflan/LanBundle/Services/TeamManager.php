@@ -107,6 +107,9 @@ class TeamManager
             $player->setEvent($team->getTournament()->getEvent());
             $player->setExtraFields($extraFields);
 
+            if($team->getTournament()->getNumberOfPlayerPerTeam() === 1)
+                $player->setNickname($team->getName());
+
             $this->em->persist($player);
         }
         $this->em->flush();
