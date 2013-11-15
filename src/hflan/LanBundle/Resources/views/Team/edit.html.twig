@@ -5,7 +5,7 @@
         <div class="col6">
             {% for player in team.players %}
                 <div class="panel">
-                    {{ player.nickname|default("registration.default_player_name"|trans({'%n%':loop.index}, "registration")|desc("Numéro du joueur : %n%")) }}
+                    {{ player.nickname|default("registration.default_player_name"|trans({'%n%':loop.index}, "registration")) }}
                     {% if player.minor %}
                         <span class="minor-sign">-18</span>
                     {% endif %}

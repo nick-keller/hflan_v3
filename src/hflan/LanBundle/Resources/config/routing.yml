@@ -1,9 +1,5 @@
 # Team
 
-hflan_register:
-    pattern:  /register/{slug}
-    defaults: { _controller: hflanLanBundle:Team:register, slug: null }
-
 hflan_edit_team:
     pattern:  /register/step-2
     defaults: { _controller: hflanLanBundle:Team:edit }
@@ -11,6 +7,10 @@ hflan_edit_team:
 hflan_pay_team:
     pattern:  /register/step-3
     defaults: { _controller: hflanLanBundle:Team:pay }
+
+hflan_register:
+    pattern:  /register/{slug}
+    defaults: { _controller: hflanLanBundle:Team:register, slug: null }
 
 hflan_team_show:
     pattern:  /teams/{id}

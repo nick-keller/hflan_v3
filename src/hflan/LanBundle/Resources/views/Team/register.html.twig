@@ -33,6 +33,7 @@
                 {{ form_widget(form) }}
 
                 <div class="form-actions">
+                    {{ renderBlock('register_message') }}
                     <button type="submit" class="btn">
                         <i class="icon-ok"></i>
                         {{ "action.save"|trans|desc("Bouton enregistrer") }}
