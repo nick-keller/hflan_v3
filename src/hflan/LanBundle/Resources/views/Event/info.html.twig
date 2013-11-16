@@ -163,7 +163,7 @@
             {% for document in documents %}
                 <h3>{{ document.name }}</h3>
                 {{ document.text|raw }}
-                <a class="btn">
+                <a class="btn" href="{{ path('hflan_doc_download', {slug:document.slug}) }}">
                     <i class="icon-download-alt"></i>
                     {{ "info.btn.download"|trans({}, "info")|desc("Bouton télécharger") }}
                 </a>

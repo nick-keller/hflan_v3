@@ -14,6 +14,10 @@ hflan_doc_remove:
     pattern:  /{slug}/remove
     defaults: { _controller: hflanDocumentBundle:Admin:remove }
 
+hflan_doc_download:
+    pattern:  /{slug}/download
+    defaults: { _controller: hflanDocumentBundle:Admin:download }
+
 hflan_doc_up:
     pattern:  /admin/{slug}/up
     defaults: { _controller: hflanDocumentBundle:Admin:move, dir: -1 }

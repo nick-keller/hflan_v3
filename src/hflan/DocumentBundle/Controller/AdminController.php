@@ -11,6 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends Controller
 {
@@ -98,6 +99,23 @@ class AdminController extends Controller
         $this->em->flush();
 
         return $this->redirect($this->generateUrl('hflan_doc_admin'));
+    }
+
+    /**
+     */
+    public function downloadAction(Document $document)
+    {
+        if(!file_exists($document->getPath()))
+            throw new \Symfony\Component\Config\Definition\Exception\Exception($document->getPath());
+        $response = new Response();
+        $response->headers->set('Content-Type', "application/pdf");
+        $response->headers->set('Content-Disposition', 'attachment; filename="'.$document->getSlug().'.pdf"');
+        $response->headers->set('Content-Transfer-Encoding', 'binary');
+        $response->headers->set('Content-Length', filesize($document->getPath()));
+        $response->setStatusCode(200);
+        $response->setContent(file_get_contents($document->getPath()));
+
+        return $response;
     }
 
     /**
