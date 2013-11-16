@@ -11,10 +11,15 @@
             {{ renderBlock('registration_minor') }}
         </div>
     {% endif %}
-    <p>Unje fois votre place acheté, vous n'avez plus rien à faire. Un admin validera automatiquement votre compte.</p>
-    <a class="btn">
-        <i class="icon-shopping-cart"></i>
-        Acheter ma place
-    </a>
+
+    {% if team.paid %}
+        <p>Votre compte a été validé par un admin. Rendez vous le weekend {{ dateRange(team.tournament.event.registrationOpenAt, team.tournament.event.registrationCloseAt) }} !</p>
+    {% else %}
+        <p>Unje fois votre place acheté, vous n'avez plus rien à faire. Un admin validera automatiquement votre compte.</p>
+        <a class="btn">
+            <i class="icon-shopping-cart"></i>
+            Acheter ma place
+        </a>
+    {% endif %}
 
 {% endblock %}
