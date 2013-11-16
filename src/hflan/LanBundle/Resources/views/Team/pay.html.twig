@@ -1,5 +1,20 @@
 {% extends 'hflanLanBundle:Team:layout.html.twig' %}
 
 {% block content %}
-    pay
+    {% set numberOfMinor = 0 %}
+    {% for player in team.players if player.isMinor %}
+        {% set numberOfMinor = numberOfMinor + 1 %}
+    {% endfor %}
+
+    {% if numberOfMinor > 0 %}
+        <div class="flash flash-warning" style="margin-top: 20px">
+            {{ renderBlock('registration_minor') }}
+        </div>
+    {% endif %}
+    <p>Unje fois votre place acheté, vous n'avez plus rien à faire. Un admin validera automatiquement votre compte.</p>
+    <a class="btn">
+        <i class="icon-shopping-cart"></i>
+        Acheter ma place
+    </a>
+
 {% endblock %}

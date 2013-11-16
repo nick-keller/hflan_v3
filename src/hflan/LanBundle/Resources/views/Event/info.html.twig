@@ -68,7 +68,9 @@
                                 }, "info")|desc("%n% joueurs|%n% équipes de %p%") }}
                             </td>
                             <td>
-                                {{ tournament.prizePool }} €
+                                {% if tournament.prizePool > 0 %}
+                                    {{ tournament.prizePool }} €
+                                {% endif1 %}
                             </td>
                             <td>
                                 <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
@@ -134,7 +136,9 @@
                                 }, "info")|desc("%price% €|%price% € / joueur") }}
                             </td>
                             <td>
-                                {{ tournament.prizePool }} €
+                                {% if tournament.prizePool > 0 %}
+                                    {{ tournament.prizePool }} €
+                                {% endif1 %}
                             </td>
                             <td>
                                 <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">

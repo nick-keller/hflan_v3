@@ -45,6 +45,7 @@
                 {{ tournament.numberOfPlayerPerTeam }}
             </td>
         </tr>
+        {% if tournament.price > 0 %}
         <tr>
             <td class="toggle">
                 {{ "registration.table.item.tournament"|trans({
@@ -72,6 +73,21 @@
                 {{ tournament.numberOfPlayerPerTeam }}
             </td>
         </tr>
+        {% endif %}
+        {% if tournament.price < 0 %}
+        <tr>
+            <td class="toggle">
+                Réduction
+            </td>
+            <td>
+                {{ tournament.price }}.00
+                €
+            </td>
+            <td>
+                {{ tournament.numberOfPlayerPerTeam }}
+            </td>
+        </tr>
+        {% endif %}
         <tr>
             <td>
                 {{ "registration.table.totale"|trans({}, "registration")|desc("Colonne tableau : Total") }}

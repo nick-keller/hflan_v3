@@ -95,9 +95,9 @@ class Tournament
      * @Assert\NotBlank()
      * @Assert\Type(type="integer", message="Veuillez rentrer un nombre entier")
      * @Assert\Range(
-     *      min = 0,
+     *      min = -20,
      *      max = 50,
-     *      minMessage = "Le prix ne peut pas être négatif",
+     *      minMessage = "Le prix ne peut pas être plus petit que -20€...",
      *      maxMessage = "Plus de 50€ c'est abusé... Sachant que le prix de la place n'est pas compris"
      * )
      */
