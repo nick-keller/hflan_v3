@@ -22,7 +22,7 @@ class ExtraFieldType extends AbstractType
                 'label' => 'Exemple de valeur',
                 'required' => false,
             ))
-            ->add('validator', 'text', array(
+            ->add('validator', 'textarea', array(
                 'label' => 'Regex',
                 'required' => false,
                 'attr' => array(

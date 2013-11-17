@@ -24,6 +24,7 @@ class Player
 {
     const PC_TYPE_DESKTOP = 'Desktop';
     const PC_TYPE_LAPTOP = 'Laptop';
+    const PC_TYPE_NONE = 'Aucun';
 
     /**
      * @var integer
@@ -75,7 +76,7 @@ class Player
      *
      * @ORM\Column(name="pcType", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
-     * @Assert\Choice(choices = {Player::PC_TYPE_DESKTOP, Player::PC_TYPE_LAPTOP})
+     * @Assert\Choice(choices = {Player::PC_TYPE_DESKTOP, Player::PC_TYPE_LAPTOP, Player::PC_TYPE_NONE})
      */
     private $pcType;
 

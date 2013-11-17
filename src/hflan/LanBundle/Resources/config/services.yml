@@ -41,6 +41,7 @@ services:
         arguments:
             - @doctrine.orm.entity_manager
             - @form.factory
+            - @translator
 
     hflan.csv_generator:
         class: hflan\LanBundle\Services\CsvGenerator

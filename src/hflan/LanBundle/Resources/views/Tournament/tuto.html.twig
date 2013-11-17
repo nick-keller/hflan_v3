@@ -1,0 +1,52 @@
+<div class="panel" style="margin-top: 20px">
+    <h2>
+        <i class="icon-lightbulb"></i>
+        Champs spécifiques
+    </h2>
+    <p>Il est possible de générer deux types de champs spécifiques : les champs de textes et les choix multiples. Dans tous les cas il est possible de traduire les textes en utilisant cette forme : <b>Texte en français [ Text in english ]</b>.</p>
+    <h3>Champ de texte</h3>
+    <p>La propriété <i>Exemple de valeur</i> permet d'afficher un petit message dans le champ de texte qui s'éfface dès que l'utilisateur commence à taper quelque chose.</p>
+    <p>La propriété <i>Regex</i> permet de vérifier que l'utilisateur ne rentre pas n'importe quoi.</p>
+    <table class="table">
+        <tr>
+            <td>
+                Champ libre
+            </td>
+            <td>
+                <b>#.+#</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nombre
+            </td>
+            <td>
+                <b>#^[0-9]+$#</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Caractères alpha-numériques
+            </td>
+            <td>
+                <b>#^[0-9a-z]+$#i</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Choix multiple
+            </td>
+            <td>
+                <b>#^rouge|vert|bleu$#i</b>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <a href="http://fr.openclassrooms.com/informatique/cours/concevez-votre-site-web-avec-php-et-mysql/memento-des-expressions-regulieres">
+            <i class="icon-plus"></i>
+            En savoir plus
+        </a>
+    </p>
+    <h3 style="margin-top: 20px">Réponse a choix multiple</h3>
+    <p>Dans la propriété <i>Regex</i>, séparer chaque choix par un retour à la ligne. L'utilisateur pourra alors cocher celui qui lui corespond (un seul choix possible). La propriété <i>Exemple de valeur</i> est ignoré pour ce type de champ.</p>
+</div>
