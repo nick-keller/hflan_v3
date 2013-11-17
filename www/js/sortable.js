@@ -14,4 +14,4 @@ $(function(){
         else
             $row.before($row.next());
     })
-})
+});

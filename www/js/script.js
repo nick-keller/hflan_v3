@@ -81,7 +81,7 @@ $(function(){
 
         elem.prepend(remove_btn);
     }
-})
+});
 $(function(){
     var interval = 7000;
     var carouselNext = function($carousel){
@@ -141,7 +141,7 @@ $(function(){
             }
         }, interval);
     })
-})
+});
 $(function(){
     $('*[data-sortable]').click(function(e){
         e.preventDefault();
@@ -158,7 +158,7 @@ $(function(){
         else
             $row.before($row.next());
     })
-})
+});
 $(function(){
     $('.tabs .tab').click(function(e){
         var $this = $(this);
@@ -182,4 +182,4 @@ $(function(){
     else{
         $('.tabs .tab[href='+window.location.hash+']').addClass('active');
     }
-})
+});

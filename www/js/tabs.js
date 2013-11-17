@@ -21,4 +21,4 @@ $(function(){
     else{
         $('.tabs .tab[href='+window.location.hash+']').addClass('active');
     }
-})
+});

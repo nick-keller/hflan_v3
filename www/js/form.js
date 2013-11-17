@@ -67,4 +67,4 @@ $(function(){
 
         elem.prepend(remove_btn);
     }
-})
+});
