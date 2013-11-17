@@ -56,6 +56,9 @@ class ExtraFieldsFormFactory
             $defaultData[$id] = $value;
             $constraints[$id] = array( new NotBlank() );
 
+            if($fields[$id]->getValidator() == '#.*#')
+                $constraints[$id] = array();
+
             if($fields[$id]->getValidator() && strpos($fields[$id]->getValidator(), "\n") === false)
                 $constraints[$id][] = new Regex(array( 'pattern' => $fields[$id]->getValidator() ));
         }

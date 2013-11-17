@@ -66,7 +66,14 @@
                     </tr>
                     {% for tournament in event.tournaments %}
                         <tr data-href="{{ path('hflan_tournament_show', {slug:tournament.slug}) }}">
-                            <td>{{ tournament.game }}</td>
+                            <td>
+                                {% if tournament.isConsole %}
+                                    <i class="icon-gamepad"></i>
+                                {% else %}
+                                    <i class="icon-desktop"></i>
+                                {% endif %}
+                                {{ tournament.game }}
+                            </td>
                             <td>{{ tournament.gameType }}</td>
                             <td>{{ tournament.price }} €</td>
                             <td>{{ tournament.prizePool }} €</td>

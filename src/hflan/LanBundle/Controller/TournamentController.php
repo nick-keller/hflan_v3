@@ -82,12 +82,25 @@ class TournamentController extends Controller
             return $this->redirect($this->generateUrl('hflan_event_admin'));
         }
 
+        // Fields before edit
+        $originalFields = array();
+        foreach($tournament->getExtraFields() as $field) $originalFields[] = $field;
+
         $form = $this->createForm(new TournamentType, $tournament);
 
         if('POST' == $request->getMethod()){
             $form->handleRequest($request);
 
             if($form->isValid()){
+                // filter $originalFields so it only has deleted fields
+                foreach ($tournament->getExtraFields() as $field)
+                    foreach ($originalFields as $key => $toDel)
+                        if ($toDel->getId() === $field->getId())
+                            unset($originalFields[$key]);
+
+                foreach($originalFields as $field)
+                    $this->em->remove(($field));
+
                 $this->em->persist($tournament);
                 $this->em->flush();
 
