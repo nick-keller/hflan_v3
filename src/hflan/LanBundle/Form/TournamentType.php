@@ -21,6 +21,18 @@ class TournamentType extends AbstractType
             ->add('game', 'text', array(
                 'label' => 'Nom du jeu'
             ))
+            ->add('isConsole', 'toggle', array(
+                'label' => 'Plateforme',
+                'icons' => array(
+                    'active' => 'gamepad',
+                    'inactive' => 'desktop',
+                ),
+                'labels' => array(
+                    'inactive' => 'Ordinateur',
+                    'active' => 'Console',
+                ),
+                'required' => false,
+            ))
             ->add('gameType', 'text', array(
                 'label' => 'Type de jeu',
                 'attr' => array(

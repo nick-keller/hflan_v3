@@ -51,6 +51,13 @@ class Tournament
     private $game;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_console", type="boolean")
+     */
+    private $isConsole;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="gameType", type="string", length=255)
@@ -244,6 +251,22 @@ class Tournament
     public function getGame()
     {
         return $this->game;
+    }
+
+    /**
+     * @param boolean $isConsole
+     */
+    public function setIsConsole($isConsole)
+    {
+        $this->isConsole = $isConsole;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsConsole()
+    {
+        return $this->isConsole;
     }
 
     /**

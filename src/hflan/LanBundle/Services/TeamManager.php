@@ -110,6 +110,9 @@ class TeamManager
             if($team->getTournament()->getNumberOfPlayerPerTeam() === 1)
                 $player->setNickname($team->getName());
 
+            if($team->getTournament()->getIsConsole())
+                $player->setPcType('Aucun');
+
             $this->em->persist($player);
         }
         $this->em->flush();

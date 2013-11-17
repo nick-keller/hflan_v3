@@ -3,10 +3,10 @@
 namespace hflan\LanBundle\Form;
 
 use hflan\LanBundle\Entity\Player;
-use hflan\LanBundle\Form\EventListener\AddExtraFieldsSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use hflan\LanBundle\Form\EventListener\RemovePcTypeFieldSubscriber;
 
 class PlayerType extends AbstractType
 {
@@ -42,6 +42,8 @@ class PlayerType extends AbstractType
                 'format' => 'dd/MM/yyyy'
             ))
         ;
+
+        $builder->addEventSubscriber(new RemovePcTypeFieldSubscriber());
     }
     
     /**
