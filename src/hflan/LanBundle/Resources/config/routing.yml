@@ -24,6 +24,10 @@ hflan_team_downgrade:
     pattern:  /teams/{id}/downgrade
     defaults: { _controller: hflanLanBundle:Team:downgrade }
 
+hflan_team_remove:
+    pattern:  /teams/{id}/remove
+    defaults: { _controller: hflanLanBundle:Team:remove }
+
 # Player
 
 hflan_edit_player:

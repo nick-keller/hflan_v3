@@ -78,6 +78,9 @@ class TeamManager
 
     private function saveTeam(Team $team)
     {
+        if($team->getEvent() === null)
+            $team->setEvent($team->getTournament()->getEvent());
+
         $this->em->persist($team);
         $this->em->flush();
     }
