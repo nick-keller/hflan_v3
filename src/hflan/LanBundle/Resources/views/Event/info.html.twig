@@ -21,8 +21,8 @@
 
     <div class="tab-content">
         <div id="tournaments" class="tab-container">
-            {% if nextEvent() %}
-                {% set event = nextEvent() %}
+            {% set event = nextEvent() %}
+            {% if event is not null and event.datesVisible %}
                 <h1 class="header">
                     {{ event }}
                 </h1>
