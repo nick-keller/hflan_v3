@@ -99,15 +99,15 @@ class DateExtension extends \Twig_Extension
             return $this->trans("date.weekend.sameMonth", array(
                 '%from%'=>$from->format('d'),
                 '%to%'=>$to->format('d'),
-                '%month%'=>$this->trans('date.month.'.$from->format('m')),
+                '%month%'=>$this->trans('date.month.'.$from->format('n')),
             ));
         }
 
         return $this->trans("date.weekend.differentMonth", array(
             '%from%'=>$from->format('d'),
             '%to%'=>$to->format('d'),
-            '%fromMonth%'=>$this->trans('date.month.'.$from->format('m')),
-            '%toMonth%'=>$this->trans('date.month.'.$to->format('m')),
+            '%fromMonth%'=>$this->trans('date.month.'.$from->format('n')),
+            '%toMonth%'=>$this->trans('date.month.'.$to->format('n')),
         ));
     }
 
@@ -117,15 +117,15 @@ class DateExtension extends \Twig_Extension
             return $this->trans("date.range.sameMonth", array(
                 '%from%'=>$from->format('d'),
                 '%to%'=>$to->format('d'),
-                '%month%'=>$this->trans('date.month.'.$from->format('m')),
+                '%month%'=>$this->trans('date.month.'.$from->format('n')),
             ));
         }
 
         return $this->trans("date.range.differentMonth", array(
             '%from%'=>$from->format('d'),
             '%to%'=>$to->format('d'),
-            '%fromMonth%'=>$this->trans('date.month.'.$from->format('m')),
-            '%toMonth%'=>$this->trans('date.month.'.$to->format('m')),
+            '%fromMonth%'=>$this->trans('date.month.'.$from->format('n')),
+            '%toMonth%'=>$this->trans('date.month.'.$to->format('n')),
         ));
     }
     
