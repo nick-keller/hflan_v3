@@ -43,7 +43,7 @@ date:
         past: %day% à %at%
     tomorrow:
         future: demain à %at%
-        past: hiere à %at%
+        past: hier à %at%
     Xhour:
         future: dans %x% heures
         past: il y a %x% heures
