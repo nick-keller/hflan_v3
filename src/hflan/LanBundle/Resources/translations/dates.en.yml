@@ -1,0 +1,68 @@
+date:
+    day:
+        1: monday
+        2: tuesday
+        3: wednesday
+        4: thursday
+        5: friday
+        6: saturday
+        7: sunday
+    month:
+        1: january
+        2: febuary
+        3: march
+        4: april
+        5: may
+        6: june
+        7: july
+        8: august
+        9: september
+        10: october
+        11: november
+        12: décember
+    Xmonth:
+        future: in %x% months
+        past: %x% months ago
+        lessThan:
+            future: in less than %x% months
+            past: less than %x% months ago
+        moreThan:
+            future: in more than %x% months
+            past: more than %x% months ago
+    Xweek:
+        future: in %x% weeks
+        past: %x% weeks ago
+        lessThan:
+            future: in less than %x% weeks
+            past: less than %x% weeks ago
+    Xday:
+        future: in %x% days
+        past: %x% days ago
+    dayAt:
+        future: %day% at %at%
+        past: %day% at %at%
+    tomorrow:
+        future: tomorrow at %at%
+        past: yesterday at %at%
+    Xhour:
+        future: in %x% hours
+        past: %x% hours ago
+        lessThan:
+            future: in less than %x% hours
+            past: less than %x% hours ago
+        moreThan:
+            future: in more than %x% hours
+            past: more than %x% hours ago
+    Xmin:
+        future: in %x% minutes
+        past: %x% minutes ago
+    Xsec:
+        future: in %x% seconds
+        past: %x% seconds ago
+
+    weekend:
+        sameMonth: the weekend of %month% %from% to %to%
+        differentMonth: the weekend of %fromMonth% %from% to %toMonth% %to%
+    range:
+        sameMonth: from %from% to %to% %month%
+        differentMonth: from %fromMonth% %from%  to %toMonth% %to% 

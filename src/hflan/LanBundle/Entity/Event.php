@@ -115,6 +115,11 @@ class Event
      */
     protected $players;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Team", mappedBy="event")
+     */
+    protected $teams;
+
     public function __construct()
     {
         $this->setBeginAt(new \Datetime());

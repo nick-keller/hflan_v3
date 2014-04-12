@@ -111,7 +111,7 @@ class TeamController extends Controller
     }
 
     /**
-     * @Secure(roles="ROLE_USER")
+     * @Secure(roles="ROLE_RESPO")
      */
     public function upgradeAction(Request $request, Team $team)
     {
@@ -140,7 +140,7 @@ class TeamController extends Controller
     }
 
     /**
-     * @Secure(roles="ROLE_USER")
+     * @Secure(roles="ROLE_RESPO")
      */
     public function downgradeAction(Request $request, Team $team)
     {
@@ -157,5 +157,21 @@ class TeamController extends Controller
         $this->em->flush();
 
         return $this->redirect($referer);
+    }
+
+    /**
+     * @Secure(roles="ROLE_RESPO")
+     */
+    public function removeAction(Team $team)
+    {
+        if($team->getPaid()){
+            $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a péyé voyons !");
+            return $this->redirect($this->generateUrl('hflan_team_show', array('id'=>$team->getId())));
+        }
+
+        $this->em->remove($team);
+        $this->em->flush();
+
+        return $this->redirect($this->generateUrl('hflan_event_admin'));
     }
 }

@@ -78,6 +78,9 @@ class TeamManager
 
     private function saveTeam(Team $team)
     {
+        if($team->getEvent() === null)
+            $team->setEvent($team->getTournament()->getEvent());
+
         $this->em->persist($team);
         $this->em->flush();
     }
@@ -122,7 +125,7 @@ class TeamManager
     {
         $message = \Swift_Message::newInstance()
             ->setSubject('hf.lan : Votre compte a bien été créé')
-            ->setFrom('noreply@hf-lan.fr')
+            ->setFrom('infos@hf-lan.fr')
             ->setTo($team->getEmail())
             ->setBody($this->templating->render(
                 'hflanLanBundle:Mail:register.html.twig', array(

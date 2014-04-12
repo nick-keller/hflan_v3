@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="hf_team")
  * @ORM\Entity(repositoryClass="hflan\LanBundle\Entity\TeamRepository")
  * @UniqueEntity(
- *      fields={"email", "tournament"},
+ *      fields={"email", "event"},
  *      message="error.same_email.account"
  * )
  */
@@ -83,6 +83,13 @@ class Team
      * @ORM\JoinColumn(nullable=false)
      */
     private $tournament;
+
+    /**
+     * @var Event
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="teams")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $event;
 
     /**
      * @var User
@@ -250,6 +257,7 @@ class Team
     public function setTournament(Tournament $tournament)
     {
         $this->tournament = $tournament;
+        $this->event = $tournament->getEvent();
     
         return $this;
     }
@@ -343,6 +351,22 @@ class Team
     public function getPlayers()
     {
         return $this->players;
+    }
+
+    /**
+     * @param Event $event
+     */
+    public function setEvent(Event $event)
+    {
+        $this->event = $event;
+    }
+
+    /**
+     * @return Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
     }
 
     public function isValid()
