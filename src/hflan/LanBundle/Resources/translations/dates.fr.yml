@@ -61,8 +61,8 @@ date:
         past: il y a %x% secondes
 
     weekend:
-        sameMonth: le weekend du %from% au %to% %month%
-        differentMonth: du %from% %fromMonth% au %to% %toMonth%
+        sameMonth: le weekend du %from% à %fromTime% au %to% %month% à %endTime%
+        differentMonth: du %from% %fromMonth% à %fromTime% au %to% %toMonth% à %endTime%
     range:
-        sameMonth: du %from% au %to% %month%
-        differentMonth: du %from% %fromMonth% au %to% %toMonth%
+        sameMonth: du %from% à %fromTime% au %to% %month% à %endTime%
+        differentMonth: du %from% %fromMonth% à %fromTime% au %to% %toMonth% à %endTime%
