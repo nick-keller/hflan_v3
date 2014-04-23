@@ -22,7 +22,7 @@
                 {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
             </p>
             <a href="{{ path('hflan_register') }}" class="btn btn-large">
-                <i class="icon-edit"></i>
+                <i class="fa fa-edit"></i>
                 {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
             </a>
         {% endif %}

@@ -4,7 +4,7 @@
     <h1>Liste des évènements</h1>
 
     <a href="{{ path('hflan_event_new') }}" class="btn">
-        <i class="icon-plus"></i> Nouveau
+        <i class="fa fa-plus"></i> Nouveau
     </a>
 
     <hr>
@@ -16,21 +16,21 @@
                 <small>
                     {{ event.price }} €
                     <hr>
-                    <i class="icon-edit"></i>
+                    <i class="fa fa-edit"></i>
                     {{ event.registrationOpenAt|simpleDate('-') }}
-                    <i class="icon-caret-right" style="margin: 0 5px"></i>
+                    <i class="fa fa-caret-right" style="margin: 0 5px"></i>
                     {{ event.registrationCloseAt|simpleDate('-') }}
                     <hr>
-                    <i class="icon-trophy"></i>
+                    <i class="fa fa-trophy"></i>
                     {{ event.beginAt|simpleDate('-') }}
-                    <i class="icon-caret-right" style="margin: 0 5px"></i>
+                    <i class="fa fa-caret-right" style="margin: 0 5px"></i>
                     {{ event.endAt|simpleDate('-') }}
                     <div class="pull-right">
                         <a href="{{ path('hflan_event_edit', {slug: event.slug}) }}">
-                            <i class="icon-pencil"></i>
+                            <i class="fa fa-pencil"></i>
                         </a>
                         <a href="{{ path('hflan_event_remove', {slug: event.slug}) }}">
-                            <i class="icon-remove"></i>
+                            <i class="fa fa-times"></i>
                         </a>
                     </div>
                 </small>
@@ -49,7 +49,7 @@
                                     <b>Pré-inscriptions</b>
                                     Il manque des informations sur les joueurs
                                 </div>
-                                <i class="icon-ellipsis-horizontal"></i>
+                                <i class="fa fa-ellipsis-h"></i>
                             </div>
                         </th>
                         <th>
@@ -58,7 +58,7 @@
                                     <b>En attente de paiment</b>
                                     Toutes les informations sont valides, il ne reste plus qu'à payer
                                 </div>
-                                <i class="icon-ellipsis-horizontal"></i>
+                                <i class="fa fa-ellipsis-h"></i>
                             </div>
                         </th>
                         <th colspan="2">Equipes</th>
@@ -68,9 +68,9 @@
                         <tr data-href="{{ path('hflan_tournament_show', {slug:tournament.slug}) }}">
                             <td>
                                 {% if tournament.isConsole %}
-                                    <i class="icon-gamepad"></i>
+                                    <i class="fa fa-gamepad"></i>
                                 {% else %}
-                                    <i class="icon-desktop"></i>
+                                    <i class="fa fa-desktop"></i>
                                 {% endif %}
                                 {{ tournament.game }}
                             </td>
@@ -87,13 +87,13 @@
                             </td>
                             <td>
                                 <a href="{{ path('hflan_tournament_edit', {slug:tournament.slug}) }}">
-                                    <i class="icon-pencil"></i>
+                                    <i class="fa fa-pencil"></i>
                                 </a>
                                 <a href="{{ path('hflan_tournament_export', {slug:tournament.slug}) }}" title="Exporter en csv">
-                                    <i class="icon-cloud-upload"></i>
+                                    <i class="fa fa-cloud-upload"></i>
                                 </a>
                                 <a href="{{ path('hflan_tournament_remove', {slug:tournament.slug}) }}">
-                                    <i class="icon-remove"></i>
+                                    <i class="fa fa-times"></i>
                                 </a>
                             </td>
                         </tr>
@@ -102,12 +102,12 @@
             {% endif %}
 
             <a class="btn" href="{{ path('hflan_tournament_new', {slug:event.slug}) }}">
-                <i class="icon-plus"></i>
+                <i class="fa fa-plus"></i>
                 Ajouter un tournoi
             </a>
 
             <a href="{{ path('hflan_event_export', {slug:event.slug}) }}" class="btn">
-                <i class="icon-envelope"></i> Mailing list
+                <i class="fa fa-envelope"></i> Mailing list
             </a>
         </div>
     {% endfor %}

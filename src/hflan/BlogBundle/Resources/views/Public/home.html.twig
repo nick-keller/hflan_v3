@@ -33,7 +33,7 @@
                     <div class="row row-gaped">
                         <div class="col3">
                             <a class="article-image" style="background-image: url({{ asset(article.webPath) }})" href="{{ path('hflan_blog_show', {slug:article.slug}) }}">
-                                <i class="icon-eye-open"></i>
+                                <i class="fa fa-eye"></i>
                             </a>
                         </div>
                         <div class="col9">
@@ -47,7 +47,7 @@
                 <hr>
             {% endfor %}
             <a href="{{ path('hflan_blog') }}" class="btn">
-                <i class="icon-share-alt"></i>
+                <i class="fa fa-share"></i>
                 {{ "blog.view_all_articles"|trans({}, "blog")|desc("Lien vers tous les articles") }}
             </a>
         </div>

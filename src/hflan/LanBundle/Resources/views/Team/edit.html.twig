@@ -11,11 +11,11 @@
                     {% endif %}
                     {% if player.valid %}
                         <a href="{{ path('hflan_edit_player', {id:player.id}) }}" class="edit-player valid">
-                            <i class="icon-ok"></i>
+                            <i class="fa fa-check"></i>
                         </a>
                     {% else %}
                         <a href="{{ path('hflan_edit_player', {id:player.id}) }}" class="edit-player">
-                            <i class="icon-pencil"></i>
+                            <i class="fa fa-pencil"></i>
                         </a>
                     {% endif %}
                 </div>
@@ -24,8 +24,8 @@
         <div class="col6">
             {{ renderBlock('register_instruction') }}
             <a {% if team.valid %}href="{{ path('hflan_pay_team') }}" {% endif %}class="next-step{% if team.valid %} valid{% endif %}">
-                <i class="icon-lock"></i>
-                <i class="icon-unlock-alt"></i>
+                <i class="fa fa-lock"></i>
+                <i class="fa fa-unlock-alt"></i>
                 <p>
                     {{ "registration.process.lock"|trans({}, "registration")|desc("Passer à l'étape 3") }}
                 </p>

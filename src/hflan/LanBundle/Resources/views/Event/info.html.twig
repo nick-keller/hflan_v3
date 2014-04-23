@@ -74,7 +74,7 @@
                             </td>
                             <td>
                                 <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
-                                    <i class="icon-ok"></i>
+                                    <i class="fa fa-check"></i>
                                     {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
                                 </a>
                             </td>
@@ -142,7 +142,7 @@
                             </td>
                             <td>
                                 <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
-                                    <i class="icon-ok"></i>
+                                    <i class="fa fa-check"></i>
                                     {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
                                 </a>
                             </td>
@@ -164,7 +164,7 @@
                 <h3>{{ document.name }}</h3>
                 {{ document.text|raw }}
                 <a class="btn" href="{{ path('hflan_doc_download', {slug:document.slug}) }}">
-                    <i class="icon-download-alt"></i>
+                    <i class="fa fa-download"></i>
                     {{ "info.btn.download"|trans({}, "info")|desc("Bouton télécharger") }}
                 </a>
                 <hr>

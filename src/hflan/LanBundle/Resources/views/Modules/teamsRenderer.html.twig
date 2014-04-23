@@ -27,11 +27,11 @@
                         <td>
                             {% if not team.paid %}
                                 <a title="Passer en liste supperieur" href="{{ path('hflan_team_upgrade', {id:team.id}) }}">
-                                    <i class="icon-arrow-up"></i>
+                                    <i class="fa fa-arrow-up"></i>
                                 </a>
                                 {% if team.infoLocked %}
                                     <a title="Dévérouiller les informations" href="{{ path('hflan_team_downgrade', {id:team.id}) }}">
-                                        <i class="icon-arrow-down"></i>
+                                        <i class="fa fa-arrow-down"></i>
                                     </a>
                                 {% endif %}
                             {% endif %}
@@ -76,11 +76,11 @@
                         <td>
                             {% if not team.paid %}
                                 <a title="Passer en liste supperieur" href="{{ path('hflan_team_upgrade', {id:team.id}) }}">
-                                    <i class="icon-arrow-up"></i>
+                                    <i class="fa fa-arrow-up"></i>
                                 </a>
                                 {% if team.infoLocked %}
                                     <a title="Dévérouiller les informations" href="{{ path('hflan_team_downgrade', {id:team.id}) }}">
-                                        <i class="icon-arrow-down"></i>
+                                        <i class="fa fa-arrow-down"></i>
                                     </a>
                                 {% endif %}
                             {% endif %}

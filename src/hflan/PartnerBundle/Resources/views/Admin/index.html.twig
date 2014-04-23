@@ -4,7 +4,7 @@
     <h1 class="header">Partenaires</h1>
 
     <a class="btn" href="{{ path('hflan_partner_new') }}">
-        <i class="icon-plus"></i>
+        <i class="fa fa-plus"></i>
         Nouveau
     </a>
 
@@ -22,13 +22,13 @@
                 <td>{{ partner.url|maxLength(20) }}</td>
                 <td>
                     <a href="{{ path('hflan_partner_up', {id:partner.id}) }}" data-sortable="up">
-                        <i class="icon-arrow-up"></i>
+                        <i class="fa fa-arrow-up"></i>
                     </a>
                     <a href="{{ path('hflan_partner_down', {id:partner.id}) }}" data-sortable="down">
-                        <i class="icon-arrow-down"></i>
+                        <i class="fa fa-arrow-down"></i>
                     </a>
                     <a href="{{ path('hflan_partner_remove', {id:partner.id}) }}">
-                        <i class="icon-remove"></i>
+                        <i class="fa fa-times"></i>
                     </a>
                 </td>
             </tr>
@@ -36,6 +36,6 @@
     </table>
 
     <p>
-        <i class="icon-lightbulb"></i> Double-cliquez pour éditer.<br>
+        <i class="fa fa-lightbulb"></i> Double-cliquez pour éditer.<br>
     </p>
 {% endblock %}

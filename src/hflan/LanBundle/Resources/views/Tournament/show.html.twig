@@ -8,11 +8,11 @@
         <small>
             {{ tournament.price }} €
             <hr>
-            <i class="icon-user"></i>
+            <i class="fa fa-user"></i>
             {{ tournament.pricePerPlayer }} €
             {% if tournament.numberOfPlayerPerTeam > 1 %}
                 <hr>
-                <i class="icon-group"></i>
+                <i class="fa fa-group"></i>
                 {{ tournament.totalPrice }} €
             {% endif %}
         </small>
@@ -24,7 +24,7 @@
                 {{ teams.paid|length }} {% if tournament.numberOfPlayerPerTeam > 1 %}équipes{% else %}joueurs{% endif %}
                 <div class="pull-right">
                     <a href="{{ path('hflan_tournament_export', {slug:tournament.slug}) }}">
-                        <i class="icon-cloud-upload"></i> Exporter en CSV
+                        <i class="fa fa-cloud-upload"></i> Exporter en CSV
                     </a>
                 </div>
             </small>
