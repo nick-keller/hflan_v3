@@ -13,6 +13,9 @@
                     <div class="preview">
                         <h3>{{ article.title }}</h3>
                         {{ article.content|stripHTML(200) }}
+                        <a href="{{ path('hflan_blog_show', {slug:article.slug}) }}">
+                            {{ "blog.read_more"|trans({}, "blog")|desc("Lire la suite") }}
+                        </a>
                     </div>
                 </article>
             {% endfor %}
