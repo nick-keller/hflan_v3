@@ -241,19 +241,18 @@
                     <aside>
                         {{ render(controller("hflanGuestbookBundle:Public:menu")) }}
                         {{ render(controller("hflanLanBundle:Event:menu")) }}
-                        <h3 class="facebook-title">
+                        <h3>
                             {{ "sidebar.facebook.title"|trans({}, "sidebar")|desc("Titre facebook box") }}
                         </h3>
-                        <div class="facebook-container">
-                            <div class="fb-like-box"
-                                 data-href="https://www.facebook.com/hf.lan.esiee"
-                                 data-width="270"
-                                 data-show-faces="true"
-                                 data-header="false"
-                                 data-stream="false"
-                                 data-show-border="false">
-                             </div>
-                        </div>
+                        <a class="btn btn-social" href="https://www.facebook.com/hf.lan.esiee" style="background-color: #3b5998;">
+                            <i class="fa fa-facebook fa-2x" style="margin-top: 4px;"></i>
+                        </a>
+                        <a class="btn btn-social" href="https://twitter.com/hflanesiee" style="background-color: #309aea;">
+                            <i class="fa fa-twitter fa-2x" style="margin-top: 4px;"></i>
+                        </a>
+                        <a class="btn btn-social" href="https://www.youtube.com/playlist?list=PLkC0j4FQhqgtMjSCg81xGCgMKgxDDf8bA" style="background-color: #ca3523;">
+                            <i class="fa fa-youtube fa-2x" style="margin-top: 4px;"></i>
+                        </a>
                         {{ render(controller("hflanPartnerBundle:Public:menu")) }}
                     </aside>
                 </div>
@@ -262,13 +261,6 @@
         {% block javascripts %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=180928215299042";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
             {% javascripts
                 'js/jquery-ui-1.10.3.custom.min.js'
                 'js/jquery.countdown.min.js'
