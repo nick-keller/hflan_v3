@@ -34,7 +34,7 @@ class TournamentType extends AbstractType
                 'required' => false,
             ))
             ->add('gameType', 'text', array(
-                'label' => 'Type de jeu',
+                'label' => 'Type de matchs',
                 'attr' => array(
                     'placeholder' => 'Time-Attack, Team-Deathmatch, 2v2...'
                 )
