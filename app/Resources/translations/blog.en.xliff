@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-10-08T08:45:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2014-04-23T15:00:42Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,17 +8,17 @@
     <body>
       <trans-unit id="8f72fceb67ab4cc247577de84699b1f17e101565" resname="blog.last_articles">
         <source>Titre sur la page d'accueil : Derniers articles</source>
-        <target state="new">Titre sur la page d'accueil : Derniers articles</target>
+        <target>Last articles</target>
         <jms:reference-file line="29">views/Public/home.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="d92e9bbda06c89573170ab7e8745994cc2155c1e" resname="blog.title">
         <source>Titre principale de la page blog</source>
-        <target state="new">Titre principale de la page blog</target>
+        <target>Blog</target>
         <jms:reference-file line="5">views/Public/index.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="b4f5a9c15d9acf534605944d1b576a6c0a8ae7bf" resname="blog.view_all_articles">
         <source>Lien vers tous les articles</source>
-        <target state="new">Lien vers tous les articles</target>
+        <target>View all articles</target>
         <jms:reference-file line="51">views/Public/home.html.twig</jms:reference-file>
       </trans-unit>
     </body>

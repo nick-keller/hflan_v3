@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-10-08T08:45:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2014-04-23T15:07:06Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,95 +8,95 @@
     <body>
       <trans-unit id="5b4c34b16938f4a4425322c56182649553cd6a47" resname="info.btn.download">
         <source>Bouton télécharger</source>
-        <target state="new">Bouton télécharger</target>
+        <target>Download</target>
         <jms:reference-file line="164">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="925289c2752d1c6bdf9564b5e21ab9b1accae085" resname="info.tab.access">
         <source>Onglet accès</source>
-        <target state="new">Onglet accès</target>
+        <target>Access</target>
         <jms:reference-file line="18">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="172">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5cdfd63b5405fcc2257a20931d52829c6c4a171c" resname="info.tab.extras">
         <source>Onglet extras</source>
-        <target state="new">Onglet extras</target>
+        <target>Extras</target>
         <jms:reference-file line="9">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="93">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="173bc4b8228e8c7b2c4ddfdf195a9839dd4582d0" resname="info.tab.prices">
         <source>Onglet tarifs</source>
-        <target state="new">Onglet tarifs</target>
+        <target>Price</target>
         <jms:reference-file line="12">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="101">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="378889835f05341b63699b2290fca37bcf2f294f" resname="info.tab.rules">
         <source>Onglet règlements</source>
-        <target state="new">Onglet règlements</target>
+        <target>Regulations</target>
         <jms:reference-file line="15">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="156">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c74c51cf13c247f52407d877add00c7baeec4b08" resname="info.tab.tournaments">
         <source>Onglet tournois</source>
-        <target state="new">Onglet tournois</target>
+        <target>Tournament</target>
         <jms:reference-file line="6">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="39">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="85">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="2e7db8ca79aec089d9e3d22d502c3f379574aa92" resname="info.table.game">
         <source>Colone tableau : Jeu</source>
-        <target state="new">Colone tableau : Jeu</target>
+        <target>Game</target>
         <jms:reference-file line="45">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="112">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a94051be54cf5542cd8fd313453ce410d052ff28" resname="info.table.game_type">
         <source>Colone tableau : Type de matchs</source>
-        <target state="new">Colone tableau : Type de matchs</target>
+        <target>Type of games</target>
         <jms:reference-file line="48">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="115">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="6bb1e477713d49d93d6fc30dada7ae5c1e9450ea" resname="info.table.number_of_teams">
         <source>%n% joueurs|%n% équipes de %p%</source>
-        <target state="new">%n% joueurs|%n% équipes de %p%</target>
+        <target>%n% players|%n% teams of %p%</target>
         <jms:reference-file line="65">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="471fc0d5ba7f53422e30d786ea893d58e6e5fd75" resname="info.table.price">
         <source>Colone tableau : Prix</source>
-        <target state="new">Colone tableau : Prix</target>
+        <target>Price</target>
         <jms:reference-file line="118">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="18">views/Team/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="aafa6b2b1b6fbaff48447583011dad64d00d0b4c" resname="info.table.price_per_player">
         <source>%price% €|%price% € / joueur</source>
-        <target state="new">%price% €|%price% € / joueur</target>
+        <target>%price% €|%price% € / player</target>
         <jms:reference-file line="132">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="5483faeaa0c637fa2a25fe3510e262ecb43aa4ba" resname="info.table.prize_pool">
         <source>Colone tableau : Prize-pool</source>
-        <target state="new">Colone tableau : Prize-pool</target>
+        <target>Prize-pool</target>
         <jms:reference-file line="54">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="121">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="a3b1ec0c5d4a8bfcec0657ce046e80abadfa928a" resname="info.table.register">
         <source>Colone tableau : Inscription</source>
-        <target state="new">Colone tableau : Inscription</target>
+        <target>Registration</target>
         <jms:reference-file line="57">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="124">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ef39fcfd8cdae34e56bd8c884d9b29572007db26" resname="info.table.register_action">
         <source>Bouton s'inscrire</source>
-        <target state="new">Bouton s'inscrire</target>
+        <target>Register !</target>
         <jms:reference-file line="76">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="142">views/Event/info.html.twig</jms:reference-file>
         <jms:reference-file line="26">views/Event/menu.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="c93bd2e74d971d06bb2d37da1995d0bea30519a0" resname="info.table.teams">
         <source>Colone tableau : Equipes</source>
-        <target state="new">Colone tableau : Equipes</target>
+        <target>Teams</target>
         <jms:reference-file line="51">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="471ff268d0a693e1603073aa9b9025cd6eba2743" resname="info.tournaments.message">
         <source>Présentation les dates. Nom de la lan : %event%, Dates de la lan : %dates%, Inscriptions : %registration%</source>
-        <target state="new">Présentation les dates. Nom de la lan : %event%, Dates de la lan : %dates%, Inscriptions : %registration%</target>
+        <target><![CDATA[The %event% will take place at ESIEE Paris <b>%dates%</b>. Registrations will be open <b>%registration%</b>.]]></target>
         <jms:reference-file line="31">views/Event/info.html.twig</jms:reference-file>
       </trans-unit>
     </body>

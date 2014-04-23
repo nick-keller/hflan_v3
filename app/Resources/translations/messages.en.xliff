@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-10-08T08:45:20Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2014-04-23T14:52:35Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -24,69 +24,69 @@
       </trans-unit>
       <trans-unit id="e0e4bce62ee0df5be35282b655c477b9614d6db2" resname="field.birthday">
         <source>field.birthday</source>
-        <target state="new">field.birthday</target>
+        <target>Birthday</target>
         <jms:reference-file line="40">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="f36ab07fff3d15ccd365e369753b2fb34c5ae915" resname="field.computer.desktop">
         <source>field.computer.desktop</source>
-        <target state="new">field.computer.desktop</target>
+        <target>Desktop computer</target>
         <jms:reference-file line="35">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="cd10e6143f06b6403e58aebc13acfeb4027b4096" resname="field.computer.laptop">
         <source>field.computer.laptop</source>
-        <target state="new">field.computer.laptop</target>
+        <target>Laptop</target>
         <jms:reference-file line="36">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="13fb533b1d2eb26928c54ff7ac0396e0062af98b" resname="field.computer_type">
         <source>field.computer_type</source>
-        <target state="new">field.computer_type</target>
+        <target>Computer</target>
         <jms:reference-file line="33">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="cf8679d1d6f166a41a9df3585ccd5970db81bdeb" resname="field.email">
         <source>field.email</source>
-        <target state="new">field.email</target>
+        <target>E-mail</target>
         <jms:reference-file line="30">LanBundle/Form/PlayerType.php</jms:reference-file>
         <jms:reference-file line="39">LanBundle/Form/TeamType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="b756de11316ac3839e5bbc70ff6077ef4fd6684f" resname="field.first_name">
         <source>field.first_name</source>
-        <target state="new">field.first_name</target>
+        <target>First name</target>
         <jms:reference-file line="21">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="5c83c7cf153fe5299b4363d0a83b9cb94618517a" resname="field.last_name">
         <source>field.last_name</source>
-        <target state="new">field.last_name</target>
+        <target>Last name</target>
         <jms:reference-file line="24">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="2231d4321ed1198a9f87c2b124d5b36e552bbf97" resname="field.message">
         <source>field.message</source>
-        <target state="new">field.message</target>
+        <target>Message</target>
         <jms:reference-file line="25">GuestbookBundle/Form/FeedbackType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="9c423e4b239b8f2bee180429816afc75d828bfb2" resname="field.nickname">
         <source>field.nickname</source>
-        <target state="new">field.nickname</target>
+        <target>Nickname</target>
         <jms:reference-file line="19">GuestbookBundle/Form/FeedbackType.php</jms:reference-file>
         <jms:reference-file line="27">LanBundle/Form/PlayerType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="f04b4b0274c32cb1120f106b9cfae76ea8abaa71" resname="field.password">
         <source>field.password</source>
-        <target state="new">field.password</target>
+        <target>Password</target>
         <jms:reference-file line="42">LanBundle/Form/TeamType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="ae811e6264dd902e7df9302474662beb88faf07f" resname="field.rating">
         <source>field.rating</source>
-        <target state="new">field.rating</target>
+        <target>Rating</target>
         <jms:reference-file line="22">GuestbookBundle/Form/FeedbackType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="80b87ac1c020b8b733e1af7c0ace9890bcbf51c5" resname="field.team_name">
         <source>field.team_name</source>
-        <target state="new">field.team_name</target>
+        <target>Team name</target>
         <jms:reference-file line="29">LanBundle/Form/TeamType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="20c3b60a46e8ff2dc30614526b95d310d6c5a181" resname="field.tournament">
         <source>field.tournament</source>
-        <target state="new">field.tournament</target>
+        <target>Tournament</target>
         <jms:reference-file line="32">LanBundle/Form/TeamType.php</jms:reference-file>
       </trans-unit>
     </body>
