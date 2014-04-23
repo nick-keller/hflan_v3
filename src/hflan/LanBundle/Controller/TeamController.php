@@ -46,15 +46,20 @@ class TeamController extends Controller
     {
         if($this->getUser()) return $this->redirect($this->generateUrl('hflan_edit_team'));
 
-        $team = new Team;
+        $team = new Team();
         if($tournament !== null) $team->setTournament($tournament);
+
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+        if ($tournament->getFillingRatio() == 100)
+            $this->session->getFlashBag()->add('error', 'Le tournois est complet.');
+
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
         $form = $this->createForm(new TeamType($nextEvent), $team);
 
         if('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
-            if($form->isValid()) {
+            if($form->isValid() && $tournament->getFillingRatio() < 100) {
                 $this->get('hflan.team_manager')->registerTeam($team);
                 $this->session->getFlashBag()->add('success',
                     'Pour finaliser votre inscription, connectez vous avec votre adresse email et le mot de passe que vous venez de définir.');
