@@ -168,9 +168,14 @@ class TeamController extends Controller
      */
     public function removeAction(Team $team)
     {
-        if($team->getPaid()){
-            $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a péyé voyons !");
-            return $this->redirect($this->generateUrl('hflan_team_show', array('id'=>$team->getId())));
+        if($team->getPaid() && !$team->getTournament()->getIsPaymentOnTheSpot()){
+            $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a payé voyons !");
+
+            $referer = $request->headers->get('referer') ?
+                $request->headers->get('referer') :
+                $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+                
+            return $this->redirect($referer);
         }
 
         $this->em->remove($team);

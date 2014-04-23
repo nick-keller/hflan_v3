@@ -35,6 +35,12 @@
             </a>
         {% endif %}
     {% endif %}
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <a class="btn" href="{{ path('hflan_team_remove', {id:team.id}) }}">
+            <i class="fa fa-trash-o"></i>
+            Supprimer l'équipe
+        </a>
+    {% endif %}
 
     </section><section>
 

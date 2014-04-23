@@ -35,6 +35,11 @@
                                     </a>
                                 {% endif %}
                             {% endif %}
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <a title="Supprimer l'équipe" href="{{ path('hflan_team_remove', {id:team.id}) }}">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
@@ -83,6 +88,11 @@
                                         <i class="fa fa-arrow-down"></i>
                                     </a>
                                 {% endif %}
+                            {% endif %}
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <a title="Supprimer l'équipe" href="{{ path('hflan_team_remove', {id:team.id}) }}">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             {% endif %}
                         </td>
                     </tr>
