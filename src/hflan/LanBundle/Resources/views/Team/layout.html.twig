@@ -5,7 +5,6 @@
     <h1 class="header">
         {{ "registration.title"|trans({'%tournament%':tournament.name}, "registration")|desc("Titre de la page d'inscription au tournoi. Nom du tournoi : %tournament%") }}
         <small>
-            {{ tournament.prizePool }} € de Prize-Pool
             {{ "registration.prize_pool"|trans({'%prize_pool%':tournament.prizePool}, "registration")|desc("Prize_pool du tournoi. Prize-pool : %prize_pool%") }}
         </small>
     </h1>

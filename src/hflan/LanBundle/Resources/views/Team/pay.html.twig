@@ -13,7 +13,11 @@
     {% endif %}
 
     {% if team.paid %}
-        {{ renderBlock("registration_complete") }}
+        {% if not tournament.isPaymentOnTheSpot %}
+            {{ renderBlock("registration_complete") }}
+        {% else %}
+            {{ renderBlock("registration_complete_on_the_spot") }}
+        {% endif %}
     {% else %}
         {{ renderBlock("registration_buy_instruction") }}
         <a class="btn" href="https://www.buypacker.com/deal/9605-y-hf-lan-6?utm_source=direct&utm_medium=link&utm_content=dealInvite&utm_campaign=9605-y-hf-lan-6">

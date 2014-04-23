@@ -100,6 +100,10 @@ class TeamController extends Controller
                 return $this->redirect($this->generateUrl('hflan_edit_team'));
 
             $team->setInfoLocked(true);
+
+            if ($team->getTournament()->getIsPaymentOnTheSpot())
+                $team->setPaid(true);
+
             $this->em->persist($team);
             $this->em->flush();
         }
