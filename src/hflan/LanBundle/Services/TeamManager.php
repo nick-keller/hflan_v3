@@ -129,11 +129,28 @@ class TeamManager
             ->setTo($team->getEmail())
             ->setBody($this->templating->render(
                 'hflanLanBundle:Mail:register.html.twig', array(
-                'event' => $event,
-                'tournament' => $team->getTournament(),
-                'email' => $team->getEmail(),
-                'password' => $team->getPlainPassword(),
-                'team' => $team,
+                    'event'      => $event,
+                    'tournament' => $team->getTournament(),
+                    'email'      => $team->getEmail(),
+                    'password'   => $team->getPlainPassword(),
+                    'team'       => $team,
+            )))
+        ;
+        $this->mailer->send($message);
+    }
+
+    public function sendUpgradeEmail(Team $team, Event $event)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('hf.lan : Votre équipe a bien été inscrite')
+            ->setFrom('infos@hf-lan.fr')
+            ->setTo($team->getEmail())
+            ->setBody($this->templating->render(
+                'hflanLanBundle:Mail:confirmation.html.twig', array(
+                    'event'      => $event,
+                    'tournament' => $team->getTournament(),
+                    'email'      => $team->getEmail(),
+                    'team'       => $team,
             )))
         ;
         $this->mailer->send($message);

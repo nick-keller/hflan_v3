@@ -107,7 +107,10 @@ class TeamController extends Controller
             $team->setInfoLocked(true);
 
             if ($team->getTournament()->getIsPaymentOnTheSpot())
+            {
                 $team->setPaid(true);
+                $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
+            }
 
             $this->em->persist($team);
             $this->em->flush();
@@ -139,6 +142,7 @@ class TeamController extends Controller
         }
         else if($team->getPaid() == false){
             $team->setPaid(true);
+            $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
             $this->em->persist($team);
             $this->session->getFlashBag()->add('success', "Equipe passé en liste définitive");
         }

@@ -114,7 +114,7 @@ class TournamentController extends Controller
     }
 
     /**
-     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_RESPO')")
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_SUPER_ADMIN')")
      * @Template
      */
     public function removeAction(Tournament $tournament)
@@ -124,6 +124,7 @@ class TournamentController extends Controller
         else{
             $this->em->remove($tournament);
             $this->em->flush();
+            $this->session->getFlashBag()->add('success', 'L\'équipe a bien été supprimée du tournois');
         }
 
         return $this->redirect($this->generateUrl('hflan_event_admin'));

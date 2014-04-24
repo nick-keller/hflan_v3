@@ -1,0 +1,11 @@
+<p>
+    Bonjour
+    {% if tournament.numberOfPlayerPerTeam > 1 %}
+        à toute l'équipe
+    {% endif %}
+    {{ team.name }},<br>
+    Merci pour votre participation à la {{ event.name }}, votre inscription au tournois <b>{{ tournament.name }}</b> a bien été enregistrée. <br>
+    {% if tournament.isPaymentOnTheSpot %}
+        Vous n'avez plus qu'à payer votre place (de <b>{{ tournament.pricePerPlayer }} €</b>) sur place.
+    {% endif %}
+</p>
