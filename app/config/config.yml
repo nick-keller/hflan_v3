@@ -28,6 +28,8 @@ twig:
     form:
         resources:
             - ':Form:form_div_layout.html.twig'
+    globals:
+        buypackerUrl: "%buypacker.url%"
 
 services:
     twig.text_extension:

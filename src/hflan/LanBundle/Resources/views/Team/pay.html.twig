@@ -22,7 +22,7 @@
         {% if tournament.fillingRatio < 100 %}
             {% if not tournament.isPaymentOnTheSpot %}
                 {{ renderBlock("registration_buy_instruction") }}
-                <a class="btn" href="http://s.buypacker.com/hvq">
+                <a class="btn" href="{{ buypackerUrl }}">
                     <i class="fa fa-shopping-cart"></i>
                     Acheter ma place
                 </a>
