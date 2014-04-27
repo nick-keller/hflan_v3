@@ -191,6 +191,11 @@
                             {{ "menu.info"|trans({}, "menu") }}
                         </a>
                     </li>
+                    <li {{ helper.current('hflan_prices') }}>
+                        <a href="{{ path('hflan_prices') }}">
+                            {{ "menu.prices"|trans({}, "menu") }}
+                        </a>
+                    </li>
                     <li {{ helper.current('hflan_photos') }}>
                         <a href="{{ path('hflan_photos') }}">
                             {{ "menu.photos"|trans({}, "menu") }}

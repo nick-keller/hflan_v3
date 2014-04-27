@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-10-08T08:43:29Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file date="2014-04-26T12:53:34Z" source-language="en" target-language="fr" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -77,7 +77,7 @@
       </trans-unit>
       <trans-unit id="32fe0176eb482b9e4d5f595e937fac61b6a2d872" resname="registration.table.item.ticket">
         <source>Billet d'entré pour la LAN. Nom de la LAN : %event%</source>
-        <target>Billet d'entré pour la %event%</target>
+        <target>Billet d'entrée pour la %event%</target>
         <jms:reference-file line="26">views/Team/layout.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="47801e6912a70b2e82a0fc07b997efc321872cfa" resname="registration.table.item.tournament">

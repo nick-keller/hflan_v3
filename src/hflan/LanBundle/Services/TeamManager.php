@@ -134,7 +134,9 @@ class TeamManager
                     'email'      => $team->getEmail(),
                     'password'   => $team->getPlainPassword(),
                     'team'       => $team,
-            )))
+                )),
+                'text/html'
+            )
         ;
         $this->mailer->send($message);
     }
@@ -151,7 +153,9 @@ class TeamManager
                     'tournament' => $team->getTournament(),
                     'email'      => $team->getEmail(),
                     'team'       => $team,
-            )))
+                )),
+                'text/html'
+            )
         ;
         $this->mailer->send($message);
     }

@@ -61,8 +61,8 @@ date:
         past: %x% seconds ago
 
     weekend:
-        sameMonth: the weekend of %month% %from% at %fromTime% to %to% at %endTime%
-        differentMonth: the weekend of %fromMonth% %from% at %fromTime% to %toMonth% %to% at %endTime%
+        sameMonth: the weekend of %month% %from% at %fromTime% to %to% at the end of noon
+        differentMonth: the weekend of %fromMonth% %from% at %fromTime% to %toMonth% %to% at the end of noon
     range:
         sameMonth: from %from% at %fromTime% to %to% %month% at %endTime%
-        differentMonth: from %fromMonth% %from% at %fromTime% to %toMonth% %to%  at %endTime%
+        differentMonth: from %fromMonth% %from% at %fromTime% to %toMonth% %to% at %endTime%

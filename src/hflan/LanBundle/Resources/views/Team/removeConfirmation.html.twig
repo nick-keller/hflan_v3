@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% if tournament.numberOfPlayerPerTeam > 1 %}
+        <h1>Voulez-vous vraiment supprimer {{ team.name }} ?</h1>
+    {% else %}
+        <h1>Voulez-vous vraiment supprimer {{ team.players[0].nickname }} ?</h1>
+    {% endif %}
+    <a href="{{ path('hflan_team_remove', {id:team.id}) }}" class="btn" style="background-color:red;border-color:black;">
+        <i class="fa fa-trash-o"></i>
+        Oui supprimer
+    </a>
+    <a href="{{ path('hflan_tournament_show', {slug:tournament.slug}) }}" class="btn">
+        <i class="fa fa-check"></i>
+        Non annuler
+    </a>
+{% endblock %}

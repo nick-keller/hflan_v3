@@ -29,8 +29,8 @@ class TeamType extends AbstractType
                 'label' => "field.team_name",
             ))
             ->add('tournament', 'entity', array(
-                'label' => "field.tournament",
-                'class' => 'hflan\LanBundle\Entity\Tournament',
+                'label'         => "field.tournament",
+                'class'         => 'hflan\LanBundle\Entity\Tournament',
                 'query_builder' => function(TournamentRepository $repo) {
                     return $repo->queryTournamentsOfEvent($this->event);
                 },
@@ -38,8 +38,10 @@ class TeamType extends AbstractType
             ->add('email', 'text', array(
                 'label' => "field.email",
             ))
-            ->add('plainPassword', 'password', array(
-                'label' => "field.password",
+            ->add('plainPassword', 'repeated', array(
+                'type'           => 'password',
+                'first_options'  => array('label' => "field.password"),
+                'second_options' => array('label' => "field.verification"),
             ))
         ;
     }

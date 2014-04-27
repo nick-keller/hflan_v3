@@ -28,6 +28,10 @@ hflan_team_remove:
     pattern:  /teams/{id}/remove
     defaults: { _controller: hflanLanBundle:Team:remove }
 
+hflan_team_remove_confirmation:
+    pattern:  /teams/{id}/remove/confirmation
+    defaults: { _controller: hflanLanBundle:Team:removeConfirmation }
+
 # Player
 
 hflan_edit_player:
@@ -59,6 +63,10 @@ hflan_event_admin:
 hflan_info:
     pattern:  /info
     defaults: { _controller: hflanLanBundle:Event:info }
+
+hflan_prices:
+    pattern:  /tarifs
+    defaults: { _controller: hflanLanBundle:Event:prices }
 
 # Admin Tournament
 

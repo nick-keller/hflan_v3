@@ -50,7 +50,7 @@ class TeamController extends Controller
         if($tournament !== null) $team->setTournament($tournament);
 
         $this->get('hflan.team_manager')->fetchTeamRegistrationData();
-        if ($tournament->getFillingRatio() == 100)
+        if ($tournament !== null && $tournament->getFillingRatio() == 100)
             $this->session->getFlashBag()->add('error', 'Le tournois est complet.');
 
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
@@ -59,7 +59,7 @@ class TeamController extends Controller
         if('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
-            if($form->isValid() && $tournament->getFillingRatio() < 100) {
+            if($form->isValid()) {
                 $this->get('hflan.team_manager')->registerTeam($team);
                 $this->session->getFlashBag()->add('success',
                     'Pour finaliser votre inscription, connectez vous avec votre adresse email et le mot de passe que vous venez de définir.');
@@ -173,7 +173,7 @@ class TeamController extends Controller
     }
 
     /**
-     * @Secure(roles="ROLE_RESPO")
+     * @Secure(roles="ROLE_SUPER_ADMIN")
      */
     public function removeAction(Team $team)
     {
@@ -191,5 +191,17 @@ class TeamController extends Controller
         $this->em->flush();
 
         return $this->redirect($this->generateUrl('hflan_event_admin'));
+    }
+
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
+     * @Template
+     */
+    public function removeConfirmationAction(Team $team)
+    {
+        return array(
+            'team' => $team,
+            'tournament' => $team->getTournament(),
+        );
     }
 }
