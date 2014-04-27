@@ -50,8 +50,8 @@ class TeamController extends Controller
         if($tournament !== null) $team->setTournament($tournament);
 
         $this->get('hflan.team_manager')->fetchTeamRegistrationData();
-        if ($tournament !== null && $tournament->getFillingRatio() == 100)
-            $this->session->getFlashBag()->add('error', 'Le tournois est complet.');
+        if ($tournament !== null && $tournament->getFillingRatio() >= 100)
+            $this->session->getFlashBag()->add('warning', 'Le tournois est complet, vous ne serez que sur liste d\'attente');
 
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
         $form = $this->createForm(new TeamType($nextEvent), $team);
@@ -99,6 +99,7 @@ class TeamController extends Controller
     {
         /** @var Team $team */
         $team = $this->getUser()->getTeam();
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
 
         if($team->getInfoLocked() == false){
             if(!$team->isValid())
@@ -106,7 +107,7 @@ class TeamController extends Controller
 
             $team->setInfoLocked(true);
 
-            if ($team->getTournament()->getIsPaymentOnTheSpot())
+            if ($team->getTournament()->getIsPaymentOnTheSpot() && $team->getTournament()->getFillingRatio() < 100)
             {
                 $team->setPaid(true);
                 $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
@@ -141,10 +142,18 @@ class TeamController extends Controller
             }
         }
         else if($team->getPaid() == false){
-            $team->setPaid(true);
-            $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
-            $this->em->persist($team);
-            $this->session->getFlashBag()->add('success', "Equipe passé en liste définitive");
+            $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+            if ($team->getTournament()->getFillingRatio() < 100)
+            {
+                $team->setPaid(true);
+                $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
+                $this->em->persist($team);
+                $this->session->getFlashBag()->add('success', "Equipe passé en liste définitive");
+            }
+            else
+            {
+                $this->session->getFlashBag()->add('error', "Le tournois est complet.");
+            }
         }
 
         $this->em->flush();

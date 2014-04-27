@@ -8,14 +8,6 @@
                 {{ "info.tab.prices"|trans({}, "info")|desc("Onglet tarifs") }} {{ event }}
             </h1>
 
-            <p>
-                {{ "info.tournaments.message"|trans({
-                '%event%':event.name,
-                '%dates%':weekend(event.beginAt, event.endAt),
-                '%registration%':dateRange(event.registrationOpenAt, event.registrationCloseAt)
-                }, "info")|desc("Présentation les dates. Nom de la lan : %event%, Dates de la lan : %dates%, Inscriptions : %registration%")|raw }}
-            </p>
-
             {{ renderBlock('info_price') }}
             <h2>{{ "info.table.tournament"|trans({}, "info")|desc("Tournois") }}</h2>
             <table class="table">

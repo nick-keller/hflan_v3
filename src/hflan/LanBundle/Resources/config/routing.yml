@@ -82,6 +82,10 @@ hflan_tournament_remove:
     pattern:  /tournaments/{slug}/remove
     defaults: { _controller: hflanLanBundle:Tournament:remove }
 
+hflan_tournament_remove_confirmation:
+    pattern:  /tournaments/{slug}/remove/confirmation
+    defaults: { _controller: hflanLanBundle:Tournament:removeConfirmation }
+
 hflan_tournament_export:
     pattern:  /tournaments/{slug}/export
     defaults: { _controller: hflanLanBundle:Tournament:export }

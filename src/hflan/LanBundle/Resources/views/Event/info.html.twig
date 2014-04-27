@@ -23,7 +23,13 @@
                 <h2 class="header">
                     {{ event }}
                 </h2>
-
+                <p>
+                    {{ "info.tournaments.message"|trans({
+                    '%event%':event.name,
+                    '%dates%':weekend(event.beginAt, event.endAt),
+                    '%registration%':dateRange(event.registrationOpenAt, event.registrationCloseAt)
+                    }, "info")|desc("Présentation les dates. Nom de la lan : %event%, Dates de la lan : %dates%, Inscriptions : %registration%")|raw }}
+                </p>
             {% else %}
                 {{ renderBlock('no_event') }}
             {% endif %}
