@@ -3,9 +3,13 @@
     {% if tournament.numberOfPlayerPerTeam > 1 %}
         à toute l'équipe
     {% endif %}
-    {{ team.name }},<br>
-    Merci pour votre participation à la {{ event.name }}, votre inscription au tournois <b>{{ tournament.name }}</b> a bien été enregistrée. <br>
+    {{ team.name }},<br><br>
+
+    Merci pour votre participation à la {{ event.name }} (<b>{{ tournament.name }}</b>), votre inscription a bien été confirmée. <br>
     {% if tournament.isPaymentOnTheSpot %}
         Vous n'avez plus qu'à payer votre place (de <b>{{ tournament.pricePerPlayer }} €</b>) sur place.
-    {% endif %}
+    {% endif %}<br><br>
+    Toutes les informations utiles sont disponibles sur notre site web : <a href="www.hf-lan.fr">www.hf-lan.fr</a>  . Merci de prendre connaissance des différents règlements avant la LAN.<br>
+    Pour toute question, contactez-nous à <a href="mailto:infos@hf-lan.fr">infos@hf-lan.fr</a>.<br><br>
+    Le staff hf.lan.
 </p>

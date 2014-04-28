@@ -13,7 +13,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="hf_user")
  * @ORM\Entity
- * @UniqueEntity("email|username")
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class User extends BaseUser
 {

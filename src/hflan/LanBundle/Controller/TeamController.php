@@ -128,9 +128,9 @@ class TeamController extends Controller
      */
     public function upgradeAction(Request $request, Team $team)
     {
-        $referer = $request->headers->get('referer') ?
-            $request->headers->get('referer') :
-            $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+        // $referer = $request->headers->get('referer') ?
+        //     $request->headers->get('referer') :
+        //     $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
 
         if($team->getInfoLocked() == false){
             if($team->isValid()){
@@ -158,7 +158,24 @@ class TeamController extends Controller
 
         $this->em->flush();
 
-        return $this->redirect($referer);
+        return $this->redirect($this->generateUrl('hflan_team_show', array('id' => $team->getId())));
+    }
+
+    /**
+     * @Secure(roles="ROLE_RESPO")
+     * @Template
+     */
+    public function upgradeConfirmationAction(Request $request, Team $team)
+    {
+        if($team->getInfoLocked() == false){
+            return $this->redirect($this->generateUrl('hflan_team_upgrade', array('id' => $team->getId())), 301);
+        }
+        else if($team->getPaid() == false){
+            return array(
+                'team' => $team,
+                'tournament' => $team->getTournament(),
+            );
+        }
     }
 
     /**
@@ -166,9 +183,9 @@ class TeamController extends Controller
      */
     public function downgradeAction(Request $request, Team $team)
     {
-        $referer = $request->headers->get('referer') ?
-            $request->headers->get('referer') :
-            $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+        // $referer = $request->headers->get('referer') ?
+        //     $request->headers->get('referer') :
+        //     $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
 
         if($team->getInfoLocked() && !$team->getPaid()){
             $team->setInfoLocked(false);
@@ -176,9 +193,28 @@ class TeamController extends Controller
             $this->session->getFlashBag()->add('success', 'Equipe passé en liste pré-inscrite');
         }
 
+        if ($team->getPaid() && $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))
+        {
+            $team->setPaid(false);
+            $this->em->persist($team);
+            $this->session->getFlashBag()->add('success', 'Equipe passé en liste d\'attente');
+        }
+
         $this->em->flush();
 
-        return $this->redirect($referer);
+        return $this->redirect($this->generateUrl('hflan_team_show', array('id' => $team->getId())));
+    }
+
+    /**
+     * @Secure(roles="ROLE_RESPO")
+     * @Template
+     */
+    public function downgradeConfirmationAction(Request $request, Team $team)
+    {
+        return array(
+            'team' => $team,
+            'tournament' => $team->getTournament(),
+        );
     }
 
     /**

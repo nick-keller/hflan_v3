@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1>Voulez-vous vraiment supprimer {{ tournament }} ?</h1>
+    <a href="{{ path('hflan_tournament_remove', {slug:tournament.slug}) }}" class="btn" style="background-color:red;border-color:black;">
+        <i class="fa fa-trash-o"></i>
+        Oui supprimer
+    </a>
+    <a href="{{ path('hflan_event_admin') }}" class="btn">
+        <i class="fa fa-check"></i>
+        Non annuler
+    </a>
+{% endblock %}

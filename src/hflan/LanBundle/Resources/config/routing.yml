@@ -20,9 +20,17 @@ hflan_team_upgrade:
     pattern:  /teams/{id}/upgrade
     defaults: { _controller: hflanLanBundle:Team:upgrade }
 
+hflan_team_upgrade_confirmation:
+    pattern:  /teams/{id}/upgrade/confirmation
+    defaults: { _controller: hflanLanBundle:Team:upgradeConfirmation }
+
 hflan_team_downgrade:
     pattern:  /teams/{id}/downgrade
     defaults: { _controller: hflanLanBundle:Team:downgrade }
+
+hflan_team_downgrade_confirmation:
+    pattern:  /teams/{id}/downgrade/confirmation
+    defaults: { _controller: hflanLanBundle:Team:downgradeConfirmation }
 
 hflan_team_remove:
     pattern:  /teams/{id}/remove

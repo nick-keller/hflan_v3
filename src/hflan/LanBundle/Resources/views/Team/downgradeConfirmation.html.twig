@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% if tournament.numberOfPlayerPerTeam > 1 %}
+        <h1>Voulez-vous vraiment déverouiller {{ team.name }} ?</h1>
+    {% else %}
+        <h1>Voulez-vous vraiment déverouiller {{ team.players[0].nickname }} ?</h1>
+    {% endif %}
+    <a href="{{ path('hflan_team_downgrade', {id:team.id}) }}" class="btn">
+        <i class="fa fa-check"></i>
+        Oui déverouiller
+    </a>
+    <a href="{{ path('hflan_tournament_show', {slug:tournament.slug}) }}" class="btn">
+        <i class="fa fa-reply"></i>
+        Non annuler
+    </a>
+{% endblock %}

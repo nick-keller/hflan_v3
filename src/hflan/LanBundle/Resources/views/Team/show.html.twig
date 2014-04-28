@@ -24,19 +24,26 @@
     </h1>
 
     {% if not team.paid %}
-        <a class="btn" href="{{ path('hflan_team_upgrade', {id:team.id}) }}">
+        <a class="btn" href="{{ path('hflan_team_upgrade_confirmation', {id:team.id}) }}">
             <i class="fa fa-arrow-up"></i>
             Passer en liste supperieur
         </a>
         {% if team.infoLocked %}
-            <a class="btn" href="{{ path('hflan_team_downgrade', {id:team.id}) }}">
+            <a class="btn" href="{{ path('hflan_team_downgrade_confirmation', {id:team.id}) }}">
+                <i class="fa fa-arrow-down"></i>
+                Dévérouiller les informations
+            </a>
+        {% endif %}
+    {% else %}
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <a class="btn" href="{{ path('hflan_team_downgrade_confirmation', {id:team.id}) }}">
                 <i class="fa fa-arrow-down"></i>
                 Dévérouiller les informations
             </a>
         {% endif %}
     {% endif %}
     {% if is_granted('ROLE_SUPER_ADMIN') %}
-        <a class="btn" href="{{ path('hflan_team_remove', {id:team.id}) }}">
+        <a class="btn" href="{{ path('hflan_team_remove_confirmation', {id:team.id}) }}">
             <i class="fa fa-trash-o"></i>
             Supprimer l'équipe
         </a>

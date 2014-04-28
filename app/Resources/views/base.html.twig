@@ -244,8 +244,6 @@
                 </div>
                 <div class="side-bar">
                     <aside>
-                        {{ render(controller("hflanGuestbookBundle:Public:menu")) }}
-                        {{ render(controller("hflanLanBundle:Event:menu")) }}
                         <h3>
                             {{ "sidebar.facebook.title"|trans({}, "sidebar")|desc("Titre facebook box") }}
                         </h3>
@@ -258,6 +256,8 @@
                         <a target="_blank" class="btn btn-social" href="https://www.youtube.com/playlist?list=PLkC0j4FQhqgtMjSCg81xGCgMKgxDDf8bA" style="background-color: #ca3523;">
                             <i class="fa fa-youtube fa-2x" style="margin-top: 4px;"></i>
                         </a>
+                        {{ render(controller("hflanLanBundle:Event:menu")) }}
+                        {{ render(controller("hflanGuestbookBundle:Public:menu")) }}
                         {{ render(controller("hflanPartnerBundle:Public:menu")) }}
                     </aside>
                 </div>
