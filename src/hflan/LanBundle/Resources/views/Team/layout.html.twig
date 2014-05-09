@@ -4,10 +4,11 @@
 {% block body %}
     <h1 class="header">
         {{ "registration.title"|trans({'%tournament%':tournament.name}, "registration")|desc("Titre de la page d'inscription au tournoi. Nom du tournoi : %tournament%") }}
-        <small>
-            {{ tournament.prizePool }} € de Prize-Pool
-            {{ "registration.prize_pool"|trans({'%prize_pool%':tournament.prizePool}, "registration")|desc("Prize_pool du tournoi. Prize-pool : %prize_pool%") }}
-        </small>
+        {% if tournament.prizePool > 0 %}
+            <small>
+                {{ "registration.prize_pool"|trans({'%prize_pool%':tournament.prizePool}, "registration")|desc("Prize_pool du tournoi. Prize-pool : %prize_pool%") }}
+            </small>
+        {% endif %}
     </h1>
     <table class="table table-total">
         <tr>
@@ -27,10 +28,10 @@
                 <input type="checkbox" id="admission" />
                 <label for="admission">
                     <div class="active">
-                        <i class="icon-minus-sign"></i>
+                        <i class="fa fa-minus-circle"></i>
                     </div>
                     <div class="inactive">
-                        <i class="icon-plus-sign"></i>
+                        <i class="fa fa-plus-circle"></i>
                     </div>
                 </label>
                 <div class="toggle-content" style="margin-top: 10px;color: #7c7c7c">
@@ -55,10 +56,10 @@
                 <input type="checkbox" id="tournament" />
                 <label for="tournament">
                     <div class="active">
-                        <i class="icon-minus-sign"></i>
+                        <i class="fa fa-minus-circle"></i>
                     </div>
                     <div class="inactive">
-                        <i class="icon-plus-sign"></i>
+                        <i class="fa fa-plus-circle"></i>
                     </div>
                 </label>
                 <div class="toggle-content" style="margin-top: 10px;color: #7c7c7c">

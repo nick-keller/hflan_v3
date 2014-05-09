@@ -6,12 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use hflan\LanBundle\Entity\Team;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
  * @ORM\Table(name="hf_user")
  * @ORM\Entity
+ * @UniqueEntity("username")
+ * @UniqueEntity("email")
  */
 class User extends BaseUser
 {

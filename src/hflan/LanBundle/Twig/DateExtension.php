@@ -97,17 +97,21 @@ class DateExtension extends \Twig_Extension
     {
         if($from->format('m') == $to->format('m')){
             return $this->trans("date.weekend.sameMonth", array(
-                '%from%'=>$from->format('d'),
-                '%to%'=>$to->format('d'),
-                '%month%'=>$this->trans('date.month.'.$from->format('n')),
+                '%from%'     => $from->format('d'),
+                '%to%'       => $to->format('d'),
+                '%fromTime%' => $from->format('H\hi'),
+                '%endTime%'  => $to->format('H\hi'),
+                '%month%'    => $this->trans('date.month.'.$from->format('n')),
             ));
         }
 
         return $this->trans("date.weekend.differentMonth", array(
-            '%from%'=>$from->format('d'),
-            '%to%'=>$to->format('d'),
-            '%fromMonth%'=>$this->trans('date.month.'.$from->format('n')),
-            '%toMonth%'=>$this->trans('date.month.'.$to->format('n')),
+            '%from%'      => $from->format('d'),
+            '%to%'        => $to->format('d'),
+            '%fromTime%'  => $from->format('H\hi'),
+            '%endTime%'   => $to->format('H\hi'),
+            '%fromMonth%' => $this->trans('date.month.'.$from->format('n')),
+            '%toMonth%'   => $this->trans('date.month.'.$to->format('n')),
         ));
     }
 
@@ -115,17 +119,21 @@ class DateExtension extends \Twig_Extension
     {
         if($from->format('m') == $to->format('m')){
             return $this->trans("date.range.sameMonth", array(
-                '%from%'=>$from->format('d'),
-                '%to%'=>$to->format('d'),
-                '%month%'=>$this->trans('date.month.'.$from->format('n')),
+                '%from%'     => $from->format('d'),
+                '%to%'       => $to->format('d'),
+                '%fromTime%' => $from->format('H\hi'),
+                '%endTime%'  => $to->format('H\hi'),
+                '%month%'    => $this->trans('date.month.'.$from->format('n')),
             ));
         }
 
         return $this->trans("date.range.differentMonth", array(
-            '%from%'=>$from->format('d'),
-            '%to%'=>$to->format('d'),
-            '%fromMonth%'=>$this->trans('date.month.'.$from->format('n')),
-            '%toMonth%'=>$this->trans('date.month.'.$to->format('n')),
+            '%from%'      => $from->format('d'),
+            '%to%'        => $to->format('d'),
+            '%fromMonth%' => $this->trans('date.month.'.$from->format('n')),
+            '%fromTime%'  => $from->format('H\hi'),
+            '%endTime%'   => $to->format('H\hi'),
+            '%toMonth%'   => $this->trans('date.month.'.$to->format('n')),
         ));
     }
     

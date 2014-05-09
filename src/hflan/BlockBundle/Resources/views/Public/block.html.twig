@@ -2,7 +2,7 @@
 {% if is_granted('ROLE_BLOCK') %}
     <div class="panel-bordered">
         <a href="{{ path('hflan_block_edit', {id:block.id}) }}" class="pull-right">
-            <i class="icon-pencil"></i>
+            <i class="fa fa-pencil"></i>
         </a>
         {{ html|raw }}
     </div>

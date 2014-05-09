@@ -56,18 +56,18 @@
                                 </a>
                             {% endif %}
                             <div class="dropdown">
-                                <i class="icon-cogs"></i>
+                                <i class="fa fa-cogs"></i>
                                 {% if app.user.team is not null %}
                                     {{ app.user.team.name }}
                                 {% else %}
                                     {{ app.user.username }}
                                 {% endif %}
-                                <i class="icon-caret-down"></i>
+                                <i class="fa fa-caret-down"></i>
                                 <ul class="dropdown-menu">
                                     {% if is_granted('ROLE_STAFF') %}
                                         <li>
                                             <a href="{{ path('hflan_dashboard') }}">
-                                                <i class="icon-dashboard"></i>
+                                                <i class="fa fa-dashboard"></i>
                                                 Dashboard
                                             </a>
                                         </li>
@@ -75,7 +75,7 @@
                                         {% if is_granted('ROLE_NEWSER') %}
                                             <li>
                                                 <a href="{{ path('hflan_blog_admin') }}">
-                                                    <i class="icon-file-text"></i>
+                                                    <i class="fa fa-file-text"></i>
                                                     Blog
                                                 </a>
                                             </li>
@@ -83,7 +83,7 @@
                                         {% if is_granted('ROLE_DOCUMENT') %}
                                             <li>
                                                 <a href="{{ path('hflan_doc_admin') }}">
-                                                    <i class="icon-paper-clip"></i>
+                                                    <i class="fa fa-paperclip"></i>
                                                     Documents
                                                 </a>
                                             </li>
@@ -91,7 +91,7 @@
                                         {% if is_granted('ROLE_GUESTBOOK') %}
                                             <li>
                                                 <a href="{{ path('hflan_guestbook_admin') }}">
-                                                    <i class="icon-star-half-full"></i>
+                                                    <i class="fa fa-star-half-full"></i>
                                                     Guestbook
                                                 </a>
                                             </li>
@@ -99,7 +99,7 @@
                                         {% if is_granted('ROLE_BLOCK') %}
                                             <li>
                                                 <a href="{{ path('hflan_block_admin') }}">
-                                                    <i class="icon-edit "></i>
+                                                    <i class="fa fa-edit "></i>
                                                     Pages
                                                 </a>
                                             </li>
@@ -107,7 +107,7 @@
                                         {% if is_granted('ROLE_PARTNER') %}
                                             <li>
                                                 <a href="{{ path('hflan_partner_admin') }}">
-                                                    <i class="icon-briefcase "></i>
+                                                    <i class="fa fa-briefcase "></i>
                                                     Partenaires
                                                 </a>
                                             </li>
@@ -115,7 +115,7 @@
                                         {% if is_granted('ROLE_STREAM') %}
                                             <li>
                                                 <a href="{{ path('hflan_stream_admin') }}">
-                                                    <i class="icon-youtube-play"></i>
+                                                    <i class="fa fa-youtube-play"></i>
                                                     Stream
                                                 </a>
                                             </li>
@@ -123,7 +123,7 @@
                                         {% if is_granted('ROLE_RESPO') %}
                                             <li>
                                                 <a href="{{ path('hflan_event_admin') }}">
-                                                    <i class="icon-trophy"></i>
+                                                    <i class="fa fa-trophy"></i>
                                                     Tournois
                                                 </a>
                                             </li>
@@ -131,7 +131,7 @@
                                         {% if is_granted('ROLE_USER_MANAGER') %}
                                             <li>
                                                 <a href="{{ path('hflan_users_admin') }}">
-                                                    <i class="icon-group"></i>
+                                                    <i class="fa fa-group"></i>
                                                     Utilisateurs
                                                 </a>
                                             </li>
@@ -139,7 +139,7 @@
                                     {% else %}
                                         <li>
                                             <a href="{{ path('hflan_edit_team') }}">
-                                                <i class="icon-flag-checkered"></i>
+                                                <i class="fa fa-flag-checkered"></i>
                                                 {{ "user_bar.dropdown.finish_registration"|trans({}, "menu")|desc("Lien pour valider l'inscription") }}
                                             </a>
                                         </li>
@@ -147,13 +147,13 @@
                                     <li class="divider"></li>
                                     <li>
                                         <a href="{{ path('fos_user_change_password') }}">
-                                            <i class="icon-key"></i>
+                                            <i class="fa fa-key"></i>
                                             {{ "user_bar.dropdown.password"|trans({}, "menu")|desc("Lien pour changer de mot de passe") }}
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ path('fos_user_security_logout') }}">
-                                            <i class="icon-off"></i>
+                                            <i class="fa fa-power-off"></i>
                                             {{ "user_bar.dropdown.logout"|trans({}, "menu")|desc("Lien pour se déconnecter") }}
                                         </a>
                                     </li>
@@ -161,7 +161,7 @@
                             </div>
                         {% else %}
                             <a href="{{ path('fos_user_security_login') }}">
-                                <i class="icon-off"></i>
+                                <i class="fa fa-off"></i>
                                 {{ "user_bar.dropdown.login"|trans({}, "menu")|desc("Lien pour se connecter") }}
                             </a>
                         {% endif %}
@@ -178,7 +178,7 @@
                 <ul class="nav">
                     <li {{ helper.current('hflan_home') }}>
                         <a href="{{ path('hflan_home') }}">
-                            <i class="icon-home"></i>
+                            <i class="fa fa-home"></i>
                         </a>
                     </li>
                     <li {{ helper.current('hflan_blog') }}>
@@ -189,6 +189,11 @@
                     <li {{ helper.current('hflan_info') }}>
                         <a href="{{ path('hflan_info') }}">
                             {{ "menu.info"|trans({}, "menu") }}
+                        </a>
+                    </li>
+                    <li {{ helper.current('hflan_prices') }}>
+                        <a href="{{ path('hflan_prices') }}">
+                            {{ "menu.prices"|trans({}, "menu") }}
                         </a>
                     </li>
                     <li {{ helper.current('hflan_photos') }}>
@@ -239,21 +244,20 @@
                 </div>
                 <div class="side-bar">
                     <aside>
-                        {{ render(controller("hflanGuestbookBundle:Public:menu")) }}
-                        {{ render(controller("hflanLanBundle:Event:menu")) }}
-                        <h3 class="facebook-title">
+                        <h3>
                             {{ "sidebar.facebook.title"|trans({}, "sidebar")|desc("Titre facebook box") }}
                         </h3>
-                        <div class="facebook-container">
-                            <div class="fb-like-box"
-                                 data-href="https://www.facebook.com/hf.lan.esiee"
-                                 data-width="270"
-                                 data-show-faces="true"
-                                 data-header="false"
-                                 data-stream="false"
-                                 data-show-border="false">
-                             </div>
-                        </div>
+                        <a target="_blank" class="btn btn-social" href="https://www.facebook.com/hf.lan.esiee" style="background-color: #3b5998;">
+                            <i class="fa fa-facebook fa-2x" style="margin-top: 4px;"></i>
+                        </a>
+                        <a target="_blank" class="btn btn-social" href="https://twitter.com/hflanesiee" style="background-color: #309aea;">
+                            <i class="fa fa-twitter fa-2x" style="margin-top: 4px;"></i>
+                        </a>
+                        <a target="_blank" class="btn btn-social" href="https://www.youtube.com/playlist?list=PLkC0j4FQhqgtMjSCg81xGCgMKgxDDf8bA" style="background-color: #ca3523;">
+                            <i class="fa fa-youtube fa-2x" style="margin-top: 4px;"></i>
+                        </a>
+                        {{ render(controller("hflanLanBundle:Event:menu")) }}
+                        {{ render(controller("hflanGuestbookBundle:Public:menu")) }}
                         {{ render(controller("hflanPartnerBundle:Public:menu")) }}
                     </aside>
                 </div>
@@ -262,13 +266,6 @@
         {% block javascripts %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
             <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=180928215299042";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
             {% javascripts
                 'js/jquery-ui-1.10.3.custom.min.js'
                 'js/jquery.countdown.min.js'

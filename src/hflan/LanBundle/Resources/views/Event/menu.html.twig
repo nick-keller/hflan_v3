@@ -2,6 +2,7 @@
 {% embed 'hflanLanBundle:Modules:nextEventState.html.twig' %}
 
     {% block eventVisible %}
+        <hr>
         <h3>
             {{ "sidebar.next_lan.title"|trans({}, "sidebar")|desc("Titre menu : Prochaine LAN") }}
         </h3>
@@ -22,7 +23,7 @@
                 {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
             </p>
             <a href="{{ path('hflan_register') }}" class="btn btn-large">
-                <i class="icon-edit"></i>
+                <i class="fa fa-edit"></i>
                 {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
             </a>
         {% endif %}

@@ -12,8 +12,8 @@ class ToggleType extends AbstractType
     {
         $resolver->setDefaults(array(
             'icons' => array(
-                'inactive' => 'check-empty',
-                'active' => 'check',
+                'inactive' => 'square-o',
+                'active' => 'check-square-o',
             ),
             'labels' => array(
                 'inactive' => '',

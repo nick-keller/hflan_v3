@@ -17,3 +17,7 @@ JMSTranslationBundle_ui:
     resource: @JMSTranslationBundle/Controller/
     type:     annotation
     prefix:   /_trans
+
+_console:
+    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
+    prefix: /_console

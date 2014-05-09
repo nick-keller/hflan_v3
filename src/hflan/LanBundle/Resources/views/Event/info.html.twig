@@ -3,30 +3,26 @@
 {% block body %}
     <div class="tabs">
         <a href="#tournaments" class="tab">
-            {{ "info.tab.tournaments"|trans({}, "info")|desc("Onglet tournois") }}
-        </a>
-        <a href="#extras" class="tab">
-            {{ "info.tab.extras"|trans({}, "info")|desc("Onglet extras") }}
-        </a>
-        <a href="#prices" class="tab">
-            {{ "info.tab.prices"|trans({}, "info")|desc("Onglet tarifs") }}
-        </a>
-        <a href="#rules" class="tab">
-            {{ "info.tab.rules"|trans({}, "info")|desc("Onglet règlements") }}
+            {{ "info.tab.general"|trans({}, "info")|desc("Onglet general") }}
         </a>
         <a href="#access" class="tab">
             {{ "info.tab.access"|trans({}, "info")|desc("Onglet accès") }}
+        </a>
+        <a href="#rules" class="tab">
+            {{ "info.tab.rules"|trans({}, "info")|desc("Onglet règlements") }}
         </a>
     </div>
 
     <div class="tab-content">
         <div id="tournaments" class="tab-container">
-            {% if nextEvent() %}
-                {% set event = nextEvent() %}
-                <h1 class="header">
+            {% set event = nextEvent() %}
+            <h1 class="header">
+                {{ "info.tab.general"|trans({}, "info")|desc("Onglet general") }}
+            </h1>
+            {% if event is not null and event.datesVisible %}
+                <h2 class="header">
                     {{ event }}
-                </h1>
-
+                </h2>
                 <p>
                     {{ "info.tournaments.message"|trans({
                     '%event%':event.name,
@@ -34,125 +30,10 @@
                     '%registration%':dateRange(event.registrationOpenAt, event.registrationCloseAt)
                     }, "info")|desc("Présentation les dates. Nom de la lan : %event%, Dates de la lan : %dates%, Inscriptions : %registration%")|raw }}
                 </p>
-
-                <h1 class="header">
-                    {{ "info.tab.tournaments"|trans({}, "info")|desc("Onglet tournois") }}
-                </h1>
-
-                <table class="table">
-                    <tr>
-                        <th>
-                            {{ "info.table.game"|trans({}, "info")|desc("Colone tableau : Jeu") }}
-                        </th>
-                        <th>
-                            {{ "info.table.game_type"|trans({}, "info")|desc("Colone tableau : Type de matchs") }}
-                        </th>
-                        <th>
-                            {{ "info.table.teams"|trans({}, "info")|desc("Colone tableau : Equipes") }}
-                        </th>
-                        <th>
-                            {{ "info.table.prize_pool"|trans({}, "info")|desc("Colone tableau : Prize-pool") }}
-                        </th>
-                        <th>
-                            {{ "info.table.register"|trans({}, "info")|desc("Colone tableau : Inscription") }}
-                        </th>
-                    </tr>
-                    {% for tournament in event.tournaments %}
-                        <tr>
-                            <td>{{ tournament.game }}</td>
-                            <td>{{ tournament.gameType }}</td>
-                            <td>
-                                {{ "info.table.number_of_teams"|transchoice(tournament.numberOfPlayerPerTeam, {
-                                    '%n%':tournament.numberOfTeams,
-                                    '%p%':tournament.numberOfPlayerPerTeam
-                                }, "info")|desc("%n% joueurs|%n% équipes de %p%") }}
-                            </td>
-                            <td>
-                                {% if tournament.prizePool > 0 %}
-                                    {{ tournament.prizePool }} €
-                                {% endif %}
-                            </td>
-                            <td>
-                                <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
-                                    <i class="icon-ok"></i>
-                                    {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-
             {% else %}
-                <h1 class="header">
-                    {{ "info.tab.tournaments"|trans({}, "info")|desc("Onglet tournois") }}
-                </h1>
                 {{ renderBlock('no_event') }}
             {% endif %}
-        </div>
-
-        <div id="extras" class="tab-container">
-            <h1 class="header">
-                {{ "info.tab.extras"|trans({}, "info")|desc("Onglet extras") }}
-            </h1>
-
             {{ renderBlock('info_extras') }}
-        </div>
-
-        <div id="prices" class="tab-container">
-            <h1 class="header">
-                {{ "info.tab.prices"|trans({}, "info")|desc("Onglet tarifs") }}
-            </h1>
-
-            {% if nextEvent() %}
-                {% set event = nextEvent() %}
-
-                {{ renderBlock('info_price') }}
-
-                <table class="table">
-                    <tr>
-                        <th>
-                            {{ "info.table.game"|trans({}, "info")|desc("Colone tableau : Jeu") }}
-                        </th>
-                        <th>
-                            {{ "info.table.game_type"|trans({}, "info")|desc("Colone tableau : Type de matchs") }}
-                        </th>
-                        <th>
-                            {{ "info.table.price"|trans({}, "info")|desc("Colone tableau : Prix") }}
-                        </th>
-                        <th>
-                            {{ "info.table.prize_pool"|trans({}, "info")|desc("Colone tableau : Prize-pool") }}
-                        </th>
-                        <th>
-                            {{ "info.table.register"|trans({}, "info")|desc("Colone tableau : Inscription") }}
-                        </th>
-                    </tr>
-                    {% for tournament in event.tournaments %}
-                        <tr>
-                            <td>{{ tournament.game }}</td>
-                            <td>{{ tournament.gameType }}</td>
-                            <td>
-                                {{ "info.table.price_per_player"|transchoice(tournament.numberOfPlayerPerTeam, {
-                                '%price%':tournament.pricePerPlayer
-                                }, "info")|desc("%price% €|%price% € / joueur") }}
-                            </td>
-                            <td>
-                                {% if tournament.prizePool > 0 %}
-                                    {{ tournament.prizePool }} €
-                                {% endif %}
-                            </td>
-                            <td>
-                                <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
-                                    <i class="icon-ok"></i>
-                                    {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-
-            {% else %}
-                {{ renderBlock('no_event') }}
-            {% endif %}
         </div>
 
         <div id="rules" class="tab-container">
@@ -164,7 +45,7 @@
                 <h3>{{ document.name }}</h3>
                 {{ document.text|raw }}
                 <a class="btn" href="{{ path('hflan_doc_download', {slug:document.slug}) }}">
-                    <i class="icon-download-alt"></i>
+                    <i class="fa fa-download"></i>
                     {{ "info.btn.download"|trans({}, "info")|desc("Bouton télécharger") }}
                 </a>
                 <hr>

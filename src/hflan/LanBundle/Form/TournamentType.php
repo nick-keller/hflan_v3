@@ -34,7 +34,7 @@ class TournamentType extends AbstractType
                 'required' => false,
             ))
             ->add('gameType', 'text', array(
-                'label' => 'Type de jeu',
+                'label' => 'Type de matchs',
                 'attr' => array(
                     'placeholder' => 'Time-Attack, Team-Deathmatch, 2v2...'
                 )
@@ -57,6 +57,18 @@ class TournamentType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
+            ))
+            ->add('isPaymentOnTheSpot', 'toggle', array(
+                'label' => 'Paiement sur place',
+                'icons' => array(
+                    'active'   => 'check-square-o',
+                    'inactive' => 'square-o',
+                ),
+                'labels' => array(
+                    'active'   => 'Oui',
+                    'inactive' => 'Non',
+                ),
+                'required' => false,
             ))
         ;
     }

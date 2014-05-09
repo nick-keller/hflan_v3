@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use JMS\SecurityExtraBundle\Annotation\PreAuthorize;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Form\FormError;
 
 class TournamentController extends Controller
 {
@@ -91,6 +92,15 @@ class TournamentController extends Controller
         if('POST' == $request->getMethod()){
             $form->handleRequest($request);
 
+            $teamRepo = $this->em->getRepository('hflanLanBundle:Team');
+            $teamPaid = $teamRepo->findTeams($tournament, EventExport::LIST_PAID);
+            if ($form->get('numberOfTeams')->getData()*$form->get('numberOfPlayerPerTeam')->getData() < count($teamPaid))
+            {
+                $this->session->getFlashBag()->add('error', 'Il y a déjà '.count($teamPaid).' inscrits. Vous ne pouvez pas mettre moins de place.');
+                $form->get('numberOfTeams')->addError(new FormError('Le nombre de place dispo ne peut être inférieur au nombre de personne déjà inscrite.'));
+                $form->get('numberOfPlayerPerTeam')->addError(new FormError('Le nombre de place dispo ne peut être inférieur au nombre de personne déjà inscrite.'));
+            }
+
             if($form->isValid()){
                 // filter $originalFields so it only has deleted fields
                 foreach ($tournament->getExtraFields() as $field)
@@ -114,7 +124,7 @@ class TournamentController extends Controller
     }
 
     /**
-     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_RESPO')")
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_SUPER_ADMIN')")
      * @Template
      */
     public function removeAction(Tournament $tournament)
@@ -124,9 +134,21 @@ class TournamentController extends Controller
         else{
             $this->em->remove($tournament);
             $this->em->flush();
+            $this->session->getFlashBag()->add('success', 'Le tournois a bien été supprimé.');
         }
 
         return $this->redirect($this->generateUrl('hflan_event_admin'));
+    }
+
+    /**
+     * @PreAuthorize("hasRole('ROLE_REMOVE') and hasRole('ROLE_SUPER_ADMIN')")
+     * @Template
+     */
+    public function removeConfirmationAction(Tournament $tournament)
+    {
+        return array(
+            'tournament' => $tournament,
+        );
     }
 
     public function exportAction(Tournament $tournament)

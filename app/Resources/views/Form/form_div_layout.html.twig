@@ -79,11 +79,11 @@
             <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
             <label for="{{ form.vars.id }}">
                 <div class="active">
-                    <i class="icon-{{ form.vars.icon_active }}"></i>
+                    <i class="fa fa-{{ form.vars.icon_active }}"></i>
                     {{ label_active }}
                 </div>
                 <div class="inactive">
-                    <i class="icon-{{ form.vars.icon_inactive }}"></i>
+                    <i class="fa fa-{{ form.vars.icon_inactive }}"></i>
                     {{ label_inactive }}
                 </div>
             </label>
@@ -126,7 +126,7 @@
         <div {{ block('widget_container_attributes') }}>
             {% for child in form %}
                 <label for="{{ child.vars.id }}">
-                    <i class="icon-star"></i>
+                    <i class="fa fa-star"></i>
                 </label>
                 {{ form_widget(child) }}
             {% endfor %}

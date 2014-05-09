@@ -20,13 +20,25 @@ hflan_team_upgrade:
     pattern:  /teams/{id}/upgrade
     defaults: { _controller: hflanLanBundle:Team:upgrade }
 
+hflan_team_upgrade_confirmation:
+    pattern:  /teams/{id}/upgrade/confirmation
+    defaults: { _controller: hflanLanBundle:Team:upgradeConfirmation }
+
 hflan_team_downgrade:
     pattern:  /teams/{id}/downgrade
     defaults: { _controller: hflanLanBundle:Team:downgrade }
 
+hflan_team_downgrade_confirmation:
+    pattern:  /teams/{id}/downgrade/confirmation
+    defaults: { _controller: hflanLanBundle:Team:downgradeConfirmation }
+
 hflan_team_remove:
     pattern:  /teams/{id}/remove
     defaults: { _controller: hflanLanBundle:Team:remove }
+
+hflan_team_remove_confirmation:
+    pattern:  /teams/{id}/remove/confirmation
+    defaults: { _controller: hflanLanBundle:Team:removeConfirmation }
 
 # Player
 
@@ -60,6 +72,10 @@ hflan_info:
     pattern:  /info
     defaults: { _controller: hflanLanBundle:Event:info }
 
+hflan_prices:
+    pattern:  /tarifs
+    defaults: { _controller: hflanLanBundle:Event:prices }
+
 # Admin Tournament
 
 hflan_tournament_show:
@@ -73,6 +89,10 @@ hflan_tournament_edit:
 hflan_tournament_remove:
     pattern:  /tournaments/{slug}/remove
     defaults: { _controller: hflanLanBundle:Tournament:remove }
+
+hflan_tournament_remove_confirmation:
+    pattern:  /tournaments/{slug}/remove/confirmation
+    defaults: { _controller: hflanLanBundle:Tournament:removeConfirmation }
 
 hflan_tournament_export:
     pattern:  /tournaments/{slug}/export

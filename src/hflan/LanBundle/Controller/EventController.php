@@ -161,4 +161,18 @@ class EventController extends Controller
             'documents' => $documents,
         );
     }
+
+    /**
+     * @Template
+     */
+    public function pricesAction()
+    {
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+
+        $documents = $this->em->getRepository('hflanDocumentBundle:Document')->findAll($this->get('translator')->getLocale());
+
+        return array(
+            'documents' => $documents,
+        );
+    }
 }

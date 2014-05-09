@@ -155,6 +155,13 @@ class Tournament
     /** @var  int */
     protected $paid = 0;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_paymentOnTheSpot", type="boolean")
+     */
+    private $isPaymentOnTheSpot = false;
+
     public function __construct(Event $event = null)
     {
         $this->setName('Tournoi ');
@@ -564,5 +571,28 @@ class Tournament
     public function getFillingRatio()
     {
         return round(($this->paid + max(min($this->preRegistered + $this->pending, 0.85*$this->numberOfTeams-$this->paid), 0) )/$this->numberOfTeams*100);
+    }
+
+    /**
+     * Set isPaymentOnTheSpot
+     *
+     * @param boolean $isPaymentOnTheSpot
+     * @return Tournament
+     */
+    public function setIsPaymentOnTheSpot($isPaymentOnTheSpot)
+    {
+        $this->isPaymentOnTheSpot = $isPaymentOnTheSpot;
+    
+        return $this;
+    }
+
+    /**
+     * Get isPaymentOnTheSpot
+     *
+     * @return boolean 
+     */
+    public function getIsPaymentOnTheSpot()
+    {
+        return $this->isPaymentOnTheSpot;
     }
 }

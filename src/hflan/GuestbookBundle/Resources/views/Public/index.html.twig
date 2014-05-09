@@ -12,9 +12,9 @@
             <div class="star-rating">
                 {% for i in range(0,4) %}
                     {% if i < feedback.rating %}
-                        <i class="icon-star"></i>
+                        <i class="fa fa-star"></i>
                     {% else %}
-                        <i class="icon-star-empty"></i>
+                        <i class="fa fa-star-o"></i>
                     {% endif %}
                 {% endfor %}
             </div>
@@ -32,7 +32,7 @@
 
         <div class="form-actions">
             <button type="submit" class="btn">
-                <i class="icon-ok"></i>
+                <i class="fa fa-check"></i>
                 {{ "guestbook.send"|trans({}, "guestbook")|desc("Envoyer le formulaire") }}
             </button>
         </div>

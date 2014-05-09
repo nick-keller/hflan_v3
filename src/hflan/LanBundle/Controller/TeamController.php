@@ -46,8 +46,13 @@ class TeamController extends Controller
     {
         if($this->getUser()) return $this->redirect($this->generateUrl('hflan_edit_team'));
 
-        $team = new Team;
+        $team = new Team();
         if($tournament !== null) $team->setTournament($tournament);
+
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+        if ($tournament !== null && $tournament->getFillingRatio() >= 100)
+            $this->session->getFlashBag()->add('warning', 'Le tournois est complet, vous ne serez que sur liste d\'attente');
+
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
         $form = $this->createForm(new TeamType($nextEvent), $team);
 
@@ -94,12 +99,20 @@ class TeamController extends Controller
     {
         /** @var Team $team */
         $team = $this->getUser()->getTeam();
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
 
         if($team->getInfoLocked() == false){
             if(!$team->isValid())
                 return $this->redirect($this->generateUrl('hflan_edit_team'));
 
             $team->setInfoLocked(true);
+
+            if ($team->getTournament()->getIsPaymentOnTheSpot() && $team->getTournament()->getFillingRatio() < 100)
+            {
+                $team->setPaid(true);
+                $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
+            }
+
             $this->em->persist($team);
             $this->em->flush();
         }
@@ -115,9 +128,9 @@ class TeamController extends Controller
      */
     public function upgradeAction(Request $request, Team $team)
     {
-        $referer = $request->headers->get('referer') ?
-            $request->headers->get('referer') :
-            $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+        // $referer = $request->headers->get('referer') ?
+        //     $request->headers->get('referer') :
+        //     $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
 
         if($team->getInfoLocked() == false){
             if($team->isValid()){
@@ -129,14 +142,40 @@ class TeamController extends Controller
             }
         }
         else if($team->getPaid() == false){
-            $team->setPaid(true);
-            $this->em->persist($team);
-            $this->session->getFlashBag()->add('success', "Equipe passé en liste définitive");
+            $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+            if ($team->getTournament()->getFillingRatio() < 100)
+            {
+                $team->setPaid(true);
+                $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
+                $this->em->persist($team);
+                $this->session->getFlashBag()->add('success', "Equipe passé en liste définitive");
+            }
+            else
+            {
+                $this->session->getFlashBag()->add('error', "Le tournois est complet.");
+            }
         }
 
         $this->em->flush();
 
-        return $this->redirect($referer);
+        return $this->redirect($this->generateUrl('hflan_team_show', array('id' => $team->getId())));
+    }
+
+    /**
+     * @Secure(roles="ROLE_RESPO")
+     * @Template
+     */
+    public function upgradeConfirmationAction(Request $request, Team $team)
+    {
+        if($team->getInfoLocked() == false){
+            return $this->redirect($this->generateUrl('hflan_team_upgrade', array('id' => $team->getId())), 301);
+        }
+        else if($team->getPaid() == false){
+            return array(
+                'team' => $team,
+                'tournament' => $team->getTournament(),
+            );
+        }
     }
 
     /**
@@ -144,9 +183,9 @@ class TeamController extends Controller
      */
     public function downgradeAction(Request $request, Team $team)
     {
-        $referer = $request->headers->get('referer') ?
-            $request->headers->get('referer') :
-            $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+        // $referer = $request->headers->get('referer') ?
+        //     $request->headers->get('referer') :
+        //     $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
 
         if($team->getInfoLocked() && !$team->getPaid()){
             $team->setInfoLocked(false);
@@ -154,24 +193,60 @@ class TeamController extends Controller
             $this->session->getFlashBag()->add('success', 'Equipe passé en liste pré-inscrite');
         }
 
+        if ($team->getPaid() && $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN'))
+        {
+            $team->setPaid(false);
+            $this->em->persist($team);
+            $this->session->getFlashBag()->add('success', 'Equipe passé en liste d\'attente');
+        }
+
         $this->em->flush();
 
-        return $this->redirect($referer);
+        return $this->redirect($this->generateUrl('hflan_team_show', array('id' => $team->getId())));
     }
 
     /**
      * @Secure(roles="ROLE_RESPO")
+     * @Template
+     */
+    public function downgradeConfirmationAction(Request $request, Team $team)
+    {
+        return array(
+            'team' => $team,
+            'tournament' => $team->getTournament(),
+        );
+    }
+
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
      */
     public function removeAction(Team $team)
     {
-        if($team->getPaid()){
-            $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a péyé voyons !");
-            return $this->redirect($this->generateUrl('hflan_team_show', array('id'=>$team->getId())));
+        if($team->getPaid() && !$team->getTournament()->getIsPaymentOnTheSpot()){
+            $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a payé voyons !");
+
+            $referer = $request->headers->get('referer') ?
+                $request->headers->get('referer') :
+                $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+                
+            return $this->redirect($referer);
         }
 
         $this->em->remove($team);
         $this->em->flush();
 
         return $this->redirect($this->generateUrl('hflan_event_admin'));
+    }
+
+    /**
+     * @Secure(roles="ROLE_SUPER_ADMIN")
+     * @Template
+     */
+    public function removeConfirmationAction(Team $team)
+    {
+        return array(
+            'team' => $team,
+            'tournament' => $team->getTournament(),
+        );
     }
 }

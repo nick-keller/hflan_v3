@@ -4,7 +4,7 @@
     <h1 class="header">Gestion des utilisateurs</h1>
 
     <a href="{{ path('hflan_users_new') }}" class="btn">
-        <i class="icon-plus"></i>
+        <i class="fa fa-plus"></i>
         Nouveau
     </a>
 
@@ -25,52 +25,52 @@
                     <ul class="icons-ul">
                         {% if 'ROLE_ADMIN' in user.roles %}
                             <li>
-                                <i class="icon-li icon-asterisk"></i>Admin
+                                <i class="fa fa-li icon-asterisk"></i>Admin
                             </li>
                         {% else %}
                             {% if 'ROLE_GUESTBOOK' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Guestbook
+                                    <i class="fa fa-li icon-ok"></i>Guestbook
                                 </li>
                             {% endif %}
                             {% if 'ROLE_STREAM' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Stream
+                                    <i class="fa fa-li icon-ok"></i>Stream
                                 </li>
                             {% endif %}
                             {% if 'ROLE_DOCUMENT' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Documents
+                                    <i class="fa fa-li icon-ok"></i>Documents
                                 </li>
                             {% endif %}
                             {% if 'ROLE_BLOCK' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Pages
+                                    <i class="fa fa-li icon-ok"></i>Pages
                                 </li>
                             {% endif %}
                             {% if 'ROLE_NEWSER' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Blog
+                                    <i class="fa fa-li icon-ok"></i>Blog
                                 </li>
                             {% endif %}
                             {% if 'ROLE_PARTNER' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Partenaires
+                                    <i class="fa fa-li icon-ok"></i>Partenaires
                                 </li>
                             {% endif %}
                             {% if 'ROLE_USER_MANAGER' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Utilisateurs
+                                    <i class="fa fa-li icon-ok"></i>Utilisateurs
                                 </li>
                             {% endif %}
                             {% if 'ROLE_RESPO' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-ok"></i>Tournois
+                                    <i class="fa fa-li icon-ok"></i>Tournois
                                 </li>
                             {% endif %}
                             {% if 'ROLE_REMOVE' in user.roles %}
                                 <li>
-                                    <i class="icon-li icon-asterisk"></i>Suppression
+                                    <i class="fa fa-li icon-asterisk"></i>Suppression
                                 </li>
                             {% endif %}
                         {% endif %}
@@ -78,7 +78,7 @@
                 </td>
                 <td>
                     <a href="{{ path('hflan_users_remove', {id:user.id}) }}">
-                        <i class="icon-remove"></i>
+                        <i class="fa fa-times"></i>
                     </a>
                 </td>
             </tr>
@@ -86,6 +86,6 @@
     </table>
 
     <p>
-        <i class="icon-lightbulb"></i> Double-cliquez pour éditer.<br>
+        <i class="fa fa-lightbulb"></i> Double-cliquez pour éditer.<br>
     </p>
 {% endblock %}
