@@ -29,7 +29,7 @@
       </trans-unit>
       <trans-unit id="9da3a90745b8ca684cda53a2b867aaf45d5210c6" resname="registration.message.register_soon">
         <source>Début des inscriptions : %date%</source>
-        <target>Les inscriptions débuterons %date%</target>
+        <target>Les inscriptions débuteront %date%</target>
         <jms:reference-file line="21">views/Modules/nextEventState.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="24be4b6dc71c591ab1b44d117dde3ba03bff3bd6" resname="registration.message.registration_closed">
