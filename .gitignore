@@ -12,3 +12,7 @@
 /composer.phar
 .idea/*
 *~
+/www/css/
+/www/js/
+/*.sublime-workspace
+/*.sublime-project
