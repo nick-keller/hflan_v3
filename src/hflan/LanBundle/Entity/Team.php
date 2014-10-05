@@ -93,7 +93,8 @@ class Team
 
     /**
      * @var User
-     * @ORM\OneToOne(targetEntity="hflan\UserBundle\Entity\User", mappedBy="team", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="hflan\UserBundle\Entity\User", inversedBy="teams")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 

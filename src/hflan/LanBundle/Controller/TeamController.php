@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Response;
 
 class TeamController extends Controller
 {
@@ -44,7 +45,7 @@ class TeamController extends Controller
      */
     public function registerAction(Request $request, Tournament $tournament = null)
     {
-        if($this->getUser()) return $this->redirect($this->generateUrl('hflan_edit_team'));
+        $again = (null !== $this->getUser());
 
         $team = new Team();
         if($tournament !== null) $team->setTournament($tournament);
@@ -54,15 +55,29 @@ class TeamController extends Controller
             $this->session->getFlashBag()->add('warning', 'Le tournois est complet, vous ne serez que sur liste d\'attente');
 
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
-        $form = $this->createForm(new TeamType($nextEvent), $team);
+        $form = $this->createForm(new TeamType($nextEvent, $again), $team);
 
         if('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
-            if($form->isValid()) {
-                $this->get('hflan.team_manager')->registerTeam($team);
+            if(!$again && $form->isValid()) {
+               if ($this->get('hflan.team_manager')->registerTeam($team))
+               {
+                    $this->session->getFlashBag()->add('success',
+                        'Pour finaliser votre inscription, connectez vous avec votre adresse email et le mot de passe que vous venez de définir.');
+                    return $this->redirect($this->generateUrl('hflan_edit_team'));
+               }
+               else
+               {
+                    $this->session->getFlashBag()->add('error',
+                        'Un utilisateur avec la même adresse est déjà inscrits à '.$team->getEvent()->getName());
+               }
+            } elseif (null !== $team->getName()) {
+                $this->get('hflan.team_manager')->createTeam($team, $this->getUser());
+                            
                 $this->session->getFlashBag()->add('success',
-                    'Pour finaliser votre inscription, connectez vous avec votre adresse email et le mot de passe que vous venez de définir.');
+                    'Vous pouvez maintenant finaliser votre inscription.');
+
                 return $this->redirect($this->generateUrl('hflan_edit_team'));
             }
         }
@@ -77,10 +92,28 @@ class TeamController extends Controller
      * @Secure(roles="ROLE_USER")
      * @Template
      */
+    public function registrationClosedAction(Request $request)
+    {
+        /** @var Team $team */
+        $team = $this->getUser()->getTeam();
+
+        return array(
+            'team' => $team,
+            'tournament' => $team->getTournament(),
+        );
+    }
+
+    /**
+     * @Secure(roles="ROLE_USER")
+     * @Template
+     */
     public function editAction(Request $request)
     {
         /** @var Team $team */
         $team = $this->getUser()->getTeam();
+
+        if (new \DateTime() > $team->getEvent()->getRegistrationCloseAt()) 
+            return $this->redirect($this->generateUrl('hflan_team_registration_closed'));
 
         if($team->getInfoLocked())
             return $this->redirect($this->generateUrl('hflan_pay_team'));
@@ -224,12 +257,8 @@ class TeamController extends Controller
     {
         if($team->getPaid() && !$team->getTournament()->getIsPaymentOnTheSpot()){
             $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a payé voyons !");
-
-            $referer = $request->headers->get('referer') ?
-                $request->headers->get('referer') :
-                $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
                 
-            return $this->redirect($referer);
+            return $this->redirect($this->generateUrl('hflan_team_show', array('id' => $team->getId())));
         }
 
         $this->em->remove($team);
@@ -244,9 +273,55 @@ class TeamController extends Controller
      */
     public function removeConfirmationAction(Team $team)
     {
+        if($team->getPaid() && !$team->getTournament()->getIsPaymentOnTheSpot()){
+            $this->session->getFlashBag()->add('error', "Impossible de supprimer une team qui a payé voyons !");
+
+            $referer = $request->headers->get('referer') ?
+                $request->headers->get('referer') :
+                $this->generateUrl('hflan_team_show', array('id' => $team->getId()));
+                
+            return $this->redirect($referer);
+        }
+
         return array(
             'team' => $team,
             'tournament' => $team->getTournament(),
         );
+    }
+
+    public function updateDatabaseAction()
+    {
+        $teams = $this->em->getRepository('hflanLanBundle:Team')->findAll();
+
+        //var_dump($teams);
+
+        foreach ($teams as $team) {
+            if (0 == $team->getEvent()->getId())
+            {
+                $team->setEvent($team->getTournament()->getEvent());
+                // $this->em->persist($team);
+            }
+            //var_dump($team->getEvent()->getId());
+        }
+
+        // $this->em->flush();
+
+        $users = $this->em->getRepository('hflanUserBundle:User')->findAll();
+
+        //var_dump($users);
+
+        foreach ($users as $user) {
+            // if (0 == $user->getTeams()->count())
+            // {
+            //     if (null !== $user->getTeam()) {
+            //         $user->addTeam($user->getTeam());
+            //         $this->em->persist($user);
+            //     }
+            // }
+            var_dump($user->getTeams()->count());
+        }
+
+        $this->em->flush();
+        return new Response('<html><body>Coucou</body></html>');
     }
 }

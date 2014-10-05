@@ -6,6 +6,16 @@
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
+      <trans-unit id="6b7a043eb17589c5164aac671014b7f0c5352a6b" resname="registration.closed.text">
+        <source>Contenu de la page d'inscription terminé.</source>
+        <target state="new">Contenu de la page d'inscription terminé.</target>
+        <jms:reference-file line="10">views/Team/registrationClosed.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="52d01d4086f00e701c480e0a475641174bd5a5e8" resname="registration.closed.title">
+        <source>Titre de la page d'inscription terminé. Nom de l'event : %event%</source>
+        <target state="new">Les inscriptions pour %event% sont terminés</target>
+        <jms:reference-file line="6">views/Team/registrationClosed.html.twig</jms:reference-file>
+      </trans-unit>
       <trans-unit id="3914f5cbd8c7e1e2b6ddd59eb6f9e454335470a1" resname="registration.default_player_name">
         <source>Numéro du joueur : %n%</source>
         <target>Joueur %n%</target>

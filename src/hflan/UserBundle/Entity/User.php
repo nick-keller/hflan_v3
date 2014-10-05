@@ -49,11 +49,26 @@ class User extends BaseUser
 
     /**
      * @var  Team
-     * @ORM\OneToOne(targetEntity="hflan\LanBundle\Entity\Team", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="hflan\LanBundle\Entity\Team")
      * @ORM\JoinColumn(nullable=true)
      */
     protected $team;
 
+    /**
+     * @var  \Doctrine\Common\Collections\Collection
+     * @ORM\OneToMany(targetEntity="hflan\LanBundle\Entity\Team", mappedBy="user", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $teams;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -79,5 +94,39 @@ class User extends BaseUser
     public function getTeam()
     {
         return $this->team;
+    }
+    
+    /**
+     * Add teams
+     *
+     * @param \hflan\LanBundle\Entity\Team $teams
+     * @return User
+     */
+    public function addTeam(\hflan\LanBundle\Entity\Team $team)
+    {
+        $this->teams[] = $team;
+        $team->setUser($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param \hflan\LanBundle\Entity\Team $teams
+     */
+    public function removeTeam(\hflan\LanBundle\Entity\Team $teams)
+    {
+        $this->teams->removeElement($teams);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
     }
 }

@@ -82,6 +82,7 @@ swiftmailer:
     auth_mode: "%mailer_auth_mode%"
     port:      "%mailer_port%"
     spool:     { type: memory }
+    sender_address: %mailer_sender_address%
 
 fos_user:
     db_driver:      orm

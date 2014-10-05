@@ -12,6 +12,7 @@ parameters:
     mailer_password:   ~
     mailer_port:       587
     mailer_auth_mode:  login
+    mailer_sender_address: infos@hf-lan.fr
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt

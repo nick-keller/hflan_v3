@@ -41,12 +41,18 @@ class TeamManager
     public function registerTeam(Team $team)
     {
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
+        $user = $this->em->getRepository('hflanUserBundle:User')->findOneBy(array('email' => $team->getEmail()));
 
-        $this->saveTeam($team);
-        $this->createUser($team);
+        if ($user) {
+            return false;
+        } else {
+            $user = $this->createUser($team);
+            $this->saveTeam($team, $user);
+        }
+
         $this->createPlayers($team);
         $this->sendEmail($team, $nextEvent);
-
+        return true;
     }
 
     public function fetchTeamRegistrationData(Tournament $tournament = null)
@@ -76,10 +82,11 @@ class TeamManager
         }
     }
 
-    private function saveTeam(Team $team)
+    private function saveTeam(Team $team, User $user)
     {
         if($team->getEvent() === null)
             $team->setEvent($team->getTournament()->getEvent());
+        $team->setUser($user);
 
         $this->em->persist($team);
         $this->em->flush();
@@ -93,12 +100,27 @@ class TeamManager
         $user->setEmail($team->getEmail());
         $user->setPlainPassword($team->getPlainPassword());
         $user->setTeam($team);
+        $user->addTeam($team);
         $user->setEnabled(true);
 
         $this->um->updateUser($user);
+        return $user;
     }
 
-    private function createPlayers(Team $team)
+    public function createTeam(Team $team, User $user)
+    {
+        $team->setEmail($user->getEmail());
+        $user->setTeam($team);
+        $user->addTeam($team);
+
+        $this->em->persist($team);
+        $this->em->flush();
+        $this->um->updateUser($user);
+
+        $this->createPlayers($team);
+    }
+
+    public function createPlayers(Team $team)
     {
         $extraFields = $this->em->getRepository('hflanLanBundle:ExtraField')->getExtraFieldsArray($team->getTournament());
 

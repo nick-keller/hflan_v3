@@ -12,10 +12,13 @@ class TeamType extends AbstractType
 {
     /** @var  Event */
     private $event;
+    /** @var  boolean */
+    private $onlyName;
 
-    public function __construct(Event $event = null)
+    public function __construct(Event $event = null, $onlyName = false)
     {
         $this->event = $event;
+        $this->onlyName = $onlyName;
     }
 
     /**
@@ -35,15 +38,19 @@ class TeamType extends AbstractType
                     return $repo->queryTournamentsOfEvent($this->event);
                 },
             ))
-            ->add('email', 'text', array(
-                'label' => "field.email",
-            ))
-            ->add('plainPassword', 'repeated', array(
-                'type'           => 'password',
-                'first_options'  => array('label' => "field.password"),
-                'second_options' => array('label' => "field.verification"),
-            ))
         ;
+        if (!$this->onlyName) {
+            $builder
+                ->add('email', 'text', array(
+                    'label' => "field.email",
+                ))
+                ->add('plainPassword', 'repeated', array(
+                    'type'           => 'password',
+                    'first_options'  => array('label' => "field.password"),
+                    'second_options' => array('label' => "field.verification"),
+                ))
+            ;
+        }
     }
     
     /**

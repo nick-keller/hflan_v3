@@ -80,7 +80,7 @@ class AdminController extends Controller
      */
     public function editAction(Request $request, User $user)
     {
-        if($user->hasRole('ROLE_SUPER_ADMIN')){
+        if($user->hasRole('ROLE_SUPER_ADMIN') && !$this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')){
             $this->session->getFlashBag()->add('error', 'Les voies du seigneur sont impénétrables...');
 
             return $this->redirect($this->generateUrl('hflan_users_admin'));
