@@ -25,14 +25,15 @@ class EventExportType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $event = $this->event;
         $builder
             ->add('tournaments', 'entity', array(
                 'label' => 'Tournois',
                 'expanded' => true,
                 'multiple' => true,
                 'class'=>'hflanLanBundle:Tournament',
-                'query_builder' => function(TournamentRepository $er) {
-                    return $er->queryTournamentsOfEvent($this->event);
+                'query_builder' => function(TournamentRepository $er) use(&$event) {
+                    return $er->queryTournamentsOfEvent($event);
                 },
                 'attr' => array(
                     'class' => 'staked-checkboxes',
