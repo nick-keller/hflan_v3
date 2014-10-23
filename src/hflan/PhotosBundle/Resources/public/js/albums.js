@@ -3,7 +3,7 @@ $(function(){
         $('#photo-albums').html('');
         $.each(data.albums.data, function(i, e){
             if(e.type == 'normal' && e.count > 20){
-                var album = $('<a class="photo-album" href="'+window.location+ e.id+'">'+ e.name+'</a>');
+                var album = $('<a class="photo-album" href="'+window.location+ e.id+'"><div>'+ e.name+'</div></a>');
                 $('#photo-albums').append(album);
 
                 $.each(e.photos.data, function(j, photo){

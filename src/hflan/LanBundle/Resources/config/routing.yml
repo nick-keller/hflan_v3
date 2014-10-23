@@ -8,9 +8,21 @@ hflan_pay_team:
     pattern:  /register/step-3
     defaults: { _controller: hflanLanBundle:Team:pay }
 
+hflan_register_again:
+    pattern:  /register-again/{slug}
+    defaults: { _controller: hflanLanBundle:Team:registerAgain }
+
 hflan_register:
     pattern:  /register/{slug}
     defaults: { _controller: hflanLanBundle:Team:register, slug: null }
+
+hflan_team_registration_closed:
+    pattern:  /registration/closed
+    defaults: { _controller: hflanLanBundle:Team:registrationClosed }
+
+hflan_teams_update_database:
+    pattern:  /teams/update-database
+    defaults: { _controller: hflanLanBundle:Team:updateDatabase }
 
 hflan_team_show:
     pattern:  /teams/{id}

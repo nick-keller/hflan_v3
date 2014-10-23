@@ -28,7 +28,7 @@ $(function(){
         $('#countdown').countdown({until: target});
 
     // checkall
-    var check_btn = $('<div class="check-all"><i class="icon-check"></i> Tout cocher</div>');
+    var check_btn = $('<div class="check-all"><i class="fa fa-check"></i> Tout cocher</div>');
     check_btn.click(function(){
         $(this).parent().find('input[type=checkbox]').attr('checked', true);
     });
@@ -49,7 +49,7 @@ $(function(){
 
     // extra fields
     var main_container = $('#hflan_lanbundle_tournament_extraFields');
-    var add_btn = $('<button type="button" class="btn"><i class="icon-plus"></i> Ajouter un champ</button>');
+    var add_btn = $('<button type="button" class="btn"><i class="fa fa-plus"></i> Ajouter un champ</button>');
     var index = main_container.children('.control-group').length;
 
     main_container.append(add_btn);
@@ -71,7 +71,7 @@ $(function(){
     }
 
     function add_remove(elem){
-        var remove_btn = $('<div class="remove-form"><i class="icon-remove"></i></div>');
+        var remove_btn = $('<div class="remove-form"><i class="fa fa-times"></i></div>');
 
         remove_btn.click(function(){
             $(this).parent().animate({opacity:0}, 400, function(){

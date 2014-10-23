@@ -70,7 +70,7 @@ class DateExtension extends \Twig_Extension
             return $this->trans("date.dayAt.$time", array('%day%'=> $this->trans("date.day.".$date->format("N")), "%at%"=>$date->format("H:i")));
         elseif($diffMidnight->d == 1)
             return $this->trans("date.tomorrow.$time", array("%at%"=>$date->format("H:i")));
-        elseif($diff->h > 1)
+        elseif($diff->h >= 1)
         {
             if($diff->i < 10)
                 return $this->trans("date.Xhour.$time", array('%x%'=> $diff->h));
