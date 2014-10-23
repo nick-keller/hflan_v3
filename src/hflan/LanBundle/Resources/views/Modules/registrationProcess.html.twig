@@ -1,4 +1,6 @@
 {% macro show(team, direction) %}
+    {% set event = nextEvent() %}
+    {% if date('now') < date(team.event.registrationCloseAt) %}
     <div class="process process-{{ direction }}">
         <div class="step{% if not team.infoLocked %} active{% endif %}">
             <div class="step-number">1</div>
@@ -22,4 +24,8 @@
             </div>
         </div>
     </div>
+    {% else %}
+        </a>
+        <a href="{{ path('hflan_team_registration_closed') }}">{{ "registration.process.closed"|trans({'%event%':team.event.name}, "registration")|desc("Les inscriptions pour la LAN sont fermées. Nom de la LAN : %event%") }}
+    {% endif %}
 {% endmacro %}

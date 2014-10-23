@@ -8,12 +8,12 @@
     <body>
       <trans-unit id="6b7a043eb17589c5164aac671014b7f0c5352a6b" resname="registration.closed.text">
         <source>Contenu de la page d'inscription terminé.</source>
-        <target state="new">Contenu de la page d'inscription terminé.</target>
+        <target state="new">Nous vous attendons à la prochaine LAN !</target>
         <jms:reference-file line="10">views/Team/registrationClosed.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="52d01d4086f00e701c480e0a475641174bd5a5e8" resname="registration.closed.title">
         <source>Titre de la page d'inscription terminé. Nom de l'event : %event%</source>
-        <target state="new">Les inscriptions pour %event% sont terminés</target>
+        <target state="new">Les inscriptions pour %event% sont terminées</target>
         <jms:reference-file line="6">views/Team/registrationClosed.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="3914f5cbd8c7e1e2b6ddd59eb6f9e454335470a1" resname="registration.default_player_name">
@@ -63,9 +63,14 @@
         <jms:reference-file line="14">views/Modules/registrationProcess.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="ddb3e476ddde21b5704957808a6c783645fd21ca" resname="registration.process.3">
-        <source>Etape 2 : Achetez votre place</source>
+        <source>Etape 3 : Achetez votre place</source>
         <target>Achetez votre place</target>
         <jms:reference-file line="21">views/Modules/registrationProcess.html.twig</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="azb3e476ddde21b570sdf7808a6c783645fd21ca" resname="registration.process.closed">
+        <source>Les inscriptions pour la LAN sont fermées. Nom de la LAN : %event%</source>
+        <target>Inscriptions</target>
+        <jms:reference-file line="29">views/Modules/registrationProcess.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="41c86f98922be26e8d5690db657f17bd375b8471" resname="registration.process.lock">
         <source>Passer à l'étape 3</source>
