@@ -72,7 +72,7 @@ class TeamController extends Controller
                     $this->session->getFlashBag()->add('error',
                         'Un utilisateur avec la même adresse est déjà inscrits à '.$team->getEvent()->getName());
                }
-            } elseif (null !== $team->getName()) {
+            } elseif ($again && null !== $team->getName()) {
                 $this->get('hflan.team_manager')->createTeam($team, $this->getUser());
                             
                 $this->session->getFlashBag()->add('success',
