@@ -50,7 +50,7 @@ class TeamController extends Controller
         $team = new Team();
         if($tournament !== null) $team->setTournament($tournament);
 
-        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData($tournament);
         if ($tournament !== null && $tournament->getFillingRatio() >= 100)
             $this->session->getFlashBag()->add('warning', 'Le tournois est complet, vous ne serez que sur liste d\'attente');
 
@@ -72,7 +72,7 @@ class TeamController extends Controller
                     $this->session->getFlashBag()->add('error',
                         'Un utilisateur avec la même adresse est déjà inscrits à '.$team->getEvent()->getName());
                }
-            } elseif (null !== $team->getName()) {
+            } elseif (null !== $team->getName() && $form->isValid()) {
                 $this->get('hflan.team_manager')->createTeam($team, $this->getUser());
                             
                 $this->session->getFlashBag()->add('success',
