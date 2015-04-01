@@ -22,10 +22,17 @@
         {% if tournament.fillingRatio < 100 %}
             {% if not tournament.isPaymentOnTheSpot %}
                 {{ renderBlock("registration_buy_instruction") }}
-                <a class="btn" href="{{ buypackerUrl }}">
-                    <i class="fa fa-shopping-cart"></i>
-                    Acheter ma place
-                </a>
+                <form action="" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_1DHSFOydaonR4rqGHldlc4EO"
+                        data-amount="{{ tournament.totalPrice *100 }}"
+                        data-name="{{ tournament.event }}"
+                        data-description="{{ tournament }}"
+                        data-currency="eur"
+                        data-image="/128x128.png">
+                    </script>
+                </form>
             {% else %}
                 {{ renderBlock("registration_complete_on_the_spot") }}
             {% endif %}
