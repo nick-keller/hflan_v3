@@ -152,11 +152,11 @@ class TeamController extends Controller
 
 
         if ($request->isMethod('POST')) {
-            // Set your secret key: remember to change this to your live secret key in production
-            // See your keys here https://dashboard.stripe.com/account/apikeys
+            // CLE DE BEN, A CHANGER POUR LIVE
+            // https://dashboard.stripe.com/account/apikeys
             \Stripe\Stripe::setApiKey("sk_test_i7CdVIOaXs3fb1p23ZKnb7Wp");
 
-            // Get the credit card details submitted by the form
+            // Reccupere le token correspondant a la cb envoyee au formulaire
             $token = $request->request->get('stripeToken');
 
             // Create the charge on Stripe's servers - this will charge the user's card
@@ -168,8 +168,16 @@ class TeamController extends Controller
                     "description" => $team->getName(),
                     "receipt_email" => $team->getEmail()
                 ));
+
+                $team->setPaid(true);
+                $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
+
+                $this->em->persist($team);
+                $this->em->flush();
+
+
             } catch(\Stripe\Error\Card $e) {
-              // The card has been declined
+              $this->session->getFlashBag()->add('error', 'Carte bancaire refusée.');
             }
         }
 
