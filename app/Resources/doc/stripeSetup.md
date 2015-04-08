@@ -2,5 +2,4 @@ Mettre en place stripe
 ======================
 
 - Creer le compte stripe de l'évènement (COMPLETEMENT)
-- Utiliser la clé secrette https://dashboard.stripe.com/account/apikeys
-- Ici src\hflan\lanbundle\Controller\TeamController.php
+- Lors de la creation du site, utiliser le token stripe PUBLIC à cet url : https://dashboard.stripe.com/account/apikeys

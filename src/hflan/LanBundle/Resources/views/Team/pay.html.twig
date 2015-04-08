@@ -23,7 +23,8 @@
             {% if not tournament.isPaymentOnTheSpot %}
                 {{ renderBlock("registration_buy_instruction") }}
 
-                <form action="" method="POST">
+                {# Ici, on utilise la cle publique #}
+                {# <form action="" method="POST">
                     <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="pk_test_1DHSFOydaonR4rqGHldlc4EO"
@@ -31,11 +32,55 @@
                         data-name="{{ tournament.event }}"
                         data-description="{{ tournament }}"
                         data-currency="eur"
-                        data-image="/128x128.png">
+                        data-image="/128x128.png"
+                        data-email="{{ team.email }}"
+                        data-allowRememberMe=false>
                     </script>
-                </form>
+                </form> #}
 
-                
+
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+
+                <button id="customButton">Purchase</button>
+
+                <script>
+                    var handler = StripeCheckout.configure({
+                        
+                        key: 'pk_test_1DHSFOydaonR4rqGHldlc4EO',
+                        amount: "{{ tournament.totalPrice *100 }}",
+                        name: "{{ tournament.event }}",
+                        description: "{{ tournament }}",
+                        currency: "eur",
+                        image: "/128x128.png",
+                        email: "{{ team.email }}",
+                        allowRememberMe: false,
+                        token: function(token) {
+                            // Y U NO JQUERY KELLERMAN?????
+                            // $.ajax({
+                            //     type: "POST",
+                            //     url: "",
+                            //     stripeToken: token,
+                            //     success: function(){    
+                            //         window.location.reload();   
+                            //     }
+                            // });
+                        }
+                    });
+
+                    window.document.getElementById("customButton")
+                            .addEventListener('click',  function(e) {
+                        // Open Checkout with further options
+                        handler.open({});
+                        e.preventDefault();
+                    });
+
+                    // Close Checkout on page navigation
+                    window.addEventListener('popstate', function() {
+                        handler.close();
+                    });
+
+                </script>
+
             {% else %}
                 {{ renderBlock("registration_complete_on_the_spot") }}
             {% endif %}

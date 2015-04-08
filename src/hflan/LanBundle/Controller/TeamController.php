@@ -153,8 +153,9 @@ class TeamController extends Controller
 
         if ($request->isMethod('POST')) {
             // CLE DE BEN, A CHANGER POUR LIVE
+            // Secret key.
             // https://dashboard.stripe.com/account/apikeys
-            \Stripe\Stripe::setApiKey("sk_test_i7CdVIOaXs3fb1p23ZKnb7Wp");
+            \Stripe\Stripe::setApiKey("sk_test_btzyqdZrTnp0d2COWXx75Czz");
 
             // Reccupere le token correspondant a la cb envoyee au formulaire
             $token = $request->request->get('stripeToken');
