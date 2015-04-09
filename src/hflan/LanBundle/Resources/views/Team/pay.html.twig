@@ -1,5 +1,9 @@
 {% extends 'hflanLanBundle:Team:layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}
+
 {% block content %}
     {% set numberOfMinor = 0 %}
     {% for player in team.players if player.isMinor %}
@@ -23,6 +27,7 @@
             {% if not tournament.isPaymentOnTheSpot %}
                 {{ renderBlock("registration_buy_instruction") }}
 
+
                 {# Ici, on utilise la cle publique #}
                 {# <form action="" method="POST">
                     <script
@@ -41,7 +46,7 @@
 
                 <script src="https://checkout.stripe.com/checkout.js"></script>
 
-                <button id="customButton">Purchase</button>
+                <span id="payementButton" class="btn">Payer</span>
 
                 <script>
                     var handler = StripeCheckout.configure({
@@ -55,19 +60,21 @@
                         email: "{{ team.email }}",
                         allowRememberMe: false,
                         token: function(token) {
-                            // Y U NO JQUERY KELLERMAN?????
-                            // $.ajax({
-                            //     type: "POST",
-                            //     url: "",
-                            //     stripeToken: token,
-                            //     success: function(){    
-                            //         window.location.reload();   
-                            //     }
-                            // });
+
+                            console.log(token);
+
+                            $.ajax({
+                                type: "POST",
+                                url: "",
+                                data: {stripeToken: token.id},
+                                success: function(){    
+                                    window.location.reload();   
+                                }
+                            });
                         }
                     });
 
-                    window.document.getElementById("customButton")
+                    window.document.getElementById("payementButton")
                             .addEventListener('click',  function(e) {
                         // Open Checkout with further options
                         handler.open({});
