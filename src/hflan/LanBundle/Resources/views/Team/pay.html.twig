@@ -46,7 +46,10 @@
 
                 <script src="https://checkout.stripe.com/checkout.js"></script>
 
-                <span id="payementButton" class="btn">Payer</span>
+                <span id="payementButton" class="btn">
+                    <i class="fa fa-credit-card"></i>
+                    {{ "registration.pay.button"|trans({}, "registration")|desc("Bouton de payement") }}
+                </span>
 
                 <script>
                     var handler = StripeCheckout.configure({

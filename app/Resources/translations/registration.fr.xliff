@@ -115,6 +115,11 @@
         <target>Inscription au %tournament%</target>
         <jms:reference-file line="6">views/Team/layout.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="cad1417fba845885449d42483f47357f4460149b" resname="registration.pay.button">
+        <source>Bouton de payement</source>
+        <target>Payer</target>
+        <jms:reference-file line="49">views/Team/pay.html.twig</jms:reference-file>
+      </trans-unit>
     </body>
   </file>
 </xliff>
