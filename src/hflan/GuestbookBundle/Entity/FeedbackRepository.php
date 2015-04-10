@@ -19,9 +19,13 @@ class FeedbackRepository extends EntityRepository
 
     public function findRandomOne()
     {
+        $count = $this->count();
+
+        if($count == 0) return null;
+
         $qb = $this->createQueryBuilder('f')
             ->setMaxResults(1)
-            ->setFirstResult(mt_rand(0, $this->count()-1));
+            ->setFirstResult(mt_rand(0, $count-1));
 
         return $qb->getQuery()->getSingleResult();
     }

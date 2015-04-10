@@ -1,21 +1,25 @@
-<h3>
-    {{ "guestbook.title"|trans({}, "guestbook")|desc("Titre principale de la page guestbook") }}
-</h3>
+{% if feedback is not null %}
 
-<div class="guestbook-showroom">
-    <i class="fa fa-quote-left fa-3x pull-left"></i>
-    {{ feedback.message|nl2br|raw }}
-    <div class="note">
-        {{ "guestbook.by"|trans({'%by%': feedback.nickname, '%date%': feedback.createdAt|simpleDate}, "guestbook")|desc("Pseudo : %by%, Date : %date%")|raw }}
-        <div class="star-rating">
-            {% for i in range(0,4) %}
-                {% if i < feedback.rating %}
-                    <i class="fa fa-star"></i>
-                {% else %}
-                    <i class="fa fa-star-o"></i>
-                {% endif %}
-            {% endfor %}
+    <h3>
+        {{ "guestbook.title"|trans({}, "guestbook")|desc("Titre principale de la page guestbook") }}
+    </h3>
+
+    <div class="guestbook-showroom">
+        <i class="fa fa-quote-left fa-3x pull-left"></i>
+        {{ feedback.message|nl2br|raw }}
+        <div class="note">
+            {{ "guestbook.by"|trans({'%by%': feedback.nickname, '%date%': feedback.createdAt|simpleDate}, "guestbook")|desc("Pseudo : %by%, Date : %date%")|raw }}
+            <div class="star-rating">
+                {% for i in range(0,4) %}
+                    {% if i < feedback.rating %}
+                        <i class="fa fa-star"></i>
+                    {% else %}
+                        <i class="fa fa-star-o"></i>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
-<hr>
+    <hr>
+
+{% endif %}
