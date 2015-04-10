@@ -155,7 +155,7 @@ class TeamController extends Controller
             // CLE DE BEN, A CHANGER POUR LIVE
             // Secret key.
             // https://dashboard.stripe.com/account/apikeys
-            \Stripe\Stripe::setApiKey("sk_test_btzyqdZrTnp0d2COWXx75Czz");
+            \Stripe\Stripe::setApiKey($this->container->getParameter('stripe.privateKey'));
 
             // Reccupere le token correspondant a la cb envoyee au formulaire
             $token = $request->request->get('stripeToken');

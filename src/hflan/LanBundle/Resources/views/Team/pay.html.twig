@@ -51,7 +51,7 @@
                 <script>
                     var handler = StripeCheckout.configure({
                         
-                        key: 'pk_test_1DHSFOydaonR4rqGHldlc4EO',
+                        key: "{{ stripePublicKey }}",
                         amount: "{{ tournament.totalPrice *100 }}",
                         name: "{{ tournament.event }}",
                         description: "{{ tournament }}",
