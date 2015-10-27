@@ -30,7 +30,6 @@
         "jms/security-extra-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "^2.4",
         "jms/translation-bundle": "dev-master",
-        "coresphere/console-bundle": "dev-master",
         "stripe/stripe-php": "2.*"
     },
     "require-dev": {
