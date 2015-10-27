@@ -168,6 +168,38 @@ class TeamController extends Controller
             $this->em->flush();
         }
 
+
+        if ($request->isMethod('POST')) {
+            // CLE DE BEN, A CHANGER POUR LIVE
+            // Secret key.
+            // https://dashboard.stripe.com/account/apikeys
+            \Stripe\Stripe::setApiKey($this->container->getParameter('stripe.privateKey'));
+
+            // Reccupere le token correspondant a la cb envoyee au formulaire
+            $token = $request->request->get('stripeToken');
+
+            // Create the charge on Stripe's servers - this will charge the user's card
+            try {
+                $charge = \Stripe\Charge::create(array(
+                    "amount" => $team->getTournament()->getTotalPrice() * 100, // amount in cents, again
+                    "currency" => "eur",
+                    "source" => $token,
+                    "description" => $team->getName(),
+                    "receipt_email" => $team->getEmail()
+                ));
+
+                $team->setPaid(true);
+                $this->get('hflan.team_manager')->sendUpgradeEmail($team, $team->getTournament()->getEvent());
+
+                $this->em->persist($team);
+                $this->em->flush();
+
+
+            } catch(\Stripe\Error\Card $e) {
+              $this->session->getFlashBag()->add('error', 'Carte bancaire refusée.');
+            }
+        }
+
         return array(
             'team' => $team,
             'tournament' => $team->getTournament(),

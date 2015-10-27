@@ -16,4 +16,5 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
-    buypacker.url:     http://s.buypacker.com/hvq
+    stripe.publicKey:  pk_test_1DHSFOydaonR4rqGHldlc4EO
+    stripe.privateKey: sk_test_btzyqdZrTnp0d2COWXx75Czz
