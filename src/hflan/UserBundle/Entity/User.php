@@ -49,14 +49,14 @@ class User extends BaseUser
 
     /**
      * @var  Team
-     * @ORM\OneToOne(targetEntity="hflan\LanBundle\Entity\Team")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity="hflan\LanBundle\Entity\Team", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     protected $team;
 
     /**
      * @var  \Doctrine\Common\Collections\Collection
-     * @ORM\OneToMany(targetEntity="hflan\LanBundle\Entity\Team", mappedBy="user", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="hflan\LanBundle\Entity\Team", mappedBy="user", cascade={"remove"}, orphanRemoval=true)
      * @ORM\JoinColumn(nullable=true)
      */
     protected $teams;
@@ -93,7 +93,10 @@ class User extends BaseUser
      */
     public function getTeam()
     {
-        return $this->team;
+        if (null !== $this->team)
+            return $this->team;
+        else
+            return ($this->teams->isEmpty()) ? null : $this->teams->last();
     }
     
     /**
@@ -128,5 +131,21 @@ class User extends BaseUser
     public function getTeams()
     {
         return $this->teams;
+    }
+
+    /**
+     * has Team Registred
+     *
+     * @return boolean 
+     * @param \hflan\LanBundle\Entity\Event $event
+     */
+    public function hasTeamRegistred(\hflan\LanBundle\Entity\Event $event)
+    {
+        foreach ($this->teams as $team) {
+            if ($team->getEvent()->getId() == $event->getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

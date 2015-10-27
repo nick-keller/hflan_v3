@@ -45,38 +45,56 @@ class TeamController extends Controller
      */
     public function registerAction(Request $request, Tournament $tournament = null)
     {
-        $again = (null !== $this->getUser());
-
         $team = new Team();
-        if($tournament !== null) $team->setTournament($tournament);
+        if ($tournament !== null) {
+            $team->setTournament($tournament);
+        }
 
-        $this->get('hflan.team_manager')->fetchTeamRegistrationData();
-        if ($tournament !== null && $tournament->getFillingRatio() >= 100)
+        $this->get('hflan.team_manager')->fetchTeamRegistrationData($tournament);
+        if ($tournament !== null && $tournament->getFillingRatio() >= 100) {
             $this->session->getFlashBag()->add('warning', 'Le tournois est complet, vous ne serez que sur liste d\'attente');
+        }
+
+        $again = (null !== $this->getUser());
+        if ($again) {
+            $team->setEmail($this->getUser()->getEmail());
+            $team->setPlainPassword('abc');
+        }
 
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
         $form = $this->createForm(new TeamType($nextEvent, $again), $team);
+        // var_dump($form);
 
-        if('POST' == $request->getMethod()) {
+        if ('POST' == $request->getMethod()) {
             $form->handleRequest($request);
 
-            if(!$again && $form->isValid()) {
-               if ($this->get('hflan.team_manager')->registerTeam($team))
-               {
-                    $this->session->getFlashBag()->add('success',
-                        'Pour finaliser votre inscription, connectez vous avec votre adresse email et le mot de passe que vous venez de définir.');
+            if (!$again && $form->isValid()) {
+                if ($this->get('hflan.team_manager')->registerTeam($team)) {
+                    $this->session->getFlashBag()->add(
+                        'success',
+                        'Pour finaliser votre inscription, connectez vous avec votre adresse email et le mot de passe que vous venez de définir.'
+                    );
                     return $this->redirect($this->generateUrl('hflan_edit_team'));
-               }
-               else
-               {
-                    $this->session->getFlashBag()->add('error',
-                        'Un utilisateur avec la même adresse est déjà inscrits à '.$team->getEvent()->getName());
-               }
-            } elseif ($again && null !== $team->getName()) {
-                $this->get('hflan.team_manager')->createTeam($team, $this->getUser());
-                            
-                $this->session->getFlashBag()->add('success',
-                    'Vous pouvez maintenant finaliser votre inscription.');
+                } else {
+                    $this->session->getFlashBag()->add(
+                        'error',
+                        'Un utilisateur avec la même adresse est déjà inscrits à '.$team->getEvent()->getName()
+                    );
+                }
+            } elseif ($again && $form->isValid()) {
+                if (!$this->getUser()->hasTeamRegistred($nextEvent)) {
+                    $this->get('hflan.team_manager')->createTeam($team, $this->getUser());
+                                
+                    $this->session->getFlashBag()->add(
+                        'success',
+                        'Vous pouvez maintenant finaliser votre inscription.'
+                    );
+                } else {
+                    $this->session->getFlashBag()->add(
+                        'error',
+                        'Une erreur est survenue, veuillez ressayer.'
+                    );
+                }
 
                 return $this->redirect($this->generateUrl('hflan_edit_team'));
             }
