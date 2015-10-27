@@ -1,5 +1,9 @@
 {% extends 'hflanLanBundle:Team:layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+{% endblock javascripts %}
+
 {% block content %}
     {% set numberOfMinor = 0 %}
     {% for player in team.players if player.isMinor %}
@@ -22,10 +26,71 @@
         {% if tournament.fillingRatio < 100 %}
             {% if not tournament.isPaymentOnTheSpot %}
                 {{ renderBlock("registration_buy_instruction") }}
-                <a class="btn" href="{{ buypackerUrl }}">
-                    <i class="fa fa-shopping-cart"></i>
-                    Acheter ma place
-                </a>
+
+
+                {# Ici, on utilise la cle publique #}
+                {# <form action="" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_1DHSFOydaonR4rqGHldlc4EO"
+                        data-amount="{{ tournament.totalPrice *100 }}"
+                        data-name="{{ tournament.event }}"
+                        data-description="{{ tournament }}"
+                        data-currency="eur"
+                        data-image="/128x128.png"
+                        data-email="{{ team.email }}"
+                        data-allowRememberMe=false>
+                    </script>
+                </form> #}
+
+
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+
+                <span id="payementButton" class="btn">
+                    <i class="fa fa-credit-card"></i>
+                    {{ "registration.pay.button"|trans({}, "registration")|desc("Bouton de payement") }}
+                </span>
+
+                <script>
+                    var handler = StripeCheckout.configure({
+                        
+                        key: "{{ stripePublicKey }}",
+                        amount: "{{ tournament.totalPrice *100 }}",
+                        name: "{{ tournament.event }}",
+                        description: "{{ tournament }}",
+                        currency: "eur",
+                        image: "/128x128.png",
+                        email: "{{ team.email }}",
+                        allowRememberMe: false,
+                        token: function(token) {
+
+                            console.log(token);
+
+                            $.ajax({
+                                type: "POST",
+                                url: "",
+                                data: {stripeToken: token.id},
+                                success: function(){    
+                                    window.location.reload();   
+                                }
+                            });
+                        }
+                    });
+
+                    window.document.getElementById("payementButton")
+                            .addEventListener('click',  function(e) {
+                        // Open Checkout with further options
+                        handler.open({});
+                        e.preventDefault();
+                    });
+
+                    // Close Checkout on page navigation
+                    window.addEventListener('popstate', function() {
+                        handler.close();
+                    });
+
+                </script>
+
             {% else %}
                 {{ renderBlock("registration_complete_on_the_spot") }}
             {% endif %}

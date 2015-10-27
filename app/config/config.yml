@@ -29,7 +29,8 @@ twig:
         resources:
             - ':Form:form_div_layout.html.twig'
     globals:
-        buypackerUrl: "%buypacker.url%"
+        stripePublicKey: "%stripe.publicKey%"
+        stripePrivateKey: "%stripe.privateKey%"
 
 services:
     twig.text_extension:
