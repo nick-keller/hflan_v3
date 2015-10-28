@@ -323,4 +323,9 @@ class Article
     {
         return $this->file;
     }
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime;
+    }
 }

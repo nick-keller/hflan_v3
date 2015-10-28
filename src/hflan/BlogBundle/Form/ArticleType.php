@@ -33,6 +33,9 @@ class ArticleType extends AbstractType
                 ),
                 'required' => false,
             ))
+            ->add('createdAt', 'datepicker', array(
+                'label' => 'Publié le',
+            ))
             ->add('lang', 'radiobar', array(
                 'label' => 'Langue',
                 'choices' => array(
