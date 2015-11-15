@@ -18,6 +18,10 @@
         <p>
             {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
         </p>
+        <a href="{{ path('hflan_player') }}" class="btn btn-large">
+                <i class="fa fa-list"></i>
+                {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
+            </a>
         {% else %}
             <p>
                 {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
@@ -25,6 +29,11 @@
             <a href="{{ path('hflan_register') }}" class="btn btn-large">
                 <i class="fa fa-edit"></i>
                 {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
+            </a>
+            </br>
+            <a href="{{ path('hflan_player') }}" class="btn btn-large">
+                <i class="fa fa-list"></i>
+                {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
             </a>
         {% endif %}
     {% endblock %}

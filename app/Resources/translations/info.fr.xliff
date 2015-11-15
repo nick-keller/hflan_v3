@@ -117,6 +117,11 @@
         <target><![CDATA[La %event% aura lieu à ESIEE Paris <b>%dates%</b>. Les inscriptions sont ouvertes <b>%registration%</b>.]]></target>
         <jms:reference-file line="12">views/Event/prices.html.twig</jms:reference-file>
       </trans-unit>
+      <trans-unit id="ef39fcfd8cdae34e56bd8c884d9b29572007db23" resname="info.table.list_action">
+        <source>Bouton liste des joueurs</source>
+        <target>Liste des joueurs</target>
+        <jms:reference-file line="26">views/Event/menu.html.twig</jms:reference-file>
+      </trans-unit>
     </body>
   </file>
 </xliff>

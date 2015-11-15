@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">{{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}</h1>
+    {% if is_melee_edition == null %}
+    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_ssbm', {id:event_id}) }}">Super Smash Bros. Melee</a></h2>
+    {% else %}
+	    {% if has_csgo != null %}
+	    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_csgo', {id:event_id}) }}">Counter-Strike : Global Offensive</a></h2>
+	    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_lol', {id:event_id}) }}">League of Legends</a></h2>
+	    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_sc2', {id:event_id}) }}">Starcraft II : Legacy of The Void</a></h2>
+	    {% else %}
+	    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_ssbm', {id:event_id}) }}">Super Smash Bros. Melee</a></h2>
+	    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_lol', {id:event_id}) }}">League of Legends</a></h2>
+	    	<h2 style="text-align:center;"><a href="{{ path('hflan_player_sc2', {id:event_id}) }}">StarCraft II : Legacy of The Void</a></h2>
+		{% endif %}
+	{% endif %}
+{% endblock %}

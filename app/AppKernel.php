@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new hflan\PageBundle\hflanPageBundle(),
             new hflan\DocumentBundle\hflanDocumentBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
+            new hflan\PlayerBundle\hflanPlayerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
