@@ -146,7 +146,7 @@ class TeamManager
     private function sendEmail(Team $team, Event $event)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject('hf.lan : Votre compte a bien été créé')
+            ->setSubject('HFLAN : Votre compte a bien été créé')
             ->setFrom('infos@hf-lan.fr')
             ->setTo($team->getEmail())
             ->setBody($this->templating->render(
@@ -166,7 +166,7 @@ class TeamManager
     public function sendUpgradeEmail(Team $team, Event $event)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject('hf.lan : Votre équipe a bien été inscrite')
+            ->setSubject('HFLAN : Votre équipe a bien été inscrite')
             ->setFrom('infos@hf-lan.fr')
             ->setTo($team->getEmail())
             ->setBody($this->templating->render(
