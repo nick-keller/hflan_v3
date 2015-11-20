@@ -2,19 +2,6 @@ hflan_player:
     path:     /list-players/
     defaults: { _controller: hflanPlayerBundle:Default:index }
 
-hflan_player_csgo:
-    path:     /list-players/{id}/csgo
-    defaults: { _controller: hflanPlayerBundle:Default:csgo }
-
-hflan_player_lol:
-    path:     /list-players/{id}/lol
-    defaults: { _controller: hflanPlayerBundle:Default:lol }
-
-hflan_player_sc2:
-    path:     /list-players/{id}/sc2
-    defaults: { _controller: hflanPlayerBundle:Default:sc2 }
-
-hflan_player_ssbm:
-    path:     /list-players/{id}/ssbm
-    defaults: { _controller: hflanPlayerBundle:Default:ssbm }
-
+hflan_player_list:
+    path:     /list-players/{slug}
+    defaults: { _controller: hflanPlayerBundle:Default:list }
