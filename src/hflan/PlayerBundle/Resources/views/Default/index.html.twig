@@ -2,9 +2,13 @@
 
 {% block body %}
     <h1 class="header">{{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}</h1>
-		{% for i in next_event.tournaments %}
-			{% if i.gameType != 'Spectateur' %}
-				<h2 style="text-align:center;"><a href="{{ path('hflan_player_list', {slug:i.slug}) }}">{{ i.game }}</a></h2>
-			{% endif %}
-		{% endfor %}
+    	{% if next_event is not null %}
+			{% for i in next_event.tournaments %}
+				{% if i.gameType != 'Spectateur' %}
+					<h2 style="text-align:center;"><a href="{{ path('hflan_player_list', {slug:i.slug}) }}">{{ i.game }}</a></h2>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			Pas de tournoi prochain programmé.
+		{% endif %}
 {% endblock %}

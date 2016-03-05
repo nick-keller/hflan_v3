@@ -33,7 +33,7 @@ class DefaultController extends Controller
 
         return $this->render('hflanPlayerBundle:Default:list.html.twig', array(
             'tournament' => $tournament,
-            'teams' => $teams,
+            'teams' => $players ? $teams : null,
             'players' => $players,
             'current' => count($players)
         ));

@@ -16,7 +16,7 @@
 			{% for joueurs in teams %}
 				{% for i in joueurs%}
 					{% if player.id == i.team.id %}
-						<li style="margin-left:45px;">{{ i.nickname }}</li>
+						<li style="margin-left:45px;">{{ i.nickname }} - {% for info in i.extrafields %}{{ info }}{% if not loop.last %} - {% endif %}{% endfor %}</li>
 					{% endif %}
 				{% endfor %}
 			{% endfor %}
