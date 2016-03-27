@@ -63,8 +63,11 @@ class DefaultController extends Controller
                     $teams[] = $team;
                 }
 
-                $article = new Article();
-                $article->setTitle($next_event->getName().' - Liste des joueurs '.$tournament->getGame());
+                $title = $next_event->getName().' - Liste des joueurs '.$tournament->getGame();
+                $previous = $em->getRepository('hflanBlogBundle:Article')->findOneByTitle($title);
+                if($previous == null) $article = new Article();
+                else $article = $previous;
+                $article->setTitle($title);
                 $article->setAuthor($user);
                 $article->setCreatedAt(new DateTime());
                 $article->setPublished(1);
