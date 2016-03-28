@@ -34,7 +34,7 @@ class CsvGenerator
             $csv .= $this->generatePlayers($players);
         }
 
-        return $csv;
+        return mb_convert_encoding($csv, "UTF-16", "UTF-8");
     }
 
     private function generateHeaders(Tournament $tournament)
