@@ -41,11 +41,11 @@ class CsvGenerator
     {
         $headers = array(1 => 'Pseudo', 'Prénom', 'Nom de famille', 'Email', 'Ordinateur', 'Date de naissance', 'Est mineur');
 
-        if($tournament->getNumberOfPlayerPerTeam() > 1)
-            $headers[0] = 'Team';
-
         foreach($tournament->getExtraFields() as $field)
             $headers[] = $field->getName();
+
+        if($tournament->getNumberOfPlayerPerTeam() > 1)
+            $headers[] = 'Team';
 
         ksort($headers);
         return implode(';', $headers)."\n";
@@ -69,11 +69,11 @@ class CsvGenerator
                 $player->isMinor() ? 'oui' : '',
             );
 
-            if($player->getTournament()->getNumberOfPlayerPerTeam() > 1)
-                $data[0] = (string) $player->getTeam();
-
             foreach($player->getExtraFields() as $value)
                 $data[] = $value;
+
+            if($player->getTournament()->getNumberOfPlayerPerTeam() > 1)
+                $data[] = (string) $player->getTeam();
 
             ksort($data);
             $csv .= implode(';', $data)."\n";
