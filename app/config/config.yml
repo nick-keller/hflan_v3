@@ -111,6 +111,7 @@ ivory_ck_editor:
     configs:
         main:
             toolbar: "toolbar_basic"
+            fillEmptyBlocks: false
     toolbars:
         configs:
             toolbar_basic: [ "@clipboard", "@editing" , "/", "@basicstyles", "@links", "@paragraph" , "/", '@styles', '@tools' ]
