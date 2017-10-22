@@ -24,9 +24,6 @@
                     <th>
                         {{ "info.table.price"|trans({}, "info")|desc("Colone tableau : Prix") }}
                     </th>
-                    <th>
-                        {{ "info.table.prize_pool"|trans({}, "info")|desc("Colone tableau : Prize-pool") }}
-                    </th>
                     <th style="min-width: 105px;float: right;">
                         {{ "info.table.register"|trans({}, "info")|desc("Colone tableau : Inscription") }}
                     </th>
@@ -46,9 +43,6 @@
                                 {{ "info.table.price_per_player"|transchoice(tournament.numberOfPlayerPerTeam, {
                                 '%price%':tournament.pricePerPlayer
                                 }, "info")|desc("%price% €|%price% € / joueur") }}
-                            </td>
-                            <td>
-                                {{ tournament.prizePool }} €
                             </td>
                             <td style="float: right;">
                                 <a class="btn" href="{{ path('hflan_register', {slug:tournament.slug}) }}">
