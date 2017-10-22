@@ -83,6 +83,21 @@ class Tournament
     /**
      * @var integer
      *
+     * @ORM\Column(name="numberOfVisibleTeams", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Type(type="integer", message="Veuillez rentrer un nombre entier")
+     * @Assert\Range(
+     *      min = 2,
+     *      max = 128,
+     *      minMessage = "Minimum 2 teams...",
+     *      maxMessage = "Plus de 128 teams ça fait beaucoup..."
+     * )
+     */
+    private $numberOfVisibleTeams;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="numberOfPlayerPerTeam", type="integer")
      * @Assert\NotBlank()
      * @Assert\Type(type="integer", message="Veuillez rentrer un nombre entier")
@@ -313,6 +328,29 @@ class Tournament
     public function getNumberOfTeams()
     {
         return $this->numberOfTeams;
+    }
+
+    /**
+     * Set numberOfVisibleTeams
+     *
+     * @param integer $numberOfVisibleTeams
+     * @return Tournament
+     */
+    public function setNumberOfVisibleTeams($numberOfVisibleTeams)
+    {
+        $this->numberOfVisibleTeams = (int) $numberOfVisibleTeams;
+    
+        return $this;
+    }
+
+    /**
+     * Get numberOfVisibleTeams
+     *
+     * @return integer 
+     */
+    public function getNumberOfVisibleTeams()
+    {
+        return $this->numberOfVisibleTeams;
     }
 
     /**

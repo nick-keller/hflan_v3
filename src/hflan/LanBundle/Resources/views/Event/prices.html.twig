@@ -38,7 +38,7 @@
                             <td>{{ tournament.gameType }}</td>
                             <td>
                                 {{ "info.table.number_of_teams"|transchoice(tournament.numberOfPlayerPerTeam, {
-                                    '%n%':tournament.numberOfTeams,
+                                    '%n%':tournament.numberOfVisibleTeams,
                                     '%p%':tournament.numberOfPlayerPerTeam
                                 }, "info")|desc("%n% joueurs|%n% équipes de %p%") }}
                             </td>

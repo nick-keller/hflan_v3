@@ -40,7 +40,10 @@ class TournamentType extends AbstractType
                 )
             ))
             ->add('numberOfTeams', 'number', array(
-                'label' => "Nombre d'équipes"
+                'label' => "Nombre d'équipes réel"
+            ))
+            ->add('numberOfVisibleTeams', 'number', array(
+                'label' => "Nombre d'équipes à afficher"
             ))
             ->add('numberOfPlayerPerTeam', 'number', array(
                 'label' => 'Joueur(s) / équipe'
