@@ -1,7 +1,7 @@
 hflan_player:
-    path:     /list-players/
+    path:     /admin/list-players/
     defaults: { _controller: hflanPlayerBundle:Default:index }
 
 hflan_player_list:
-    path:     /list-players/{slug}
+    path:     /admin/list-players/{slug}
     defaults: { _controller: hflanPlayerBundle:Default:list }
