@@ -63,10 +63,20 @@ class TeamController extends Controller
 
         $nextEvent = $this->em->getRepository('hflanLanBundle:Event')->findNextEvent();
         $form = $this->createForm(new TeamType($nextEvent, $again), $team);
-        // var_dump($form);
 
         if ('POST' == $request->getMethod()) {
             $form->handleRequest($request);
+
+            if (preg_match("/\.ru$/i", $_POST['hflan_lanbundle_team']['email'])) {
+                $this->session->getFlashBag()->add(
+                    'error',
+                    'Une erreur est survenue, veuillez ressayer.'
+                );
+                return array(
+                    'form' => $form->createView(),
+                    'event' => $nextEvent,
+                );
+            }
 
             if (!$again && $form->isValid()) {
                 if ($this->get('hflan.team_manager')->registerTeam($team)) {
@@ -84,7 +94,7 @@ class TeamController extends Controller
             } elseif ($again && $form->isValid()) {
                 if (!$this->getUser()->hasTeamRegistred($nextEvent)) {
                     $this->get('hflan.team_manager')->createTeam($team, $this->getUser());
-                                
+
                     $this->session->getFlashBag()->add(
                         'success',
                         'Vous pouvez maintenant finaliser votre inscription.'
