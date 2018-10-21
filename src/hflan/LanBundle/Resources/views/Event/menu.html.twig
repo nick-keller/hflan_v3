@@ -15,15 +15,15 @@
 
     {% block register %}
         {% if app.user %}
-        <p>
-            {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
-        </p>
-        <!--
-        <a href="{{ path('hflan_player') }}" class="btn btn-large">
-            <i class="fa fa-list"></i>
-            {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
-        </a>
-        -->
+            <p>
+                {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
+            </p>
+            {% if is_granted('ROLE_STAFF') %}
+                <a href="{{ path('hflan_player') }}" class="btn btn-large">
+                    <i class="fa fa-list"></i>
+                    {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
+                </a>
+            {% endif %}
         {% else %}
             <p>
                 {{ "registration.message.hurry_up"|trans({'%date%':event.registrationCloseAt|countdown}, "registration")|desc("Fin des inscriptions : %date%") }}
@@ -33,12 +33,12 @@
                 {{ "info.table.register_action"|trans({}, "info")|desc("Bouton s'inscrire") }}
             </a>
             </br>
-            <!--
-            <a href="{{ path('hflan_player') }}" class="btn btn-large">
-                <i class="fa fa-list"></i>
-                {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
-            </a>
-            -->
+            {% if is_granted('ROLE_STAFF') %}
+                <a href="{{ path('hflan_player') }}" class="btn btn-large">
+                    <i class="fa fa-list"></i>
+                    {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
+                </a>
+            {% endif %}
         {% endif %}
     {% endblock %}
 
