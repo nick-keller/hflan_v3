@@ -6,9 +6,9 @@
     </h1>
 
     {% for feedback in pagination %}
-        {{ feedback.message|nl2br|raw }}
+        {{ feedback.message|nl2br }}
         <div class="note">
-            {{ "guestbook.by"|trans({'%by%': feedback.nickname, '%date%': feedback.createdAt|simpleDate}, "guestbook")|desc("Pseudo : %by%, Date : %date%")|raw }}
+            {{ "guestbook.by"|trans({}, "guestbook")|desc("Auteur") }} <b>{{ feedback.nickname }}</b> {{ "guestbook.date"|trans({}, "guestbook")|desc("Date") }} {{ feedback.createdAt|simpleDate }}
             <div class="star-rating">
                 {% for i in range(0,4) %}
                     {% if i < feedback.rating %}
