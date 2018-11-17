@@ -10,18 +10,18 @@
     <br>
     <ul style="margin-left:-20px;">
 	    {% for player in players %}
-	    	{% if tournament.gameType == '5v5' %}
+	    	{% if tournament.gameType != '1v1' %}
 	    		<b>{{ player.name }}</b><br><br>
 	    	{% endif %}
 			{% for joueurs in teams %}
 				{% for i in joueurs%}
 					{% if player.id == i.team.id %}
-						<li style="margin-left:45px;">{{ i.nickname }} - {% for info in i.extrafields %}{{ info }}{% if not loop.last %} - {% endif %}{% endfor %}</li>
+						<li style="margin-left:45px;">{{ i.nickname }}{% if i.extrafields is not empty %} - {% for info in i.extrafields %}{{ info }}{% if not loop.last %} - {% endif %}{% endfor %}{% endif %}</li>
 					{% endif %}
 				{% endfor %}
 			{% endfor %}
 			</br>
-			{% if tournament.gameType == '5v5' %}
+			{% if tournament.gameType != '1v1' %}
 	    		<br>
 	    	{% endif %}
 		{% endfor %}
