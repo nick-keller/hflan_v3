@@ -25,11 +25,11 @@ class DefaultController extends Controller
 
         if($tournament == null) return $this->redirectToRoute('hflan_player');
 
-        $players = $em->getRepository('hflanLanBundle:Team')->findBy(array('tournament' => $tournament->getId(), 'paid' => '1'));
+        $players = $em->getRepository('hflanLanBundle:Team')->findBy(array('tournament' => $tournament->getId(), 'paid' => '1'), array('name' => 'ASC'));
 
         for($i = 0; $i < count($players); $i++)
         {
-            $team = $em->getRepository('hflanLanBundle:Player')->findByTeam($players[$i]->getId());
+            $team = $em->getRepository('hflanLanBundle:Player')->findByTeam($players[$i]->getId(), array('nickname' => 'ASC'));
             $teams[] = $team;
         }
 
@@ -55,11 +55,11 @@ class DefaultController extends Controller
         {
             if($tournament->getGameType() != 'Tous jeux' && $tournament->getGameType() != 'Spectateur')
             {
-                $players = $em->getRepository('hflanLanBundle:Team')->findBy(array('tournament' => $tournament->getId(), 'paid' => '1'));
+                $players = $em->getRepository('hflanLanBundle:Team')->findBy(array('tournament' => $tournament->getId(), 'paid' => '1'), array('name' => 'ASC'));
 
                 for($i = 0; $i < count($players); $i++)
                 {
-                    $team = $em->getRepository('hflanLanBundle:Player')->findByTeam($players[$i]->getId());
+                    $team = $em->getRepository('hflanLanBundle:Player')->findByTeam($players[$i]->getId(), array('nickname' => 'ASC'));
                     $teams[] = $team;
                 }
 
