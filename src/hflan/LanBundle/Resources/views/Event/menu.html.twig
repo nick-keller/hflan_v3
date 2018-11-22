@@ -11,6 +11,13 @@
                 var target = new Date({{ event.beginAt|date('Y,m-1,j,G,i,s,u') }});
             </script>
         </div>
+        {% if is_granted('ROLE_STAFF') %}
+            <br>
+            <a href="{{ path('hflan_player') }}" class="btn btn-large">
+                <i class="fa fa-list"></i>
+                {{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}
+            </a>
+        {% endif %}
     {% endblock %}
 
     {% block register %}
