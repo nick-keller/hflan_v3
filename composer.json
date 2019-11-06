@@ -30,7 +30,8 @@
         "jms/security-extra-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "^2.4",
         "jms/translation-bundle": "dev-master",
-        "stripe/stripe-php": "2.*"
+        "stripe/stripe-php": "2.*",
+        "gregwar/captcha-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
