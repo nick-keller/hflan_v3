@@ -1,7 +1,7 @@
 <?php
 namespace hflan\LanBundle\Twig;
 
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface as Translator;
 
 class DateExtension extends \Twig_Extension
 {

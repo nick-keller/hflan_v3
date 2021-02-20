@@ -2,28 +2,29 @@
 @import "mixins.less";
 
 header{
-    background: #59554a;
-    margin-bottom: -15px;
+    background: #272727;
+    //margin-bottom: -15px;
     padding-bottom: 20px;
 
     .green-bar{
-        @bar-height: 20px;
+        /*@bar-height: 20px;
         background: @green;
         height: @bar-height;
         margin-bottom: -@bar-height;
         box-shadow: 0 -1px 0 rgba(255,255,255,.3) inset, 0 8px 0 rgba(0,0,0,.2);
+	*/
     }
 
     .user-bar{
         background: #272727;
         height: 70px;
         margin-bottom: 15px;
-        .border-radius-bottom(4px);
-        border-bottom: solid 3px #111;
+        //.border-radius-bottom(4px);
+        //border-bottom: solid 3px #111;
         color: white;
 
         .hflan-logo-link{
-            width: 134px;
+            width: 215px;
             height: 52px;
             position: absolute;
             display: block;
@@ -39,7 +40,7 @@ header{
 
         .hflan-logo{
             background: url(../img/logo-hf.png);
-            width: 134px;
+            width: 215px;
             height: 52px;
             position: absolute;
             display: block;
@@ -51,7 +52,7 @@ header{
                 width: 302px;
                 height: 70px;
                 position: absolute;
-                margin: -10px 0 0 -30px;
+                margin: 0px 0 0 10px;
                 opacity: 0;
                 z-index: 60;
                 .transition(opacity 2s);
@@ -61,7 +62,7 @@ header{
         .switch-lang{
             position: absolute;
             top: 23px;
-            margin-left: 155px;
+            margin-left: 243px;
             z-index: 70;
 
             [class*=flag]{
@@ -104,7 +105,8 @@ header{
             position: relative;
 
             a{
-                color: #C0BBAA;
+		font-family: 'Airbnb Bold','Droid Sans', Helvetica, Arial, sans-serif;
+                color: white;
                 text-shadow: 0 -1px #272727;
                 text-decoration: none;
                 margin: 0 7px;
@@ -117,7 +119,7 @@ header{
             }
 
             &.active{
-                &:before{
+                /*&:before{
                     @arrow-size: 5px;
 
                     content: "";
@@ -128,7 +130,7 @@ header{
                     left: 50%;
                     bottom: -5px;
                     margin-left: -@arrow-size / 2;
-                }
+                }*/
 
                 a{
                     color: @green;

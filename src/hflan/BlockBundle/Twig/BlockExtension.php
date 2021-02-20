@@ -4,7 +4,7 @@ namespace hflan\BlockBundle\Twig;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Templating\EngineInterface;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface as Translator;
 
 class BlockExtension extends \Twig_Extension
 {

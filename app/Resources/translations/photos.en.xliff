@@ -13,7 +13,7 @@
       </trans-unit>
       <trans-unit id="070a911519f7a16bedbc5adf8de5bbd4d9a48ff1" resname="photos.title">
         <source>Titre principale de la page photos</source>
-        <target>Photos of previous hf.lan</target>
+        <target>Photos of previous HFLAN</target>
         <jms:reference-file line="5">views/Public/index.html.twig</jms:reference-file>
       </trans-unit>
     </body>

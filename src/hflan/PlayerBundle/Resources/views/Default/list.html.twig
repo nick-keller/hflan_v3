@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1 class="header">{{ "info.table.list_action"|trans({}, "info")|desc("Bouton liste des joueurs") }}</h1>
+    <h2 style="text-align:center;">{{ tournament.game }}</h2>
+    {% if tournament.gameType != 'Tous jeux' %}
+    	<h3 style="text-align:center;">Dotation actuelle : {{ current * tournament.price * tournament.numberOfPlayerPerTeam}} €</h3>
+    {% endif %}
+    <h3 style="text-align:center;">Progression actuelle : {{ current }}/{{ tournament.numberOfTeams }}</h3>
+    <br>
+    <ul style="margin-left:-20px;">
+	    {% for player in players %}
+	    	{% if tournament.gameType != '1v1' %}
+	    		<b>{{ player.name }}</b><br><br>
+	    	{% endif %}
+			{% for joueurs in teams %}
+				{% for i in joueurs%}
+					{% if player.id == i.team.id %}
+						<li style="margin-left:45px;">{{ i.nickname }}{% if i.extrafields is not empty %} - {% for info in i.extrafields %}{{ info }}{% if not loop.last %} - {% endif %}{% endfor %}{% endif %}</li>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			</br>
+			{% if tournament.gameType != '1v1' %}
+	    		<br>
+	    	{% endif %}
+		{% endfor %}
+	</ul>
+{% endblock %}

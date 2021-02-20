@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Collection;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface as Translator;
 
 class ExtraFieldsFormFactory
 {

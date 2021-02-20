@@ -2,9 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block page_title %}hf.lan{% endblock %}</title>
+        <meta name="description" content="Site web de la HFLAN, une LAN Party situé en région parisienne" />
+        <title>{% block page_title %}HFLAN{% endblock %}</title>
         {% block stylesheets %}
-            <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+            <link href='//fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
             {% stylesheets
                 'css/smoothness/jquery-ui-1.10.3.custom.min.css'
                 'css/lightbox.css'
@@ -253,7 +254,7 @@
                         <a target="_blank" class="btn btn-social" href="https://twitter.com/hflanesiee" style="background-color: #309aea;">
                             <i class="fa fa-twitter fa-2x" style="margin-top: 4px;"></i>
                         </a>
-                        <a target="_blank" class="btn btn-social" href="https://www.youtube.com/playlist?list=PLkC0j4FQhqgtMjSCg81xGCgMKgxDDf8bA" style="background-color: #ca3523;">
+                        <a target="_blank" class="btn btn-social" href="https://www.youtube.com/user/HFLANOfficiel" style="background-color: #ca3523;">
                             <i class="fa fa-youtube fa-2x" style="margin-top: 4px;"></i>
                         </a>
                         {{ render(controller("hflanLanBundle:Event:menu")) }}

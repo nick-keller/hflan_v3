@@ -1,0 +1,16 @@
+<h2 style="text-align:center;">{{ tournament.game }}</h2>
+{% if tournament.gameType != 'Tous jeux' %}
+<h3 style="text-align:center;">Dotation actuelle : {{ current * tournament.price * tournament.numberOfPlayerPerTeam}} €</h3>
+{% endif %}
+<h3 style="text-align:center;">Progression actuelle : {{ current }}/{{ tournament.numberOfTeams }}</h3><br />
+{% for player in players %}
+    {% if tournament.gameType == '5v5' %}<p><b>{{ player.name }}</b><br /></p>{% endif %}
+    <ul style="margin-left:-20px;">
+    {% for joueurs in teams %}
+        {% for i in joueurs%}
+            {% if player.id == i.team.id %}
+                <li><p>&nbsp;&nbsp;&nbsp;&nbsp;{{ i.nickname }}{% if tournament.game != "Super Smash Bros. Melee" %} - {% for info in i.extrafields %}{{ info }}{% if not loop.last %} - {% endif %}{% endfor %}{% endif %}</p></li>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </ul>{% if tournament.gameType == '5v5' and not loop.last %}<p><br /></p>{% endif %}{% endfor %}

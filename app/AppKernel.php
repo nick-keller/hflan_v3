@@ -35,13 +35,13 @@ class AppKernel extends Kernel
             new hflan\PageBundle\hflanPageBundle(),
             new hflan\DocumentBundle\hflanDocumentBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
+            new hflan\PlayerBundle\hflanPlayerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
         }
 
         return $bundles;

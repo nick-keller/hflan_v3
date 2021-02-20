@@ -33,7 +33,7 @@
     </div>
     <div class="panel">
         <h2>
-            En attente de paiment
+            En attente de paiement
             <small>{{ teams.locked|length }} {% if tournament.numberOfPlayerPerTeam > 1 %}équipes{% else %}joueurs{% endif %}</small>
         </h2>
         {{ teamsRenderer.show(teams.locked) }}

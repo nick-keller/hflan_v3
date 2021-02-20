@@ -107,7 +107,7 @@ class Team
     private $plainPassword;
 
     /**
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="team", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="team", cascade={"all"})
      */
     protected $players;
 

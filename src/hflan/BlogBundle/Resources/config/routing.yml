@@ -18,6 +18,10 @@ hflan_blog_remove:
     pattern:  /admin/remove/{slug}
     defaults: { _controller: hflanBlogBundle:Admin:remove }
 
+hflan_blog_generate:
+    pattern:  /admin/generate
+    defaults: { _controller: hflanPlayerBundle:Default:generate }
+
 # Public
 
 hflan_blog:
@@ -29,4 +33,3 @@ hflan_blog:
 hflan_blog_show:
     pattern:  /{slug}
     defaults: { _controller: hflanBlogBundle:Public:show }
-

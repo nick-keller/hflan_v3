@@ -44,8 +44,8 @@ class EventExportType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'choices' => array(
-                    EventExport::LIST_BLANK => 'Pré-inscites',
-                    EventExport::LIST_LOCKED => 'En attente de payment',
+                    EventExport::LIST_BLANK => 'Pré-inscrites',
+                    EventExport::LIST_LOCKED => 'En attente de paiement',
                     EventExport::LIST_PAID => 'Liste définitive',
                 ),
                 'attr' => array(

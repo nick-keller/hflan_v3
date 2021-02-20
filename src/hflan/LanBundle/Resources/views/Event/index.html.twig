@@ -57,13 +57,13 @@
                         <th>
                             <div class="pop-up-header">
                                 <div class="long-text">
-                                    <b>En attente de paiment</b>
+                                    <b>En attente de paiement</b>
                                     Toutes les informations sont valides, il ne reste plus qu'à payer
                                 </div>
                                 <i class="fa fa-ellipsis-h"></i>
                             </div>
                         </th>
-                        <th colspan="2">Equipes</th>
+                        <th colspan="3">Equipes</th>
                         <th></th>
                     </tr>
                     {% for tournament in event.tournaments %}
@@ -86,6 +86,9 @@
                             </td>
                             <td style="padding-left: 0">
                                 / {{ tournament.numberOfTeams }}
+                            </td>
+                            <td style="padding-left: 0">
+                                {{ tournament.numberOfVisibleTeams }}
                             </td>
                             <td>
                                 <a href="{{ path('hflan_tournament_edit', {slug:tournament.slug}) }}">
